@@ -3,4 +3,4 @@ public/dist
 tmp
 .tpm
 .DS_Store
-log
+log/development.log
