@@ -68,6 +68,13 @@
   ],
   "directories": {},
   "devDependencies": {
-    "json-loader": "^0.5.2"
+    "checkit": "^0.5.1",
+    "director": "^1.2.8",
+    "gemini-scrollbar": "^1.2.9",
+    "json-loader": "^0.5.2",
+    "moment-timezone": "^0.4.0",
+    "scrollto": "file:public/js/lib/scrollto",
+    "underscore.string": "^3.2.2",
+    "vivus": "^0.2.2"
   }
 }
