@@ -66,5 +66,8 @@
       "email": "sergio@delagarza.io"
     }
   ],
-  "directories": {}
+  "directories": {},
+  "devDependencies": {
+    "json-loader": "^0.5.2"
+  }
 }
