@@ -6,8 +6,8 @@ var TextGradient = require('./../lib/text-gradient');
 Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
     NAME : 'about-us',
     PATH : '/about-us',
-    THUMB : '/public/assets/images/views/about-us/thumb.jpg',
-    BG : '/public/assets/images/views/about-us/cover-image.jpg',
+    THUMB : '/img/views/about-us/thumb.jpg',
+    BG : '/img/views/about-us/cover-image.jpg',
     GRADIENT : '-gradient-04',
     MENU_COLOR : CONSTANTS.COLORS.greypurple,
     TITLE : 'About Us',

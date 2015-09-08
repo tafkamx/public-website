@@ -7,8 +7,8 @@ var slidesData = require('./../data/home/slides');
 Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
     NAME : 'home',
     PATH : '/',
-    THUMB : '/public/assets/images/views/home/thumb.jpg',
-    BG : '/public/assets/images/views/home/slides/01.jpg',
+    THUMB : '/img/views/home/thumb.jpg',
+    BG : '/img/views/home/slides/01.jpg',
     GRADIENT : '-gradient-01',
     MENU_COLOR : CONSTANTS.COLORS.green,
     TITLE : 'Home',

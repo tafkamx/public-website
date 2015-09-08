@@ -7,8 +7,8 @@ var skrollTo = require('scrollto');
 Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
     NAME : 'what-we-do',
     PATH : '/what-we-do',
-    THUMB : '/public/assets/images/views/what-we-do/thumb.jpg',
-    BG : '/public/assets/images/views/what-we-do/cover-image.jpg',
+    THUMB : '/img/views/what-we-do/thumb.jpg',
+    BG : '/img/views/what-we-do/cover-image.jpg',
     GRADIENT : '-gradient-03',
     MENU_COLOR : CONSTANTS.COLORS.pink,
     TITLE : 'What We Do',

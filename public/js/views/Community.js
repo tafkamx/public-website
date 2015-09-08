@@ -4,8 +4,8 @@ var collageData = require('./../data/community/collage');
 Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
     NAME : 'community',
     PATH : '/community',
-    THUMB : '/public/assets/images/views/community/thumb.jpg',
-    BG : '/public/assets/images/views/community/bg.jpg',
+    THUMB : '/img/views/community/thumb.jpg',
+    BG : '/img/views/community/bg.jpg',
     GRADIENT : '-gradient-02',
     MENU_COLOR : CONSTANTS.COLORS.orange,
     TITLE : 'Community',
@@ -24,7 +24,7 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
             </div>\
             <section class="communities -row">\
                 <div class="community first -tac -col-6">\
-                    <div class="community__logo" style="background-image: url(/public/assets/images/views/community/communities/hackers-and-founders-logo.jpg);"></div>\
+                    <div class="community__logo" style="background-image: url(/img/views/community/communities/hackers-and-founders-logo.jpg);"></div>\
                     <p class="community__title -font-light">Hackers & Founders</p>\
                     <p class="community__url">www.hfgdl.com</p>\
                     <div class="community__content -mt3">\
@@ -33,7 +33,7 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
                     </div>\
                 </div>\
                 <div class="community -tac -col-6">\
-                    <div class="community__logo" style="background-image: url(/public/assets/images/views/community/communities/startup-weekend-logo.jpg);"></div>\
+                    <div class="community__logo" style="background-image: url(/img/views/community/communities/startup-weekend-logo.jpg);"></div>\
                     <p class="community__title -font-light">Startup Weekend</p>\
                     <a href="http://www.swgdl.co/" target="_blank" class="community__url">www.swgdl.co</a>\
                     <div class="community__content -mt3">\

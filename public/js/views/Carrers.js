@@ -8,8 +8,8 @@ var TextGradient = require('./../lib/text-gradient');
 Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
     NAME : 'carrers',
     PATH : '/carrers',
-    THUMB : '/public/assets/images/views/carrers/thumb.jpg',
-    BG : '/public/assets/images/views/carrers/cover-image.jpg',
+    THUMB : '/img/views/carrers/thumb.jpg',
+    BG : '/img/views/carrers/cover-image.jpg',
     GRADIENT : '-gradient-01',
     MENU_COLOR : CONSTANTS.COLORS.green,
     TITLE : 'Carrers',

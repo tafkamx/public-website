@@ -7,8 +7,8 @@ moment.tz.setDefault("America/Mexico_City");
 Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
     NAME : 'lets-talk',
     PATH : '/lets-talk',
-    THUMB : '/public/assets/images/views/lets-talk/thumb.jpg',
-    BG : '/public/assets/images/views/lets-talk/bg.jpg',
+    THUMB : '/img/views/lets-talk/thumb.jpg',
+    BG : '/img/views/lets-talk/bg.jpg',
     GRADIENT : '-gradient-04',
     MENU_COLOR : CONSTANTS.COLORS.greypurple,
     TITLE : 'Let’s Talk',
@@ -27,21 +27,21 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
             </section>\
             <section class="other-things -row">\
                 <div class="ot__col -col-4">\
-                    <div class="ot__image -img-cover" style="background-image: url(/public/assets/images/views/lets-talk/thumbs/empathia-book-speaker.jpg)"></div>\
+                    <div class="ot__image -img-cover" style="background-image: url(/img/views/lets-talk/thumbs/empathia-book-speaker.jpg)"></div>\
                     <div class="ot__content -mt3">\
                         <h2 class="ot__title -mt0 -font-semi-bold">Book Speaker / Community</h2>\
                         <p class="ot__desc -color-neutral-dark">Thanks! We’re honored to share what we know with your audience. We’ve spoken at universities and conferences and we love it! Tell us how you’d like us to participate at community@empathia.agency.</p>\
                     </div>\
                 </div>\
                 <div class="ot__col -col-4">\
-                    <div class="ot__image -img-cover" style="background-image: url(/public/assets/images/views/lets-talk/thumbs/empathia-work-station.jpg)"></div>\
+                    <div class="ot__image -img-cover" style="background-image: url(/img/views/lets-talk/thumbs/empathia-work-station.jpg)"></div>\
                     <div class="ot__content -mt3">\
                         <h2 class="ot__title -mt0 -font-semi-bold">Work at Empathia</h2>\
                         <p class="ot__desc -color-neutral-dark">We’re always looking to meet talented mission-driven people. If you know you can bring awesome things, then, for more information on how to apply for a position you should visit our Careers page.</p>\
                     </div>\
                 </div>\
                 <div class="ot__col -col-4">\
-                    <div class="ot__image -img-cover" style="background-image: url(/public/assets/images/views/lets-talk/thumbs/empathia-say-hi.jpg)"></div>\
+                    <div class="ot__image -img-cover" style="background-image: url(/img/views/lets-talk/thumbs/empathia-say-hi.jpg)"></div>\
                     <div class="ot__content -mt3">\
                         <h2 class="ot__title -mt0 -font-semi-bold">General Inquires / Say Hi</h2>\
                         <p class="ot__desc -color-neutral-dark">We’re a very friendly group of people so if you just want to say hello, ask a question or arrange to stop by to have a chat over beer or coffee then feel free to email us at hello@empathya.agency.</p>\
@@ -194,7 +194,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
             };
             this._map = new google.maps.Map(mapCanvas, mapOptions);
 
-            var image = '/public/assets/images/views/lets-talk/location/pin.png';
+            var image = '/img/views/lets-talk/location/pin.png';
             this._beachMarker = new google.maps.Marker({
                 position: {lat: 20.6697775, lng: -103.3635804},
                 map: this._map,

@@ -3,7 +3,7 @@ var Events = require('./../../lib/events');
 Class(EM, 'GalleryThumb').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'about-us__team-gallery-thumb -clickable',
     HTML : '<img width="144" height="144"/>',
-    IMAGE_BASE_PATH : '/public/assets/images/views/about-us/the-team/thumbnails/',
+    IMAGE_BASE_PATH : '/img/views/about-us/the-team/thumbnails/',
     prototype : {
         item : null,
         index : 0,
