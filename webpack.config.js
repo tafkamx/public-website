@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+// var webpack = require('webpack');
 var path = require('path');
 var CompressionPlugin = require("compression-webpack-plugin");
 
@@ -33,12 +33,5 @@ module.exports = {
       threshold: 10240,
       minRatio: 0.8
     })
-  ],
-
-  resolve: {
-   alias: {
-      jquery: path.join(__dirname, "/public/js/vendor/jquery-2.0.3.js" ),
-      validate: path.join(__dirname, "/public/js/vendor/validate.js" )
-    }
-  }
+  ]
 };
