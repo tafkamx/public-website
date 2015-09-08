@@ -1,8 +1,8 @@
-require('./../css/style.css');
+require('./../css/style.less');
 
 require('neon');
 require('neon/stdlib');
-require('./lib/widget.js');
+require('./lib/widget');
 
 require('./lib/namespace');
 require('./App');

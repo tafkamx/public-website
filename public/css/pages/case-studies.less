@@ -1,0 +1,49 @@
+.page-case-studies {
+  .page__body {
+    padding: 3.33rem;
+  }
+
+  .work-with-us .work-with-us__title::after {
+    background-color: @accent-pink;
+  }
+}
+
+.case-studies__proyect {
+  padding: 8rem;
+  border-bottom: 1px solid white;
+  background-color: #232323;
+
+  &:last-child {border-bottom: none}
+}
+
+.case-studies__proyect:nth-child(odd) {
+  background-color: rgba(35, 35, 35, 0.95);
+}
+
+.case-studies__proyect-bg {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &::after {
+    background-color: #293033;
+    opacity: .9;
+  }
+}
+
+.case-studies__proyect-title {
+  font-size: 5.333rem;
+  line-height: 1.094em;
+  margin: 0 0 .4em;
+  overflow-wrap: break-word;
+  color: #fff;
+}
+
+.case-studies__proyect-desc {
+  font-size: 1.667em;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #E8E8E8;
+}
+

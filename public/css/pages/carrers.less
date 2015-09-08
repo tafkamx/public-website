@@ -1,0 +1,155 @@
+.page-carrers {
+  .page__intro-wrapper {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .page__body-title {
+    font-size: 3rem;
+    line-height: 1.389em;
+
+    &::after {
+      background-color: @accent-green;
+    }
+  }
+}
+
+/* image strip */
+.carrers__image-strip {}
+
+.image-strip {
+  float: left;
+  width: 20%;
+  padding-top: 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &:nth-child(1) {background-image: url('/public/assets/images/views/carrers/image-strip/image.jpg')}
+  &:nth-child(2) {background-image: url('/public/assets/images/views/carrers/image-strip/image-02.jpg')}
+  &:nth-child(3) {background-image: url('/public/assets/images/views/carrers/image-strip/image-03.jpg')}
+  &:nth-child(4) {background-image: url('/public/assets/images/views/carrers/image-strip/image-04.jpg')}
+  &:nth-child(5) {background-image: url('/public/assets/images/views/carrers/image-strip/image-05.jpg')}
+}
+
+/* we are all items */
+.carrers__were-all {
+  max-width: 76.6%;
+  margin: 0 auto;
+}
+
+.were-all-item {
+  .touch & {
+    .on-touch {display: table-cell}
+  }
+}
+
+.were-all-phrase {}
+
+.were-all-text {
+  font-size: 1.333rem;
+  line-height: 2em;
+  color: @color-neutral-dark;
+}
+
+.carrers__quote-wrapper {
+  .testimonial-text {
+    width: 50%;
+  }
+}
+
+/* Perks */
+.perks {
+  padding: 10rem 5em 14rem;
+}
+
+.perks-title {
+  font-size: 4rem;
+  margin: 0 0 2em;
+}
+
+.perks__item {
+  padding: 0 2rem;
+
+  &.hardware > .perks__item-icon > svg {
+    width: 10.833rem;
+    height: 8.33333333rem;
+  }
+}
+
+.perk-title {
+  font-size: 1.417rem;
+  line-height: 1.118em;
+}
+
+.perk-desc {
+  font-size: 1.250rem;
+  line-height: 1.667em;
+}
+
+/* we are all floating widget */
+.we-are-all-widget {
+  width: 520px;
+  height: 520px;
+  top: 50%;
+  transform: translate(0, -50%);
+  opacity: 0;
+  transition: opacity 200ms linear;
+
+  &.active {opacity: 1}
+}
+
+.waa__main-text {
+  font-size: 6.667rem;
+  line-height: 1em;
+  color: #DAE2E6;
+}
+
+.waa__keywords {
+  min-height: 6.667rem;
+}
+
+.waa__keyword {
+  font-size: 6.667rem;
+  line-height: 1em;
+  min-height: 1em;
+}
+
+.we-are-all-widget .waa__keyword {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 400ms ease;
+
+  &.active {opacity: 1}
+}
+
+/* Responsiveness */
+@media all and (max-width: 768px) {
+  .we-are-all-widget {
+    display: none;
+  }
+
+  .were-all-item,
+  .were-all-phrase,
+  .were-all-text {
+    width: 100%;
+    height: auto;
+  }
+
+  .were-all-item {
+    margin: 6rem 0;
+  }
+
+  .were-all-phrase {
+    margin-bottom: 2rem;
+  }
+
+  .were-all-phrase .on-touch {
+    display: table-cell;
+  }
+
+  .carrers__quote-wrapper .testimonial-text {
+    width: 100%;
+  }
+}
