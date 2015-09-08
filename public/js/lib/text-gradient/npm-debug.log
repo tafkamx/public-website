@@ -1,0 +1,66 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'info', 'text-gradient' ]
+2 info using npm@2.12.1
+3 info using node@v0.12.7
+4 verbose node symlink /usr/local/bin/node
+5 silly mapToRegistry name text-gradient
+6 silly mapToRegistry using default registry
+7 silly mapToRegistry registry https://registry.npmjs.org/
+8 silly mapToRegistry uri https://registry.npmjs.org/text-gradient
+9 verbose request uri https://registry.npmjs.org/text-gradient
+10 verbose request no auth needed
+11 info attempt registry request try #1 at 04:14:14
+12 verbose request using bearer token for auth
+13 verbose request id e8d06b86fc5d6f87
+14 http request GET https://registry.npmjs.org/text-gradient
+15 http 404 https://registry.npmjs.org/text-gradient
+16 verbose headers { 'content-type': 'application/json',
+16 verbose headers   'cache-control': 'max-age=0',
+16 verbose headers   'content-length': '2',
+16 verbose headers   'accept-ranges': 'bytes',
+16 verbose headers   date: 'Wed, 02 Sep 2015 09:14:15 GMT',
+16 verbose headers   via: '1.1 varnish',
+16 verbose headers   connection: 'keep-alive',
+16 verbose headers   'x-served-by': 'cache-dfw1830-DFW',
+16 verbose headers   'x-cache': 'MISS',
+16 verbose headers   'x-cache-hits': '0',
+16 verbose headers   'x-timer': 'S1441185255.293374,VS0,VE69' }
+17 silly get cb [ 404,
+17 silly get   { 'content-type': 'application/json',
+17 silly get     'cache-control': 'max-age=0',
+17 silly get     'content-length': '2',
+17 silly get     'accept-ranges': 'bytes',
+17 silly get     date: 'Wed, 02 Sep 2015 09:14:15 GMT',
+17 silly get     via: '1.1 varnish',
+17 silly get     connection: 'keep-alive',
+17 silly get     'x-served-by': 'cache-dfw1830-DFW',
+17 silly get     'x-cache': 'MISS',
+17 silly get     'x-cache-hits': '0',
+17 silly get     'x-timer': 'S1441185255.293374,VS0,VE69' } ]
+18 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/text-gradient
+18 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:239:14)
+18 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+18 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:197:22)
+18 verbose stack     at Request.emit (events.js:110:17)
+18 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1050:14)
+18 verbose stack     at Request.emit (events.js:129:20)
+18 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:996:12)
+18 verbose stack     at IncomingMessage.emit (events.js:129:20)
+18 verbose stack     at _stream_readable.js:908:16
+18 verbose stack     at process._tickCallback (node.js:355:11)
+19 verbose statusCode 404
+20 verbose pkgid text-gradient
+21 verbose cwd /Users/noeldelgado/Projects/empathya/empathya/public/js/lib/text-gradient
+22 error Darwin 14.3.0
+23 error argv "node" "/usr/local/bin/npm" "info" "text-gradient"
+24 error node v0.12.7
+25 error npm  v2.12.1
+26 error code E404
+27 error 404 Registry returned 404 for GET on https://registry.npmjs.org/text-gradient
+27 error 404
+27 error 404 'text-gradient' is not in the npm registry.
+27 error 404 You should bug the author to publish it (or use the name yourself!)
+27 error 404
+27 error 404 Note that you can also install from a
+27 error 404 tarball, folder, http url, or git url.
+28 verbose exit [ 1, true ]

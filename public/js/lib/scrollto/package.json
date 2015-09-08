@@ -1,0 +1,21 @@
+{
+  "name": "scrollto",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scroll",
+    "animate",
+    "scroll-to",
+    "smooth"
+  ],
+  "author": "Noel Delgado <auhcsei@gmail.com> (http://pixelia.me)",
+  "license": "MIT",
+  "dependencies": {
+    "raf": "^3.1.0",
+    "tween.js": "^15.0.0"
+  }
+}

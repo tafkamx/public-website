@@ -1,0 +1,23 @@
+{
+  "name": "class-add",
+  "version": "1.0.0",
+  "description": "Adds the specified class(es) to each element in the set of matched elements.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noeldelgado/class-add.git"
+  },
+  "keywords": [
+    "css",
+    "class",
+    "DOM",
+    "className",
+    "classList",
+    "add"
+  ],
+  "author": "Noel Delgado <auhcsei@gmail.com> (http://pixelia.me)",
+  "license": "MIT",
+  "devDependencies": {}
+}
