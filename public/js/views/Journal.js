@@ -4,8 +4,8 @@ var postsData = require('./../data/journal/posts');
 Class(EM.Views, 'Journal').inherits(Widget).includes(BubblingSupport)({
     NAME : 'journal',
     PATH : '/journal',
-    THUMB : '/public/assets/images/views/journal/thumb.jpg',
-    BG : '/public/assets/images/views/journal/bg.jpg',
+    THUMB : '/img/views/journal/thumb.jpg',
+    BG : '/img/views/journal/bg.jpg',
     GRADIENT : '-gradient-03',
     MENU_COLOR : CONSTANTS.COLORS.pink,
     TITLE : 'Journal',

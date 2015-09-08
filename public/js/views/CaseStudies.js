@@ -5,8 +5,8 @@ var Events = require('./../lib/events');
 Class(EM.Views, 'CaseStudies').inherits(Widget).includes(BubblingSupport)({
     NAME : 'case-studies',
     PATH : '/case-studies',
-    THUMB : '/public/assets/images/views/case-studies/thumb.jpg',
-    BG : '/public/assets/images/views/case-studies/cover-image.jpg',
+    THUMB : '/img/views/case-studies/thumb.jpg',
+    BG : '/img/views/case-studies/cover-image.jpg',
     GRADIENT : '-gradient-02',
     MENU_COLOR: CONSTANTS.COLORS.orange,
     TITLE : 'Case Studies',
@@ -18,21 +18,21 @@ Class(EM.Views, 'CaseStudies').inherits(Widget).includes(BubblingSupport)({
             <div class="page__body">\
                 <div class="case-studies__proyects">\
                     <article class="case-studies__proyect -tac -rel">\
-                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/public/assets/images/views/case-studies/projects/crowdvoice-by-app.jpg)"></div>\
+                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/img/views/case-studies/projects/crowdvoice-by-app.jpg)"></div>\
                         <div class="case-studies__proyect-info -tac -rel">\
                             <h2 class="case-studies__proyect-title -font-bold">CrowdVoice.by</h2>\
                             <p class="case-studies__proyect-desc -font-light">Broadcast and visualize messages, raise awareness and invite change.</p>\
                         </div>\
                     </article>\
                     <article class="case-studies__proyect -tac -rel">\
-                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/public/assets/images/views/case-studies/projects/patos-app.jpg)"></div>\
+                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/img/views/case-studies/projects/patos-app.jpg)"></div>\
                         <div class="case-studies__proyect-info -tac -rel">\
                             <h2 class="case-studies__proyect-title -font-bold">Pat OS</h2>\
                             <p class="case-studies__proyect-desc -font-light">Private tutoring scheduling and management made easy.</p>\
                         </div>\
                     </article>\
                     <article class="case-studies__proyect -tac -rel">\
-                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/public/assets/images/views/case-studies/projects/crowdvoice-org-app.jpg)"></div>\
+                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/img/views/case-studies/projects/crowdvoice-org-app.jpg)"></div>\
                         <div class="case-studies__proyect-info -tac -rel">\
                             <h2 class="case-studies__proyect-title -font-bold">CrowdVoice.org</h2>\
                             <p class="case-studies__proyect-desc -font-light">Amplifying social justice movements worldwide.</p>\

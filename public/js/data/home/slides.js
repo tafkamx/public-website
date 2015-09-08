@@ -6,7 +6,7 @@ module.exports = [
         className : 'slides__intro',
         gradient : '-gradient-01',
         bg : {
-            image: '/public/assets/images/views/home/slides/01.jpg',
+            image: '/img/views/home/slides/01.jpg',
             className : '-matisse'
         },
         title : {
@@ -26,7 +26,7 @@ module.exports = [
         className : 'slides__cv-org',
         gradient : '-gradient-gray',
         bg : {
-            image: '/public/assets/images/views/home/slides/02.jpg',
+            image: '/img/views/home/slides/02.jpg',
             className : '-matisse'
         },
         title : {
@@ -46,7 +46,7 @@ module.exports = [
         className : 'slides__cv-by',
         gradient : '-gradient-tm',
         bg : {
-            image: '/public/assets/images/views/home/slides/03.jpg',
+            image: '/img/views/home/slides/03.jpg',
             className : '-matisse'
         },
         title : {

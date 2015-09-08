@@ -27,7 +27,7 @@ Class(EM, 'GalleryItem').inherits(Widget)({
             <footer>— <cite>{author}</cite></footer>\
         </blockquote>',
 
-    IMAGE_BASE_PATH : '/public/assets/images/views/about-us/the-team/',
+    IMAGE_BASE_PATH : '/img/views/about-us/the-team/',
 
     prototype : {
         item : null,

@@ -9,27 +9,27 @@ module.exports = [
 
     {
         type : 'image',
-        data : {image : '/public/assets/images/views/community/collage/empathia-community-cuiki.jpg'}
+        data : {image : '/img/views/community/collage/empathia-community-cuiki.jpg'}
     },
 
     {
         type : 'image',
-        data : {image : '/public/assets/images/views/community/collage/empathia-community-swgdl.jpg'}
+        data : {image : '/img/views/community/collage/empathia-community-swgdl.jpg'}
     },
 
     {
         type : 'image',
-        data : {image : '/public/assets/images/views/community/collage/empathia-community-uniqwood.jpg'}
+        data : {image : '/img/views/community/collage/empathia-community-uniqwood.jpg'}
     },
 
     {
         type : 'image',
-        data : {image : '/public/assets/images/views/community/collage/empathia-community-hackers-founders-azendal.jpg'}
+        data : {image : '/img/views/community/collage/empathia-community-hackers-founders-azendal.jpg'}
     },
 
     {
         type : 'image',
-        data : {image : '/public/assets/images/views/community/collage/empathia-community-startup-weekend.jpg'}
+        data : {image : '/img/views/community/collage/empathia-community-startup-weekend.jpg'}
     },
 
     {
@@ -42,12 +42,12 @@ module.exports = [
 
     {
         type : 'image',
-        data : {image : '/public/assets/images/views/community/collage/empathia-community-swgdl-2015.jpg'}
+        data : {image : '/img/views/community/collage/empathia-community-swgdl-2015.jpg'}
     },
 
     {
         type : 'image',
-        data : {image : '/public/assets/images/views/community/collage/empathia-community-hackers-founders.jpg'}
+        data : {image : '/img/views/community/collage/empathia-community-hackers-founders.jpg'}
     },
 
     {
@@ -60,7 +60,7 @@ module.exports = [
 
     {
         type : 'image',
-        data : {image : '/public/assets/images/views/community/collage/empathia-community-swgdl-no-talk-all-action.jpg'}
+        data : {image : '/img/views/community/collage/empathia-community-swgdl-no-talk-all-action.jpg'}
     },
 
     {
