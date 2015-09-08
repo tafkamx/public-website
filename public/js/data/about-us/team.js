@@ -76,6 +76,6 @@ module.exports = [
         networks : [
             {type : 'twitter', url : 'https://twitter.com/EduanGreduan'}
         ],
-        bio : 'Hi I’m Eduan, I enjoy programming, bicycling, playing video games, eating, whistling and humming, and just in general interacting with other people. I enjoy helping people with my work so all of my personal projects are open source. Homeschooled, so although I’ve been living in a cave for the last 18 years, I am discovering the hidden intricacies of this society’s social interactions. Getting there…'
+        bio : 'Hi!, I enjoy programming, bicycling, playing video games, eating, whistling and humming, and just in general interacting with other people. I enjoy helping people with my work so all of my personal projects are open source. Homeschooled, so although I’ve been living in a cave for the last 18 years, I am discovering the hidden intricacies of this society’s social interactions. Getting there…'
     }
 ];
