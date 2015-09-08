@@ -1,25 +1,42 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Neonode</title>
-    <link rel="icon" type="image/gif" href="/img/favicon.gif" />
-
-    <!-- webpack -d -->
-    <script src="/dist/bundle.js"></script>
+  <meta charset="UTF-8">
+  <title>Empathia / Strategy driven and design-led digital products and services firm</title>
+  <meta name="description" content="Empathia is a strategy driven and design-led digital products and services firm that helps individuals and organizations innovate and grow.">
+  <meta name="keywords" content="Guadalajara, GDL, Mexico, Design, Product, Development, Strategy, Firm, Agency">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
 </head>
-
 <body>
-    <header>
-        <h1><img src="/img/neon-logo.png" width="80" /><span>It works!</span></h1>
-    </header>
-    <div class="yield">
-        <%= yield %>
-    </div>
-    <footer>
-        <p><a href="http://github.com/sgarza/Neonode" target="_blank"><span>Neonode <strong>v2.1.4</strong></span></a></p>
-    </footer>
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient x1="100%" y1="100%" x2="0%" y2="0%" id="gradient-1">
+        <stop stop-color="#9CDA00" offset="0%"></stop>
+        <stop stop-color="#009ADD" offset="100%"></stop>
+      </linearGradient>
+      <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-2">
+        <stop stop-color="#9BDA05" offset="0%"></stop>
+        <stop stop-color="#F49100" offset="100%"></stop>
+      </linearGradient>
+      <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="gradient-3">
+        <stop stop-color="#E69C01" offset="0%"></stop>
+        <stop stop-color="#F5195F" offset="100%"></stop>
+      </linearGradient>
+      <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-4">
+        <stop stop-color="#F51C5D" offset="0%"></stop>
+        <stop stop-color="#6F67C5" offset="100%"></stop>
+      </linearGradient>
+      <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="gradient-4b">
+        <stop stop-color="#FF0771" offset="0%"></stop>
+        <stop stop-color="#3B73AC" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+  <%= renderPartial('shared/svg/sprite.svg') %>
+  <div class="yield">
+    <%= yield %>
+  </div>
+  <script src="/dist/bundle.js"></script>
 </body>
-
 </html>
