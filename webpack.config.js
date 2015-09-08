@@ -1,4 +1,3 @@
-// var webpack = require('webpack');
 var path = require('path');
 var CompressionPlugin = require("compression-webpack-plugin");
 
@@ -22,7 +21,8 @@ module.exports = {
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,     loader: "file" },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,     loader: "url?limit=10000&minetype=image/svg+xml" },
       { test: /\.(png|jpg)$/,                   loader: 'url-loader?limit=8192'}, // inline base64 URLs for <=8k images, direct URLs for the rest
-      { test: /\.less$/,                        loader: "style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!less-loader"}
+      { test: /\.less$/,                        loader: "style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!less-loader"},
+      { test: /\.json$/,                        loader: 'json-loader'}
     ]
   },
   plugins: [
