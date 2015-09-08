@@ -1,0 +1,121 @@
+.range-selector {
+  @dot-size: 12px;
+  @slider-height: 4px;
+  @slider-selector-size: 30px;
+
+  position: relative;
+
+  &.disable::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: @color-white;
+    opacity: .5;
+  }
+
+  &__amount {
+    position: relative;
+    font-size: 2rem;
+    line-height: 1em;
+    width: 20%;
+    padding-bottom: 5px;
+    color: @color-neutral-light;
+    transition: color 260ms linear;
+
+    > sub {
+      font-size: .8rem;
+      line-height: 1em;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+
+    &::after {
+      content: '';
+      width: 1px;
+      height: 20px;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      background-color: #DAE2E6;
+    }
+
+    &.active {
+      font-family: 'Graphik-Medium';
+      color: @color-neutral-dark;
+    }
+  }
+
+  &__amount-range-indicator {
+    position: absolute;
+    bottom: 26px;
+    left: 0;
+    width: 20%;
+    border-bottom: 1px dashed #DAE2E6;
+  }
+
+  &__input-wrapper {
+    width: 80%;
+    height: 4px;
+    margin: 0 auto;
+  }
+
+  &__slider, &__input {
+    height: @slider-height;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &__input {
+    left: 0;
+    background: #f00;
+    background-image: linear-gradient(to right, @accent-blue 1%, @accent-green 30%, @accent-yellow 53%, @accent-orange 82%, @accent-red 100%);
+
+    &::before, &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: @dot-size;
+      width: @dot-size;
+      top: 50%;
+      margin-top: -1 * @dot-size / 2;
+      border-radius: @dot-size;
+    }
+
+    &::before {
+      background: @accent-blue;
+      left: @dot-size / -2;
+    }
+
+    &::after {
+      background: #ddd;
+      right: @dot-size / -2;
+    }
+  }
+
+  &__slider {
+    right: 0;
+    width: 50%;
+    background: #ddd;
+    cursor: pointer;
+
+    &__selector {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: -0.5 * @slider-selector-size;
+      margin-top: -0.5 * @slider-selector-size;
+      height: @slider-selector-size;
+      width: @slider-selector-size;
+      border-radius: @slider-selector-size;
+      background: #fff;
+      border: 2px solid #bbb;
+      box-shadow: rgba(0, 0, 0, .1) 0 1px 0, rgba(0, 0, 0, .1) 0 2px 5px;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+@kabinet-path: "./lib/kabinett/source/less";
+
+@import '@{kabinet-path}/core/_variables';
+
+/* =========================================================================== *
+ *  global base variables
+ * =========================================================================== */
+@base-font-size: 12px;
+@root-font-size: .938vw; /* base: 1280px => ~12px */
+@root-font-family: 'Graphik-Regular', sans-serif;
+@root-text-color: #293033;
+
+@btn-default-font-size: 1.5rem;
+@btn-default-height: 6rem;
+@btn-default-radius: 0;
+
+@btn-sm-font-size: 1.2rem;
+@btn-sm-height: 2.4em;
+@btn-sm-radius: 0;
+
+@btn-md-font-size: 1.500rem;
+@btn-md-height: 3.111em;
+@btn-md-radius: 0;
+
+@btn-lg-font-size: 1.5rem;
+@btn-lg-height: 4em;
+@btn-lg-radius: 0;
+
+@import '@{kabinet-path}/core/base';
+@import '@{kabinet-path}/core/_mixins';
+
+@import '@{kabinet-path}/components/button';
+@import '@{kabinet-path}/components/input';
+
+@import '@{kabinet-path}/modules/typography';
+@import '@{kabinet-path}/modules/layout/grid';
+
+@import '@{kabinet-path}/utilities/layout';
+@import '@{kabinet-path}/utilities/presentation';
+@import '@{kabinet-path}/utilities/interaction';
+//@import '@{kabinet-path}/utilities/typography';
+@import '@{kabinet-path}/utilities/elements';
+
+/* =========================================================================== *
+  font weights
+ * =========================================================================== */
+.-font-thin {font-family: 'Graphik-Thin'; font-weight: 100}
+.-font-extra-light {font-family: 'Graphik-Extralight'; font-weight: 200; -webkit-font-smoothing: antialiased;}
+.-font-light {font-family: 'Graphik-Light'; font-weight: 300; -webkit-font-smoothing: antialiased;}
+.-font-normal {font-family: 'Graphik-Regular'; font-weight: 400}
+.-font-semi-bold {font-family: 'Graphik-Semibold'; font-weight: 600}
+.-font-bold {font-family: 'Graphik-Bold'; font-weight: 700}
+.-font-ultra-bold {font-weight: 900}
+.-font-medium {font-family: 'Graphik-Medium';}
+
+/* =========================================================================== *
+  mixins
+ * =========================================================================== */
+.mixin-color(@color-white, white);
+.mixin-color(@color-neutral-light, neutral-light);
+.mixin-color(@color-neutral-xx-light, neutral-xx-light);
+.mixin-color(@color-neutral-dark, neutral-dark);
+.mixin-color(@color-neutral-xx-dark, neutral-xx-dark);
+.mixin-color(@accent-green, green);
+.mixin-color(@accent-purple, purple);
+.mixin-color(@accent-pink, pink);
+
+/* =========================================================================== *
+  overrides :: button
+ * =========================================================================== */
+.mixin-kabinett-button(@bg-color, @text-color, @border-color, @hover-color: @color-white) {
+  background-color: @bg-color;
+  border-color: @border-color;
+  color: @text-color;
+
+  &:hover:not(.disable) {
+    background-color: @border-color;
+    color: @hover-color;
+  }
+}
+
+@{ns}-btn {
+  position: relative;
+  border-width: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color 60ms linear, background-color 60ms linear, opacity 400ms;
+
+  &:active {top: 1px}
+
+  &.disable {
+    opacity: .5;
+  }
+
+  &.-md,
+  &.-lg {border-width: 2px}
+
+  &.-mini {
+    font-size: 1.083rem;
+    height: 2.462em;
+    line-height: 2.462em;
+  }
+
+  &.-white {.mixin-kabinett-button(transparent, @color-white, @color-white)}
+  &.-neutral-dark {.mixin-kabinett-button(transparent, @color-neutral-dark, @color-neutral-dark)}
+  &.-blue {.mixin-kabinett-button(transparent, @accent-blue, @accent-blue)}
+  &.-orange {.mixin-kabinett-button(transparent, @accent-orange, @accent-orange)}
+  &.-yellow {.mixin-kabinett-button(transparent, @accent-yellow, @accent-yellow)}
+  &.-pink {.mixin-kabinett-button(transparent, @accent-pink, @accent-pink)}
+  &.-green {.mixin-kabinett-button(transparent, @accent-green, @accent-green)}
+  &.-purple {.mixin-kabinett-button(transparent, @accent-purple, @accent-purple)}
+}
+
+/* =========================================================================== *
+  overrides :: input
+ * =========================================================================== */
+@{ns}-input {
+  color: @color-neutral-dark;
+  border-color: #C3D2D9;
+  border-radius: 5px;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,0.1);
+
+  &:focus,
+  &.-is-focus {border-color: @accent-pink}
+
+  &.-is-error {
+    background-color: tint(@accent-red, 97.5);
+    border-color: @accent-red;
+  }
+}

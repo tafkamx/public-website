@@ -1,0 +1,111 @@
+.page-what-we-do {
+  .page__body-title::after {
+    background-color: @accent-pink;
+  }
+
+  .work-with-us .work-with-us__title::after {
+    background-color: @accent-pink;
+  }
+}
+
+.what-we-do__disciplines-wrapper,
+.what-we-do__offerings-wrapper {
+  padding: 0 5rem;
+  .page__intro {max-width: 100%}
+}
+
+.what-we-do__discipline-label,
+.what-we-do__offering-label {
+  letter-spacing: 3px;
+  color: #A1ADB3;
+}
+
+.what-we-do__discipline-title,
+.what-we-do__offering-title {
+  font-size: 2rem;
+}
+
+.what-we-do__discipline-desc,
+.what-we-do__offering-desc {
+  font-size: 1.45rem;
+  line-height: 1.941em;
+  color: @color-neutral-dark;
+}
+
+.what-we-do__offering-desc {
+  color: #DAE2E6;
+}
+
+/* offerings */
+.what-we-do__offerings-wrapper {
+  color: @color-white;
+}
+
+.what-we-do__offering-icon {
+  > svg {
+    display: none;
+    width: 40%;
+    height: 40%;
+  }
+}
+
+.touch .what-we-do__offering-icon > svg {display: initial}
+
+.what-we-do__disciplines-graphic-circle {
+  &.offering {
+    width: 70%;
+    padding-top: 70%;
+    border-color: #979797;
+  }
+}
+
+.touch {
+  .page-what-we-do .page__intro,
+  .what-we-do__disciplines-row,
+  .what-we-do__offerings-row {
+    height: auto;
+    padding: 0 0 5rem;
+  }
+
+  .page-what-we-do .page__intro,
+  .what-we-do__disciplines-wrapper {
+    padding-top: 5rem;
+  }
+
+  .what-we-do__disciplines-graphic  {
+    display: none;
+  }
+
+  .what-we-do__discipline {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .page-what-we-do .page__intro,
+  .what-we-do__disciplines-row,
+  .what-we-do__offerings-row {
+    height: auto;
+    padding: 0 0 5rem;
+  }
+
+  .page-what-we-do .page__intro,
+  .what-we-do__disciplines-wrapper {
+    padding-top: 5rem;
+  }
+
+  .what-we-do__disciplines-graphic  {
+    display: none;
+  }
+
+  .what-we-do__discipline,
+  .what-we-do__offering {
+    width: 100%;
+    padding: 0;
+  }
+
+  .what-we-do__offering-icon {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+/* blue-green */
+.-gradient-01::before {
+  background-image: linear-gradient(to right, @accent-blue, @accent-green);
+}
+
+/* green-orange */
+.-gradient-02::before {
+  background-image: linear-gradient(to right, @accent-green, @accent-orange);
+}
+
+/* orange-pink */
+.-gradient-03::before {
+  background-image: linear-gradient(to right, @accent-orange, @accent-pink);
+}
+
+/* pink-greyblue */
+.-gradient-04::before {
+  background-image: linear-gradient(to right, @accent-pink, @accent-greyblue);
+}
+
+.-matisse::after {
+  &:extend(.-abs-after::after);
+  background-color: #474747;
+  opacity: .5;
+}
+
+/* greayscale */
+.-gradient-gray::before {
+  background-image: linear-gradient(30deg, #525252, #444, #323232);
+}
+
+/* turquoise-melon */
+.-gradient-tm::before {
+  background-image: linear-gradient(30deg, #1BB8BB, #A8CD63, #FFA62A);
+}

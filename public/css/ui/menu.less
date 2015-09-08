@@ -1,0 +1,32 @@
+.menu {
+  z-index: 3;
+  height: 40px;
+  top: 40px;
+  left: 0;
+  background-color: @color-black;
+  fill: @color-neutral-xx-dark;
+  transition: background-color 200ms ease-out;
+}
+
+.menu__svg {
+  width: 40px;
+  background-color: @color-white;
+  transition: fill 400ms ease;
+
+  .b {display: none}
+}
+
+.menu__logo {
+  font-size: 18px;
+  padding: 6px 19px 0;
+  color: @color-white;
+}
+
+// active
+.menu.active {
+  background-color: @color-neutral-xx-dark;
+
+  .menu__svg {fill: @color-neutral-xx-dark!important}
+  .menu__svg .a {display: none}
+  .menu__svg .b {display: block}
+}
