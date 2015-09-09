@@ -16,7 +16,8 @@
       name      : "empathya",
       script    : "bin/server.js",
       env_production : {
-        NODE_ENV: "staging"
+        NODE_ENV: "staging",
+        PORT : 4000
       }
     }
   ],
