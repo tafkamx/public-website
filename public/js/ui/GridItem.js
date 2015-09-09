@@ -39,7 +39,6 @@ Class(EM.UI, 'GridItem').inherits(Widget)({
         _clickHandler : function _clickHandler(ev) {
             ev.preventDefault();
             this.constructor.dispatch('itemClicked', {instance: this});
-            window.Router.setRoute(ev.currentTarget.href);
         },
 
         destroy : function destroy() {

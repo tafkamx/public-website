@@ -97,9 +97,7 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
         _deactivate : function _deactivate() {
             Widget.prototype._deactivate.call(this);
 
-            if (window.app.pages._current.constructor.PATH) {
-                window.Router.setRoute(window.app.pages._current.constructor.PATH);
-            }
+            this.dispatch('projectPlanner:closed');
 
             onTransitionEnd(this.element, function() {
                 this.destroy();
