@@ -1,7 +1,7 @@
 var env = process.env.NODE_ENV || 'development';
 
 var config = {
-  appName : 'Neonode',
+  appName : 'Empathya',
   environment : env,
   logFile : './log/' + env + '.log',
   port            : process.env.PORT || 3000,
@@ -9,10 +9,11 @@ var config = {
   enableHashids   : false, // https://github.com/hashids/
   enablePassport  : false,
   sessionKey      : 'session',
-  sessionSecret   : 'EDIT ME ctYArFqrrXy4snywpApkTcfootxsz9Ko',
+  sessionSecret   : 'Am6Vte8CDjm7}trKgQsMuN69',
   enableRedis     : false,
   siteUrl : {
-    production: '',
+    production: 'http://empathya.agency',
+    staging : 'http://protos.empathya.agency'
     development : 'http://localhost:3000'
   }
 };
