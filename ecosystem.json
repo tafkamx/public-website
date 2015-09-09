@@ -35,7 +35,7 @@
       ref  : "origin/master",
       repo : "git@github.com:Empathya/empathya.agency.git",
       path : "/home/deploy/empathya_staging",
-      "post-deploy" : "npm install && webpack -p && pm2 startOrRestart ecosystem.js --env staging",
+      "post-deploy" : "npm install && webpack -p && pm2 startOrRestart ecosystem.json --env staging",
       env  : {
         NODE_ENV: "staging"
       }
