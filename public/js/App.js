@@ -7,6 +7,7 @@
  *  - menu
  *  - cover
  */
+var Router = require('director').Router();
 var hasTouchSupport = require('./lib/utils/hasTouchSupport');
 var onTransitionEnd = require('./lib/onTransitionEnd');
 var classify = require("underscore.string/classify");
@@ -62,6 +63,8 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this._showProjectPlannerRef = this._showProjectPlanner.bind(this);
             this.bind('showProjectPlanner', this._showProjectPlannerRef);
 
+            this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
+
             this._menuClickHandlerRef = this._menuClickHandler.bind(this);
             this.menu.bind('click', this._menuClickHandlerRef);
 
@@ -78,55 +81,39 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          * @return App
          */
         initRouter : function initRouter() {
-            window.Router = require('director').Router();
-            window.Router.on('/', function() {});
+            var appController = this;
 
-            // window.Router.on('/grid', function() {});
-            window.Router.on('/what-we-do', function() {});
-            window.Router.on('/case-studies', function() {});
-            window.Router.on('/about-us', function() {});
-            window.Router.on('/community', function() {});
-            window.Router.on('/carrers', function() {});
-            window.Router.on('/journal', function() {});
-            window.Router.on('/lets-talk', function() {});
-            window.Router.on('/project-planner', function() {});
+            // Router.on('/grid', function() {});
+            Router.on('/', function() {});
+            Router.on('/what-we-do', function() {});
+            Router.on('/case-studies', function() {});
+            Router.on('/about-us', function() {});
+            Router.on('/community', function() {});
+            Router.on('/carrers', function() {});
+            Router.on('/journal', function() {});
+            Router.on('/lets-talk', function() {});
+            Router.on('/project-planner', function() {});
 
-            window.Router.configure({
+            Router.configure({
                 run_handler_in_init : true,
                 html5history : true,
                 strict : false,
                 notfound : function() {
-                    console.error('ROUTE NOT FOUND');
+                    // ROUTE NOT FOUND
                     window.location.replace('/');
                 },
-                // before : function before() {
-                    // if (!window.app.pages.getCurrent()) {
-                    //     window.app.pages.setLast(window.app.pages.DEFAULT.name);
-                    // }
-                    // return window.app.pages.setLast(window.app.getCurrent());
-                // },
                 on : function on() {
-                    // window.app.pages.setCurrent(this.getRoute()[0]);
-
-                    // if (!window.app.pages.getCurrent()) {
-                    //     window.app.pages.setCurrent(window.app.DEFAULT.name);
-                    // }
-
-                    // if (window.app.pages.getLast() !== window.app.pages.getCurrent()) {
-                        // window.app.pages.transition();
-                    // }
-
-                    if (window.app.pages._current) {
-                        if (window.app.pages._current.constructor.NAME === this.getRoute()[0]) {
+                    if (appController.pages.getCurrent()) {
+                        if (appController.pages.getCurrent().constructor.NAME === this.getRoute()[0]) {
                             return;
                         }
                     }
 
-                    window.app.showPage(this.getRoute()[0]);
+                    appController.showPage(this.getRoute()[0]);
                 }
             });
 
-            window.Router.init(window.location.pathname || '/');
+            Router.init(window.location.pathname || '/');
 
             return this;
         },
@@ -174,7 +161,17 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          */
         _showProjectPlanner : function _showProjectPlanner(ev) {
             ev.stopPropagation();
-            window.Router.setRoute(EM.Views.ProjectPlanner.PATH);
+            Router.setRoute(EM.Views.ProjectPlanner.PATH);
+        },
+
+        /* After closing the projectPlanner, it restores the url to the latest
+         * current view.
+         * @method _projectPlannerClosedHandler <private>
+         */
+        _projectPlannerClosedHandler : function _projectPlannerClosedHandler() {
+            if (this.pages.getCurrent().constructor.PATH) {
+                Router.setRoute(this.pages.getCurrent().constructor.PATH);
+            }
         },
 
         /* Changes the color of the menu.
@@ -223,7 +220,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             ev.stopPropagation();
 
             this.pages.scrollbar.getViewElement().scrollTop = 0;
-            window.Router.setRoute(ev.instance.view.PATH);
+            Router.setRoute(ev.instance.view.PATH);
 
             this.cover.setImage(ev.instance.view);
             this.cover.hide();
@@ -244,7 +241,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             // this.cover.setPosition(ev.target.element);
             // this.cover.show().zoomin();
             this.pages.scrollbar.getViewElement().scrollTop = 0;
-            window.Router.setRoute(ev.target.view.PATH);
+            Router.setRoute(ev.target.view.PATH);
         },
 
         /* Renders a new page without transition.
