@@ -27,6 +27,7 @@
   "scripts": {
     "start": "node bin/server.js",
     "dev": "webpack -d -w",
+    "deploy": "npm install && webpack -p",
     "svg": "svg-sprite -s --symbol-dest=svg --symbol-prefix=.svg- --ss=sprite.svg --si --sx --shape-id-generator=svg-%s --dest=views/shared public/svg/*.svg"
   },
   "dependencies": {
