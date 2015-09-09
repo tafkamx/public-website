@@ -13,7 +13,7 @@ var config = {
   enableRedis     : false,
   siteUrl : {
     production: 'http://empathya.agency',
-    staging : 'http://protos.empathya.agency'
+    staging : 'http://protos.empathya.agency',
     development : 'http://localhost:3000'
   }
 };
