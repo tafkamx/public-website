@@ -2,33 +2,33 @@ var Vivus = require('vivus');
 
 Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
     HTML : '\
-        <div class="wwd__circle -rel">\
+        <div class="wwd__circle -rel -pen">\
             <div class="wwd__inner-circle">\
                 <span class="wwd__inner-circle-label -abs -font-light">UX</span>\
             </div>\
             <div class="wwd__circle-content-wrapper">\
                 <ul class="wwd__list">\
-                    <li class="wwd__list-item -font-bold" data-name="insights">\
+                    <li class="wwd__list-item -font-light" data-name="insights">\
                         <svg class="-s16r"><use xlink:href="#svg-checkmark"></use></svg>\
                         <p>Insights &amp; Planning</p>\
                     </li>\
-                    <li class="wwd__list-item -font-bold" data-name="analytics">\
+                    <li class="wwd__list-item -font-light" data-name="analytics">\
                         <svg class="-s16r"><use xlink:href="#svg-checkmark"></use></svg>\
                         <p>Analytics</p>\
                     </li>\
-                    <li class="wwd__list-item -font-bold" data-name="visual-design">\
+                    <li class="wwd__list-item -font-light" data-name="visual-design">\
                         <svg class="-s16r"><use xlink:href="#svg-checkmark"></use></svg>\
                         <p>Visual Design</p>\
                     </li>\
-                    <li class="wwd__list-item -font-bold" data-name="interaction-design">\
+                    <li class="wwd__list-item -font-light" data-name="interaction-design">\
                         <svg class="-s16r"><use xlink:href="#svg-checkmark"></use></svg>\
                         <p>Interaction Design</p>\
                     </li>\
-                    <li class="wwd__list-item -font-bold" data-name="technology">\
+                    <li class="wwd__list-item -font-light" data-name="technology">\
                         <svg class="-s16r"><use xlink:href="#svg-checkmark"></use></svg>\
                         <p>Technology</p>\
                     </li>\
-                    <li class="wwd__list-item -font-bold" data-name="quality-assurance">\
+                    <li class="wwd__list-item -font-light" data-name="quality-assurance">\
                         <svg class="-s16r"><use xlink:href="#svg-checkmark"></use></svg>\
                         <p>Quality Assurance</p>\
                     </li>\
@@ -71,11 +71,37 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
         },
 
         setup : function setup() {
-            this['vivus-applications-and-platforms'] = new Vivus('circle-svg-cloud-stroke', {start: 'manual', type: 'oneByOne', duration: 50});
-            this['vivus-e-commerce'] = new Vivus('circle-svg-commerce-stroke', {start: 'manual', type: 'oneByOne', duration: 60});
-            this['vivus-brand-development'] = new Vivus('circle-svg-brand-stroke', {start: 'manual', type: 'oneByOne', duration: 100});
-            this['vivus-mobile'] = new Vivus('circle-svg-mobile-stroke', {start: 'manual', type: 'oneByOne', duration: 70});
+            this['vivus-applications-and-platforms'] = new Vivus('circle-svg-cloud-stroke', {
+                start: 'manual',
+                type: 'oneByOne',
+                duration: 50
+            }, function() {
+                // debugger
+            });
+
+            this['vivus-e-commerce'] = new Vivus('circle-svg-commerce-stroke', {
+                start: 'manual',
+                type: 'oneByOne',
+                duration: 60
+            }, this._reset);
+
+            this['vivus-brand-development'] = new Vivus('circle-svg-brand-stroke', {
+                start: 'manual',
+                type: 'oneByOne',
+                duration: 100
+            }, this._reset.bind(this));
+
+            this['vivus-mobile'] = new Vivus('circle-svg-mobile-stroke', {
+                start: 'manual',
+                type: 'oneByOne',
+                duration: 70
+            });
         },
+
+        _reset : function(a,b,c) {
+            // debugger
+        },
+
 
         /* Centers the circle vertically and aligns it horizontally constrained
          * to the passed `referenceElement` config option.
@@ -84,8 +110,8 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
          */
         center : function center() {
             var rects = this.referenceElement.getBoundingClientRect();
-            var left = ~~rects.left - 20;
-            var width = ~~rects.width;
+            var left = ~~rects.left;
+            var width = ~~rects.width - 20;
             var height = width;
 
             this.element.style.width = width + 'px';
@@ -137,7 +163,7 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
                     icon.classList.add('active');
 
                     if (this['vivus-' + name]) {
-                        this['vivus-' + name].reset().play();
+                        this['vivus-' + name].play();
                     }
 
                     return true;

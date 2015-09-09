@@ -1,7 +1,8 @@
+var Vivus = require('vivus');
 var Events = require('./../lib/events');
 var CONSTANTS = require('./../lib/const');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
-var skrollTo = require('scrollto');
+// var skrollTo = require('scrollto');
 // window.efp = require('./../lib/efp');
 
 Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
@@ -18,16 +19,14 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
         <section>\
             <div class="page__body">\
-                <div class="page__intro -vh -table">\
-                    <div data-snap class="-tac -table-cell -vam">\
-                        <h2 class="page__body-title -font-bold">The user’s experience is wrapped around everything we do.</h2>\
-                        <p class="page__intro-text -font-light">As engineers, designers, managers and partners, we master strategic disciplines that we apply every day – individually and as a team – across the offerings we provide. Through them we turn meaningful ideas into innovative digital solutions with the perspective of achieving the most positive user experience possible. Yes, we have UX in our heads all the time. All of us. We have no specific UX positions to be filled.</p>\
-                    </div>\
+                <div class="page__intro -tac -pb5 -pt5">\
+                    <h2 class="page__body-title -font-bold">The user’s experience is wrapped around everything we do.</h2>\
+                    <p class="page__intro-text -font-light">As engineers, designers, managers and partners, we master strategic disciplines that we apply every day – individually and as a team – across the offerings we provide. Through them we turn meaningful ideas into innovative digital solutions with the perspective of achieving the most positive user experience possible. Yes, we have UX in our heads all the time. All of us. We have no specific UX positions to be filled.</p>\
                 </div>\
                 <section class="what-we-do__disciplines-wrapper"></section>\
                 <section class="what-we-do__offerings-wrapper -color-bg-neutral-xx-dark">\
-                    <div class="page__intro -table -full-width -vh">\
-                        <div data-section="offerings" class="-tac -table-cell -vam">\
+                    <div class="page__intro -pb5 -pt5">\
+                        <div data-section="offerings" class="-tac">\
                             <h2 class="page__body-title -font-bold">Offerings</h2>\
                             <p class="page__intro-text -font-light">All these disciplines go into the things we create with our partners. The innovative mediums that help them grow and accomplish their goals. They can be operational, educational, social-focused or just to have fun.</p>\
                         </div>\
@@ -59,6 +58,31 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             });
 
             this.circleWidget.center();
+
+            // this.vivusApps = new Vivus('xx-svg-cloud-stroke', {
+            //     start: 'manual',
+            //     type: 'oneByOne',
+            //     duration: 50
+            // });
+
+            // this.vivusCommerce = new Vivus('xx-svg-commerce-stroke', {
+            //     start: 'manual',
+            //     type: 'oneByOne',
+            //     duration: 60
+            // });
+
+            // this.vivusBrand = new Vivus('xx-svg-brand-stroke', {
+            //     start: 'manual',
+            //     type: 'oneByOne',
+            //     duration: 100
+            // });
+
+            // this.vivusMobile = new Vivus('xx-svg-mobile-stroke', {
+            //     start: 'manual',
+            //     type: 'oneByOne',
+            //     duration: 70
+            // });
+
             this.__bindEvents();
         },
 
@@ -112,8 +136,11 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
         _globals : function _globals() {
             this.w = ~~(window.innerWidth);
             this.h = ~~(window.innerHeight);
-            this.cx = ~~(this.w / 2) - 10;
-            this.cy = ~~(this.h / 2);
+            this.cx = ~~(this.w/2) - 10;
+            this.cy = ~~(this.h/2);
+            this.cyHalf = ~~(this.cy/2);
+            this.cy14 = this.cy - this.cyHalf;
+            this.cy34 = this.cy + this.cyHalf;
         },
 
         _resizeHandler : function _renderHandler() {
@@ -131,38 +158,49 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             var scrollTop = ev.currentTarget.scrollTop;
             var scrollingUp = (scrollTop < this._lastScrollTop);
             var x = this.cx;
-            var y = (scrollingUp) ? 0 : (this.h - 1);
+            // var y = (scrollingUp) ? 0 : (this.h - 1);
+            var y = (scrollingUp) ? this.cy14 : this.cy34;
+            // var y = this.cy;
 
             this._lastScrollTop = scrollTop;
 
-            if (this._spyScroll === false) {
-                return;
-            }
+            // if (this._spyScroll === false) {
+            //     return;
+            // }
 
             var el = document.elementFromPoint(x, y);
 
-            if (typeof el.dataset.snap !== 'undefined') {
-                this._spyScroll = false;
+            // if (typeof el.dataset.snap !== 'undefined') {
+            //     this._spyScroll = false;
 
-                skrollTo(this.parent.scrollbar.getViewElement(), {
-                    x: 0,
-                    y: ~~el.getBoundingClientRect().top,
-                    duration: this.SCROLL_TRANSITION_MS,
-                    onComplete : function() {
-                        this._scrollToAnimationEnd();
-                    }.bind(this)
-                });
-            }
+            //     skrollTo(this.parent.scrollbar.getViewElement(), {
+            //         x: 0,
+            //         y: ~~el.getBoundingClientRect().top,
+            //         duration: this.SCROLL_TRANSITION_MS,
+            //         onComplete : function() {
+            //             this._scrollToAnimationEnd();
+            //         }.bind(this)
+            //     });
+            // }
 
             if (!el.dataset.section) {
-                this.circleWidget.deactivate();
+                if (this.circleWidget.active) {
+                    this.circleWidget.deactivate();
+                }
                 return;
             }
 
-            if (el.dataset.section === 'discipline') {
-                this._spyScroll = false;
+            if (this.circleWidget.active === false) {
+                this.circleWidget.activate();
+            }
 
-                return skrollTo(this.parent.scrollbar.getViewElement(), {
+            if (el.dataset.section === 'discipline') {
+                // this._spyScroll = false;
+                this.circleWidget.setNormalStyles();
+                this.circleWidget.showDisciplines().showDiscipline(el.dataset.name);
+                this.circleWidget.hideOfferings();
+
+                /*return skrollTo(this.parent.scrollbar.getViewElement(), {
                     x: 0,
                     y: ~~el.getBoundingClientRect().top,
                     duration: this.SCROLL_TRANSITION_MS,
@@ -170,44 +208,61 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                         this.circleWidget.activate();
                         this.circleWidget.setNormalStyles();
                         this.circleWidget.showDisciplines().showDiscipline(el.dataset.name);
-                        this.circleWidget.hideOfferings();//.hideOfferingsTitle();
+                        this.circleWidget.hideOfferings();
                         this._scrollToAnimationEnd();
                     }.bind(this)
-                });
+                });*/
             }
 
             if (el.dataset.section === 'offerings') {
-                this._spyScroll = false;
+                // this._spyScroll = false;
 
                 this.circleWidget.hideStroke();
                 this.circleWidget.hideDisciplines();
                 this.circleWidget.hideOfferings();
 
-                return skrollTo(this.parent.scrollbar.getViewElement(), {
-                    x: 0,
-                    y: ~~el.getBoundingClientRect().top,
-                    duration: this.SCROLL_TRANSITION_MS,
-                    onComplete : function() {
-                        this.circleWidget.activate();
-                        this._scrollToAnimationEnd();
-                    }.bind(this)
-                });
+                // return skrollTo(this.parent.scrollbar.getViewElement(), {
+                //     x: 0,
+                //     y: ~~el.getBoundingClientRect().top,
+                //     duration: this.SCROLL_TRANSITION_MS,
+                //     onComplete : function() {
+                //         this.circleWidget.activate();
+                //         this._scrollToAnimationEnd();
+                //     }.bind(this)
+                // });
             }
 
             if (el.dataset.section === 'offering') {
-                this._spyScroll = false;
+                // this._spyScroll = false;
+                this.circleWidget.hideStroke();
                 this.circleWidget.hideDisciplines();
-                this.circleWidget.hideOfferings().showOffering(el.dataset.name);
+                // this.circleWidget.hideOfferings().showOffering(el.dataset.name);
 
-                return skrollTo(this.parent.scrollbar.getViewElement(), {
-                    x: 0,
-                    y: ~~el.getBoundingClientRect().top,
-                    duration: this.SCROLL_TRANSITION_MS,
-                    onComplete : function() {
-                        this.circleWidget.activate();
-                        this._scrollToAnimationEnd();
-                    }.bind(this)
-                });
+                // if (el.dataset.name === 'applications-and-platforms') {
+                //     return this.vivusApps.play();
+                // }
+
+                // if (el.dataset.name === 'e-commerce') {
+                //     return this.vivusCommerce.play();
+                // }
+
+                // if (el.dataset.name === 'brand-development') {
+                //     return this.vivusBrand.play();
+                // }
+
+                // if (el.dataset.name === 'mobile') {
+                //     return this.vivusMobile.play();
+                // }
+
+                // return skrollTo(this.parent.scrollbar.getViewElement(), {
+                //     x: 0,
+                //     y: ~~el.getBoundingClientRect().top,
+                //     duration: this.SCROLL_TRANSITION_MS,
+                //     onComplete : function() {
+                //         this.circleWidget.activate();
+                //         this._scrollToAnimationEnd();
+                //     }.bind(this)
+                // });
             }
         },
 
