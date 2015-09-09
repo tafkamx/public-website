@@ -1,7 +1,7 @@
 var Events = require('./../lib/events');
 var CONSTANTS = require('./../lib/const');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
-var skrollTo = require('scrollto');
+// var skrollTo = require('scrollto');
 var TextGradient = require('./../lib/text-gradient');
 // window.efp = require('./../lib/efp');
 
@@ -236,8 +236,11 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
         _globals : function _globals() {
             this.w = ~~(window.innerWidth);
             this.h = ~~(window.innerHeight);
-            this.cx = ~~(this.w / 2) - 10;
-            this.cy = ~~(this.h / 2);
+            this.cx = ~~(this.w/2) - 10;
+            this.cy = ~~(this.h/2);
+            this.cyHalf = ~~(this.cy/2);
+            this.cy14 = this.cy - this.cyHalf;
+            this.cy34 = this.cy + this.cyHalf;
         },
 
         _resizeHandler : function _renderHandler() {
@@ -255,36 +258,44 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
             var scrollTop = ev.currentTarget.scrollTop;
             var scrollingUp = (scrollTop < this._lastScrollTop);
             var x = this.cx;
-            var y = (scrollingUp) ? 0 : (this.h - 1);
+            // var y = (scrollingUp) ? 0 : (this.h - 1);
 
             this._lastScrollTop = scrollTop;
 
-            if (this._spyScroll === false) {
-                return;
-            }
+            // if (this._spyScroll === false) {
+            //     return;
+            // }
 
-            var el = document.elementFromPoint(x, y);
+            // var el = document.elementFromPoint(x, y);
+            var elA = document.elementFromPoint(x, this.cy14);
+            var elB = document.elementFromPoint(x, this.cy34);
 
-            if (typeof el.dataset.snap !== 'undefined') {
-                this._spyScroll = false;
+            if (typeof elA.dataset.snap !== 'undefined' && typeof elB.dataset.snap !== 'undefined') {
+                var el = scrollingUp ? elA : elB;
+
+            // if (typeof el.dataset.snap !== 'undefined') {
+                // this._spyScroll = false;
                 var name = el.dataset.name;
 
                 if (name) {
                     this.weAreAllWidget.showKeyword(name);
                 }
 
-                return skrollTo(this.parent.scrollbar.getViewElement(), {
-                    x: 0,
-                    y: ~~el.getBoundingClientRect().top,
-                    duration: this.SCROLL_TRANSITION_MS,
-                    onComplete : function() {
-                        this.weAreAllWidget.activate();
-                        this._scrollToAnimationEnd();
-                    }.bind(this)
-                });
-            } else {
-                this.weAreAllWidget.deactivate();
+                this.weAreAllWidget.activate();
+                return;
+
+                // return skrollTo(this.parent.scrollbar.getViewElement(), {
+                //     x: 0,
+                //     y: ~~el.getBoundingClientRect().top,
+                //     duration: this.SCROLL_TRANSITION_MS,
+                //     onComplete : function() {
+                //         this.weAreAllWidget.activate();
+                //         this._scrollToAnimationEnd();
+                //     }.bind(this)
+                // });
             }
+
+            this.weAreAllWidget.deactivate();
         },
 
         _scrollToAnimationEnd : function _scrollToAnimationEnd() {
