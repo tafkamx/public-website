@@ -1,5 +1,4 @@
-/* globals EM */
-var Events = require('./../lib/events');
+var Events = require('./../../lib/events');
 
 Class(EM.UI, 'SliderDot').inherits(Widget)({
     HTML : '<div class="em-slider-dot -clickable"></div>',

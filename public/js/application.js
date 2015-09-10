@@ -24,13 +24,14 @@ require('./ui/Grid');
 require('./ui/GridItem');
 require('./ui/Menu');
 require('./ui/GridItemClone');
-require('./ui/Slider');
-require('./ui/SliderDot');
-require('./ui/SliderItem');
 require('./ui/RangeSelector');
 require('./ui/BottomPageLinks');
 require('./ui/BottomPageLinkItem');
 require('./ui/PageCover');
+
+require('./ui/home/Slider');
+require('./ui/home/SliderDot');
+require('./ui/home/SliderItem');
 require('./ui/about-us/gallery/GalleryManager');
 require('./ui/about-us/gallery/GalleryItems');
 require('./ui/about-us/gallery/GalleryItem');
