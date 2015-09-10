@@ -61,7 +61,9 @@
 }
 
 .about-us__team-gallery-details {
+  overflow: hidden;
   height: 43.333em;
+  transform: translate3d(0, 0, 0);
 }
 
 .about-us__gallery-item {
@@ -71,6 +73,7 @@
   visibility: hidden;
   transform: translateX(6rem);
   transition: transform 400ms @ease;
+  will-change: transform;
 
   &.active {
     transform: translateX(0);
@@ -125,6 +128,7 @@
   width: 14.28571429vw;
   transform: translate(0,0);
   transition: transform 200ms @ease;
+  will-change: transform;
 }
 
 .about-us__team-gallery-thumb {
