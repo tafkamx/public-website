@@ -89,22 +89,6 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
                         </div>\
                     </article>\
                 </section>\
-                <article class="carrers__quote-wrapper -color-bg-neutral-xx-dark -color-white -row">\
-                    <blockquote class="testimonial-blockquote -rel">\
-                        <svg class="testimonial-quote -abs">\
-                            <use xlink:href="#svg-quotes"></use>\
-                        </svg>\
-                        <p class="testimonial-text -fsi -font-light -rel">\
-                            At Empathya, we take pride in the level of craft and polish we put into our work. Our team is smart and highly talented — and bonus, we love hanging out with each other.\
-                        </p>\
-                        <footer class="-mt4">\
-                            <cite class="testimonial-cite -fsn">\
-                                Chupau<br/>\
-                                <span class="cite-sec -font-light -color-neutral-light">Q/A Chief</span>\
-                            </cite>\
-                        </footer>\
-                    </blockquote>\
-                </article>\
                 <section class="perks -color-bg-neutral-xx-light -tac">\
                     <h2 data-perks-text class="perks-title -font-light">Perks You’ll Like</h2>\
                     <div class="perks__list -row">\
