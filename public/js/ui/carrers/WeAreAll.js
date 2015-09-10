@@ -1,5 +1,5 @@
 Class(EM.UI, 'WeAreAll').inherits(Widget)({
-    ELEMENT_CLASS : 'we-are-all-widget -fix',
+    ELEMENT_CLASS : 'we-are-all-widget -fix -pen',
     HTML : '\
         <div>\
             <div class="-table -full-width -full-height">\
