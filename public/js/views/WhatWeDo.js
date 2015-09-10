@@ -21,7 +21,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             <div class="page__body">\
                 <div class="page__intro -tac -pb5 -pt5">\
                     <h2 class="page__body-title -font-bold">The user’s experience is wrapped around everything we do.</h2>\
-                    <p class="page__intro-text -font-light">As engineers, designers, managers and partners, we master strategic disciplines that we apply every day – individually and as a team – across the offerings we provide. Through them we turn meaningful ideas into innovative digital solutions with the perspective of achieving the most positive user experience possible. Yes, we have UX in our heads all the time. All of us. We have no specific UX positions to be filled.</p>\
+                    <p class="page__intro-text -font-light">As engineers, designers and managers, we master strategic disciplines that are applied every day – individually and as a team – across the offerings we provide. Through these we turn meaningful ideas into innovative digital solutions with a permanent perspective of achieving the most positive experience possible for the people that use them. Yes, all of us have UX in our heads all the time.</p>\
                 </div>\
                 <section class="what-we-do__disciplines-wrapper"></section>\
                 <section class="what-we-do__offerings-wrapper -color-bg-neutral-xx-dark">\

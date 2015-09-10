@@ -111,7 +111,7 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
         center : function center() {
             var rects = this.referenceElement.getBoundingClientRect();
             var left = ~~rects.left;
-            var width = ~~rects.width - 20;
+            var width = ~~rects.width - 60;
             var height = width;
 
             this.element.style.width = width + 'px';
