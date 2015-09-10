@@ -19,9 +19,9 @@ module.exports = [
         title : 'CTO and Lead Backend Developer',
         networks : [
             {type : 'twitter', url : 'https://twitter.com/sgarza'},
-            {type : 'medium', url : 'https://medium.com/@sgarza'}
+            {type : 'soundcloud', url : 'soundcloud.com/sergio-de-la-garza-palacios'}
         ],
-        bio : '',
+        bio : 'Hi!, there are a lot of things I enjoy, but must of all I love my family, the work I do and music. I enjoy contributing to our city IT ecosystem, as a member of H/F ProDev I’m always looking for ways to help other people to improve their skills and to give them the tools and knowledge to be better engineers. I’m also a musician, some times I cover a song, some others I feel brave enough to make one of my own, so hop on my soundcloud and leave me a comment.',
     },
 
     {
