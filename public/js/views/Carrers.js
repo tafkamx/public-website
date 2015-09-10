@@ -1,3 +1,4 @@
+var JobsData = require('./../data/carrers/jobs');
 var Events = require('./../lib/events');
 var CONSTANTS = require('./../lib/const');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
@@ -140,26 +141,6 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
                 <section class="join-us -tac">\
                     <p data-believe-text class="join-us__subtitle -m0 -font-light">Do you believe what we believe?</p>\
                     <h2 class="join-us__title -mt0 -font-bold">Come join us!</h2>\
-                    <section class="join-us__jobs">\
-                        <article class="join__us-job-list-item -rel">\
-                            <div class="job-position -tal">\
-                                <span class="job-position-title">Business Development</span>\
-                                <span class="job-position-desc -color-neutral-light -abs">Help grow awesome businesses on a daily basis.</span>\
-                            </div>\
-                            <div class="job-link -abs">\
-                                <a class="-color-green" target="_blank" href="http://google.com">View in LinkedIn</a>\
-                        </article>\
-                        <article class="join__us-job-list-item -rel">\
-                            <div class="job-position -tal">\
-                                <span class="job-position-title">Account Manager</span>\
-                                <span class="job-position-desc -color-neutral-light -abs">Get in touch with our world class clients and make it all go smooth.</span>\
-                            </div>\
-                            <div class="job-link -abs">\
-                                <a class="-color-green" target="_blank" href="http://google.com">View in LinkedIn</a>\
-                        </article>\
-                    </section>\
-                    <p class="join-us__text -mb2 -font-light -color-neutral-light">Didn’t see an available position suited for you? Don’t worry, you can still apply. We’re always open to meet new people and hire amazing talent. Tell us why should we join forces.</p>\
-                    <button class="ui-btn -lg -green -pl5 -pr5 -mb1">Apply</button>\
                 </section>\
             </div>\
         </section>',
@@ -215,6 +196,13 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
                 to : CONSTANTS.COLORS.green,
                 direction : '-225deg'
             }).render();
+
+            this.appendChild(new EM.UI.JoinUsMessage({
+                name : 'joinUsMessage',
+                data : {
+                    jobs : JobsData
+                }
+            })).render(this.element.querySelector('.join-us'));
 
             this.appendChild(new EM.UI.BottomPageLinks({
                 name : 'links',
