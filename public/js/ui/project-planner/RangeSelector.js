@@ -1,8 +1,8 @@
-var Events = require('./../lib/events');
-var addClass = require('./../lib/utils/class-add');
-var removeClass = require('./../lib/utils/class-remove');
-var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
-var throttle = require('./../lib/throttle');
+var Events = require('./../../lib/events');
+var addClass = require('./../../lib/utils/class-add');
+var removeClass = require('./../../lib/utils/class-remove');
+var hasTouchSupport = require('./../../lib/utils/hasTouchSupport');
+var throttle = require('./../../lib/throttle');
 
 Class(EM.UI, 'RangeSelector').inherits(Widget)({
     HTML : '\
