@@ -1,3 +1,12 @@
+/*
+scrollto(this.parent.scrollbar.getViewElement(), {
+    x : 0,
+    y : ~~el.getBoundingClientRect().top,
+    duration : this.SCROLL_TRANSITION_MS,
+    onComplete : function() {}
+});
+*/
+
 var TWEEN = require('tween.js');
 var raf = require('raf');
 
