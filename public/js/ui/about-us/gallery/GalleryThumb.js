@@ -1,6 +1,6 @@
-var Events = require('./../../lib/events');
+var Events = require('./../../../lib/events');
 
-Class(EM, 'GalleryThumb').inherits(Widget).includes(BubblingSupport)({
+Class(EM.UI, 'GalleryThumb').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'about-us__team-gallery-thumb -clickable',
     HTML : '<img width="144" height="144"/>',
     IMAGE_BASE_PATH : '/img/views/about-us/the-team/thumbnails/',
@@ -9,7 +9,7 @@ Class(EM, 'GalleryThumb').inherits(Widget).includes(BubblingSupport)({
         index : 0,
         init : function init(config) {
             Widget.prototype.init.call(this, config);
-            this.element.setAttribute('src', EM.GalleryThumb.IMAGE_BASE_PATH + this.item.thumb);
+            this.element.setAttribute('src', EM.UI.GalleryThumb.IMAGE_BASE_PATH + this.item.thumb);
             this._clickHandlerRef = this._clickHandler.bind(this);
             Events.on(this.element, 'click', this._clickHandlerRef);
         },

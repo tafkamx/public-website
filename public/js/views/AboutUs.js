@@ -137,7 +137,7 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
                 direction : '225deg'
             }).render();
 
-            this.appendChild(new EM.GalleryManager({
+            this.appendChild(new EM.UI.GalleryManager({
                 name : 'gallery',
                 container : this.element.querySelector('.about-us__team-gallery'),
                 data : teamData

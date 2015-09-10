@@ -1,6 +1,6 @@
-var Events = require('./../../lib/events');
+var Events = require('./../../../lib/events');
 
-Class(EM, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
+Class(EM.UI, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'about-us__team-gallery-thumbs-wrapper',
     HTML : '\
         <div>\
@@ -28,7 +28,7 @@ Class(EM, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
 
         _setup : function _setup() {
             this.items.forEach(function(item, index) {
-                this.appendChild(new EM.GalleryThumb({
+                this.appendChild(new EM.UI.GalleryThumb({
                     name : 'thumb_' + index,
                     item : item,
                     index : index

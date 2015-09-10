@@ -1,5 +1,4 @@
-/* globals EM */
-Class(EM, 'GalleryItem').inherits(Widget)({
+Class(EM.UI, 'GalleryItem').inherits(Widget)({
     ELEMENT_CLASS : 'about-us__gallery-item -col-12 -full-height',
     HTML : '\
         <div class="about-us__gallery-item">\
@@ -41,7 +40,7 @@ Class(EM, 'GalleryItem').inherits(Widget)({
         },
 
         _setup : function _setup() {
-            this.imageElement.setAttribute('src', EM.GalleryItem.IMAGE_BASE_PATH + this.item.image);
+            this.imageElement.setAttribute('src', EM.UI.GalleryItem.IMAGE_BASE_PATH + this.item.image);
             this.nameElement.textContent = this.item.name;
             this.titleElement.textContent = this.item.title;
             this.descElement.textContent = this.item.bio;
