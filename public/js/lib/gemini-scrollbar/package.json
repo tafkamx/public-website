@@ -1,0 +1,47 @@
+{
+  "name": "gemini-scrollbar",
+  "version": "1.2.9",
+  "description": "Custom scrollbars with native scrolling",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noeldelgado/gemini-scrollbar.git"
+  },
+  "author": {
+    "name": "Noel Delgado",
+    "email": "auhcsei@gmail.com",
+    "url": "http://pixelia.me/"
+  },
+  "homepage": "https://github.com/noeldelgado/gemini-scrollbar",
+  "scripts": {
+    "css": "uglifycss gemini-scrollbar.css > dist/gemini-scrollbar.min.css",
+    "js": "uglifyjs index.js -m -c sequences=true,properties=true,dead_code=true,conditionals=true,comparisons=true,booleans=true,loops=true,cascade=true,hoist_funs=true,unused=true,if_return=true,join_vars=true --comments --screw-ie8=true -o dist/gemini-scrollbar.min.js",
+    "dist": "npm run js && npm run css"
+  },
+  "files": [
+    "index.js",
+    "gemini-scrollbar.css"
+  ],
+  "keywords": [
+    "native",
+    "scrolling",
+    "skinnable",
+    "custom",
+    "scrollbar",
+    "scrollbars",
+    "scroll",
+    "mousewheel",
+    "trackpad",
+    "smooth-scroll"
+  ],
+  "devDependencies": {},
+  "readme": "# gemini-scrollbar\n\n[![npm-image](https://img.shields.io/npm/v/gemini-scrollbar.svg?style=flat-square)](https://www.npmjs.com/package/gemini-scrollbar)\n![bower-image](https://img.shields.io/bower/v/gemini-scrollbar.svg?style=flat-square)\n\nCustom overlay-scrollbars with native scrolling mechanism for web applications (when needed).\n\n###### Problem Description\n\nNowadays, many OS's provides “overlay-scrollbars” natively. Those scrollbars looks nice and works well (mostly mobile browsers). I am OK with that, but while building web apps you may still found yourself searching on how to customize the remaining portion of ‘ugly’ scrollbars out there, specially when they do not fit with your designs. e.g: “*having a sidebar with a dark-background + native-**non-floating**-scrollbars*” ...hum, ugly. Even when this problem can be merely visual, for me is a way of enhancing the user experience.\n\n###### Constraints\n \n- Fallback to the native scrollbars when the OS/browser supports “overlay-scrollbars” natively\n- Mimic the native scrollbar behaviour when replaced with the custom ones (click, drag...)\n- IE9+ support\n\n###### Solution Proposal\n\nFirst, we check the scrollbar size, if the scrollbar size is equal to zero (which means the scrollbars are already “over the content” natively) then we **do nothing**, otherwise we “hide” the native scrollbar (**leaving its functionality intact**) and create a new pair of “scrollbars” made of `div`s that you can fully customize with CSS. Those “scrollbars” will update its position while scrolling for visual feedback and will also respond if you click or drag them.\n\n## Demo\n[http://noeldelgado.github.io/gemini-scrollbar/](http://noeldelgado.github.io/gemini-scrollbar/)\n\n## Dependencies\nNone\n\n## Installation\n\n**NPM**\n\n```sh\nnpm i gemini-scrollbar --save\n```\n\n**Bower**\n\n```sh\nbower install gemini-scrollbar --save\n```\n\n## Usage\n\n**JS**\n\n```js\nvar GeminiScrollbar = require('gemini-scrollbar')\n\nvar myScrollbar = new GeminiScrollbar({\n    element: document.querySelector('.my-scrollbar')\n}).create();\n```\n\n**LESS**\n\n```less\n@import (inline) \"<path-to-gemini-scrollbar>/gemini-scrollbar.css\";\n```\n\n**CSS**\n\n```css\n@import url(<path-to-gemini-scrollbar>/gemini-scrollbar.css);\n```\n\nOr, you can add the relevant files in your document.\n\n```html\n<link href=\"<path-to-gemini-scrollbar>/gemini-scrollbar.css\" rel=\"stylesheet\">\n<script src=\"<path-to-gemini-scrollbar>/index.js\"></script>\n```\n\n## Options\n\nname | type | default | description\n:--- | :--- | :--- | :---\n* **element** | HTMLElement | `null` | The element to apply scrollbars\nautoshow | Boolean | `false` | Show scrollbars upon hovering\ncreateElements | Boolean | `true` | Create and append the require HTMLElements at runtime.\n\n\\* `required`\n\n## Basic Methods\n\nname | description\n:--- | :---\ncreate | Bind the events, create the required elements and display the scrollbars.\nupdate | Recalculate the viewbox and scrollbar dimensions.\ndestroy | Unbind the events and remove the custom scrollbar elements.\n\n## Other Mehods\n\nname | description\n:-- | :--\ngetViewElement | Returns the scrollable element\n\n## Customization\n\nYou can change the styles of the scrollbars using CSS. e.g:\n\n```css\n/* override gemini-scrollbar default styles */\n\n/* vertical scrollbar track */\n.gm-scrollbar.-vertical {\n  background-color: #f0f0f0\n}\n\n/* horizontal scrollbar track */\n.gm-scrollbar.-horizontal {\n  background-color: transparent;\n}\n\n/* scrollbar thumb */\n.gm-scrollbar .thumb {\n  background-color: rebeccapurple;\n}\n.gm-scrollbar .thumb:hover {\n  background-color: fuchsia;\n}\n```\n\n## Notes\n\n- **native overlay-scrollbar:** We check the scrollbar size before doing anything else [using this approach](http://davidwalsh.name/detect-scrollbar-width) by David Walsh. If the scrollbar size is equal to zero (which means the scrollbars are “over the content”) then we do nothing but add the `gm-prevented` class selector to the element, which contains the non-standard `-webkit-overflow-scrolling: touch;` declaration for web devices to use momentum-based scrolling and also helps “hidding” the gemini-scrollbar's elements using `display: none;` (beacause we are not going to use them anyway). No event binding, element creation... nothing, in this case we leave the OS/browser do its job. Why? you already have nice looking scrollbars for free.\n- **::-webkit-scrollbar:** If you plan to use gemini-scrollbar on your application I highly recommend you removing any Webkit scrollbar styles you may have, why? using the `-webkit-` prefixed pseudo elements will cause Webkit turning off its build-in scrollbar rendering, interfering with our scrollbar-size-check. You can read a bit more about this issue on [this commit](../../issues/1).\n- **create method:** The custom scrollbars will **not** render until you call the `create` method on the instance. i.e: `myScrollbar.create();`\n- **required height:** To avoid unexpected results, it is recommended that you specify the `height` property with a value to the element you applying the custom scrollbars (or to its parent).\n- **body tag:** If you want to apply custom scrollbars to `body`, make sure to declare a `height` value either to the `:root` pseudo-class or to the `html` element. e.g:\n\n\t```css\n\thtml {\n\t\theight: 100%;\n\t\t/* or */\n\t\theight: 100vh;\n\t\toverflow: hidden;\n\t}\n\t```\n- **createElements option:** The `createElements` option specify wheater or not gemini-scrollbar should create and append the require HTMLElements at runtime. Its default value is `true`. Passing this option as `false` will assume that you to have added the required markup with the specific CSS class selectors on them for it to work. i.e:\n\n\t```html\n\t<-- (createElements: false) example markup -->\n\n\t<div class=\"something-scrollable\">\n\t  <div class=\"gm-scrollbar -vertical\">\n\t    <div class=\"thumb\"></div>\n\t  </div>\n\t  <div class=\"gm-scrollbar -horizontal\">\n\t    <div class=\"thumb\"></div>\n\t  </div>\n\t  <div class=\"gm-scroll-view\">\n\t    All your content goes here.\n\t  </div>\n\t</div>\n\t```\nThis way you can be sure the library will not touch/modify your nodes structure. You can read more about the reason of this option [on this commit](https://github.com/noeldelgado/gemini-scrollbar/commit/2bb73c82f9d1588fb267fba08518adfe1170885c).\n\n## License\nMIT © [Noel Delgado](http://pixelia.me/)\n",
+  "readmeFilename": "README.md",
+  "gitHead": "449c8cb37cd4effa92a2dca641ea3a90bc9e735e",
+  "bugs": {
+    "url": "https://github.com/noeldelgado/gemini-scrollbar/issues"
+  },
+  "_id": "gemini-scrollbar@1.2.9",
+  "_shasum": "91a930b6ec1c53328ebb5b76f43bd3c28151c6c8",
+  "_from": "gemini-scrollbar@*"
+}

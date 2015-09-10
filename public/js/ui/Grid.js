@@ -1,4 +1,4 @@
-var GeminiScrollbar = require('gemini-scrollbar');
+var GeminiScrollbar = require('./../lib/gemini-scrollbar');
 var Events = require('./../lib/events');
 
 Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
