@@ -16,7 +16,7 @@ Class(EM, 'GalleryItem').inherits(Widget)({
 
     NETWORK_ITEM_HTML : '\
         <div class="about-us__team-gallery-network -inline-block -mr1">\
-            <a href="{url}" class="-block">\
+            <a href="{url}" class="-block" target="_blank">\
                 <svg class="-s24r"><use xlink:href="#svg-{type}-icon"></use></svg>\
             </a>\
         </div>',
