@@ -1,6 +1,7 @@
+var Events = require('./../../lib/events');
 var addClass = require('./../../lib/utils/class-add');
 
-Class(EM.UI, 'SlideItem').inherits(Widget)({
+Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
         <div class="em-slide -abs -full-height -full-width -abs-before">\
             <div class="em-slide__bg -img-cover -abs -full-height -full-width"></div>\
@@ -36,7 +37,8 @@ Class(EM.UI, 'SlideItem').inherits(Widget)({
             this.slideBgElement = this.element.querySelector('.em-slide__bg');
             this.titleElement = this.element.querySelector('.em-slide__subheading');
             this.messageElement = this.element.querySelector('.em-slide__heading');
-            this._setup();
+            this.ctaElement = null;
+            this._setup()._bindEvents();
         },
 
         _setup : function _setup() {
@@ -64,9 +66,17 @@ Class(EM.UI, 'SlideItem').inherits(Widget)({
                 cta = cta.replace(/{text}/, this.data.cta.text);
                 cta = cta.replace(/{link}/, this.data.cta.link);
                 this.element.querySelector('.em-slide__text').insertAdjacentHTML('beforeend', cta);
+                this.ctaElement = this.element.querySelector('.ui-btn');
             }
 
             return this;
+        },
+
+        _bindEvents : function _bindEvents() {
+            if (this.ctaElement) {
+                this._ctaClickHandlerRef = this._ctaClickHandler.bind(this);
+                Events.on(this.ctaElement, 'click', this._ctaClickHandlerRef);
+            }
         },
 
         old : function old() {
@@ -74,9 +84,25 @@ Class(EM.UI, 'SlideItem').inherits(Widget)({
             return this;
         },
 
+        _ctaClickHandler : function _ctaClickHandler(ev) {
+            ev.preventDefault();
+            this.dispatch('updateRoute', {
+                route: ev.currentTarget.getAttribute('href')
+            });
+        },
+
         _deactivate : function _deactivate() {
             Widget.prototype._deactivate.call(this);
             this.element.classList.remove('old');
         },
+
+        destroy : function destroy() {
+            Widget.prototype.destroy.call(this);
+            if (this.ctaElement) {
+                Events.off(this.ctaElement, 'click', this._ctaClickHandlerRef);
+                this._ctaClickHandlerRef = null;
+            }
+            return null;
+        }
     }
 });
