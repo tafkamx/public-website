@@ -15,7 +15,7 @@ Class(EM.UI, 'GalleryItem').inherits(Widget)({
 
     NETWORK_ITEM_HTML : '\
         <div class="about-us__team-gallery-network -inline-block -mr1">\
-            <a href="{url}" class="-block" target="_blank">\
+            <a href="{url}" class="network-icon -social-hover-{className} -block" target="_blank" title="{urlTitle}">\
                 <svg class="-s24r"><use xlink:href="#svg-{type}-icon"></use></svg>\
             </a>\
         </div>',
@@ -59,6 +59,8 @@ Class(EM.UI, 'GalleryItem').inherits(Widget)({
             networks.forEach(function(network) {
                 var htmlString = this.constructor.NETWORK_ITEM_HTML;
                 htmlString = htmlString.replace(/{url}/, network.url);
+                htmlString = htmlString.replace(/{urlTitle}/, this.item.name + '’s ' + network.type + ' profile');
+                htmlString = htmlString.replace(/{className}/, network.type);
                 htmlString = htmlString.replace(/{type}/, network.type);
                 networksWrapper.insertAdjacentHTML('beforeend', htmlString);
             }, this);
