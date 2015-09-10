@@ -5,9 +5,9 @@ module.exports = [
         name : 'Darío Muñoz',
         title : 'Founder and CEO',
         networks : [
-            {type : 'medium', url : 'https://medium.com/@cuiki'},
             {type : 'dribbble', url : 'https://dribbble.com/cuiki'},
-            {type : 'twitter', url : 'https://twitter.com/cuiki'}
+            {type : 'twitter', url : 'https://twitter.com/cuiki'},
+            {type : 'medium', url : 'https://medium.com/@cuiki'}
         ],
         bio : 'Darío is the founder and chief executive officer of Empathya. Everyone calls him Cuiki so you can go ahead and call him like that. For those of you wondering, no, there is no english origin behind his nickname.',
     },
@@ -18,6 +18,7 @@ module.exports = [
         name : 'Sergio de la Garza',
         title : 'CTO and Lead Backend Developer',
         networks : [
+            {type : 'github', url : 'https://github.com/sgarza'},
             {type : 'twitter', url : 'https://twitter.com/sgarza'},
             {type : 'soundcloud', url : 'soundcloud.com/sergio-de-la-garza-palacios'}
         ],
@@ -30,6 +31,7 @@ module.exports = [
         name : 'Noel Delgado',
         title : 'Lead Front-End Developer',
         networks : [
+            {type : 'github', url : 'https://github.com/noeldelgado'},
             {type : 'twitter', url : 'https://twitter.com/pixelia_me'}
         ],
         bio : ''
@@ -41,7 +43,8 @@ module.exports = [
         name : 'Oscar Salazar',
         title : 'Project & QA Manager',
         networks : [
-            {type : 'twitter', url : 'https://twitter.com/ofsalazar'}
+            {type : 'twitter', url : 'https://twitter.com/ofsalazar'},
+            {type : 'steam', url : 'http://steamcommunity.com/id/nineinchtool'}
         ],
         bio : ''
     },
@@ -74,7 +77,9 @@ module.exports = [
         name : 'Eduan',
         title : 'Back-End Developer',
         networks : [
-            {type : 'twitter', url : 'https://twitter.com/EduanGreduan'}
+            {type : 'github', url : 'https://github.com/greduan'},
+            {type : 'twitter', url : 'https://twitter.com/EduanGreduan'},
+            {type : 'steam', url : 'http://steamcommunity.com/id/greduan'}
         ],
         bio : 'Hi!, I enjoy programming, bicycling, playing video games, eating, whistling and humming, and just in general interacting with other people. I enjoy helping people with my work so all of my personal projects are open source. Homeschooled, so although I’ve been living in a cave for the last 18 years, I am discovering the hidden intricacies of this society’s social interactions. Getting there…'
     }
