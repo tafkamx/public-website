@@ -29,17 +29,20 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  will-change: transform;
+  transform: translateY(-1px);
+  transform: translate3d(0,-1px,0);
   transition-property: transform;
   transition-duration: 1000ms;
   transition-timing-function: cubic-bezier(0.63,.64,.3,1);
 
   &.active {
-    transform: translateY(0%);
+    transform: translateY(0);
+    transform: translate3d(0,0,0);
   }
 
   &.old {
     transform: translateY(-100%);
+    transform: translate3d(0,-100%,0);
   }
 }
 
