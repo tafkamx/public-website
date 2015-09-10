@@ -1,8 +1,7 @@
-var Vivus = require('vivus');
+// var Vivus = require('vivus');
 var Events = require('./../lib/events');
 var CONSTANTS = require('./../lib/const');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
-// var skrollTo = require('scrollto');
 // window.efp = require('./../lib/efp');
 
 Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
@@ -109,7 +108,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             this.appendChild(new EM.UI.WhatWeDoCircle({
                 name : 'circleWidget',
                 referenceElement : this.element.querySelector('.what-we-do__disciplines-row').firstElementChild
-            })).render(document.body).setup();
+            })).render(document.body);
 
             this.appendChild(new EM.UI.BottomPageLinks({
                 name : 'linksWidget',
@@ -148,42 +147,16 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             this.circleWidget.center();
         },
 
-        _spyScroll : true,
-        _snaping : false,
-        _scrollHandler : function _scrollHandler(ev) {
+        _scrollHandler : function _scrollHandler() {
             if (this.w <= 768) {
                 return;
             }
 
-            var scrollTop = ev.currentTarget.scrollTop;
-            var scrollingUp = (scrollTop < this._lastScrollTop);
-            var x = this.cx;
-            // var y = (scrollingUp) ? 0 : (this.h - 1);
-            var y = (scrollingUp) ? this.cy14 : this.cy34;
-            // var y = this.cy;
+            var A = document.elementFromPoint(this.cx, this.cy14);
+            var Z = document.elementFromPoint(this.cx, this.cy34);
+            var M = document.elementFromPoint(this.cx, this.cy);
 
-            this._lastScrollTop = scrollTop;
-
-            // if (this._spyScroll === false) {
-            //     return;
-            // }
-
-            var el = document.elementFromPoint(x, y);
-
-            // if (typeof el.dataset.snap !== 'undefined') {
-            //     this._spyScroll = false;
-
-            //     skrollTo(this.parent.scrollbar.getViewElement(), {
-            //         x: 0,
-            //         y: ~~el.getBoundingClientRect().top,
-            //         duration: this.SCROLL_TRANSITION_MS,
-            //         onComplete : function() {
-            //             this._scrollToAnimationEnd();
-            //         }.bind(this)
-            //     });
-            // }
-
-            if (!el.dataset.section) {
+            if (typeof A.dataset.discipline === 'undefined' || typeof Z.dataset.discipline === 'undefined') {
                 if (this.circleWidget.active) {
                     this.circleWidget.deactivate();
                 }
@@ -194,50 +167,12 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                 this.circleWidget.activate();
             }
 
-            if (el.dataset.section === 'discipline') {
-                // this._spyScroll = false;
-                this.circleWidget.setNormalStyles();
-                this.circleWidget.showDisciplines().showDiscipline(el.dataset.name);
-                this.circleWidget.hideOfferings();
+            return this.circleWidget.showDiscipline(M.dataset.name);
 
-                /*return skrollTo(this.parent.scrollbar.getViewElement(), {
-                    x: 0,
-                    y: ~~el.getBoundingClientRect().top,
-                    duration: this.SCROLL_TRANSITION_MS,
-                    onComplete : function() {
-                        this.circleWidget.activate();
-                        this.circleWidget.setNormalStyles();
-                        this.circleWidget.showDisciplines().showDiscipline(el.dataset.name);
-                        this.circleWidget.hideOfferings();
-                        this._scrollToAnimationEnd();
-                    }.bind(this)
-                });*/
-            }
+            // if (M.dataset.section === 'offerings') {
+            // }
 
-            if (el.dataset.section === 'offerings') {
-                // this._spyScroll = false;
-
-                this.circleWidget.hideStroke();
-                this.circleWidget.hideDisciplines();
-                this.circleWidget.hideOfferings();
-
-                // return skrollTo(this.parent.scrollbar.getViewElement(), {
-                //     x: 0,
-                //     y: ~~el.getBoundingClientRect().top,
-                //     duration: this.SCROLL_TRANSITION_MS,
-                //     onComplete : function() {
-                //         this.circleWidget.activate();
-                //         this._scrollToAnimationEnd();
-                //     }.bind(this)
-                // });
-            }
-
-            if (el.dataset.section === 'offering') {
-                // this._spyScroll = false;
-                this.circleWidget.hideStroke();
-                this.circleWidget.hideDisciplines();
-                // this.circleWidget.hideOfferings().showOffering(el.dataset.name);
-
+            // if (M.dataset.section === 'offering') {
                 // if (el.dataset.name === 'applications-and-platforms') {
                 //     return this.vivusApps.play();
                 // }
@@ -253,23 +188,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                 // if (el.dataset.name === 'mobile') {
                 //     return this.vivusMobile.play();
                 // }
-
-                // return skrollTo(this.parent.scrollbar.getViewElement(), {
-                //     x: 0,
-                //     y: ~~el.getBoundingClientRect().top,
-                //     duration: this.SCROLL_TRANSITION_MS,
-                //     onComplete : function() {
-                //         this.circleWidget.activate();
-                //         this._scrollToAnimationEnd();
-                //     }.bind(this)
-                // });
-            }
-        },
-
-        _scrollToAnimationEnd : function _scrollToAnimationEnd() {
-            window.setTimeout(function() {
-                this._spyScroll = true;
-            }.bind(this), 100);
+            // }
         },
 
         /* Dispatch a custom event `showProjectPlanner`, uses BubblingSupport to bubble up to App.

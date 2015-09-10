@@ -40,14 +40,12 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
         __destroyed : false,
 
         init : function init(config) {
-            var property, temporalElement;
-
             Object.keys(config || {}).forEach(function (propertyName) {
                 this[propertyName] = config[propertyName];
             }, this);
 
             if (this.element === undefined) {
-                temporalElement = document.createElement('div');
+                var temporalElement = document.createElement('div');
                 temporalElement.insertAdjacentHTML('afterbegin', this.constructor.HTML);
                 this.element = temporalElement.firstElementChild;
                 this.constructor.ELEMENT_CLASS.split(' ').forEach(function(className) {

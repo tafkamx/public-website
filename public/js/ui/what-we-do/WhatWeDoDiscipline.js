@@ -1,8 +1,8 @@
 Class(EM.UI, 'WhatWeDoDiscipline').inherits(Widget)({
     ELEMENT_CLASS : 'what-we-do__disciplines-row -row',
     HTML : '\
-        <div data-section="discipline" data-name="">\
-            <div class="-col-6"></div>\
+        <div data-discipline data-name="">\
+            <div class="-col-6 -pen"></div>\
             <div class="what-we-do__discipline -col-6">\
                 <div class="what-we-do__discipline-inner">\
                     <div class="what-we-do__discipline-inner-center -pl5 -pr5">\
