@@ -145,12 +145,6 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
         </section>',
 
     prototype : {
-        SCROLL_TRANSITION_MS : 1000,
-        _lastScrollTop : null,
-
-        _fixedTest : false,
-        _snapText : false,
-
         init : function init(config) {
             Widget.prototype.init.call(this, config);
             this._setup();
@@ -198,9 +192,7 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
 
             this.appendChild(new EM.UI.JoinUsMessage({
                 name : 'joinUsMessage',
-                data : {
-                    jobs : JobsData
-                }
+                data : {jobs : JobsData}
             })).render(this.element.querySelector('.join-us'));
 
             this.appendChild(new EM.UI.BottomPageLinks({
@@ -235,60 +227,26 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
             this.weAreAllWidget.center();
         },
 
-        _spyScroll : true,
-        _snaping : false,
-        _scrollHandler : function _scrollHandler(ev) {
+        _scrollHandler : function _scrollHandler() {
             if (this.w <= 768) {
                 return;
             }
 
-            var scrollTop = ev.currentTarget.scrollTop;
-            var scrollingUp = (scrollTop < this._lastScrollTop);
-            var x = this.cx;
-            // var y = (scrollingUp) ? 0 : (this.h - 1);
+            var A = document.elementFromPoint(this.cx, this.cy14);
+            var Z = document.elementFromPoint(this.cx, this.cy34);
+            var M = document.elementFromPoint(this.cx, this.cy);
 
-            this._lastScrollTop = scrollTop;
-
-            // if (this._spyScroll === false) {
-            //     return;
-            // }
-
-            // var el = document.elementFromPoint(x, y);
-            var elA = document.elementFromPoint(x, this.cy14);
-            var elB = document.elementFromPoint(x, this.cy34);
-
-            if (typeof elA.dataset.snap !== 'undefined' && typeof elB.dataset.snap !== 'undefined') {
-                var el = scrollingUp ? elA : elB;
-
-            // if (typeof el.dataset.snap !== 'undefined') {
-                // this._spyScroll = false;
-                var name = el.dataset.name;
+            if (typeof A.dataset.snap !== 'undefined' && typeof Z.dataset.snap !== 'undefined') {
+                var name = M.dataset.name;
 
                 if (name) {
                     this.weAreAllWidget.showKeyword(name);
                 }
 
-                this.weAreAllWidget.activate();
-                return;
-
-                // return skrollTo(this.parent.scrollbar.getViewElement(), {
-                //     x: 0,
-                //     y: ~~el.getBoundingClientRect().top,
-                //     duration: this.SCROLL_TRANSITION_MS,
-                //     onComplete : function() {
-                //         this.weAreAllWidget.activate();
-                //         this._scrollToAnimationEnd();
-                //     }.bind(this)
-                // });
+                return this.weAreAllWidget.activate();
             }
 
             this.weAreAllWidget.deactivate();
-        },
-
-        _scrollToAnimationEnd : function _scrollToAnimationEnd() {
-            window.setTimeout(function() {
-                this._spyScroll = true;
-            }.bind(this), 100);
         },
 
         destroy : function destroy() {
