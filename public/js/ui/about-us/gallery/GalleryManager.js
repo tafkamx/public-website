@@ -1,5 +1,4 @@
-/* globals EM */
-Class(EM, 'GalleryManager').inherits(Widget)({
+Class(EM.UI, 'GalleryManager').inherits(Widget)({
     prototype : {
         container : null,
         data : null,
@@ -12,12 +11,12 @@ Class(EM, 'GalleryManager').inherits(Widget)({
         },
 
         _setup : function _setup() {
-            this.appendChild(new EM.GalleryItems({
+            this.appendChild(new EM.UI.GalleryItems({
                 name : 'items',
                 items : this.data
             })).render(this.container);
 
-            this.appendChild(new EM.GalleryThumbs({
+            this.appendChild(new EM.UI.GalleryThumbs({
                 name : 'thumbs',
                 items : this.data
             })).render(this.container);
