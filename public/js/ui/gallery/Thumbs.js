@@ -46,8 +46,8 @@ Class(EM, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
          * @method select <public>
          */
         select : function select(index) {
-            this.deselectAll();
-            this._currentActive = this.children[index].activate();
+            // this.deselectAll();
+            this._currentActive = this.children[index];//.activate();
             this._updateIndicatorPosition();
             return this;
         },
