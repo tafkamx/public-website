@@ -1,4 +1,4 @@
-var addClass = require('./../lib/utils/class-add');
+var addClass = require('./../../lib/utils/class-add');
 
 Class(EM.UI, 'SlideItem').inherits(Widget)({
     HTML : '\

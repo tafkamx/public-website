@@ -1,5 +1,4 @@
-/* globals EM */
-var onTransitionEnd = require('./../lib/onTransitionEnd');
+var onTransitionEnd = require('./../../lib/onTransitionEnd');
 
 Class(EM.UI, 'Slider').inherits(Widget)({
     HTML : '\
