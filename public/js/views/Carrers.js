@@ -2,7 +2,6 @@ var JobsData = require('./../data/carrers/jobs');
 var Events = require('./../lib/events');
 var CONSTANTS = require('./../lib/const');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
-// var skrollTo = require('scrollto');
 var TextGradient = require('./../lib/text-gradient');
 // window.efp = require('./../lib/efp');
 
