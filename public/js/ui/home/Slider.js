@@ -1,6 +1,6 @@
 var onTransitionEnd = require('./../../lib/onTransitionEnd');
 
-Class(EM.UI, 'Slider').inherits(Widget)({
+Class(EM.UI, 'Slider').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
         <div class="em-slider -vh">\
             <div class="em-slides -vh"></div>\
@@ -116,4 +116,3 @@ Class(EM.UI, 'Slider').inherits(Widget)({
         }
     }
 });
-

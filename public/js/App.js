@@ -64,6 +64,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this.bind('showProjectPlanner', this._showProjectPlannerRef);
 
             this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
+            this.bind('updateRoute', this._updateRoute);
 
             this._menuClickHandlerRef = this._menuClickHandler.bind(this);
             this.menu.bind('click', this._menuClickHandlerRef);
@@ -153,6 +154,14 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             }
 
             return this.pages.renderView(this.pages[routeName]);
+        },
+
+        /* Sets a new Route as active for the Router.
+         * (Bubbled event handler)
+         * @method _updateRoute <private>
+         */
+        _updateRoute : function _updateRoute(ev) {
+            Router.setRoute(ev.route);
         },
 
         /* Shows the Project Planner view.
