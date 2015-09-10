@@ -1,4 +1,5 @@
-/* globals EM */
+var inlineStyle = require('./../lib/inline-style');
+
 Class(EM.UI, 'GridItemClone').inherits(Widget)({
     ELEMENT_CLASS : 'grid__item-clone -fix',
     HTML : '\
@@ -56,8 +57,13 @@ Class(EM.UI, 'GridItemClone').inherits(Widget)({
         zoomin : function zoomin() {
             this.element.offsetHeight; // force reflow
             this.element.classList.remove('notransition');
-            this.element.style.webkitTransform = 'none';
-            this.element.style.transform = 'none';
+
+            inlineStyle(this.element, {
+                msTransform: 'initial',
+                webkitTransform: 'initial',
+                transform: 'initial'
+            });
+
             return this;
         },
 
@@ -73,8 +79,16 @@ Class(EM.UI, 'GridItemClone').inherits(Widget)({
                 return;
             }
 
-            this.element.style.webkitTransform = 'translate(' + ~~this._coords.left + 'px, ' + ~~this._coords.top + 'px) scale(.21)';
-            this.element.style.transform = 'translate(' + ~~this._coords.left + 'px, ' + ~~this._coords.top + 'px) scale(.21)';
+            var x = ~~this._coords.left + 'px';
+            var y = ~~this._coords.top + 'px';
+            var declaration = 'translate('+x+','+y+') scale(.21)';
+
+            inlineStyle(this.element, {
+                msTransform: declaration,
+                webkitTransform: declaration,
+                transform: declaration
+            });
+
             return this;
         },
 
@@ -83,7 +97,10 @@ Class(EM.UI, 'GridItemClone').inherits(Widget)({
          * @return GridItemClone
          */
         hide : function() {
-            this.element.style.opacity = 0;
+            inlineStyle(this.element, {
+                opacity: 0,
+                zIndex: -1
+            });
             return this;
         },
 
@@ -92,7 +109,10 @@ Class(EM.UI, 'GridItemClone').inherits(Widget)({
          * @return GridItemClone
          */
         show : function show() {
-            this.element.style.opacity = 1;
+            inlineStyle(this.element, {
+                opacity : 1,
+                zIndex: 2
+            });
             return this;
         }
     }
