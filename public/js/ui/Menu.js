@@ -5,7 +5,7 @@
  * - setFillColor (color)
  */
 var Events = require('./../lib/events');
-/* globals EM */
+
 Class(EM.UI, 'Menu').inherits(Widget)({
     ELEMENT_CLASS : 'menu -fix -clickable',
     HTML : '\
