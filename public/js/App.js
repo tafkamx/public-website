@@ -64,7 +64,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this.bind('showProjectPlanner', this._showProjectPlannerRef);
 
             this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
-            this.bind('updateRoute', this._updateRoute);
+            this.bind('updateRoute', this._updateRoute.bind(this));
 
             this._menuClickHandlerRef = this._menuClickHandler.bind(this);
             this.menu.bind('click', this._menuClickHandlerRef);
@@ -72,8 +72,6 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this._gridItemClickeHandlerRef = this._gridItemClickeHandler.bind(this);
             EM.UI.GridItem.bind('itemClicked', this._gridItemClickeHandlerRef);
 
-            this._bottomLinkClickHandlerRef = this._bottomLinkClickHandler.bind(this);
-            this.bind('bottomLinkClicked', this._bottomLinkClickHandlerRef);
             return this;
         },
 
@@ -161,7 +159,32 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          * @method _updateRoute <private>
          */
         _updateRoute : function _updateRoute(ev) {
-            Router.setRoute(ev.route);
+            var app = this;
+
+            ev.stopPropagation();
+
+            if (this.pageLoader) {
+                this.pageLoader = this.pageLoader.destroy();
+            }
+
+            this.appendChild(new EM.UI.PageLoader({
+                name : 'pageLoader'
+            })).render(document.body);
+
+            setTimeout(function() {
+                app.pageLoader.activate();
+
+                onTransitionEnd(app.pageLoader.element, function() {
+                    app.pages.scrollbar.getViewElement().scrollTop = 0;
+                    Router.setRoute(ev.route);
+
+                    app.pageLoader.gone();
+
+                    onTransitionEnd(app.pageLoader.element, function() {
+                        app.pageLoader.destroy();
+                    });
+                });
+            }, 100);
         },
 
         /* Shows the Project Planner view.
@@ -241,16 +264,6 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                 this.menu.deactivate();
                 this.grid.deactivate();
             }.bind(this));
-        },
-
-        _bottomLinkClickHandler : function _bottomLinkClickHandler(ev) {
-            ev.stopPropagation();
-            // this.cover.setImage(ev.target.view);
-            // this.cover.hide();
-            // this.cover.setPosition(ev.target.element);
-            // this.cover.show().zoomin();
-            this.pages.scrollbar.getViewElement().scrollTop = 0;
-            Router.setRoute(ev.target.view.PATH);
         },
 
         /* Renders a new page without transition.
