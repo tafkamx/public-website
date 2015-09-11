@@ -43,9 +43,6 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
         </section>',
 
     prototype : {
-        SCROLL_TRANSITION_MS : 1000,
-        _lastScrollTop : null,
-
         init : function init(config) {
             Widget.prototype.init.call(this, config);
             this._setup();
@@ -168,29 +165,26 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                 this.circleWidget.activate();
             }
 
-            return this.circleWidget.showDiscipline(M.dataset.name);
+            this.circleWidget.showDiscipline(M.dataset.name);
 
-            // if (M.dataset.section === 'offerings') {
+            // if (typeof A.dataset.offering !== 'undefined' || typeof Z.dataset.offering !== 'undefined') {
+            //     if (M.dataset.name === 'applications-and-platforms') {
+            //         return this.vivusApps.play();
+            //     }
+
+            //     if (M.dataset.name === 'e-commerce') {
+            //         return this.vivusCommerce.play();
+            //     }
+
+            //     if (M.dataset.name === 'brand-development') {
+            //         return this.vivusBrand.play();
+            //     }
+
+            //     if (M.dataset.name === 'mobile') {
+            //         return this.vivusMobile.play();
+            //     }
             // }
-
-            // if (M.dataset.section === 'offering') {
-                // if (el.dataset.name === 'applications-and-platforms') {
-                //     return this.vivusApps.play();
-                // }
-
-                // if (el.dataset.name === 'e-commerce') {
-                //     return this.vivusCommerce.play();
-                // }
-
-                // if (el.dataset.name === 'brand-development') {
-                //     return this.vivusBrand.play();
-                // }
-
-                // if (el.dataset.name === 'mobile') {
-                //     return this.vivusMobile.play();
-                // }
-            // }
-        },
+       },
 
         /* Dispatch a custom event `showProjectPlanner`, uses BubblingSupport to bubble up to App.
          * @method _projectPlannerBtnClickHandler <private>

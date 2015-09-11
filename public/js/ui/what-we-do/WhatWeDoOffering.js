@@ -1,7 +1,7 @@
 Class(EM.UI, 'WhatWeDoOffering').inherits(Widget)({
     ELEMENT_CLASS : 'what-we-do__offerings-row -row',
     HTML : '\
-        <div data-section="offering" data-name="">\
+        <div data-offering data-name="">\
             <div class="what-we-do__offering-icon -col-6 -tac"></div>\
             <div class="what-we-do__offering -col-6 -pl5 -pr5 -table -full-height">\
                 <div class="what-we-do__offering-inner -table-cell -vam">\
