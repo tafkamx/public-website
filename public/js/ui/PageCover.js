@@ -3,7 +3,7 @@ var addClass = require('./../lib/utils/class-add');
 Class(EM.UI, 'PageCover').inherits(Widget)({
     HTML : '\
         <header class="page__header -abs-before">\
-            <div class="page__header-bg -img-cover -matisse"></div>\
+            <div class="page__header-bg -img-cover"></div>\
             <div class="page__header-intro">\
                 <p class="page__header-subheading -font-light -ttu"></p>\
                 <h1 class="page__header-heading -font-bold"></h1>\
