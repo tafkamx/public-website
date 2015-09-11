@@ -1,3 +1,7 @@
+var addClass = require('./../../lib/utils/class-add');
+var removeClass = require('./../../lib/utils/class-remove');
+var hasClass = require('./../../lib/utils/class-has');
+
 Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
     HTML : '\
         <div class="wwd__circle -rel">\
@@ -69,16 +73,21 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
 
             this.disciplines.forEach(function(discipline) {
                 if (found) {
-                    discipline.classList.remove('active');
+                    if (hasClass(discipline, 'active')) {
+                        removeClass(discipline, 'active');
+                    }
                     return;
                 }
 
-                discipline.classList.add('active');
+                if (hasClass(discipline, 'active') === false) {
+                    addClass(discipline, 'active');
+                }
 
                 if (discipline.dataset.name === name) {
                     found = true;
                 }
             });
+
             return this;
         }
     }
