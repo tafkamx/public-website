@@ -113,6 +113,8 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                 color : this.constructor.MENU_COLOR
             });
 
+            this.headerWidget.activate();
+
             if (google && google.maps) {
                 this._createMap();
             } else {

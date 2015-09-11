@@ -141,6 +141,7 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
 
             this.__bindEvents();
             this.weAreAllWidget.center();
+            this.headerWidget.activate();
         },
 
         _setup : function _setup() {

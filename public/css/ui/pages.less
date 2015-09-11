@@ -47,7 +47,16 @@
   line-height: 1.1em;
   margin-bottom: 1.5em;
   letter-spacing: 3px;
-  opacity: .6;
+  opacity: 0;
+  transform: translateX(-10rem);
+  transition: opacity 200ms linear, transform 400ms @ease;
+  transition-delay: 400ms;
+  will-change: opacity, transform;
+
+  &.active {
+    transform: translateX(0);
+    opacity: .6;
+  }
 }
 
 .page__header-heading {
@@ -55,11 +64,29 @@
   line-height: 1.11em;
   letter-spacing: -1px;
   margin: 0 0 .8em;
+  opacity: 0;
+  transform: translateX(-10rem);
+  transition: opacity 200ms linear, transform 400ms @ease;
+  transition-delay: 600ms;
+  will-change: opacity, transform;
+
+  &.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .page__header-help {
   font-size: 1rem;
   margin-top: 2.5em;
+  opacity: 0;
+  transition: opacity 200ms linear;
+  transition-delay: 800ms;
+  will-change: opacity;
+
+  &.active {
+    opacity: 1;
+  }
 }
 
 .page__header-help-svg {}
