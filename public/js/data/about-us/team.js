@@ -55,9 +55,11 @@ module.exports = [
         name : 'Ericku',
         title : 'User Interface Designer',
         networks : [
-            {type : 'twitter', url : 'https://twitter.com/Ericku_'}
+            {type : 'dribbble', url : 'https://dribbble.com/ericku_'},
+            {type : 'twitter', url : 'https://twitter.com/Ericku_'},
+            {type : 'steam', url : 'http://steamcommunity.com/profiles/76561198060717183/'}
         ],
-        bio : ''
+        bio : 'Hey there, I enjoy traveling, listening to weird music & in general trying new things. I’m fascinated by the ways people around the world solves the same problems in different ways. As a designer I strive to make this world better, cheesy , but i do believe it is possible (:'
     },
 
     {
