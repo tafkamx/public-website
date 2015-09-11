@@ -21,6 +21,7 @@ module.exports = [
             link : EM.Views.WhatWeDo.PATH
         }
     },
+
     {
         MENU_COLOR : CONSTANTS.COLORS.red,
         className : 'slides__cv-org',
@@ -37,10 +38,13 @@ module.exports = [
             text : 'Amplifying social justice movements worldwide.'
         },
         cta : {
-            text : 'View Case Study',
-            link : EM.Views.CaseStudies.PATH
+            text : 'Visit Website',
+            link : 'http://crowdvoice.org/',
+            external : true
         }
-    },
+    }
+
+    /*
     {
         MENU_COLOR : CONSTANTS.COLORS.orange,
         className : 'slides__cv-by',
@@ -61,4 +65,5 @@ module.exports = [
             link : EM.Views.CaseStudies.PATH
         }
     }
+    */
 ];

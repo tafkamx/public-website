@@ -26,7 +26,8 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
             message : null,
             cta : {
                 label : null,
-                link : null
+                link : null,
+                external : false
             }
         },
         index : 0,
@@ -65,6 +66,7 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
                 var cta = this.constructor.CTA_HTML;
                 cta = cta.replace(/{text}/, this.data.cta.text);
                 cta = cta.replace(/{link}/, this.data.cta.link);
+
                 this.element.querySelector('.em-slide__text').insertAdjacentHTML('beforeend', cta);
                 this.ctaElement = this.element.querySelector('.ui-btn');
             }
@@ -74,8 +76,12 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
 
         _bindEvents : function _bindEvents() {
             if (this.ctaElement) {
-                this._ctaClickHandlerRef = this._ctaClickHandler.bind(this);
-                Events.on(this.ctaElement, 'click', this._ctaClickHandlerRef);
+                if (this.data.cta.external) {
+                    this.ctaElement.setAttribute('target', '_blank');
+                } else {
+                    this._ctaClickHandlerRef = this._ctaClickHandler.bind(this);
+                    Events.on(this.ctaElement, 'click', this._ctaClickHandlerRef);
+                }
             }
         },
 
@@ -99,8 +105,10 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
         destroy : function destroy() {
             Widget.prototype.destroy.call(this);
             if (this.ctaElement) {
-                Events.off(this.ctaElement, 'click', this._ctaClickHandlerRef);
-                this._ctaClickHandlerRef = null;
+                if (!this.data.cta.external) {
+                    Events.off(this.ctaElement, 'click', this._ctaClickHandlerRef);
+                    this._ctaClickHandlerRef = null;
+                }
             }
             return null;
         }
