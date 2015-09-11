@@ -1,6 +1,6 @@
 Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
     HTML : '\
-        <div class="wwd__circle -rel -pen">\
+        <div class="wwd__circle -rel">\
             <div class="wwd__inner-circle">\
                 <span class="wwd__inner-circle-label -abs -font-light">UX</span>\
             </div>\
