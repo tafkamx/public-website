@@ -6,8 +6,7 @@ module.exports = [
         className : 'slides__intro',
         gradient : '-gradient-01',
         bg : {
-            image: '/img/views/home/slides/01.jpg',
-            className : '-matisse'
+            image: '/img/views/home/slides/01.jpg'
         },
         title : {
             text : 'Hello! We are Empathia',
@@ -27,8 +26,7 @@ module.exports = [
         className : 'slides__cv-org',
         gradient : '-gradient-gray',
         bg : {
-            image: '/img/views/home/slides/02.jpg',
-            className : '-matisse'
+            image: '/img/views/home/slides/02.jpg'
         },
         title : {
             text : 'CrowdVoice.org',
@@ -50,8 +48,7 @@ module.exports = [
         className : 'slides__cv-by',
         gradient : '-gradient-tm',
         bg : {
-            image: '/img/views/home/slides/03.jpg',
-            className : '-matisse'
+            image: '/img/views/home/slides/03.jpg'
         },
         title : {
             text : 'CrowdVoice.by',

@@ -4,7 +4,7 @@ Class(EM.UI, 'GridItemClone').inherits(Widget)({
     ELEMENT_CLASS : 'grid__item-clone -fix',
     HTML : '\
         <div class="-abs-before">\
-            <div data-inner class="grid__item-clone-inner -img-cover -matisse -full-height -rel"></div>\
+            <div data-inner class="grid__item-clone-inner -img-cover -full-height -rel"></div>\
         </div>',
 
     prototype : {
