@@ -46,7 +46,7 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
 
             this.appendChild(new EM.UI.GridItem({
                 view : EM.Views.CaseStudies,
-                title : 'Case Studies',
+                title : 'Work',
                 index : '02'
             })).render(this.listElement);
 

@@ -47,11 +47,11 @@ Class(EM.Views, 'CaseStudies').inherits(Widget).includes(BubblingSupport)({
             this.appendChild(new EM.UI.PageCover({
                 name : 'headerWidget',
                 data : {
-                    subheading : 'Case Studies',
+                    subheading : 'Work',
                     heading : 'The proof of what<br/>we believe in.',
                     background : this.constructor.BG,
                     backgroundClassName : this.constructor.GRADIENT,
-                    scrollInfo : 'Scroll down to view the case studies.'
+                    scrollInfo : 'Scroll down to view the work.'
                 }
             })).render(this.element, this.element.firstElementChild);
 
