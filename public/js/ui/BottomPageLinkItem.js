@@ -37,7 +37,9 @@ Class(EM.UI, 'BottomPageLinkItem').inherits(Widget).includes(BubblingSupport)({
 
         _clickHandler : function _clickHandler(ev) {
             ev.preventDefault();
-            this.dispatch('bottomLinkClicked');
+            this.dispatch('updateRoute', {
+                route: this.view.PATH
+            });
         },
 
         destroy : function destroy() {
