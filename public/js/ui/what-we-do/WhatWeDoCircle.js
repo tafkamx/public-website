@@ -1,9 +1,10 @@
 Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
     HTML : '\
         <div class="wwd__circle -rel">\
-            <div class="wwd__inner-circle">\
-                <span class="wwd__inner-circle-label -abs -font-light">UX</span>\
-            </div>\
+            <svg viewBox="0 0 100 100">\
+                <circle cx="50" cy="50" r="49" stroke-width="1" stroke="url(#gradient-3)" fill="none" vector-effect="non-scaling-stroke"></circle>\
+            </svg>\
+            <span class="wwd__inner-circle-label -abs -font-light">UX</span>\
             <div class="wwd__circle-content-wrapper">\
                 <ul class="wwd__list">\
                     <li class="wwd__list-item -font-light" data-name="insights">\
