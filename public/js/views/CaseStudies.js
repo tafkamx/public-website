@@ -1,4 +1,4 @@
-/* globals EM, BubblingSupport */
+var ProjectsData = require('./../data/case-studies/projects');
 var CONSTANTS = require('./../lib/const');
 var Events = require('./../lib/events');
 
@@ -16,29 +16,7 @@ Class(EM.Views, 'CaseStudies').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
         <section>\
             <div class="page__body">\
-                <div class="case-studies__proyects">\
-                    <article class="case-studies__proyect -tac -rel">\
-                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/img/views/case-studies/projects/crowdvoice-by-app.jpg)"></div>\
-                        <div class="case-studies__proyect-info -tac -rel">\
-                            <h2 class="case-studies__proyect-title -font-bold">CrowdVoice.by</h2>\
-                            <p class="case-studies__proyect-desc -font-light">Broadcast and visualize messages, raise awareness and invite change.</p>\
-                        </div>\
-                    </article>\
-                    <article class="case-studies__proyect -tac -rel">\
-                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/img/views/case-studies/projects/patos-app.jpg)"></div>\
-                        <div class="case-studies__proyect-info -tac -rel">\
-                            <h2 class="case-studies__proyect-title -font-bold">Pat OS</h2>\
-                            <p class="case-studies__proyect-desc -font-light">Private tutoring scheduling and management made easy.</p>\
-                        </div>\
-                    </article>\
-                    <article class="case-studies__proyect -tac -rel">\
-                        <div class="case-studies__proyect-bg -img-cover -abs -abs-after" style="background-image: url(/img/views/case-studies/projects/crowdvoice-org-app.jpg)"></div>\
-                        <div class="case-studies__proyect-info -tac -rel">\
-                            <h2 class="case-studies__proyect-title -font-bold">CrowdVoice.org</h2>\
-                            <p class="case-studies__proyect-desc -font-light">Amplifying social justice movements worldwide.</p>\
-                        </div>\
-                    </article>\
-                </div>\
+                <div class="case-studies__proyects"></div>\
                 <section class="work-with-us -tac">\
                     <h2 class="work-with-us__title -font-bold -mb1 -after-line">So what’s your vision?</h2>\
                     <p class="work-with-us__text -font-light">Let’s talk to get to know each other and discover what we can accomplish together.</p>\
@@ -53,6 +31,7 @@ Class(EM.Views, 'CaseStudies').inherits(Widget).includes(BubblingSupport)({
     prototype : {
         init : function init(config) {
             Widget.prototype.init.call(this, config);
+            this.projectsWrapper = this.element.querySelector('.case-studies__proyects');
             this._setup()._bindEvents();
         },
 
@@ -75,6 +54,13 @@ Class(EM.Views, 'CaseStudies').inherits(Widget).includes(BubblingSupport)({
                     scrollInfo : 'Scroll down to view the case studies.'
                 }
             })).render(this.element, this.element.firstElementChild);
+
+            ProjectsData.forEach(function(project, index) {
+                this.appendChild(new EM.UI.CaseStudy({
+                    name : 'case_study_' + index,
+                    data : project
+                })).render(this.projectsWrapper);
+            }, this);
 
             this.appendChild(new EM.UI.BottomPageLinks({
                 name : 'links',

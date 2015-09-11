@@ -32,6 +32,7 @@ require('./ui/PageLoader');
 require('./ui/home/Slider');
 require('./ui/home/SliderDot');
 require('./ui/home/SliderItem');
+require('./ui/case-studies/CaseStudy');
 require('./ui/about-us/gallery/GalleryManager');
 require('./ui/about-us/gallery/GalleryItems');
 require('./ui/about-us/gallery/GalleryItem');
