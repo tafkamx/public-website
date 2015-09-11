@@ -104,6 +104,8 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
             this.dispatch('changeMenuColor', {
                 color : this.constructor.MENU_COLOR
             });
+
+            this.headerWidget.activate();
         },
 
         _setup : function _setup() {

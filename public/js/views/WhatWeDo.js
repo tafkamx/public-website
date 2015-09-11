@@ -57,6 +57,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             });
 
             this.circleWidget.center();
+            this.headerWidget.activate();
 
             // this.vivusApps = new Vivus('xx-svg-cloud-stroke', {
             //     start: 'manual',

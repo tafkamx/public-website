@@ -1,3 +1,5 @@
+var addClass = require('./../lib/utils/class-add');
+
 Class(EM.UI, 'PageCover').inherits(Widget)({
     HTML : '\
         <header class="page__header -abs-before">\
@@ -24,15 +26,27 @@ Class(EM.UI, 'PageCover').inherits(Widget)({
         init : function init(config) {
             Widget.prototype.init.call(this, config);
             this.coverElement = this.element.querySelector('.page__header-bg');
+            this.subheadingElement = this.element.querySelector('.page__header-subheading');
+            this.headingElement = this.element.querySelector('.page__header-heading');
+            this.helpElement = this.element.querySelector('.page__header-help');
 
             this.coverElement.style.backgroundImage = 'url(' + this.data.background + ')';
             this.element.classList.add(this.data.backgroundClassName);
-            this.element.querySelector('.page__header-subheading').insertAdjacentHTML('beforeend', this.data.subheading);
-            this.element.querySelector('.page__header-heading').insertAdjacentHTML('beforeend', this.data.heading);
+            this.subheadingElement.insertAdjacentHTML('beforeend', this.data.subheading);
+            this.headingElement.insertAdjacentHTML('beforeend', this.data.heading);
 
             if (this.data.scrollInfo) {
                 this.element.querySelector('.page__header-help-text').textContent = this.data.scrollInfo;
             }
+        },
+
+        _activate : function _activate() {
+            Widget.prototype._activate.call(this);
+            requestAnimationFrame(function() {
+                addClass(this.subheadingElement, 'active');
+                addClass(this.headingElement, 'active');
+                addClass(this.helpElement, 'active');
+            }.bind(this));
         }
     }
 });
