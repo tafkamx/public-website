@@ -30,7 +30,7 @@ Class(EM.UI, 'WeAreAll').inherits(Widget)({
             this.x = this.element.querySelector('#x');
             this.shuffler = new ShuffleLetters(this.x, {
                 // chars : ",.?/\\(^)![]{}*&^%$#'\"",
-                times : 2
+                times : 4
             });
             // this.keywords = [].slice.call(this.element.querySelectorAll('.waa__keyword'), 0);
         },
