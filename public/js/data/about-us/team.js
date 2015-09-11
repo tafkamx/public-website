@@ -34,7 +34,10 @@ module.exports = [
             {type : 'github', url : 'https://github.com/noeldelgado'},
             {type : 'twitter', url : 'https://twitter.com/pixelia_me'}
         ],
-        bio : ''
+        bio : 'Hi! I love creative coding, glitches, interactive things, animations, dead pixels, metal music & horror stuff.' +
+            ' I enjoy teaching people, learning and building new things.' +
+            ' I also like to draw and illustrate from time to time.' +
+            ' Psst, I have to admit that I’ve been caught listening to 90’s pop and dance music *secretly*, maybe childhood memories?, we may never know. ;)'
     },
 
     {
