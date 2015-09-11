@@ -1,11 +1,14 @@
+var ShuffleLetters = require('./../../lib/shuffle-letters');
+
 Class(EM.UI, 'WeAreAll').inherits(Widget)({
-    ELEMENT_CLASS : 'we-are-all-widget -fix -pen',
+    ELEMENT_CLASS : 'we-are-all-widget -fix',
     HTML : '\
         <div>\
             <div class="-table -full-width -full-height">\
                 <div class="-table-cell -vam">\
                     <div class="waa__main-text -font-light">We’re all</div>\
                     <div class="waa__keywords -rel -font-bold">\
+                        <div id="x" class="waa__keyword active">designers.</div>\
                         <div data-name="designers" class="waa__keyword">designers.</div>\
                         <div data-name="friends" class="waa__keyword">friends.</div>\
                         <div data-name="driven" class="waa__keyword">purpose driven.</div>\
@@ -24,7 +27,12 @@ Class(EM.UI, 'WeAreAll').inherits(Widget)({
 
         init : function init(config) {
             Widget.prototype.init.call(this, config);
-            this.keywords = [].slice.call(this.element.querySelectorAll('.waa__keyword'), 0);
+            this.x = this.element.querySelector('#x');
+            this.shuffler = new ShuffleLetters(this.x, {
+                // chars : ",.?/\\(^)![]{}*&^%$#'\"",
+                times : 2
+            });
+            // this.keywords = [].slice.call(this.element.querySelectorAll('.waa__keyword'), 0);
         },
 
         /* Centers the widget vertically and aligns it horizontally constrained
@@ -47,12 +55,22 @@ Class(EM.UI, 'WeAreAll').inherits(Widget)({
         },
 
         showKeyword : function showKeyword(name) {
-            this.keywords.forEach(function(keyword) {
-                keyword.classList.remove('active');
-                if (keyword.dataset.name === name) {
-                    keyword.classList.add('active');
-                }
-            });
+            if (this.shuffler.opts.text !== name) {
+                this.shuffler.shuffle({
+                    text : name
+                });
+            }
+            // this.keywords.forEach(function(keyword) {
+            //     keyword.classList.remove('active');
+            //     if (keyword.dataset.name === name) {
+            //         keyword.classList.add('active');
+            //     }
+            // });
+        },
+
+        _deactivate : function _deactivate() {
+            Widget.prototype._deactivate.call(this);
+            this.shuffler.opts.text = '';
         }
     }
 });

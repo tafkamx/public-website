@@ -62,7 +62,7 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
                             </div>\
                         </div>\
                     </article>\
-                    <article data-snap data-name="driven" class="were-all-item -row -vh">\
+                    <article data-snap data-name="purpose driven" class="were-all-item -row -vh">\
                         <div class="were-all-phrase -col-6 -table -vh">\
                             <div class="-table-cell -vam on-touch">\
                                 <div class="waa__main-text -font-light">We’re all</div>\
@@ -75,7 +75,7 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
                             </div>\
                         </div>\
                     </article>\
-                    <article data-snap data-name="best" class="were-all-item -row -vh">\
+                    <article data-snap data-name="among the best" class="were-all-item -row -vh">\
                         <div class="were-all-phrase -col-6 -table -vh">\
                             <div class="-table-cell -vam on-touch">\
                                 <div class="waa__main-text -font-light">We’re all</div>\
@@ -221,12 +221,7 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
             var M = document.elementFromPoint(this.cx, this.cy);
 
             if (typeof A.dataset.snap !== 'undefined' && typeof Z.dataset.snap !== 'undefined') {
-                var name = M.dataset.name;
-
-                if (name) {
-                    this.weAreAllWidget.showKeyword(name);
-                }
-
+                this.weAreAllWidget.showKeyword(M.dataset.name);
                 return this.weAreAllWidget.activate();
             }
 
