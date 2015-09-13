@@ -69,6 +69,7 @@
   ],
   "directories": {},
   "devDependencies": {
+    "character-shuffling": "^1.0.0",
     "checkit": "^0.5.1",
     "director": "^1.2.8",
     "gemini-scrollbar": "^1.2.9",
