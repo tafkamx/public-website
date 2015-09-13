@@ -1,4 +1,4 @@
-var GeminiScrollbar = require('./../lib/gemini-scrollbar');
+var GeminiScrollbar = require('gemini-scrollbar');
 
 Class(EM, 'PagesManager').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
