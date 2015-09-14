@@ -2,7 +2,7 @@ var JobsData = require('./../data/carrers/jobs');
 var Events = require('./../lib/events');
 var CONSTANTS = require('./../lib/const');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
-var TextGradient = require('./../lib/text-gradient');
+var TextGradient = require('text-gradient');
 // window.efp = require('./../lib/efp');
 
 Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
@@ -161,18 +161,16 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
                 referenceElement : this.element.querySelector('.were-all-item').firstElementChild
             })).render(document.body);
 
-            this.perksText = new TextGradient({
-                selector : this.element.querySelector('[data-perks-text]'),
+            this.perksText = new TextGradient(this.element.querySelector('[data-perks-text]'), {
                 from : CONSTANTS.COLORS.blue,
                 to : CONSTANTS.COLORS.green,
-                direction : '-225deg'
-            }).render();
+                direction : '-45deg'
+            });
 
-            this.believeText = new TextGradient({
-                selector : this.element.querySelector('[data-believe-text]'),
+            this.believeText = new TextGradient(this.element.querySelector('[data-believe-text]'), {
                 from : CONSTANTS.COLORS.blue,
                 to : CONSTANTS.COLORS.green,
-                direction : '-225deg'
+                direction : '-45deg'
             }).render();
 
             this.appendChild(new EM.UI.JoinUsMessage({

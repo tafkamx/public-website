@@ -1,7 +1,7 @@
 var CONSTANTS = require('./../lib/const');
 var Events = require('./../lib/events');
 var teamData = require('./../data/about-us/team');
-var TextGradient = require('./../lib/text-gradient');
+var TextGradient = require('text-gradient');
 
 Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
     NAME : 'about-us',
@@ -125,20 +125,18 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
                 views : [EM.Views.Carrers, EM.Views.Community]
             })).render(this.element);
 
-            this.textGradient = new TextGradient({
-                selector : this.element.querySelector('[data-pillars-text]'),
+            this.textGradient = new TextGradient(this.element.querySelector('[data-pillars-text]'), {
                 from : CONSTANTS.COLORS.pink,
                 to : CONSTANTS.COLORS.greypurple,
                 direction : '225deg'
-            }).render();
+            });
 
-            this.pleasureToMeetYou = new TextGradient({
+            this.pleasureToMeetYou = new TextGradient(this.element.querySelector('[data-pleasure-text]'), {
                 text : 'Pleasure To Meet You!',
-                selector : this.element.querySelector('[data-pleasure-text]'),
                 from : CONSTANTS.COLORS.pink,
                 to : CONSTANTS.COLORS.greypurple,
                 direction : '225deg'
-            }).render();
+            });
 
             this.appendChild(new EM.UI.GalleryManager({
                 name : 'gallery',

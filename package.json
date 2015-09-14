@@ -77,6 +77,7 @@
     "moment-timezone": "^0.4.0",
     "sanitize.css": "^1.1.0",
     "scrollto": "file:public/js/lib/scrollto",
+    "text-gradient": "^0.2.0",
     "underscore.string": "^3.2.2",
     "vivus": "^0.2.2"
   }
