@@ -16,6 +16,14 @@ module.exports = [
     {
         title : 'CrowdVoice.org',
         description : 'Amplifying social justice movements worldwide.',
-        bgImage : '/img/views/case-studies/projects/crowdvoice-org-app.jpg'
+        bgImage : '/img/views/case-studies/projects/crowdvoice-org-app.jpg',
+        url : 'http://crowdvoice.org/'
+    },
+
+    {
+        title : 'Voxfeed',
+        description : 'Paying passionate people for recommending their favorite brands in social networks.',
+        bgImage : '/img/views/case-studies/projects/voxfeed-app.jpg',
+        url : 'http://voxfeed.com/'
     }
 ];
