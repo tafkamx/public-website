@@ -171,7 +171,7 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
                 from : CONSTANTS.COLORS.blue,
                 to : CONSTANTS.COLORS.green,
                 direction : '-45deg'
-            }).render();
+            });
 
             this.appendChild(new EM.UI.JoinUsMessage({
                 name : 'joinUsMessage',
