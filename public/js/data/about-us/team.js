@@ -1,7 +1,7 @@
 module.exports = [
     {
-        image : 'cuiki.png',
-        thumb : 'cuiki.png',
+        image : 'cuiki@2x.png',
+        thumb : 'cuiki@2x.png',
         name : 'Darío Muñoz',
         title : 'Founder and CEO',
         networks : [
@@ -13,8 +13,8 @@ module.exports = [
     },
 
     {
-        image : 'checo.png',
-        thumb : 'checo.png',
+        image : 'checo@2x.png',
+        thumb : 'checo@2x.png',
         name : 'Sergio de la Garza',
         title : 'CTO and Lead Backend Developer',
         networks : [
@@ -26,8 +26,8 @@ module.exports = [
     },
 
     {
-        image : 'noel.png',
-        thumb : 'noel.png',
+        image : 'noel@2x.png',
+        thumb : 'noel@2x.png',
         name : 'Noel Delgado',
         title : 'Lead Front-End Developer',
         networks : [
@@ -42,8 +42,8 @@ module.exports = [
     },
 
     {
-        image : 'chupau.png',
-        thumb : 'chupau.png',
+        image : 'chupau@2x.png',
+        thumb : 'chupau@2x.png',
         name : 'Oscar Salazar',
         title : 'Project & QA Manager',
         networks : [
@@ -54,8 +54,8 @@ module.exports = [
     },
 
     {
-        image : 'ericku.png',
-        thumb : 'ericku.png',
+        image : 'ericku@2x.png',
+        thumb : 'ericku@2x.png',
         name : 'Ericku',
         title : 'User Interface Designer',
         networks : [
@@ -67,8 +67,8 @@ module.exports = [
     },
 
     {
-        image : 'beto.png',
-        thumb : 'beto.png',
+        image : 'beto@2x.png',
+        thumb : 'beto@2x.png',
         name : 'Beto',
         title : 'Operations Manager',
         networks : [
@@ -78,8 +78,8 @@ module.exports = [
     },
 
     {
-        image : 'eduan.png',
-        thumb : 'eduan.png',
+        image : 'eduan@2x.png',
+        thumb : 'eduan@2x.png',
         name : 'Eduan',
         title : 'Back-End Developer',
         networks : [
