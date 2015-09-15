@@ -38,7 +38,7 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
             })).render(this.element.querySelector('[data-back-btn-container]'));
 
             this.appendChild(new EM.UI.Button({
-                name : 'button',
+                name : 'sendButton',
                 className : '-md -neutral-dark -pl5 -pr5',
                 html : 'Next&nbsp;&nbsp;›'
             })).render(this.element.querySelector('[data-next-btn-container]')).disable();
@@ -52,8 +52,11 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
             this._updateButtonStateRef = this._updateButtonState.bind(this);
             Events.on(this.inputMessage, 'keyup', this._updateButtonStateRef);
 
-            this._buttonClickHandlerRef = this._buttonClickHandler.bind(this);
-            Events.on(this.button.element, 'click', this._buttonClickHandlerRef);
+            this._backButtonClickHandlerRef = this._backButtonClickHandler.bind(this);
+            Events.on(this.backButton.element, 'click', this._backButtonClickHandlerRef);
+
+            this._nextButtonClickHandlerRef = this._nextButtonClickHandler.bind(this);
+            Events.on(this.sendButton.element, 'click', this._nextButtonClickHandlerRef);
         },
 
         _triggerFileUpload : function _triggerFileUpload(ev) {
@@ -62,13 +65,17 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
 
         _updateButtonState : function _updateButtonState() {
             if (this.inputMessage.value.trim().length >= 3) {
-                return this.button.enable();
+                return this.sendButton.enable();
             }
 
-            this.button.disable();
+            this.sendButton.disable();
         },
 
-        _buttonClickHandler : function _buttonClickHandler() {
+        _backButtonClickHandler : function _backButtonClickHandler() {
+            this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep1.NAME});
+        },
+
+        _nextButtonClickHandler : function _nextButtonClickHandler() {
             var data = [{
                 prop : 'description',
                 value : this.inputMessage.value
@@ -84,8 +91,11 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
             Events.off(this.inputMessage, 'keyup', this._updateButtonStateRef);
             this._updateButtonStateRef = null;
 
-            Events.off(this.button.element, 'click', this._buttonClickHandlerRef);
-            this._buttonClickHandlerRef = null;
+            Events.off(this.backButton.element, 'click', this._backButtonClickHandlerRef);
+            this._backButtonClickHandlerRef = null;
+
+            Events.off(this.sendButton.element, 'click', this._nextButtonClickHandlerRef);
+            this._nextButtonClickHandlerRef = null;
 
             Widget.prototype.destroy.call(this);
 

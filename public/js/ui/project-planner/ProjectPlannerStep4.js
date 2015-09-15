@@ -44,7 +44,7 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
             })).render(this.element.querySelector('[data-back-btn-container]'));
 
             this.appendChild(new EM.UI.Button({
-                name : 'button',
+                name : 'nextButton',
                 className : '-md -neutral-dark -pl5 -pr5 -mb1',
                 html : 'Next&nbsp;&nbsp;›'
             })).render(this.element.querySelector('[data-next-btn-container]'));
@@ -57,8 +57,11 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
                 Events.on(radio, 'change', this._radioChangeRef);
             }, this);
 
-            this._buttonClickHandlerRef = this._buttonClickHandler.bind(this);
-            Events.on(this.button.element, 'click', this._buttonClickHandlerRef);
+            this._backButtonClickHandlerRef = this._backButtonClickHandler.bind(this);
+            Events.on(this.backButton.element, 'click', this._backButtonClickHandlerRef);
+
+            this._nextButtonClickHandlerRef = this._nextButtonClickHandler.bind(this);
+            Events.on(this.nextButton.element, 'click', this._nextButtonClickHandlerRef);
         },
 
         _radioChange : function _radioChange(ev) {
@@ -69,7 +72,11 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
             this.rangeSelector.enable();
         },
 
-        _buttonClickHandler : function _buttonClickHandler() {
+        _backButtonClickHandler : function _backButtonClickHandler() {
+            this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep3.NAME});
+        },
+
+        _nextButtonClickHandler : function _nextButtonClickHandler() {
             var data = [
                 {prop: 'budgetGiven', value: this.radioElements[0].checked},
                 {prop: 'budgetRangeSliderValue', value : this.rangeSelector.getValue()},
@@ -84,8 +91,11 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
         },
 
         destroy : function destroy() {
-            Events.off(this.button.element, 'click', this._buttonClickHandlerRef);
-            this._buttonClickHandlerRef = null;
+            Events.off(this.backButton.element, 'click', this._backButtonClickHandlerRef);
+            this._backButtonClickHandlerRef = null;
+
+            Events.off(this.nextButton.element, 'click', this._nextButtonClickHandlerRef);
+            this._nextButtonClickHandlerRef = null;
 
             Widget.prototype.destroy.call(this);
 

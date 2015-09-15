@@ -79,7 +79,7 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
             })).render(this.element.querySelector('[data-back-btn-container]'));
 
             this.appendChild(new EM.UI.Button({
-                name : 'button',
+                name : 'nextButton',
                 className : '-md -pink -pl5 -pr5 -mb1',
                 text : 'Let’s Do This!'
             })).render(this.element.querySelector('[data-next-btn-container]'));
@@ -87,8 +87,15 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
         },
 
         _bindEvents : function _bindEvents() {
+            this._backButtonClickHandlerRef = this._backButtonClickHandler.bind(this);
+            Events.on(this.backButton.element, 'click', this._backButtonClickHandlerRef);
+
             this._buttonClickHandlerRef = this._buttonClickHandler.bind(this);
-            Events.on(this.button.element, 'click', this._buttonClickHandlerRef);
+            Events.on(this.nextButton.element, 'click', this._buttonClickHandlerRef);
+        },
+
+        _backButtonClickHandler : function _backButtonClickHandler() {
+            this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep4.NAME});
         },
 
         _buttonClickHandler : function _buttonClickHandler() {
@@ -124,7 +131,10 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
         destroy : function destroy() {
             this._checkitProps = null;
 
-            Events.off(this.button.element, 'click', this._buttonClickHandlerRef);
+            Events.off(this.backButton.element, 'click', this._backButtonClickHandlerRef);
+            this._backButtonClickHandlerRef = null;
+
+            Events.off(this.nextButton.element, 'click', this._buttonClickHandlerRef);
             this._buttonClickHandlerRef = null;
 
             Widget.prototype.destroy.call(this);
