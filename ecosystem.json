@@ -29,7 +29,7 @@
    * https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md#deployment-pm2--090
    */
   deploy : {
-    staging : {
+    production : {
       user : "deploy",
       host : "empathya.agency",
       ref  : "origin/master",
