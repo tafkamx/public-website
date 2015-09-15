@@ -7,12 +7,19 @@ var HomeController = Class('HomeController')({
     },
 
     _initRouter : function() {
+      application.router.route('/sendProject')
+        .post(this.sendProject);
+
       application.router.route('/*')
         .get(this.index);
     },
 
     index : function(req, res) {
       res.render('home/index.html', {layout : 'application'});
+    },
+
+    sendProject : function(req, res, next) {
+      res.sent('200');
     }
   }
 });

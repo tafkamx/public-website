@@ -3,4 +3,5 @@ public/dist
 tmp
 .tpm
 .DS_Store
-log/development.log
+log/*/**
+config/config.js
