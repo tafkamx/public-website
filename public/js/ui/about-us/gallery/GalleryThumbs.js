@@ -1,3 +1,4 @@
+var inlineStyle = require('./../../../lib/inline-style');
 var Events = require('./../../../lib/events');
 
 Class(EM.UI, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
@@ -69,9 +70,11 @@ Class(EM.UI, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
 
             var rects = this._currentActive.getRects();
             var left = ~~rects.left;
-            this.indicator.style.msTransform = 'translateX(' + left + 'px)';
-            this.indicator.style.webkitTransform = 'translateX(' + left + 'px)';
-            this.indicator.style.transform = 'translateX(' + left + 'px)';
+            inlineStyle(this.indicator, {
+                msTransform: 'translateX(' + left + 'px)',
+                webkitTransform: 'translateX(' + left + 'px)',
+                transform: 'translateX(' + left + 'px)'
+            });
         },
 
         destroy : function destroy() {

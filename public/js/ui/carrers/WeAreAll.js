@@ -1,3 +1,4 @@
+var inlineStyle = require('./../../lib/inline-style');
 var CharacterShuffling = require('character-shuffling');
 
 Class(EM.UI, 'WeAreAll').inherits(Widget)({
@@ -38,10 +39,13 @@ Class(EM.UI, 'WeAreAll').inherits(Widget)({
             var width = ~~rects.width;
             var height = width;
 
-            this.element.style.width = width + 'px';
-            this.element.style.height = height + 'px';
-            this.element.style.webkitTransform = 'translate(' + left + 'px, -50%)';
-            this.element.style.transform = 'translate(' + left + 'px, -50%)';
+            inlineStyle(this.element, {
+                width: width + 'px',
+                height: height + 'px',
+                msTransform: 'translate(' + left + 'px, -50%)',
+                webkitTransform: 'translate(' + left + 'px, -50%)',
+                transform: 'translate(' + left + 'px, -50%)'
+            });
 
             return this;
         },
