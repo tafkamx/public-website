@@ -16,7 +16,7 @@
       name      : "empathya",
       script    : "bin/server.js",
       env_production : {
-        NODE_ENV: "staging",
+        NODE_ENV: "production",
         PORT : 4000
       }
     }
@@ -29,15 +29,15 @@
    * https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md#deployment-pm2--090
    */
   deploy : {
-    staging : {
+    production : {
       user : "deploy",
       host : "empathya.agency",
       ref  : "origin/master",
       repo : "git@github.com:Empathya/empathya.agency.git",
-      path : "/home/deploy/empathya_staging",
-      "post-deploy" : "npm install && webpack -p && pm2 startOrRestart ecosystem.json --env staging",
+      path : "/home/deploy/apps/empathya",
+      "post-deploy" : "npm install && webpack -p && cp ../shared/config.js ./config/config.js && pm2 startOrRestart ecosystem.json --env production",
       env  : {
-        NODE_ENV: "staging",
+        NODE_ENV: "production",
         PORT : 4000
       }
     }
