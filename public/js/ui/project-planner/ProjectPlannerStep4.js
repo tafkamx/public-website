@@ -17,6 +17,10 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
                 </label>\
             </div>\
             <div class="project-planner__budget-selector-range -rel"></div>\
+            <div class="-row -mb5">\
+                <div data-back-btn-container class="-col-6"></div>\
+                <div data-next-btn-container class="-col-6 -tar"></div>\
+            </div>\
         </div>',
 
     prototype : {
@@ -34,10 +38,16 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
             }).render(this.element.querySelector('.project-planner__budget-selector-range')));
 
             this.appendChild(new EM.UI.Button({
+                name : 'backButton',
+                className : '-md -neutral-dark -pl5 -pr5',
+                html : '‹&nbsp;Back'
+            })).render(this.element.querySelector('[data-back-btn-container]'));
+
+            this.appendChild(new EM.UI.Button({
                 name : 'button',
                 className : '-md -neutral-dark -pl5 -pr5 -mb1',
                 html : 'Next&nbsp;&nbsp;›'
-            })).render(this.element);
+            })).render(this.element.querySelector('[data-next-btn-container]'));
             return this;
         },
 

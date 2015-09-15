@@ -15,6 +15,10 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
                     <button class="ui-btn -mini">Upload Files</button>\
                 </div>\
             </div>\
+            <div class="-row -mb5">\
+                <div data-back-btn-container class="-col-6"></div>\
+                <div data-next-btn-container class="-col-6 -tar"></div>\
+            </div>\
         </div>',
 
     prototype : {
@@ -28,10 +32,16 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
 
         _setup : function _setup() {
             this.appendChild(new EM.UI.Button({
+                name : 'backButton',
+                className : '-md -neutral-dark -pl5 -pr5',
+                html : '‹&nbsp;Back'
+            })).render(this.element.querySelector('[data-back-btn-container]'));
+
+            this.appendChild(new EM.UI.Button({
                 name : 'button',
-                className : '-md -neutral-dark -pl5 -pr5 -mb1',
+                className : '-md -neutral-dark -pl5 -pr5',
                 html : 'Next&nbsp;&nbsp;›'
-            })).render(this.element).disable();
+            })).render(this.element.querySelector('[data-next-btn-container]')).disable();
             return this;
         },
 

@@ -14,6 +14,10 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
                 <div data-row-a class="-col-6 -pr1"></div>\
                 <div data-row-b class="-col-6 -pl1"></div>\
             </div>\
+            <div class="-row -mb5">\
+                <div data-back-btn-container class="-col-6"></div>\
+                <div data-next-btn-container class="-col-6 -tar"></div>\
+            </div>\
         </div>',
 
     prototype : {
@@ -69,10 +73,16 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
             })).render(this.rowB);
 
             this.appendChild(new EM.UI.Button({
+                name : 'backButton',
+                className : '-md -neutral-dark -pl5 -pr5',
+                html : '‹&nbsp;Back'
+            })).render(this.element.querySelector('[data-back-btn-container]'));
+
+            this.appendChild(new EM.UI.Button({
                 name : 'button',
                 className : '-md -pink -pl5 -pr5 -mb1',
                 text : 'Let’s Do This!'
-            })).render(this.element);
+            })).render(this.element.querySelector('[data-next-btn-container]'));
             return this;
         },
 
