@@ -32,6 +32,7 @@ module.exports = [
         title : 'Lead Front-End Developer',
         networks : [
             {type : 'github', url : 'https://github.com/noeldelgado'},
+            {type : 'codepen', url : 'http://codepen.io/noeldelgado'},
             {type : 'twitter', url : 'https://twitter.com/pixelia_me'}
         ],
         bio : 'Hi! I love creative coding, glitches, interactive things, animations, dead pixels, metal music & horror stuff.' +
