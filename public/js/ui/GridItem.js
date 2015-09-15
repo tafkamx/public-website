@@ -6,7 +6,7 @@ Class(EM.UI, 'GridItem').inherits(Widget)({
     HTML : '\
         <div>\
             <div class="grid__item-cover -abs-before">\
-                <div class="grid__item-cover-img -full-height -img-cover"></div>\
+                <div class="grid__item-cover-img -img-cover"></div>\
             </div>\
             <div class="grid__item-title-wrapper -tal">\
                 <p class="grid__item-index -font-extra-light">{index}</p>\
