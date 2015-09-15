@@ -72,11 +72,11 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
 
         _renderHandler : function _renderHandler() {
             if (hasTouchSupport) {
-                this._touchstartHandlerRef = this._touchstartHandler.bind(this);
-                Events.on(this.parent.scrollbar.getViewElement(), 'touchstart', this._touchstartHandlerRef);
+                this._touchStartHandlerRef = this._touchStartHandler.bind(this);
+                Events.on(this.parent.scrollbar.getViewElement(), 'touchstart', this._touchStartHandlerRef);
 
-                this._touchendHandlerRef = this._touchendHandler.bind(this);
-                Events.on(this.parent.scrollbar.getViewElement(), 'touchend', this._touchendHandlerRef);
+                this._touchEndHandlerRef = this._touchEndHandler.bind(this);
+                Events.on(this.parent.scrollbar.getViewElement(), 'touchend', this._touchEndHandlerRef);
             } else {
                 this._scrollHandlerRef = this._scrollHandler.bind(this);
                 Events.on(this.parent.scrollbar.getViewElement(), this._wheelEvent, this._scrollHandlerRef);
@@ -109,11 +109,12 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
             this._wheeling = null;
         },
 
-        _touchstartHandler : function _touchstartHandler(ev) {
+        _touchStartHandler : function _touchStartHandler(ev) {
+            ev.preventDefault();
             this._lastY = ev.touches[0].clientY;
         },
 
-        _touchendHandler : function _touchendHandler(ev) {
+        _touchEndHandler : function _touchEndHandler(ev) {
             var currentY = ev.changedTouches[0].clientY;
 
             if (this._lastY > currentY) {
@@ -134,11 +135,11 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
             this._sliderChangeRef = null;
 
             if (hasTouchSupport) {
-                Events.off(this.parent.scrollbar.getViewElement(), 'touchstart', this._touchstartHandlerRef);
-                this._touchstartHandlerRef = null;
+                Events.off(this.parent.scrollbar.getViewElement(), 'touchstart', this._touchStartHandlerRef);
+                this._touchStartHandlerRef = null;
 
-                Events.off(this.parent.scrollbar.getViewElement(), 'touchend', this._touchendHandlerRef);
-                this._touchendHandlerRef = null;
+                Events.off(this.parent.scrollbar.getViewElement(), 'touchend', this._touchEndHandlerRef);
+                this._touchEndHandlerRef = null;
             } else {
                 Events.off(this.parent.scrollbar.getViewElement(), this._wheelEvent, this._scrollHandlerRef);
                 this._scrollHandlerRef = null;
