@@ -1,7 +1,7 @@
 Class(EM.UI, 'JoinUsMessage').inherits(Widget)({
     HTML : '\
         <div>\
-            <button class="ui-btn -lg -green -pl5 -pr5 -mb1">Apply</button>\
+            <button class="ui-btn -lg -green -pl5 -pr5 -mb1 -hide">Apply</button>\
         </div>\
     ',
 
