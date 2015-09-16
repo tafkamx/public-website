@@ -1,21 +1,21 @@
-var JobsData = require('./../data/carrers/jobs');
+var JobsData = require('./../data/careers/jobs');
 var Events = require('./../lib/events');
 var CONSTANTS = require('./../lib/const');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
 var TextGradient = require('text-gradient');
 // window.efp = require('./../lib/efp');
 
-Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
-    NAME : 'carrers',
-    PATH : '/carrers',
-    THUMB : '/img/views/carrers/thumb.jpg',
-    BG : '/img/views/carrers/cover-image.jpg',
+Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
+    NAME : 'careers',
+    PATH : '/careers',
+    THUMB : '/img/views/careers/thumb.jpg',
+    BG : '/img/views/careers/cover-image.jpg',
     GRADIENT : '-gradient-01',
     MENU_COLOR : CONSTANTS.COLORS.green,
-    TITLE : 'Carrers',
+    TITLE : 'Careers',
     SUBTITLE : 'On the lookout for you',
 
-    ELEMENT_CLASS : 'page page-carrers',
+    ELEMENT_CLASS : 'page page-careers',
     HTML : '\
         <section>\
             <div class="page__body">\
@@ -28,14 +28,14 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
                         <p class="page__intro-text -font-light">We really take out time hiring. It’s very hard to find talented people but it’s much harder to come by people with talent and also a genuine care for what they do and for others. At Empathya we cultivate a culture and environment that makes it easy for people with these qualities to thrive, and honestly, it’s the only kind of people we want in our staff. We all believe in the same thing and we want to keep it that way.</p>\
                     </div>\
                 </div>\
-                <article class="carrers__image-strip -row">\
+                <article class="careers__image-strip -row">\
                     <div class="image-strip"></div>\
                     <div class="image-strip"></div>\
                     <div class="image-strip"></div>\
                     <div class="image-strip"></div>\
                     <div class="image-strip"></div>\
                 </article>\
-                <section class="carrers__were-all">\
+                <section class="careers__were-all">\
                     <article data-snap data-name="designers" class="were-all-item -row -vh">\
                         <div class="were-all-phrase -col-6 -table -vh">\
                             <div class="-table-cell -vam on-touch">\
@@ -148,7 +148,7 @@ Class(EM.Views, 'Carrers').inherits(Widget).includes(BubblingSupport)({
             this.appendChild(new EM.UI.PageCover({
                 name : 'headerWidget',
                 data : {
-                    subheading : 'Carrers',
+                    subheading : 'Careers',
                     heading : 'Making positive impacts<br/>will change your life.',
                     background : this.constructor.BG,
                     backgroundClassName : this.constructor.GRADIENT,

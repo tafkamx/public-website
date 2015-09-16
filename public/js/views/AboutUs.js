@@ -122,7 +122,7 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
 
             this.appendChild(new EM.UI.BottomPageLinks({
                 name : 'links',
-                views : [EM.Views.Carrers, EM.Views.Community]
+                views : [EM.Views.Careers, EM.Views.Community]
             })).render(this.element);
 
             this.textGradient = new TextGradient(this.element.querySelector('[data-pillars-text]'), {

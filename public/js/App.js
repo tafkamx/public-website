@@ -88,7 +88,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             Router.on('/case-studies', function() {});
             Router.on('/about-us', function() {});
             Router.on('/community', function() {});
-            Router.on('/carrers', function() {});
+            Router.on('/careers', function() {});
             Router.on('/journal', function() {});
             Router.on('/lets-talk', function() {});
             Router.on('/project-planner', function() {});

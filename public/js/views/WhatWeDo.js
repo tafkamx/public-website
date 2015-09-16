@@ -110,7 +110,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
 
             this.appendChild(new EM.UI.BottomPageLinks({
                 name : 'linksWidget',
-                views : [EM.Views.AboutUs, EM.Views.Carrers]
+                views : [EM.Views.AboutUs, EM.Views.Careers]
             })).render(this.element);
 
             return this;
