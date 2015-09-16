@@ -33,5 +33,11 @@ module.exports = {
       threshold: 10240,
       minRatio: 0.8
     })
-  ]
+  ],
+
+  resolve: {
+   alias: {
+      jquery: path.join(__dirname, "/public/js/vendor/jquery.js" ),
+    }
+  }
 };

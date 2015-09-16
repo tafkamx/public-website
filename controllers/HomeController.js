@@ -19,7 +19,10 @@ var HomeController = Class('HomeController')({
     },
 
     sendProject : function(req, res, next) {
-      res.sent('200');
+      console.log(req.body)
+
+      console.log(req.files)
+      res.send('200');
     }
   }
 });

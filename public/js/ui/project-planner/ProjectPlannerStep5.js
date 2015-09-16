@@ -118,6 +118,8 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
                 {prop: 'infoHowDidYouHearAboutUs', value: this.inputInfo.getValue()},
             ];
             this.dispatch('setData', {data : data});
+
+            this.dispatch('sendForm');
             this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep6.NAME});
         },
 
