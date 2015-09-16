@@ -118,7 +118,7 @@ Class(EM.UI, 'ProjectPlannerStep1').inherits(Widget).includes(BubblingSupport)({
                 return el.classList.contains('active');
             }).map(function(el) {
                 return el.dataset.projecttype;
-            });
+            }).join(', ');
 
             var data = [{prop : 'type', value : types}];
             this.dispatch('setData', {data : data});
