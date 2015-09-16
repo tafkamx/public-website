@@ -1,5 +1,6 @@
 require('./../css/style.less');
 
+window.jQuery = window.$ = require('jquery');
 require('neon');
 require('neon/stdlib');
 require('./lib/widget');

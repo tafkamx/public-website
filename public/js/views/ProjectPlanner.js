@@ -1,7 +1,7 @@
 var CONSTANTS = require('./../lib/const');
 var Events = require('./../lib/events');
 var onTransitionEnd = require('./../lib/onTransitionEnd');
-var ProjectPlannerData = require('./../data/project-planner/registry');
+global.ProjectPlannerData = require('./../data/project-planner/registry');
 
 Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
     // NAME : 'project-planner',
@@ -64,6 +64,8 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
 
             this._setDataRef = this._setData.bind(this);
             this.bind('setData', this._setDataRef);
+
+            this.bind('sendForm', this._sendForm);
         },
 
         _showStep : function _showStep(ev) {
@@ -92,6 +94,30 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
             });
 
             console.log(ProjectPlannerData);
+        },
+
+        _sendForm : function _sendForm(ev) {
+          var formData = new FormData();
+
+          var data = ProjectPlannerData._data;
+
+          for (var property in data) {
+            if (data.hasOwnProperty(property)) {
+              formData.append(property, data[property]);
+            }
+          }
+
+          $.ajax({
+            url : '/sendProject',
+            data : formData,
+            processData : false,
+            type : 'POST',
+            // mimeType : 'multipart/form-data',
+            // contentType : 'multipart/form-data',
+            success : function(data) {
+              console.log(data)
+            }
+          });
         },
 
         _deactivate : function _deactivate() {
