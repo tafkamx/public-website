@@ -51,7 +51,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
             <section class="location-grid -row">\
                 <article class="location__item first -col-6 -full-height -rel">\
                     <h2 class="location-title -font-bold">Empathia</h2>\
-                    <div class="contact-networks -mb3">\
+                    <div class="contact-networks -mb3 -hide">\
                         <div class="contact-network -inline-block -mr1">\
                             <a href="https://medium.com" class="-block">\
                                 <svg class="-s30r -color-white"><use xlink:href="#svg-medium-icon"></use></svg>\
