@@ -28,6 +28,7 @@
     "start": "node bin/server.js",
     "dev": "webpack -d -w",
     "deploy:staging": "pm2 deploy ecosystem.json staging",
+    "deploy:production": "pm2 deploy ecosystem.json production",
     "svg": "svg-sprite -s --symbol-dest=svg --symbol-prefix=.svg- --ss=sprite.svg --si --sx --shape-id-generator=svg-%s --dest=views/shared public/svg/*.svg"
   },
   "dependencies": {
