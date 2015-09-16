@@ -53,6 +53,37 @@ body, html {
 .on-touch {display: none}
 .touch .on-touch {display: block}
 
+.mixin-links(@color) {
+  color: @color;
+  &::before {background-color: @color}
+  &:hover {color: tint(@color, 20);}
+}
+.-link {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: translateX(-100%);
+    transform: translate3d(-100%,0,0);
+    transition: transform 300ms ease;
+  }
+  &:hover::before {
+    transform: translateX(100%);
+    transform: translate3d(100%,0,0);
+  }
+}
+a {
+  &.-orange {.mixin-links(@accent-orange)}
+  &.-pink {.mixin-links(@accent-pink)}
+  &.-purple {.mixin-links(@accent-purple)}
+}
+
 @media all and (max-width: 768px) {
   :root {font-size: 10px;}
 }
