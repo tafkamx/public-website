@@ -20,7 +20,7 @@ Class(EM.UI, 'WhatWeDoDisciplines').inherits(Widget)({
                 name : 'analytics',
                 data : {
                     title : 'Analytics',
-                    description : 'We take data from our partners, analyse it and apply it to what we are doing to help make our work smarter and more effective. We want the best results. Badly'
+                    description : 'We take data from our partners, analyse it and apply it to what we are doing to help make our work smarter and more effective. We want the best results. Badly.'
                 }
             })).render(this.element);
 

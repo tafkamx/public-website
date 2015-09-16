@@ -21,7 +21,7 @@ Class(EM.Views, 'CaseStudies').inherits(Widget).includes(BubblingSupport)({
                     <h2 class="work-with-us__title -font-bold -mb1 -after-line">So what’s your vision?</h2>\
                     <p class="work-with-us__text -font-light">Let’s talk to get to know each other and discover what we can accomplish together.</p>\
                     <p class="work-with-us__text -mb3 -font-light">Get started by filling out our brief form, it’ll help us have an informed conversation with you.</p>\
-                    <button data-project-planner-btn class="ui-btn -lg -pink -pl5 -pr5 -mb2">\
+                    <button data-project-planner-btn class="ui-btn -lg -orange -pl5 -pr5 -mb2">\
                         <span class="-rel">Project Planner</span>\
                     </button>\
                     <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\

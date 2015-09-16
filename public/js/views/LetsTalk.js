@@ -10,7 +10,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
     THUMB : '/img/views/lets-talk/thumb.jpg',
     BG : '/img/views/lets-talk/bg.jpg',
     GRADIENT : '-gradient-04',
-    MENU_COLOR : CONSTANTS.COLORS.greypurple,
+    MENU_COLOR : CONSTANTS.COLORS.purple,
     TITLE : 'Let’s Talk',
     SUBTITLE : 'Are you ready?',
 
