@@ -3,9 +3,9 @@ var client = new mandrill.Mandrill(CONFIG.mandrill.key || false)
 
 var message = {
   "html" : "",
-  "subject" : "",
-  "from_email" : "notifications@crowdvoice.by",
-  "from_name"  : "CrowdVoice.by",
+  "subject" : "New entry form Project Planner",
+  "from_email" : "project-planner@empathia.agency",
+  "from_name"  : "Empathia Project Planner",
   "to" : [],
   "important" : true,
   "auto_text" : true,
@@ -13,16 +13,19 @@ var message = {
 }
 
 var ProjectPlannerMailer = Module('ProjectPlannerMailer')({
-  new : function(callback) {
+  new : function(params, callback) {
     var mailer = this;
 
-    var viewFile = fs.readFileSync('...');
+    var viewFile = fs.readFileSync('./views/mailers/projectPlanner.html', 'utf-8');
 
     var template = new Thulium({
       template : viewFile
     });
 
-    template.parseSync().renderSync({});
+
+    template.parseSync().renderSync({params : params});
+
+    console.log(template.view)
 
     var view = template.view;
 
@@ -30,14 +33,12 @@ var ProjectPlannerMailer = Module('ProjectPlannerMailer')({
     message.to = [];
 
     message.to.push({
-      "email" : ,
-      "name" : ,
+      "email" : 'hello@empathya.agency',
+      "name" : 'Empathya',
       "type" : "to"
     });
 
-    var ipPool = "Main Pool";
-
-    client,messages.send({
+    client.messages.send({
       "message" : message,
       "async" : true
     }, function(result) {
@@ -52,4 +53,6 @@ var ProjectPlannerMailer = Module('ProjectPlannerMailer')({
       callback(err);
     });
   }
-})
+});
+
+module.exports = ProjectPlannerMailer;

@@ -103,8 +103,16 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
 
           for (var property in data) {
             if (data.hasOwnProperty(property)) {
-              formData.append(property, data[property]);
+              if (data[property] !== 'supportingFiles') {
+                formData.append(property, data[property]);
+              }
             }
+          }
+
+          if (data['supportingFiles']) {
+            $.each($('input[name="upload"]')[0].files, function(i, file) {
+                formData.append('file', file);
+            });
           }
 
           $.ajax({
@@ -112,8 +120,7 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
             data : formData,
             processData : false,
             type : 'POST',
-            // mimeType : 'multipart/form-data',
-            // contentType : 'multipart/form-data',
+            contentType : false,
             success : function(data) {
               console.log(data)
             }

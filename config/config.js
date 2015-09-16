@@ -15,6 +15,16 @@ var config = {
     production: 'http://empathya.agency',
     staging : 'http://protos.empathya.agency',
     development : 'http://localhost:3000'
+  },
+
+  mandrill : {
+    key : 'mb_vfGOnZHk6j8rhEx3oLA',
+    sendEmails :  true
+  },
+
+  s3 : {
+    accessKeyId: 'AKIAJA3ESFVLE34BSCVQ',
+    secretAccessKey: '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'
   }
 };
 
