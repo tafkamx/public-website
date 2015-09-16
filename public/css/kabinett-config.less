@@ -6,7 +6,7 @@
  *  global base variables
  * =========================================================================== */
 @base-font-size: 12px;
-@root-font-size: .938vw; /* base: 1280px => ~12px */
+@root-font-size: 0.9375vw; /* base: 1280px => ~12px */
 @root-font-family: 'Graphik-Regular', sans-serif;
 @root-text-color: #293033;
 
@@ -73,8 +73,11 @@
   border-color: @border-color;
   color: @text-color;
 
-  &:hover:not(.disable) {
+  &::before {
     background-color: @border-color;
+  }
+
+  &:hover:not(.disable) {
     color: @hover-color;
   }
 }
@@ -84,12 +87,25 @@
   border-width: 1px;
   white-space: nowrap;
   overflow: hidden;
-  transition: color 60ms linear, background-color 60ms linear, opacity 400ms;
+  transition: color 60ms linear, opacity 400ms;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translate3d(0,-100%,0);
+    transform: translate(0,-100%);
+    transition: transform 180ms ease;
+  }
 
   &:active {top: 1px}
-
-  &.disable {
-    opacity: .5;
+  &.disable {opacity: .2}
+  &:hover:not(.disable)::before {
+    transform: translate3d(0,0,0);
+    transform: translate(0,0);
   }
 
   &.-md,

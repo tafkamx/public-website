@@ -21,7 +21,9 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                 <h2 class="work-with-us__title -font-bold -after-line">Do you have a new project in mind?</h2>\
                 <p class="work-with-us__text -font-light">Great! Let’s get to know each other and discover what we can accomplish together.</p>\
                 <p class="work-with-us__text -mb2 -font-light">Get started by filling out our project planner, it’ll help us have an informed conversation with you.</p>\
-                <button data-project-planner-btn class="ui-btn -lg -purple -pl5 -pr5 -mb2">Project Planner</button>\
+                <button data-project-planner-btn class="ui-btn -lg -purple -pl5 -pr5 -mb2">\
+                    <span class="-rel">Project Planner</span>\
+                </button>\
                 <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\
                 <p class="work-with-us__small -font-light">Drop us a line at partners@empathya.agency.</p>\
             </section>\

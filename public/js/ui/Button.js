@@ -1,6 +1,6 @@
 Class(EM.UI, 'Button').inherits(Widget)({
     ELEMENT_CLASS : 'ui-btn',
-    HTML : '<button></button>',
+    HTML : '<button><span class="-rel"></span></button>',
 
     prototype : {
         text : '',
@@ -10,11 +10,11 @@ Class(EM.UI, 'Button').inherits(Widget)({
             Widget.prototype.init.call(this, config);
 
             if (this.text) {
-                this.element.textContent = this.text;
+                this.element.querySelector('span').textContent = this.text;
             }
 
             if (this.html) {
-                this.element.insertAdjacentHTML('beforeend', this.html);
+                this.element.querySelector('span').insertAdjacentHTML('beforeend', this.html);
             }
         },
 

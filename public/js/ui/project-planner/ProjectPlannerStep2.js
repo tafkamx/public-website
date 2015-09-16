@@ -12,7 +12,7 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
                 <textarea class="project-planner__project-description ui-input -font-light -full-width" placeholder="Don\'t be shy :)"></textarea>\
                 <div class="project-upload-files-bar">\
                     <input type="file" name="upload" class="-hide" />\
-                    <button class="ui-btn -mini">Upload Files</button>\
+                    <button class="ui-btn -mini"><span class="-rel">Upload Files</span></button>\
                 </div>\
             </div>\
             <div class="-row -mb5">\

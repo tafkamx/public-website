@@ -12,7 +12,9 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
                     <div class="grid__bg-image -fix -full-width -full-height -img-cover"></div>\
                     <div class="grid__list -tac"></div>\
                     <footer class="grid__footer -pb4 -pr2 -pl2 -tac">\
-                        <button data-project-planner-btn class="ui-btn -pink -sm -pl3 -pr3 -mb3 -font-bold -color-white">Get started</button>\
+                        <button data-project-planner-btn class="ui-btn -pink -sm -pl3 -pr3 -mb3 -font-bold -color-white">\
+                            <span class="-rel">Get started</span>\
+                        </button>\
                         <ul class="grid__footer-list">\
                             <li class="grid__footer-list-item -inline-block -font-light">Empathia LLC est. 2014</li>\
                             <li class="grid__footer-list-item -inline-block -font-light">hello@empathya.agency</li>\

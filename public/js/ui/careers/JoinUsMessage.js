@@ -1,10 +1,4 @@
 Class(EM.UI, 'JoinUsMessage').inherits(Widget)({
-    HTML : '\
-        <div>\
-            <button class="ui-btn -lg -green -pl5 -pr5 -mb1 -hide">Apply</button>\
-        </div>\
-    ',
-
     prototype : {
         /* Jobs data [Array]
          */
@@ -14,6 +8,14 @@ Class(EM.UI, 'JoinUsMessage').inherits(Widget)({
 
         init : function init(config) {
             Widget.prototype.init.call(this, config);
+
+            /*
+            this.appendChild(new EM.UI.Button({
+                name : 'applyButton',
+                className : '-lg -green -pl5 -pr5 -mb1',
+                text : 'Apply'
+            })).render(this.element);
+            */
 
             if (this.data.jobs && this.data.jobs.length) {
                 this.appendChild(new EM.UI.JobList({

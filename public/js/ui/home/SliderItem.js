@@ -10,7 +10,7 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
                 <h1 class="em-slide__heading -font-bold"></h1>\
             </div>\
         </div>',
-    CTA_HTML : '<a href="{link}" class="ui-btn -md -pl3 -pr3 -mt2 -white">{text}</a>',
+    CTA_HTML : '<a href="{link}" class="ui-btn -md -pl3 -pr3 -mt2 -white"><span class="-rel">{text}</span></a>',
 
     prototype : {
         data : {
