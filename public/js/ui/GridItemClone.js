@@ -1,3 +1,4 @@
+var Events = require('./../lib/events');
 var inlineStyle = require('./../lib/inline-style');
 
 Class(EM.UI, 'GridItemClone').inherits(Widget)({
@@ -9,9 +10,19 @@ Class(EM.UI, 'GridItemClone').inherits(Widget)({
 
     prototype : {
         _coords: null,
+        _coordsElementReference : null,
         init : function init(config) {
             Widget.prototype.init.call(this, config);
             this.image = this.element.querySelector('[data-inner]');
+            this._bindEvents();
+        },
+
+        _bindEvents : function _bindEvents() {
+            Events.on(window, 'resize', function() {
+                if (this._coordsElementReference) {
+                    this.setCoords(this._coordsElementReference);
+                }
+            }.bind(this));
         },
 
         /* Sets the backgroundImage and gradient.
@@ -34,6 +45,7 @@ Class(EM.UI, 'GridItemClone').inherits(Widget)({
          * @return GridItemClone
          */
         setCoords : function setCoords(element) {
+            this._coordsElementReference = element;
             this._coords = element.getBoundingClientRect();
             return this;
         },
