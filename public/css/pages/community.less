@@ -81,3 +81,20 @@
   line-height: 1.800em;
   color: @color-neutral-dark;
 }
+
+@media all and (max-width: 768px) {
+  .page-community {
+    .page__intro-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .community {
+    width: 100%;
+
+    &.first {
+      padding-bottom: 0;
+    }
+  }
+}
