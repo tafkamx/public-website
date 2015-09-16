@@ -55,7 +55,7 @@
 
 /* Perks */
 .perks {
-  padding: 10rem 5em 14rem;
+  padding: 10rem 5em 8rem;
 }
 
 .perks-title {
@@ -64,7 +64,10 @@
 }
 
 .perks__item {
-  padding: 0 2rem;
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 2rem 6rem;
 
   &.hardware > .perks__item-icon > svg {
     width: 10.833rem;
@@ -144,5 +147,15 @@
 
   .were-all-phrase .on-touch {
     display: table-cell;
+  }
+
+  .perks__item {
+    width: 50%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .perks__item {
+    width: 100%;
   }
 }
