@@ -23,14 +23,14 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                 <p class="work-with-us__text -mb2 -font-light">Get started by filling out our project planner, it’ll help us have an informed conversation with you.</p>\
                 <button data-project-planner-btn class="ui-btn -lg -purple -pl5 -pr5 -mb2">Project Planner</button>\
                 <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\
-                <p class="work-with-us__small -font-light">Drop us a line at newbusiness@empathya.agency.</p>\
+                <p class="work-with-us__small -font-light">Drop us a line at partners@empathya.agency.</p>\
             </section>\
             <section class="other-things -row">\
                 <div class="ot__col -col-4">\
                     <div class="ot__image -img-cover" style="background-image: url(/img/views/lets-talk/thumbs/empathia-book-speaker.jpg)"></div>\
                     <div class="ot__content -mt3">\
                         <h2 class="ot__title -mt0 -font-semi-bold">Book Speaker / Community</h2>\
-                        <p class="ot__desc -color-neutral-dark">Thanks! We’re honored to share what we know with your audience. We’ve spoken at universities and conferences and we love it! Tell us how you’d like us to participate at community@empathia.agency.</p>\
+                        <p class="ot__desc -color-neutral-dark">Thanks! We’re honored to share what we know with your audience. We’ve spoken at universities and conferences and we love it! Tell us how you’d like us to participate at community@empathya.agency.</p>\
                     </div>\
                 </div>\
                 <div class="ot__col -col-4">\
@@ -77,7 +77,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     Colonia Americana, 44160<br/>\
                     Guadalajara, Mexico.</p>\
                     <p class="location-text">\
-                        hello@empathia.agency<br/>\
+                        hello@empathya.agency<br/>\
                         <span class="-font-semi-bold">1 (414) 175.0283</span> (International)<br/>\
                         <span class="-font-semi-bold">52 (33) 1600.2769</span> (Mexico)\
                     </p>\

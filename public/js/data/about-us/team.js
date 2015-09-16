@@ -9,7 +9,7 @@ module.exports = [
             {type : 'twitter', url : 'https://twitter.com/cuiki'},
             {type : 'medium', url : 'https://medium.com/@cuiki'}
         ],
-        bio : 'Darío is the founder and chief executive officer of Empathya. Everyone calls him Cuiki so you can go ahead and call him like that. For those of you wondering, no, there is no english origin behind his nickname.',
+        bio : 'Darío is the founder and chief executive officer of Empathia. Everyone calls him Cuiki so you can go ahead and call him like that. For those of you wondering, no, there is no english origin behind his nickname.',
     },
 
     {

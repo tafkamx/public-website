@@ -25,7 +25,7 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
                             We look for talent, passion, curiosity and conviction.<br/>\
                             But above all, for <span class="-font-bold">people who give a sh*t.</span>\
                         </h2>\
-                        <p class="page__intro-text -font-light">We really take out time hiring. It’s very hard to find talented people but it’s much harder to come by people with talent and also a genuine care for what they do and for others. At Empathya we cultivate a culture and environment that makes it easy for people with these qualities to thrive, and honestly, it’s the only kind of people we want in our staff. We all believe in the same thing and we want to keep it that way.</p>\
+                        <p class="page__intro-text -font-light">We really take out time hiring. It’s very hard to find talented people but it’s much harder to come by people with talent and also a genuine care for what they do and for others. At Empathia we cultivate a culture and environment that makes it easy for people with these qualities to thrive, and honestly, it’s the only kind of people we want in our staff. We all believe in the same thing and we want to keep it that way.</p>\
                     </div>\
                 </div>\
                 <article class="careers__image-strip -row">\

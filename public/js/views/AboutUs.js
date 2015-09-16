@@ -89,7 +89,7 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
                     <p class="work-with-us__text -mb2 -font-light">Get started by filling out our brief form, it’ll help us have an informed conversation with you.</p>\
                     <button data-project-planner-btn class="ui-btn -lg -pink -pl5 -pr5 -mb2">Project Planner</button>\
                     <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\
-                    <p class="work-with-us__small -font-light">Drop us a line at newbusiness@empathya.agency.</p>\
+                    <p class="work-with-us__small -font-light">Drop us a line at partners@empathya.agency.</p>\
                 </section>\
             </div>\
         </section>',
