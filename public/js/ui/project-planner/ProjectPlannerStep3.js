@@ -40,27 +40,16 @@ Class(EM.UI, 'ProjectPlannerStep3').inherits(Widget).includes(BubblingSupport)({
                 name : 'nextButton',
                 className : '-md -neutral-dark -pl5 -pr5 -mb1',
                 html : 'Next&nbsp;&nbsp;›'
-            })).render(this.element.querySelector('[data-next-btn-container]')).disable();
+            })).render(this.element.querySelector('[data-next-btn-container]'));
             return this;
         },
 
         _bindEvents : function _bindEvents() {
-            this._updateButtonStateRef = this._updateButtonState.bind(this);
-            Events.on(this.inputDeadline.element, 'keyup', this._updateButtonStateRef);
-
             this._backButtonClickHandlerRef = this._backButtonClickHandler.bind(this);
             Events.on(this.backButton.element, 'click', this._backButtonClickHandlerRef);
 
             this._nextButtonClickHandlerRef = this._nextButtonClickHandler.bind(this);
             Events.on(this.nextButton.element, 'click', this._nextButtonClickHandlerRef);
-        },
-
-        _updateButtonState : function _updateButtonState() {
-            if (this.inputDeadline.element.value.trim().length >= 3) {
-                return this.nextButton.enable();
-            }
-
-            this.nextButton.disable();
         },
 
         _backButtonClickHandler : function _backButtonClickHandler() {
@@ -74,9 +63,6 @@ Class(EM.UI, 'ProjectPlannerStep3').inherits(Widget).includes(BubblingSupport)({
         },
 
         destroy : function destroy() {
-            Events.off(this.inputDeadline.element, 'keyup', this._updateButtonStateRef);
-            this._updateButtonStateRef = null;
-
             Events.off(this.backButton.element, 'click', this._backButtonClickHandlerRef);
             this._backButtonClickHandlerRef = null;
 
