@@ -7,6 +7,9 @@ Class(EM.UI, 'GalleryThumb').inherits(Widget).includes(BubblingSupport)({
     prototype : {
         item : null,
         index : 0,
+
+        _offsetLeft : null,
+
         init : function init(config) {
             Widget.prototype.init.call(this, config);
             this.element.setAttribute('src', EM.UI.GalleryThumb.IMAGE_BASE_PATH + this.item.thumb);
@@ -14,8 +17,16 @@ Class(EM.UI, 'GalleryThumb').inherits(Widget).includes(BubblingSupport)({
             Events.on(this.element, 'click', this._clickHandlerRef);
         },
 
-        getRects : function getRects() {
-            return this.element.getBoundingClientRect();
+        getOffsetLeft : function getOffsetLeft() {
+            var left = this._offsetLeft;
+            if (!this._offsetLeft) {
+                left = this.element.offsetLeft;
+            }
+            return left;
+        },
+
+        reset : function reset() {
+            this._offsetLeft = null;
         },
 
         _clickHandler : function _clickHandler() {

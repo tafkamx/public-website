@@ -1,17 +1,4 @@
 .about-us__pillars-text,
-.about-us__team {
-  padding: 5rem;
-}
-
-.about-us__pillars-text,
-.about-us__pillars,
-.about-us__team,
-.about-us__team-gallery-details {
-  width: 89%;
-  margin: 0 auto;
-}
-
-.about-us__pillars-text,
 .about-us__pillars {
   padding-bottom: 10rem;
 }
@@ -62,6 +49,8 @@
 .about-us__team-gallery-details {
   overflow: hidden;
   height: 43.333em;
+  padding-top: 0;
+  padding-bottom: 0;
   transform: translate3d(0, 0, 0);
 }
 
@@ -139,9 +128,10 @@
   border: 1px solid transparent;
 }
 
-@media all and (max-width: 768px) {
-  .about-us__team-gallery-info {
-    padding-top: 5rem;
+@media all and (min-width: 1440px) {
+  .about-us__team-gallery-thumb-active-indicator,
+  .about-us__team-gallery-thumb {
+    width: 14.28%;
   }
 }
 
@@ -169,5 +159,11 @@
 
   .about-us__pillars-text, .about-us__pillars {
     padding-bottom: 5rem;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .about-us__team-gallery-info {
+    padding-top: 5rem;
   }
 }

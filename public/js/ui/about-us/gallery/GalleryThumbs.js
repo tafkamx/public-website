@@ -2,13 +2,13 @@ var inlineStyle = require('./../../../lib/inline-style');
 var Events = require('./../../../lib/events');
 
 Class(EM.UI, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
-    ELEMENT_CLASS : 'about-us__team-gallery-thumbs-wrapper',
+    ELEMENT_CLASS : 'about-us__team-gallery-thumbs-wrapper page__container',
     HTML : '\
         <div>\
             <div class="about-us__team-gallery-thumbs -rel">\
                 <div class="about-us__team-gallery-thumb-active-indicator">\
-                    <svg viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet">\
-                        <rect x="0" y="0" width="100%" height="100%" stroke="url(#gradient-4b)" fill="transparent"></rect>\
+                    <svg viewBox="0 0 100 100">\
+                        <rect x="0" y="0" width="100%" height="100%" stroke-width="2" stroke="url(#gradient-4b)" vector-effect="non-scaling-stroke" fill="transparent"></rect>\
                     </svg>\
                 </div>\
             </div>\
@@ -39,16 +39,15 @@ Class(EM.UI, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
         },
 
         _bindEvents : function _bindEvents() {
-            this._updateIndicatorPositionRef = this._updateIndicatorPosition.bind(this);
-            Events.on(window, 'resize', this._updateIndicatorPositionRef);
+            this._resizeHandlerRef = this._resizeHandler.bind(this);
+            Events.on(window, 'resize', this._resizeHandlerRef);
         },
 
         /* Activate a thumb by index.
          * @method select <public>
          */
         select : function select(index) {
-            // this.deselectAll();
-            this._currentActive = this.children[index];//.activate();
+            this._currentActive = this.children[index];
             this._updateIndicatorPosition();
             return this;
         },
@@ -63,13 +62,19 @@ Class(EM.UI, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
             return this;
         },
 
+        _resizeHandler : function _resizeHandler() {
+            this.children.forEach(function(child) {
+                child.reset();
+            });
+            this._updateIndicatorPosition();
+        },
+
         _updateIndicatorPosition : function _updateIndicatorPosition() {
             if (!this._currentActive) {
                 return;
             }
 
-            var rects = this._currentActive.getRects();
-            var left = ~~rects.left;
+            var left = ~~this._currentActive.getOffsetLeft();
             inlineStyle(this.indicator, {
                 msTransform: 'translateX(' + left + 'px)',
                 webkitTransform: 'translateX(' + left + 'px)',
@@ -79,8 +84,8 @@ Class(EM.UI, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
 
         destroy : function destroy() {
             Widget.prototype.destroy.call(this);
-            Events.off(window, 'resize', this._updateIndicatorPositionRef);
-            this._updateIndicatorPositionRef = null;
+            Events.off(window, 'resize', this._resizeHandlerRef);
+            this._resizeHandlerRef = null;
             return null;
         }
     }

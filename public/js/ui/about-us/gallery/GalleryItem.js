@@ -5,7 +5,7 @@ Class(EM.UI, 'GalleryItem').inherits(Widget)({
             <div class="about-us__team-gallery-photo -rel -full-height -col-6 -tac">\
                 <img class="about-us__team-gallery-photo-img -full-height"/>\
             </div>\
-            <div class="about-us__team-gallery-info -col-6 -pl2 -rel">\
+            <div class="about-us__team-gallery-info -col-6 -pl2 -pr5 -rel">\
                 <p class="about-us__team-gallery-info-name -font-medium"></p>\
                 <p class="about-us__team-gallery-info-title -mb1"></p>\
                 <div data-networks class="-mb1"></div>\

@@ -18,17 +18,17 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
         <section>\
             <div class="page__body">\
                 <div class="page__intro-wrapper -color-bg-neutral-xx-light">\
-                    <div class="page__intro -tac">\
+                    <div class="page__intro page__container -p5 -tac">\
                         <h2 class="page__body-title -font-bold">Why We Exist</h2>\
                         <p class="page__intro-text -font-light">This is a crowded industry with many companies competing in the digital environment, but very few of them providing value creation with the products and services they make. <span class="-color-purple">Our process is important and very good</span>, but what really places us in a tiny group of awesome firms is that we seek to ask the right questions before attempting to find an answer. We are a talented group of awesome people on a life mission to make people’s lives better through design and innovation. Fuel partners whom we believe in and that combine profit and purpose. Together we can make things that are beneficial and valuable to the world.\
                         <br/><span class="-font-bold">We believe in a world where things work better.</span></p>\
                     </div>\
                 </div>\
-                <div class="about-us__pillars-text -tac">\
+                <div class="about-us__pillars-text page__container -p5 -tac">\
                     <h2 data-pillars-text class="page__body-title -font-extra-light -noafter -m0">Our Four Pillars</h2>\
                     <p class="font-medium-size -font-light">We care about people and the world we live in as much as our partners do. They work with us because of the strong commitment we feel for their goals, dreams and aspirations. The guiding principles that allow us to support and build these long-lasting relationships dictate what decisions we make.</p>\
                 </div>\
-                <div class="about-us__pillars -tac -row">\
+                <div class="about-us__pillars page__container -p5 -tac -row">\
                     <div class="pillars-principle-col -col-4 -tar">\
                         <div class="principle principle__a">\
                             <p class="principle__title">Human Centered</p>\
@@ -65,7 +65,7 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
                     </div>\
                 </div>\
                 <section class="about-us__testimonial -color-bg-neutral-xx-dark -color-white">\
-                    <blockquote class="testimonial-blockquote -rel">\
+                    <blockquote class="testimonial-blockquote page__container -rel">\
                         <svg class="testimonial-quote -abs">\
                             <use xlink:href="#svg-quotes"></use>\
                         </svg>\
@@ -78,12 +78,12 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
                         </footer>\
                     </blockquote>\
                 </section>\
-                <div class="about-us__team -tac">\
+                <div class="about-us__team page__container -p5 -tac">\
                     <h2 data-pleasure-text class="page__body-title -font-extra-light -noafter -m0">Pleasure To Meet You!</h2>\
                     <p class="font-medium-size -font-light">Our team is made of problem-solving designers, engineers, managers and business strategists but we’re also scientists, musicians, artists, travelers and athletes. We bring quality, culture and taste into what we do.</p>\
                 </div>\
                 <div class="about-us__team-gallery -row"></div>\
-                <section class="work-with-us -tac">\
+                <section class="work-with-us page__container -tac">\
                     <h2 class="work-with-us__title -font-bold">So what’s your vision?</h2>\
                     <p class="work-with-us__text -font-light">Let’s talk to get to know each other and discover what we can accomplish together.</p>\
                     <p class="work-with-us__text -mb2 -font-light">Get started by filling out our brief form, it’ll help us have an informed conversation with you.</p>\

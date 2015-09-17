@@ -1,5 +1,5 @@
 Class(EM.UI, 'GalleryItems').inherits(Widget)({
-    ELEMENT_CLASS : '-full-height about-us__team-gallery-details -rel',
+    ELEMENT_CLASS : '-full-height about-us__team-gallery-details -rel page__container',
     prototype : {
         items : null,
         init : function init(config) {
