@@ -23,6 +23,7 @@ Class(EM, 'PagesManager').inherits(Widget).includes(BubblingSupport)({
 
         renderView : function renderView(view) {
             if (this.parent.grid[view.name]) {
+                this.parent.grid.activateItem(view.name);
                 this.parent.cover.setCoords(this.parent.grid[view.name].imageElement);
                 this.parent.cover.setImage(view.constructor);
             }

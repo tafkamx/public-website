@@ -2,23 +2,21 @@ var GeminiScrollbar = require('gemini-scrollbar');
 var Events = require('./../lib/events');
 
 Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
-    ELEMENT_CLASS : 'grid -fix',
+    ELEMENT_CLASS : 'grid -abs',
     HTML : '\
         <div>\
+            <div class="grid__bg-image -abs -full-width -full-height -img-cover"></div>\
             <div class="grid__inner -full-height">\
                 <div class="gm-scrollbar -vertical"><span class="thumb"></span></div>\
                 <div class="gm-scrollbar -horizontal"><span class="thumb"></span></div>\
                 <div class="gm-scroll-view">\
-                    <div class="grid__bg-image -fix -full-width -full-height -img-cover"></div>\
                     <div class="grid__list -tac"></div>\
                     <footer class="grid__footer -pb4 -pr2 -pl2 -tac">\
-                        <button data-project-planner-btn class="ui-btn -pink -sm -pl3 -pr3 -mb3 -font-bold -color-white">\
-                            <span class="-rel">Get started</span>\
+                        <button data-project-planner-btn class="ui-btn -pink -sm -pl3 -pr3 -mb2 -font-bold -color-white">\
+                            <span class="-rel">Get Started!</span>\
                         </button>\
                         <ul class="grid__footer-list">\
-                            <li class="grid__footer-list-item -inline-block -font-light">Empathia LLC est. 2014</li>\
                             <li class="grid__footer-list-item -inline-block -font-light">hello@empathya.agency</li>\
-                            <li class="grid__footer-list-item -inline-block -font-light">1 (414) 175.0283 (International)</li>\
                             <li class="grid__footer-list-item -inline-block -font-light last">52 (33) 1600.2769 (Mexico)</li>\
                         </ul>\
                     </footer>\
@@ -97,6 +95,14 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
                 createElements : false,
                 autoshow : true
             }).create();
+        },
+
+        activateItem : function activateItem(itemName) {
+            this.children.forEach(function(child) {
+                child.deactivate();
+            }, this);
+
+            this[itemName].activate();
         },
 
         _bindEvents : function _bindEvents() {
