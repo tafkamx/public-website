@@ -46,6 +46,14 @@ Class(EM, 'PagesManager').inherits(Widget).includes(BubblingSupport)({
 
         getCurrent : function getCurrent() {
             return this._current;
+        },
+
+        disableScrollbars : function disableScrollbars() {
+            this.element.style.visibility = 'hidden';
+        },
+
+        enableScrollbars : function enableScrollbars() {
+            this.element.style.visibility = '';
         }
     }
 });

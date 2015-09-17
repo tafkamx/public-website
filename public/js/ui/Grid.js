@@ -9,7 +9,7 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
             <div class="grid__inner -full-height">\
                 <div class="gm-scrollbar -vertical"><span class="thumb"></span></div>\
                 <div class="gm-scrollbar -horizontal"><span class="thumb"></span></div>\
-                <div class="gm-scroll-view">\
+                <div class="gm-scroll-view -full-height">\
                     <div class="grid__list -tac"></div>\
                     <footer class="grid__footer -pb4 -pr2 -pl2 -tac">\
                         <button data-project-planner-btn class="ui-btn -pink -sm -pl3 -pr3 -mb2 -font-bold -color-white">\

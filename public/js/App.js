@@ -72,6 +72,14 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this._gridItemClickeHandlerRef = this._gridItemClickeHandler.bind(this);
             EM.UI.GridItem.bind('itemClicked', this._gridItemClickeHandlerRef);
 
+            this.grid.bind('activate', function() {
+                this.pages.disableScrollbars();
+            }.bind(this));
+
+            this.grid.bind('deactivate', function() {
+                this.pages.enableScrollbars();
+            }.bind(this));
+
             return this;
         },
 
