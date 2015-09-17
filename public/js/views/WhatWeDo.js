@@ -18,29 +18,35 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
         <section>\
             <div class="page__body">\
-                <div class="page__intro -tac -pb5 -pt5">\
-                    <h2 class="page__body-title -font-bold">The user’s experience is wrapped around everything we do.</h2>\
-                    <p class="page__intro-text -font-light">As engineers, designers and managers, we master strategic disciplines that are applied every day – individually and as a team – across the offerings we provide. Through these we turn meaningful ideas into innovative digital solutions with a permanent perspective of achieving the most positive experience possible for the people that use them. Yes, all of us have UX in our heads all the time.</p>\
-                </div>\
-                <section class="what-we-do__disciplines-wrapper"></section>\
-                <section class="what-we-do__offerings-wrapper -color-bg-neutral-xx-dark">\
-                    <div class="page__intro -pb5 -pt5">\
-                        <div data-section="offerings" class="-tac">\
-                            <h2 class="page__body-title -font-bold">Offerings</h2>\
-                            <p class="page__intro-text -font-light">All these disciplines go into the things we create with our partners. The innovative mediums that help them grow and accomplish their goals. They can be operational, educational, social-focused or just to have fun.</p>\
-                        </div>\
+                <div class="page__container">\
+                    <div class="page__intro -tac -p5">\
+                        <h2 class="page__body-title -font-bold">The user’s experience is wrapped around everything we do.</h2>\
+                        <p class="page__intro-text -font-light">As engineers, designers and managers, we master strategic disciplines that are applied every day – individually and as a team – across the offerings we provide. Through these we turn meaningful ideas into innovative digital solutions with a permanent perspective of achieving the most positive experience possible for the people that use them. Yes, all of us have UX in our heads all the time.</p>\
                     </div>\
-                </section>\
-                <section class="work-with-us -tac">\
-                    <h2 class="work-with-us__title -font-bold -after-line">So what’s your vision?</h2>\
-                    <p class="work-with-us__text -font-light">Let’s talk to get to know each other and discover what we can accomplish together.</p>\
-                    <p class="work-with-us__text -mb2 -font-light">Get started by filling out our brief form, it’ll help us have an informed conversation with you.</p>\
-                    <button data-project-planner-btn class="ui-btn -lg -pink -pl5 -pr5 -mb2">\
-                        <span class="-rel">Project Planner</span>\
-                    </button>\
-                    <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\
-                    <p class="work-with-us__small -font-light">Drop us a line at <a class="-link -pink" href="mailto:partners@empathya.agency" tartget="_blank">partners@empathya.agency</a>.</p>\
-                </section>\
+                    <section class="what-we-do__disciplines-wrapper"></section>\
+                </div>\
+                <div class="-color-bg-neutral-xx-dark">\
+                    <section class="what-we-do__offerings-wrapper page__container">\
+                        <div class="page__intro -pb5 -pt5">\
+                            <div data-section="offerings" class="-tac">\
+                                <h2 class="page__body-title -font-bold">Offerings</h2>\
+                                <p class="page__intro-text -font-light">All these disciplines go into the things we create with our partners. The innovative mediums that help them grow and accomplish their goals. They can be operational, educational, social-focused or just to have fun.</p>\
+                            </div>\
+                        </div>\
+                    </section>\
+                </div>\
+                <div class="page__container">\
+                    <section class="work-with-us -tac">\
+                        <h2 class="work-with-us__title -font-bold -after-line">So what’s your vision?</h2>\
+                        <p class="work-with-us__text -font-light">Let’s talk to get to know each other and discover what we can accomplish together.</p>\
+                        <p class="work-with-us__text -mb2 -font-light">Get started by filling out our brief form, it’ll help us have an informed conversation with you.</p>\
+                        <button data-project-planner-btn class="ui-btn -lg -pink -pl5 -pr5 -mb2">\
+                            <span class="-rel">Project Planner</span>\
+                        </button>\
+                        <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\
+                        <p class="work-with-us__small -font-light">Drop us a line at <a class="-link -pink" href="mailto:partners@empathya.agency" tartget="_blank">partners@empathya.agency</a>.</p>\
+                    </section>\
+                </div>\
             </div>\
         </section>',
 
