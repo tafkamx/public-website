@@ -16,13 +16,13 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
         <section>\
             <div class="page__body">\
                 <div class="page__intro-wrapper -color-bg-neutral-xx-light">\
-                    <div class="page__intro -tac">\
+                    <div class="page__intro page__container -pl5 -pr5 -tac">\
                         <h2 class="page__body-title -font-bold">We Love This Town</h2>\
                         <p class="page__intro-text -font-light">And we love to see it grow with us. Guadalajara is becoming a strong technological and innovation hub. Potentially the biggest in the country and one of the most important in Latin America. There’s lots of talent pumped and hungry for doing new things and solve real problems. We believe that those of us who have had the opportunity to access and work with challenging cultures and markets around the world should be the ones who provide the guidance that newcomers need. So we’ve taken on a parallel mission to share all the knowledge and experience we have with the community.</p>\
                     </div>\
                 </div>\
             </div>\
-            <section class="communities -row">\
+            <section class="communities page__container -row">\
                 <div class="community first -tac -col-6">\
                     <div class="community__logo" style="background-image: url(/img/views/community/communities/hackers-and-founders-logo.jpg);"></div>\
                     <p class="community__title -font-light">Hackers & Founders</p>\
@@ -42,8 +42,8 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
                     </div>\
                 </div>\
             </section>\
-            <section class="collage -row"></section>\
-            <section class="hop-on -tac">\
+            <section class="collage page__container -row"></section>\
+            <section class="hop-on page__container -tac">\
                 <h2 class="hop-on__title -font-bold -mt0">Hop on!</h2>\
                 <p class="hop-on__desc -font-light">If you want to help out or learn more about these efforts don’t hesitate and contact us or go to either of the communities’ sites! All help is greatly appreciated.</p>\
             </section>\
