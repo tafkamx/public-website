@@ -20,7 +20,7 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
         <section>\
             <div class="page__body">\
                 <div class="page__intro-wrapper -color-bg-neutral-xx-light">\
-                    <div class="page__intro -tac">\
+                    <div class="page__intro page__container -pl5 -pr5 -tac">\
                         <h2 class="page__body-title -font-extra-light">\
                             We look for talent, passion, curiosity and conviction.<br/>\
                             But above all, for <span class="-font-bold">people who give a sh*t.</span>\
@@ -35,7 +35,7 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
                     <div class="image-strip"></div>\
                     <div class="image-strip"></div>\
                 </article>\
-                <section class="careers__were-all">\
+                <section class="careers__were-all page__container -pl5 -pr5">\
                     <article data-snap data-name="designers" class="were-all-item -row -vh">\
                         <div class="were-all-phrase -col-6 -table -vh">\
                             <div class="-table-cell -vam on-touch">\
@@ -89,39 +89,41 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
                         </div>\
                     </article>\
                 </section>\
-                <section class="perks -color-bg-neutral-xx-light -tac">\
-                    <h2 data-perks-text class="perks-title -font-light">Perks You’ll Like</h2>\
-                    <div class="perks__list -row">\
-                        <div class="perks__item -tac -col-3">\
-                            <div class="perks__item-icon">\
-                                <svg fill="url(#gradient-1)" class="-s100r"><use xlink:href="#svg-document"></use></svg>\
+                <div class="-color-bg-neutral-xx-light">\
+                    <section class="perks page__container -tac">\
+                        <h2 data-perks-text class="perks-title -font-light">Perks You’ll Like</h2>\
+                        <div class="perks__list -row">\
+                            <div class="perks__item -tac -col-3">\
+                                <div class="perks__item-icon">\
+                                    <svg fill="url(#gradient-1)" class="-s100r"><use xlink:href="#svg-document"></use></svg>\
+                                </div>\
+                                <p class="perk-title -mb1 -mt2 -font-bold">Legal Benefits</p>\
+                                <p class="perk-desc -color-neutral-light">Social Security (IMSS), State savings plan (Infonavit), retirement plan, yearly bonus, etc.</p>\
                             </div>\
-                            <p class="perk-title -mb1 -mt2 -font-bold">Legal Benefits</p>\
-                            <p class="perk-desc -color-neutral-light">Social Security (IMSS), State savings plan (Infonavit), retirement plan, yearly bonus, etc.</p>\
-                        </div>\
-                        <div class="perks__item -tac -col-3">\
-                            <div class="perks__item-icon">\
-                                <svg fill="url(#gradient-2)" class="-s100r"><use xlink:href="#svg-coconut"></use></svg></div>\
-                            <p class="perk-title -mb1 -mt2 -font-bold">Paid Time Off</p>\
-                            <p class="perk-desc -color-neutral-light">10 paid holidays, 10 days of paid vacations and 5 paid sick days every year.</p>\
-                        </div>\
-                        <div class="perks__item -tac -col-3">\
-                            <div class="perks__item-icon">\
-                                <svg fill="url(#gradient-3)" class="-s100r"><use xlink:href="#svg-paper-jet"></use></svg>\
+                            <div class="perks__item -tac -col-3">\
+                                <div class="perks__item-icon">\
+                                    <svg fill="url(#gradient-2)" class="-s100r"><use xlink:href="#svg-coconut"></use></svg></div>\
+                                <p class="perk-title -mb1 -mt2 -font-bold">Paid Time Off</p>\
+                                <p class="perk-desc -color-neutral-light">10 paid holidays, 10 days of paid vacations and 5 paid sick days every year.</p>\
                             </div>\
-                            <p class="perk-title -mb1 -mt2 -font-bold">Travel Allowance</p>\
-                            <p class="perk-desc -color-neutral-light">80,000 km per year via the Skyteam/Aeromexico Premier membership plan.</p>\
-                        </div>\
-                        <div class="perks__item hardware -tac -col-3">\
-                            <div class="perks__item-icon">\
-                                <svg fill="url(#gradient-4)"><use xlink:href="#svg-screen"></use></svg>\
+                            <div class="perks__item -tac -col-3">\
+                                <div class="perks__item-icon">\
+                                    <svg fill="url(#gradient-3)" class="-s100r"><use xlink:href="#svg-paper-jet"></use></svg>\
+                                </div>\
+                                <p class="perk-title -mb1 -mt2 -font-bold">Travel Allowance</p>\
+                                <p class="perk-desc -color-neutral-light">80,000 km per year via the Skyteam/Aeromexico Premier membership plan.</p>\
                             </div>\
-                            <p class="perk-title -mb1 -mt2 -font-bold">Apple Love</p>\
-                            <p class="perk-desc -color-neutral-light">Everyone is hooked up with a personal Macbook Pro and a Thunderbolt Display.</p>\
+                            <div class="perks__item hardware -tac -col-3">\
+                                <div class="perks__item-icon">\
+                                    <svg fill="url(#gradient-4)"><use xlink:href="#svg-screen"></use></svg>\
+                                </div>\
+                                <p class="perk-title -mb1 -mt2 -font-bold">Apple Love</p>\
+                                <p class="perk-desc -color-neutral-light">Everyone is hooked up with a personal Macbook Pro and a Thunderbolt Display.</p>\
+                            </div>\
                         </div>\
-                    </div>\
-                </section>\
-                <section class="join-us -tac">\
+                    </section>\
+                </div>\
+                <section class="join-us page__container -tac">\
                     <p data-believe-text class="join-us__subtitle -m0 -font-light">Do you believe what we believe?</p>\
                     <h2 class="join-us__title -mt0 -font-bold">Come join us!</h2>\
                 </section>\
