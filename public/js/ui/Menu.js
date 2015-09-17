@@ -7,7 +7,7 @@
 var Events = require('./../lib/events');
 
 Class(EM.UI, 'Menu').inherits(Widget)({
-    ELEMENT_CLASS : 'menu -fix -clickable',
+    ELEMENT_CLASS : 'menu -abs -clickable',
     HTML : '\
         <div>\
             <svg class="menu__svg" viewBox="0 0 40 40">\
