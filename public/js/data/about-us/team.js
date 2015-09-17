@@ -20,7 +20,7 @@ module.exports = [
         networks : [
             {type : 'github', url : 'https://github.com/sgarza'},
             {type : 'twitter', url : 'https://twitter.com/sgarza'},
-            {type : 'soundcloud', url : 'soundcloud.com/sergio-de-la-garza-palacios'}
+            {type : 'soundcloud', url : 'https://soundcloud.com/sergio-de-la-garza-palacios'}
         ],
         bio : 'Hi! There’s a lot of things I enjoy, but must of all I love my family, the work I do and music. I enjoy contributing to our city’s IT ecosystem, as a member of H/F ProDev. I’m always looking for ways to help other people to improve their skills and to give them the tools and knowledge to be better engineers. I’m also a musician and sometimes I cover a song. Every once in a while I feel brave enough to make one of my own, so stop by my SoundCloud page and leave me a comment!'
     },
