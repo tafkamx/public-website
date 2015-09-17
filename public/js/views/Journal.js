@@ -15,7 +15,7 @@ Class(EM.Views, 'Journal').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
         <section>\
             <article class="journal__menu"></article>\
-            <section class="journal__posts -tac">\
+            <section class="journal__posts page__container -pl5 -pr5 -tac">\
                 <svg class="-s32r -mt4 -color-neutral-dark">\
                     <use xlink:href="#svg-medium-icon"></use>\
                 </svg>\
