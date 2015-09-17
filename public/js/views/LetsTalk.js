@@ -84,10 +84,10 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                         <span class="-font-semi-bold">52 (33) 1600.2769</span> (Mexico)\
                     </p>\
                     <div class="location-time -fsi">\
-                        <svg class="location-time-svg -s16r -color-white">\
+                        <svg class="location-time-svg -abs -s16r -color-white">\
                             <use xlink:href="#svg-clock"></use>\
                         </svg>\
-                        <p class="location-time-text -inline-block"></p>\
+                        <p class="location-time-text -inline-block -ml2"></p>\
                     </div>\
                 </article>\
                 <article class="location__item -col-6 -full-height -rel">\
