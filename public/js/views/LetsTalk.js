@@ -17,7 +17,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'page page-lets-talk',
     HTML : '\
         <section>\
-            <section class="work-with-us -tac">\
+            <section class="work-with-us page__container -tac">\
                 <h2 class="work-with-us__title -font-bold -after-line">Do you have a new project in mind?</h2>\
                 <p class="work-with-us__text -font-light">Great! Let’s get to know each other and discover what we can accomplish together.</p>\
                 <p class="work-with-us__text -mb2 -font-light">Get started by filling out our project planner, it’ll help us have an informed conversation with you.</p>\
@@ -27,7 +27,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                 <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\
                 <p class="work-with-us__small -font-light">Drop us a line at <a class="-link -purple" href="mailto:partners@empathya.agency" target="_blank">partners@empathya.agency</a>.</p>\
             </section>\
-            <section class="other-things -row">\
+            <section class="other-things page__container -row">\
                 <div class="ot__col -col-4">\
                     <div class="ot__image -img-cover" style="background-image: url(/img/views/lets-talk/thumbs/empathia-book-speaker.jpg)"></div>\
                     <div class="ot__content -mt3">\
