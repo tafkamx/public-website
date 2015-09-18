@@ -20,6 +20,10 @@
     "NodeSupport",
     "CustomEventSupport",
     "BubblingSupport",
-    "Widget"
+    "Widget",
+    "CONFIG",
+    "Thulium",
+    "fs",
+    "logger"
   ]
 }
