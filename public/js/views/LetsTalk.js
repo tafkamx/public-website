@@ -91,7 +91,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     </div>\
                 </article>\
                 <article class="location__item -col-6 -full-height -rel">\
-                    <div class="contact-map -abs -color-bg-neutral-xx-light"></div>\
+                    <div class="contact-map -abs "></div>\
                 </article>\
             </section>\
         </section>',
@@ -203,6 +203,9 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                 position: {lat: 20.6697775, lng: -103.3635804},
                 map: this._map,
                 icon: image
+            });
+            google.maps.event.addListenerOnce(this._map, 'tilesloaded', function(){
+                mapCanvas.style.backgroundImage = 'none';
             });
         },
 
