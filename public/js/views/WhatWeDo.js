@@ -44,7 +44,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                             <span class="-rel">Project Planner</span>\
                         </button>\
                         <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\
-                        <p class="work-with-us__small -font-light">Drop us a line at <a class="-link -pink" href="mailto:partners@empathya.agency" tartget="_blank">partners@empathya.agency</a>.</p>\
+                        <p class="work-with-us__small -font-light">Drop us a line at <a class="-link -pink" href="mailto:partners@empathia.agency" tartget="_blank">partners@empathia.agency</a>.</p>\
                     </section>\
                 </div>\
             </div>\
