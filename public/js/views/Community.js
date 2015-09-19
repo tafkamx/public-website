@@ -26,7 +26,7 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
                 <div class="community first -tac -col-6">\
                     <div class="community__logo" style="background-image: url(/img/views/community/communities/hackers-and-founders-logo.jpg);"></div>\
                     <p class="community__title -font-light">Hackers & Founders</p>\
-                    <p class="community__url">www.hfgdl.com</p>\
+                    <a class="community__url -link -orange" href="http://www.hf.cx/" target="_blank">www.hf.cx</a>\
                     <div class="community__content -mt3">\
                         <p class="-mb2">The Hackers & Founders community is huge with over 200,000 members in 104 cities around the world. Our mission is to make the lives of entrepreneurs suck less. The monthly meetups are events to learn about the ventures of other local entrepreneurs, pitch new ideas, network and find potential co-founders, team members and seed investment.</p>\
                         <p>However, in Guadalajara, we still need to up our game so we created and lead H/F chapters focused on UX and high level development in addition to the regular H/F meetups. Through these chapers called H/F UX and H/F ProDev, we host monthly events around the city focused on education to share with the community specialized knowledge that will help them accomplish their goals faster and with less risk.</p>\
