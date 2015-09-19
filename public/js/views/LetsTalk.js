@@ -39,7 +39,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     <div class="ot__image -img-cover" style="background-image: url(/img/views/lets-talk/thumbs/empathia-work-station.jpg)"></div>\
                     <div class="ot__content -mt3">\
                         <h2 class="ot__title -mt0 -font-semi-bold">Work at Empathia</h2>\
-                        <p class="ot__desc -color-neutral-dark">We’re always looking to meet talented mission-driven people. If you know you can bring awesome things, then, for more information on how to apply for a position you should visit our Careers page.</p>\
+                        <p class="ot__desc -color-neutral-dark">We’re always looking to meet talented mission-driven people. If you know you can bring awesome things, then, for more information on how to apply for a position you should visit our <a data-careers-btn class="-link -purple" href="careers" onclick="return false">Careers page.</a></p>\
                     </div>\
                 </div>\
                 <div class="ot__col -col-4">\
@@ -79,9 +79,8 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     Colonia Americana, 44160<br/>\
                     Guadalajara, Mexico.</p>\
                     <p class="location-text">\
-                        hello@empathya.agency<br/>\
-                        <span class="-font-semi-bold">1 (414) 175.0283</span> (International)<br/>\
-                        <span class="-font-semi-bold">52 (33) 1600.2769</span> (Mexico)\
+                        <a class="-link " href="mailto:hello@empathia.agency" target="blank_">hello@empathya.agency</a><br/>\
+                        <span class="-font-semi-bold">52 (33) 1600.2769</span>\
                     </p>\
                     <div class="location-time -fsi">\
                         <svg class="location-time-svg -abs -s16r -color-white">\
@@ -142,6 +141,9 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
         _bindEvents : function _bindEvents() {
             this._projectPlannerBtnClickHandlerRef = this._projectPlannerBtnClickHandler.bind(this);
             Events.on(this.element.querySelector('[data-project-planner-btn]'), 'click', this._projectPlannerBtnClickHandlerRef);
+            
+            this._careersBtnClickHandlerRef = this._careersBtnClickHandle.bind(this);
+            Events.on(this.element.querySelector('[data-careers-btn]'),'click', this._careersBtnClickHandlerRef);
 
             this._updateLocaleTimeRef = this._updateLocaleTime.bind(this);
             this._updateLocaleTime();
@@ -187,6 +189,11 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
          */
         _projectPlannerBtnClickHandler : function _projectPlannerBtnClickHandler() {
             this.dispatch('showProjectPlanner');
+        },
+        _careersBtnClickHandle : function _projectPlannerBtnClickHandler(){
+            this.dispatch('updateRoute', {
+                route: '/careers'
+            });
         },
 
         _createMap : function _createMap() {
