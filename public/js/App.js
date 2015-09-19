@@ -171,6 +171,14 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
 
             ev.stopPropagation();
 
+            if (this.grid.active) {
+                this._menuClickHandler();
+            }
+
+            if (Router.getPath() === ev.route) {
+                return;
+            }
+
             if (this.pageLoader) {
                 this.pageLoader = this.pageLoader.destroy();
             }

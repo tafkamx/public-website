@@ -6,11 +6,11 @@
  */
 var Events = require('./../lib/events');
 
-Class(EM.UI, 'Menu').inherits(Widget)({
-    ELEMENT_CLASS : 'menu -abs -clickable',
+Class(EM.UI, 'Menu').inherits(Widget).includes(BubblingSupport)({
+    ELEMENT_CLASS : 'menu -abs',
     HTML : '\
         <div>\
-            <svg class="menu__svg" viewBox="0 0 40 40">\
+            <svg class="menu__svg -clickable" viewBox="0 0 40 40">\
                 <g class="a" transform="translate(11,14)">\
                     <rect x="0" y="0" width="16" height="2"></rect>\
                     <rect x="0" y="5" width="16" height="2"></rect>\
@@ -21,7 +21,7 @@ Class(EM.UI, 'Menu').inherits(Widget)({
                     <rect x="-7" y="8" width="16" height="2" transform="rotate(-43,0,0)"></rect>\
                 </g>\
             </svg>\
-            <div class="menu__logo -inline-block -font-semi-bold">Empathia</div>\
+            <div class="menu__logo -clickable -inline-block -font-semi-bold">Empathia</div>\
         </div>',
 
     prototype : {
@@ -31,8 +31,8 @@ Class(EM.UI, 'Menu').inherits(Widget)({
         },
 
         _bindEvents : function _bindEvents() {
-            this._clickHandlerRef = this._clickHandler.bind(this);
-            Events.on(this.element, 'click', this._clickHandlerRef);
+            Events.on(this.element.querySelector('.menu__svg'), 'click', this._gridClickHandler.bind(this));
+            Events.on(this.element.querySelector('.menu__logo'), 'click', this._logoClickHandler.bind(this));
             return this;
         },
 
@@ -53,15 +53,14 @@ Class(EM.UI, 'Menu').inherits(Widget)({
             return this;
         },
 
-        _clickHandler : function _clickHandler() {
+        _gridClickHandler : function _gridClickHandler() {
             this.dispatch('click');
         },
 
-        destroy : function destroy() {
-            Events.off(this.element, 'click', this._clickHandlerRef);
-            this._clickHandlerRef = null;
-            Widget.prototype.destroy.call(this);
-            return null;
+        _logoClickHandler : function _logoClickHandler() {
+            this.dispatch('updateRoute', {
+                route : '/'
+            });
         }
     }
 });
