@@ -35,17 +35,17 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
                 <div class="community -tac -col-6">\
                     <div class="community__logo" style="background-image: url(/img/views/community/communities/startup-weekend-logo.jpg);"></div>\
                     <p class="community__title -font-light">Startup Weekend</p>\
-                    <a class="community__url -link -orange" href="http://www.swgdl.co/" target="_blank">www.swgdl.co</a>\
+                    <a class="community__url -link -orange" href="http://www.swworld.co/" target="_blank">www.swworld.co</a>\
                     <div class="community__content -mt3">\
                         <p class="-mb2">Some of us have been mentors in Startup Weekend events since 2011 throughout the country. It is good and all but we felt that we had to make a bigger impact than just mentor.  In early 2014 we became part of the amazing organizing team and in that same year we launched the largest Startup Weekend ever with over 400 participants. Yeah, like the largest in the world.</p>\
-                        <p>Now, in 2015 we plan to pull off the most ambitious Startup Weekend year. Usually these events happen once a year in a city but this is going to be a whole year of events all over the state closing with the largest Startup Weekend yet with over 800 participants. Startup Weekened World 2015.</p>\
+                        <p>Now, in 2015 we plan to pull off the most ambitious Startup Weekend year. Usually these events happen once a year in a city but this is going to be a whole year of events all over the state closing with the largest Startup Weekend yet with over 800 participants. <a class="community__url -link -orange" href="http://www.swworld.co/" target="_blank">Startup Weekened World 2015.</a></p>\
                     </div>\
                 </div>\
             </section>\
             <section class="collage page__container -row"></section>\
             <section class="hop-on page__container -tac">\
                 <h2 class="hop-on__title -font-bold -mt0">Hop on!</h2>\
-                <p class="hop-on__desc -font-light">If you want to help out or learn more about these efforts don’t hesitate and contact us or go to either of the communities’ sites! All help is greatly appreciated.</p>\
+                <p class="hop-on__desc -font-light">If you want to help out or learn more about these efforts don’t hesitate and email us at <a class="-link -orange" href="mailto:community@empathia.agency" target="blank_">community@empathia.agency</a> or go to either of the communities’ sites! All help is greatly appreciated.</p>\
             </section>\
         </section>',
 
