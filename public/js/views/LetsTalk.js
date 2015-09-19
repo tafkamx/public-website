@@ -79,7 +79,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     Colonia Americana, 44160<br/>\
                     Guadalajara, Mexico.</p>\
                     <p class="location-text">\
-                        <a class="-link " href="mailto:hello@empathia.agency" target="blank_">hello@empathya.agency</a><br/>\
+                        <a class="-link -white" href="mailto:hello@empathia.agency" target="blank_">hello@empathya.agency</a><br/>\
                         <span class="-font-semi-bold">52 (33) 1600.2769</span>\
                     </p>\
                     <div class="location-time -fsi">\
