@@ -1,4 +1,5 @@
 var Events = require('./../../lib/events');
+var hasTouchSupport = require('./../../lib/utils/hasTouchSupport');
 var addClass = require('./../../lib/utils/class-add');
 
 Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
@@ -10,7 +11,8 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
                 <h1 class="em-slide__heading -font-bold"></h1>\
             </div>\
         </div>',
-    CTA_HTML : '<a href="{link}" class="ui-btn -md -pl3 -pr3 -mt2 -white -clickable"><span class="-rel">{text}</span></a>',
+    CTA_HTML : '<button data-link="{link}" class="ui-btn -md -pl3 -pr3 -mt2 -white -clickable"><span class="-rel">{text}</span></button>',
+    CTA_EXTERNAL_HTML : '<a href="{link}" class="ui-btn -md -pl3 -pr3 -mt2 -white -clickable" target="_blank"><span class="-rel">{text}</span></a>',
 
     prototype : {
         data : {
@@ -63,7 +65,14 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
             }
 
             if (this.data.cta) {
-                var cta = this.constructor.CTA_HTML;
+                var cta;
+
+                if (this.data.cta.external) {
+                    cta = this.constructor.CTA_EXTERNAL_HTML;
+                } else {
+                    cta = this.constructor.CTA_HTML;
+                }
+
                 cta = cta.replace(/{text}/, this.data.cta.text);
                 cta = cta.replace(/{link}/, this.data.cta.link);
 
@@ -76,10 +85,11 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
 
         _bindEvents : function _bindEvents() {
             if (this.ctaElement) {
-                if (this.data.cta.external) {
-                    this.ctaElement.setAttribute('target', '_blank');
+                this._ctaClickHandlerRef = this._ctaClickHandler.bind(this);
+
+                if (hasTouchSupport) {
+                    Events.on(this.ctaElement, 'touchstart', this._ctaClickHandlerRef);
                 } else {
-                    this._ctaClickHandlerRef = this._ctaClickHandler.bind(this);
                     Events.on(this.ctaElement, 'click', this._ctaClickHandlerRef);
                 }
             }
@@ -91,9 +101,16 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
         },
 
         _ctaClickHandler : function _ctaClickHandler(ev) {
-            ev.preventDefault();
+            ev.stopPropagation();
+
+            if (this.data.cta.external) {
+                ev.preventDefault();
+                window.location = this.data.cta.link;
+                return;
+            }
+
             this.dispatch('updateRoute', {
-                route: ev.currentTarget.getAttribute('href')
+                route: ev.currentTarget.getAttribute('data-link')
             });
         },
 
@@ -105,10 +122,12 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
         destroy : function destroy() {
             Widget.prototype.destroy.call(this);
             if (this.ctaElement) {
-                if (!this.data.cta.external) {
+                if (hasTouchSupport) {
+                    Events.off(this.ctaElement, 'touchstart', this._ctaClickHandlerRef);
+                } else {
                     Events.off(this.ctaElement, 'click', this._ctaClickHandlerRef);
-                    this._ctaClickHandlerRef = null;
                 }
+                this._ctaClickHandlerRef = null;
             }
             return null;
         }

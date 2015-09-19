@@ -117,6 +117,10 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
         _touchEndHandler : function _touchEndHandler(ev) {
             var currentY = ev.changedTouches[0].clientY;
 
+            if (this._lastY === currentY) {
+                return;
+            }
+
             if (this._lastY > currentY) {
                 return this.slider.next();
             }
