@@ -97,7 +97,6 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
             max = Math.max.apply(null, heights);
 
             this.communityContents.forEach(function(item) {
-                console.log(item);
                 item.style.height = max + 'px';
             });
         },
@@ -143,6 +142,7 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
         },
 
         destroy : function destroy() {
+            Widget.prototype.destroy.call(this);
             Events.off(this._window, 'resize', this.updateCommunitiesSameHeightRef);
             this.updateCommunitiesSameHeightRef = null;
             return null;
