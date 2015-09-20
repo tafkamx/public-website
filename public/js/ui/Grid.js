@@ -1,5 +1,6 @@
 var GeminiScrollbar = require('gemini-scrollbar');
 var Events = require('./../lib/events');
+var CONSTANTS = require('./../lib/const');
 
 Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'grid -abs',
@@ -28,7 +29,9 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
 
         init : function init(config) {
             Widget.prototype.init.call(this, config);
+            this._document = document;
             this.listElement = this.element.querySelector('.grid__list');
+            this._keyPressHandlerRef = this._keyPressHandler.bind(this);
             this._setup()._bindEvents();
         },
 
@@ -118,9 +121,21 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
             this.dispatch('showProjectPlanner');
         },
 
+        _keyPressHandler : function _keyPressHandler(ev) {
+            if (ev.keyCode === CONSTANTS.KEYCODES.ESC) {
+                this.dispatch('toggleGrid');
+            }
+        },
+
         _activate : function _activate() {
             Widget.prototype._activate.call(this);
             this.scrollbar.update();
+            Events.on(this._document, 'keyup', this._keyPressHandlerRef);
+        },
+
+        _deactivate : function _deactivate() {
+            Widget.prototype._deactivate.call(this);
+            Events.off(this._document, 'keyup', this._keyPressHandlerRef);
         },
 
         destroy : function destroy() {

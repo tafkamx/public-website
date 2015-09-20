@@ -54,7 +54,7 @@ Class(EM.UI, 'Menu').inherits(Widget).includes(BubblingSupport)({
         },
 
         _gridClickHandler : function _gridClickHandler() {
-            this.dispatch('click');
+            this.dispatch('toggleGrid');
         },
 
         _logoClickHandler : function _logoClickHandler() {

@@ -8,5 +8,9 @@ module.exports = {
         purple: '#963592',
         yellow: '#E8C95B',
         red: '#FF0000'
+    },
+
+    KEYCODES : {
+        ESC : 27
     }
 };

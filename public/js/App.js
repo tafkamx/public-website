@@ -66,8 +66,9 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
             this.bind('updateRoute', this._updateRoute.bind(this));
 
-            this._menuClickHandlerRef = this._menuClickHandler.bind(this);
-            this.menu.bind('click', this._menuClickHandlerRef);
+            this._toggleGridHandlerRef = this._toggleGridHandler.bind(this);
+            this.menu.bind('toggleGrid', this._toggleGridHandlerRef);
+            this.grid.bind('toggleGrid', this._toggleGridHandlerRef);
 
             this._gridItemClickeHandlerRef = this._gridItemClickeHandler.bind(this);
             EM.UI.GridItem.bind('itemClicked', this._gridItemClickeHandlerRef);
@@ -172,7 +173,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             ev.stopPropagation();
 
             if (this.grid.active) {
-                this._menuClickHandler();
+                this._toggleGridHandler();
             }
 
             if (Router.getPath() === ev.route) {
@@ -231,10 +232,12 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this.menu.setFillColor(ev.color);
         },
 
-        /* Handles the click event on Menu.
-         * @method _menuClickHandler <private>
+        /* Toggles the Grid Overlay.
+         * @method _toggleGridHandler <private>
          */
-        _menuClickHandler : function _menuClickHandler() {
+        _toggleGridHandler : function _toggleGridHandler(ev) {
+            ev.stopPropagation();
+
             if (!this.pages._current.coverElement && !this.pages._current.headerWidget) {
                 return this._noTransition();
             }
