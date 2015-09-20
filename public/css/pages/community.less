@@ -1,8 +1,3 @@
-// .page__header,
-// .collage {
-//   display: none;
-// }
-
 .page-community {
   .page__intro-wrapper {
     padding-top: 10rem;
@@ -16,10 +11,14 @@
 
 .communities {}
 
-.community {
-  padding: 10rem 6rem;
+.community.first {
+  .community__info {
+    border-right: 1px solid @color-neutral-xx-light;
+  }
+}
 
-  &.first {border-right: 1px solid @color-neutral-xx-light}
+.community__info {
+  padding: 10rem 6rem;
 }
 
 .community__logo {
@@ -41,10 +40,8 @@
   color: @color-neutral-dark;
 }
 
-.collage {}
-
 .collage__item {
-  padding-top: 25%;
+  padding-top: 50%;
 }
 
 .collage__item-inner {
@@ -77,6 +74,12 @@
   font-size: 1.667rem;
   line-height: 1.800em;
   color: @color-neutral-dark;
+}
+
+@media all and (max-width: 1040px) {
+  .community__content {
+    font-size: 13px;
+  }
 }
 
 @media all and (max-width: 768px) {
