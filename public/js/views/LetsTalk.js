@@ -96,7 +96,8 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
         </section>',
 
     AVAILABLE_MSG : 'It’s <span class="-font-bold">{time}</span> in Guadalajara so we’re available for around {remainingTime} more {remainingTimeUnits}!',
-    UNAVAILABLE_MSG : 'It’s <span class="-font-bold">{time}</span> in Guadalajara, we’re not available right now.',
+    UNAVAILABLE_MSG : 'It’s {day} at <span class="-font-bold">{time}</span> in Guadalajara, so we’ll be available in about {remainingTime} more {remainingTimeUnits}!',
+    WEEKEND_MSG : 'It’s {day} at <span class="-font-bold">{time}</span> in Guadalajara. We’ll available in about {remainingTime} more {remainingTimeUnits}!',
 
     TIME_UPDATE : 60000,
 
@@ -158,30 +159,108 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
             this._timer = window.setTimeout(this._updateLocaleTimeRef, this.constructor.TIME_UPDATE);
 
             var m = moment();
-            var hour = m.format('hh:mm a');
-            var a = m.format('YYYY-MM-DD') + ' 09:00:00';
-            var b = m.format('YYYY-MM-DD') + ' 18:00:00';
-
             this.localeTime.innerHTML = '';
 
-            if (m.isBetween(a,b)) {
-                var remainHours = moment(b).diff(m,'hours');
-                var text = this.constructor.AVAILABLE_MSG.replace(/{time}/, hour);
+            // weekend
+            if (m.isoWeekday() === 6 || m.isoWeekday() === 7) {
+                return this.__updateLocaleTimeWeekend(m);
+            }
 
+            var a = m.format('YYYY-MM-DD') + ' 09:00:00';
+            var b = m.format('YYYY-MM-DD') + ' 18:00:00';
+            // available
+            if (m.isBetween(a,b)) {
+                return this.__updateLocaleTimeAvailable(m, b);
+            }
+
+            // unavailable, friday
+            if (m.isoWeekday() === 5) {
+                return this.__updateLocaleTimeUnavailableFriday(m);
+            }
+
+            // unavailable
+            return this.__updateLocaleTimeUnavailable(m, a, b);
+        },
+
+        __updateLocaleTimeAvailable : function __updateLocaleTimeAvailable(m, b) {
+            var text = this.constructor.AVAILABLE_MSG.replace(/{time}/, m.format('h:mm a'));
+            var remainHours = moment(b).diff(m,'hours');
+
+            if (remainHours) {
+                text = text.replace(/{remainingTime}/, remainHours);
+                text = text.replace(/{remainingTimeUnits}/, 'hours');
+            } else {
+                var remainMins = moment(b).diff(m,'minutes');
+                text = text.replace(/{remainingTime}/, remainMins);
+                text = text.replace(/{remainingTimeUnits}/, 'minutes');
+            }
+
+            this.localeTime.insertAdjacentHTML('beforeend', text);
+        },
+
+        __updateLocaleTimeUnavailableFriday : function __updateLocaleTimeUnavailableFriday(m) {
+            var monday = moment().add(3,'day').format('YYYY-MM-DD') + ' 09:00:00';
+            var remainHours = moment(monday).diff(m, 'hours');
+            var text = this.constructor.UNAVAILABLE_MSG.replace(/{day}/, m.format('dddd'));
+            text = text.replace(/{time}/, m.format('h:mm a'));
+            text = text.replace(/{remainingTime}/, remainHours);
+            text = text.replace(/{remainingTimeUnits}/, 'hours');
+
+            this.localeTime.insertAdjacentHTML('beforeend', text);
+        },
+
+        __updateLocaleTimeUnavailable : function __updateLocaleTimeUnavailable(m, a, b) {
+            var text = this.constructor.UNAVAILABLE_MSG.replace(/{day}/, m.format('dddd'));
+            text = text.replace(/{time}/, m.format('h:mm a'));
+            var remainHours, remainMins;
+
+            if (m.isBefore(a)) {
+                remainHours = moment(a).diff(m, 'hours');
                 if (remainHours) {
                     text = text.replace(/{remainingTime}/, remainHours);
                     text = text.replace(/{remainingTimeUnits}/, 'hours');
                 } else {
-                    var remainMins = moment(b).diff(m,'minutes');
+                    remainMins = moment(a).diff(m,'minutes');
                     text = text.replace(/{remainingTime}/, remainMins);
                     text = text.replace(/{remainingTimeUnits}/, 'minutes');
                 }
-
-                this.localeTime.insertAdjacentHTML('beforeend', text);
-                return;
+            } else if (m.isAfter(b)) {
+                var tomorrow = moment().add(1,'day').format('YYYY-MM-DD') + ' 09:00:00';
+                remainHours = moment(tomorrow).diff(m,'hours');
+                if (remainHours) {
+                    text = text.replace(/{remainingTime}/, remainHours);
+                    text = text.replace(/{remainingTimeUnits}/, 'hours');
+                } else {
+                    remainMins = moment(tomorrow).diff(m,'minutes');
+                    text = text.replace(/{remainingTime}/, remainMins);
+                    text = text.replace(/{remainingTimeUnits}/, 'minutes');
+                }
             }
 
-            this.localeTime.insertAdjacentHTML('beforeend', this.constructor.UNAVAILABLE_MSG.replace(/{time}/, hour));
+            this.localeTime.insertAdjacentHTML('beforeend', text);
+        },
+
+        __updateLocaleTimeWeekend : function __updateLocaleTimeWeekend(m) {
+            var monday;
+            if (m.isoWeekday() === 6) {
+                monday = moment().add(2,'day').format('YYYY-MM-DD') + ' 09:00:00';
+            } else if (m.isoWeekday() === 7) {
+                monday = moment().add(1, 'day').format('YYYY-MM-DD') + ' 09:00:00';
+            }
+            var remainHours = moment(monday).diff(m,'hours');
+            var text = this.constructor.WEEKEND_MSG.replace(/{day}/, m.format('dddd'));
+            text = text.replace(/{time}/, m.format('h:mm a'));
+
+            if (remainHours) {
+                text = text.replace(/{remainingTime}/, remainHours);
+                text = text.replace(/{remainingTimeUnits}/, 'hours');
+            } else {
+                var remainMins = moment(monday).diff(m,'minutes');
+                text = text.replace(/{remainingTime}/, remainMins);
+                text = text.replace(/{remainingTimeUnits}/, 'minutes');
+            }
+
+            this.localeTime.insertAdjacentHTML('beforeend', text);
         },
 
         /* Dispatch a custom event `showProjectPlanner`, uses BubblingSupport to bubble up to App.
