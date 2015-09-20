@@ -121,6 +121,10 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
             this.dispatch('showProjectPlanner');
         },
 
+        /* Handles the keypress event on document.
+         * Basically interested on listening when the `ESC` key is pressed to auto-close this modal.
+         * @method _keyPressHandler <private> [Function]
+         */
         _keyPressHandler : function _keyPressHandler(ev) {
             if (ev.keyCode === CONSTANTS.KEYCODES.ESC) {
                 this.dispatch('toggleGrid');

@@ -1,7 +1,7 @@
 var CONSTANTS = require('./../lib/const');
 var Events = require('./../lib/events');
 var onTransitionEnd = require('./../lib/onTransitionEnd');
-global.ProjectPlannerData = require('./../data/project-planner/registry');
+var ProjectPlannerData = require('./../data/project-planner/registry');
 
 Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
     // NAME : 'project-planner',
@@ -19,6 +19,7 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
     prototype : {
         init : function init(config) {
             Widget.prototype.init.call(this, config);
+            this._document = document;
             this.inner = this.element.querySelector('.project-planner__inner');
             this._setup()._bindEvents();
         },
@@ -56,6 +57,9 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
         },
 
         _bindEvents : function _bindEvents() {
+            this._keyPressHandlerRef = this._keyPressHandler.bind(this);
+            Events.on(this._document, 'keyup', this._keyPressHandlerRef);
+
             this._deactivateRef = this._deactivate.bind(this);
             Events.on(this.element.querySelector('.project-planner__close'), 'click', this._deactivateRef);
 
@@ -96,35 +100,46 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
             console.log(ProjectPlannerData);
         },
 
-        _sendForm : function _sendForm(ev) {
-          var formData = new FormData();
+        _sendForm : function _sendForm() {
+            var formData = new FormData();
 
-          var data = ProjectPlannerData._data;
+            var data = ProjectPlannerData._data;
 
-          for (var property in data) {
-            if (data.hasOwnProperty(property)) {
-              if (data[property] !== 'supportingFiles') {
-                formData.append(property, data[property]);
-              }
+            for (var property in data) {
+                if (data.hasOwnProperty(property)) {
+                    if (data[property] !== 'supportingFiles') {
+                        formData.append(property, data[property]);
+                    }
+                }
             }
-          }
 
-          if (data['supportingFiles']) {
-            $.each($('input[name="upload"]')[0].files, function(i, file) {
-                formData.append('file', file);
+            if (data['supportingFiles']) {
+                $.each($('input[name="upload"]')[0].files, function(i, file) {
+                    formData.append('file', file);
+                });
+            }
+
+            $.ajax({
+                url : '/sendProject',
+                data : formData,
+                processData : false,
+                type : 'POST',
+                contentType : false,
+                success : function(data) {
+                    console.log(data);
+                    ProjectPlannerData.reset();
+                }
             });
-          }
+        },
 
-          $.ajax({
-            url : '/sendProject',
-            data : formData,
-            processData : false,
-            type : 'POST',
-            contentType : false,
-            success : function(data) {
-              console.log(data)
+        /* Handles the keypress event on document.
+         * Basically interested on listening when the `ESC` key is pressed to auto-close this modal.
+         * @method _keyPressHandler <private> [Function]
+         */
+        _keyPressHandler : function _keyPressHandler(ev) {
+            if (ev.keyCode === CONSTANTS.KEYCODES.ESC) {
+                this.deactivate();
             }
-          });
         },
 
         _deactivate : function _deactivate() {
@@ -135,6 +150,17 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
             onTransitionEnd(this.element, function() {
                 this.destroy();
             }.bind(this));
+        },
+
+        destroy : function destroy() {
+            Events.off(this._document, 'keyup', this._keyPressHandlerRef);
+            this._keyPressHandlerRef = null;
+
+            Events.off(this.element.querySelector('.project-planner__close'), 'click', this._deactivateRef);
+            this._deactivateRef = null;
+
+            Widget.prototype.destroy.call(this);
+            return null;
         }
     }
 });
