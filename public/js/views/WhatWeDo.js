@@ -1,6 +1,7 @@
-// var Vivus = require('vivus');
+var Vivus = require('vivus');
 var Events = require('./../lib/events');
 var CONSTANTS = require('./../lib/const');
+// var isInViewport = require('./../lib/is-in-viewport');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
 // window.efp = require('./../lib/efp');
 
@@ -64,29 +65,29 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             this.circleWidget.center();
             this.headerWidget.activate();
 
-            // this.vivusApps = new Vivus('xx-svg-cloud-stroke', {
-            //     start: 'manual',
-            //     type: 'oneByOne',
-            //     duration: 50
-            // });
+            this.vivusApps = new Vivus('xx-svg-cloud-stroke', {
+                start: 'manual',
+                type: 'oneByOne',
+                duration: 50
+            });
 
-            // this.vivusCommerce = new Vivus('xx-svg-commerce-stroke', {
-            //     start: 'manual',
-            //     type: 'oneByOne',
-            //     duration: 60
-            // });
+            this.vivusCommerce = new Vivus('xx-svg-commerce-stroke', {
+                start: 'manual',
+                type: 'oneByOne',
+                duration: 60
+            });
 
-            // this.vivusBrand = new Vivus('xx-svg-brand-stroke', {
-            //     start: 'manual',
-            //     type: 'oneByOne',
-            //     duration: 100
-            // });
+            this.vivusBrand = new Vivus('xx-svg-brand-stroke', {
+                start: 'manual',
+                type: 'oneByOne',
+                duration: 100
+            });
 
-            // this.vivusMobile = new Vivus('xx-svg-mobile-stroke', {
-            //     start: 'manual',
-            //     type: 'oneByOne',
-            //     duration: 70
-            // });
+            this.vivusMobile = new Vivus('xx-svg-mobile-stroke', {
+                start: 'manual',
+                type: 'oneByOne',
+                duration: 70
+            });
 
             this.__bindEvents();
         },
@@ -161,37 +162,43 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             var A = document.elementFromPoint(this.cx, this.cy14);
             var Z = document.elementFromPoint(this.cx, this.cy34);
             var M = document.elementFromPoint(this.cx, this.cy);
+            var B = document.elementFromPoint(this.cx, this.h-1);
 
-            if (typeof A.dataset.discipline === 'undefined' || typeof Z.dataset.discipline === 'undefined') {
+            if (typeof A.dataset.discipline !== 'undefined' && typeof Z.dataset.discipline !== 'undefined') {
+                if (this.circleWidget.active === false) {
+                    this.circleWidget.activate();
+
+                    this.vivusApps.reset();
+                    this.vivusCommerce.reset();
+                    this.vivusBrand.reset();
+                    this.vivusMobile.reset();
+                }
+
+                this.circleWidget.showDiscipline(M.dataset.name);
+            } else {
                 if (this.circleWidget.active) {
                     this.circleWidget.deactivate();
                 }
-                return;
             }
 
-            if (this.circleWidget.active === false) {
-                this.circleWidget.activate();
+
+            if (typeof B.dataset.offering !== 'undefined') {
+                if (B.dataset.name === 'applications-and-platforms') {
+                    return this.vivusApps.play();
+                }
+
+                if (B.dataset.name === 'e-commerce') {
+                    return this.vivusCommerce.play();
+                }
+
+                if (B.dataset.name === 'brand-development') {
+                    return this.vivusBrand.play();
+                }
+
+                if (B.dataset.name === 'mobile') {
+                    return this.vivusMobile.play();
+                }
             }
-
-            this.circleWidget.showDiscipline(M.dataset.name);
-
-            // if (typeof A.dataset.offering !== 'undefined' || typeof Z.dataset.offering !== 'undefined') {
-            //     if (M.dataset.name === 'applications-and-platforms') {
-            //         return this.vivusApps.play();
-            //     }
-
-            //     if (M.dataset.name === 'e-commerce') {
-            //         return this.vivusCommerce.play();
-            //     }
-
-            //     if (M.dataset.name === 'brand-development') {
-            //         return this.vivusBrand.play();
-            //     }
-
-            //     if (M.dataset.name === 'mobile') {
-            //         return this.vivusMobile.play();
-            //     }
-            // }
        },
 
         /* Dispatch a custom event `showProjectPlanner`, uses BubblingSupport to bubble up to App.
