@@ -12,7 +12,7 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
                 <div class="gm-scroll-view -full-height">\
                     <div class="grid__list -tac"></div>\
                     <footer class="grid__footer -pb4 -pr2 -pl2 -tac">\
-                        <button data-project-planner-btn class="ui-btn -pink -sm -pl3 -pr3 -mb2 -font-bold -color-white">\
+                        <button data-project-planner-btn class="ui-btn -pink -sm -pl3 -pr3 -mb2 -font-bold">\
                             <span class="-rel">Get Started!</span>\
                         </button>\
                         <ul class="grid__footer-list">\
