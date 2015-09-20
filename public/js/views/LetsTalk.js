@@ -53,24 +53,24 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
             <section class="location-grid -row">\
                 <article class="location__item first -col-6 -full-height -rel">\
                     <h2 class="location-title -font-bold">Empathia</h2>\
-                    <div class="contact-networks -mb3 -hide">\
-                        <div class="contact-network -inline-block -mr1">\
-                            <a href="https://medium.com" class="-block">\
+                    <div class="contact-networks -mb3">\
+                        <div class="contact-network -inline-block -mr1 -hide">\
+                            <a href="https://medium.com/@EmpathiaAgency" class="-block" target="_blank">\
                                 <svg class="-s30r -color-white"><use xlink:href="#svg-medium-icon"></use></svg>\
                             </a>\
                         </div>\
                         <div class="contact-network -inline-block -mr1">\
-                            <a href="https://twitter.com" class="-block">\
+                            <a href="https://twitter.com/EmpathiaAgency" class="-block" target="_blank">\
                                 <svg class="-s30r -color-white"><use xlink:href="#svg-twitter-icon"></use></svg>\
                             </a>\
                         </div>\
                         <div class="contact-network -inline-block -mr1">\
-                            <a href="https://facebook.com" class="-block">\
+                            <a href="https://www.facebook.com/EmpathiaAgency" class="-block" target="_blank">\
                                 <svg class="-s30r -color-white"><use xlink:href="#svg-facebook-icon"></use></svg>\
                             </a>\
                         </div>\
                         <div class="contact-network -inline-block -mr1">\
-                            <a href="https://dribbble.com" class="-block">\
+                            <a href="https://dribbble.com/EmpathiaAgency" class="-block" target="_blank">\
                                 <svg class="-s30r -color-white"><use xlink:href="#svg-dribbble-icon"></use></svg>\
                             </a>\
                         </div>\
@@ -141,7 +141,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
         _bindEvents : function _bindEvents() {
             this._projectPlannerBtnClickHandlerRef = this._projectPlannerBtnClickHandler.bind(this);
             Events.on(this.element.querySelector('[data-project-planner-btn]'), 'click', this._projectPlannerBtnClickHandlerRef);
-            
+
             this._careersBtnClickHandlerRef = this._careersBtnClickHandle.bind(this);
             Events.on(this.element.querySelector('[data-careers-btn]'),'click', this._careersBtnClickHandlerRef);
 
