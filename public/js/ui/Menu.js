@@ -10,7 +10,7 @@ Class(EM.UI, 'Menu').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'menu -abs',
     HTML : '\
         <div>\
-            <svg class="menu__svg -clickable" viewBox="0 0 40 40">\
+            <svg class="menu__svg -clickable -fl" viewBox="0 0 40 40">\
                 <g class="a" transform="translate(11,14)">\
                     <rect x="0" y="0" width="16" height="2"></rect>\
                     <rect x="0" y="5" width="16" height="2"></rect>\
