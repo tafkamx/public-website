@@ -61,6 +61,7 @@ require('./ui/project-planner/ProjectPlannerStep3');
 require('./ui/project-planner/ProjectPlannerStep4');
 require('./ui/project-planner/ProjectPlannerStep5');
 require('./ui/project-planner/ProjectPlannerStep6');
+require('./ui/general-application/GeneralApplicationStep');
 
 window.app = new window.EM.App();
 window.app.initRouter();

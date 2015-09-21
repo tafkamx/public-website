@@ -120,12 +120,12 @@ Class(EM.Views, 'generalApplication').inherits(Widget).includes(BubblingSupport)
         _keyPressHandler : function _keyPressHandler(ev) {
             if (ev.keyCode === CONSTANTS.KEYCODES.ESC) {
                 this.deactivate();
-                this.dispatch('projectPlanner:closed');
+                this.dispatch('generalApplication:closed');
             }
         },
 
         _closeButtonClickHandler : function _closeButtonClickHandler() {
-            this.dispatch('projectPlanner:closed');
+            this.dispatch('generalApplication:closed');
             this.deactivate();
         },
 
@@ -141,7 +141,7 @@ Class(EM.Views, 'generalApplication').inherits(Widget).includes(BubblingSupport)
             Events.off(this._document, 'keyup', this._keyPressHandlerRef);
             this._keyPressHandlerRef = null;
 
-            Events.off(this.element.querySelector('.project-planner__close'), 'click', this._closeButtonClickHandlerRef);
+            Events.off(this.element.querySelector('.generalApplication__close'), 'click', this._closeButtonClickHandlerRef);
             this._closeButtonClickHandlerRef = null;
 
             Widget.prototype.destroy.call(this);

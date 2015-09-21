@@ -14,7 +14,8 @@ var classify = require("underscore.string/classify");
 
 Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
     ALTERNATE_ROUTES_WHITELIST : [
-        'project-planner','general-application'
+        'project-planner',
+        'general-application',
     ],
 
     prototype : {
@@ -155,6 +156,10 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                 window.setTimeout(function() {
                     this.projectPlanner.activate().setup();
                 }.bind(this), 0);
+
+                if (this.generalApplication) {
+                    this.generalApplication = this.generalApplication.destroy();
+                }
 
                 this.appendChild(new EM.Views.generalApplication({
                     name : 'generalApplication'
