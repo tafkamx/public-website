@@ -6,8 +6,8 @@ Class(EM.UI, 'ProjectPlannerStep6').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
         <div>\
             <div class="page__container -rel -tac">\
-                <p class="project-planner__title -font-semi-bold">Thanks you taking the time to submit this!</p>\
-                <p class="project-planner__desc -pb5">We will get back to as soon as possible. In the mean time you can read our Journal to get to know us a bit better.</p>\
+                <p class="project-planner__title -font-semi-bold">Thanks for taking the time to submit this!</p>\
+                <p class="project-planner__desc -pb5">We will get back to you as soon as possible. In the meantime you can read our Journal to get to know us a bit better.</p>\
             </div>\
         </div>',
 
