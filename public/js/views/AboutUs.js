@@ -1,7 +1,11 @@
 var CONSTANTS = require('./../lib/const');
 var Events = require('./../lib/events');
+var addClass = require('./../lib/utils/class-add');
+var removeClass = require('./../lib/utils/class-remove');
+var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
 var teamData = require('./../data/about-us/team');
 var TextGradient = require('text-gradient');
+// window.efp = require('./../lib/efp');
 
 Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
     NAME : 'about-us',
@@ -42,13 +46,16 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
                     <div class="pillars-platform-col -col-4 -pl2 -pr2">\
                         <div class="pillars__platform -rel">\
                             <svg class="pillars__platform-svg -abs" preserveAspectRatio= "xMinYMin meet" viewBox="0 0 344 344">\
-                                <polyline points="20,20 320,20 320,320 20,320 20,20" stroke="#DAE2E6" stroke-width="2" fill="transparent"></polyline>\
-                                <line x1="20" y1="20" x2="320" y2="320" stroke="#DAE2E6" stroke-width="2"/>\
-                                <line x1="20" y1="320" x2="320" y2="20" stroke="#DAE2E6" stroke-width="2"/>\
-                                <circle cx="36" cy="36" r="34" stroke="url(#gradient-4b)" stroke-width="2" fill="#fff"></circle>\
-                                <circle cx="308" cy="36" r="34" stroke="url(#gradient-4b)" stroke-width="2" fill="#fff"></circle>\
-                                <circle cx="36" cy="308" r="34" stroke="url(#gradient-4b)" stroke-width="2" fill="#fff"></circle>\
-                                <circle cx="308" cy="308" r="34" stroke="url(#gradient-4b)" stroke-width="2" fill="#fff"></circle>\
+                                <line class="pp__line-svg a" x1="20" y1="20" x2="320" y2="20" stroke="#DAE2E6" stroke-width="2"/>\
+                                <line class="pp__line-svg b" x1="320" y1="20" x2="320" y2="320" stroke="#DAE2E6" stroke-width="2"/>\
+                                <line class="pp__line-svg c" x1="320" y1="320" x2="20" y2="320" stroke="#DAE2E6" stroke-width="2"/>\
+                                <line class="pp__line-svg d" x1="20" y1="320" x2="20" y2="20" stroke="#DAE2E6" stroke-width="2"/>\
+                                <line class="pp__line-x-svg a" x1="20" y1="20" x2="320" y2="320" stroke="#DAE2E6" stroke-width="2"/>\
+                                <line class="pp__line-x-svg b" x1="20" y1="320" x2="320" y2="20" stroke="#DAE2E6" stroke-width="2"/>\
+                                <circle class="pp__pillar-svg a" cx="36" cy="36" r="34" stroke="url(#gradient-4b)" stroke-width="2" fill="#fff"></circle>\
+                                <circle class="pp__pillar-svg b" cx="308" cy="36" r="34" stroke="url(#gradient-4b)" stroke-width="2" fill="#fff"></circle>\
+                                <circle class="pp__pillar-svg c" cx="36" cy="308" r="34" stroke="url(#gradient-4b)" stroke-width="2" fill="#fff"></circle>\
+                                <circle class="pp__pillar-svg d" cx="308" cy="308" r="34" stroke="url(#gradient-4b)" stroke-width="2" fill="#fff"></circle>\
                             </svg>\
                             <p class="pillars__platform-svg-text -abs -ttu -color-bg-white -p1 -nw">We Support You</p>\
                         </div>\
@@ -97,9 +104,14 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
         </section>',
 
     prototype : {
+        _activePillars : false,
+
         init : function init(config) {
             Widget.prototype.init.call(this, config);
-            this._setup()._bindEvents();
+            this.pillarsText = this.element.querySelector('.about-us__pillars-text');
+            this.pillarsContainer = this.element.querySelector('.pillars__platform-svg');
+            this.pillarsSVGContainer = this.element.querySelector('.pillars__platform');
+            this._setup();
         },
 
         setup : function setup() {
@@ -108,6 +120,7 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
             });
 
             this.headerWidget.activate();
+            this.__bindEvents();
         },
 
         _setup : function _setup() {
@@ -151,9 +164,22 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
             return this;
         },
 
-        _bindEvents : function _bindEvents() {
+        __bindEvents : function __bindEvents() {
             this._projectPlannerBtnClickHandlerRef = this._projectPlannerBtnClickHandler.bind(this);
             Events.on(this.element.querySelector('[data-project-planner-btn]'), 'click', this._projectPlannerBtnClickHandlerRef);
+
+            if (!hasTouchSupport) {
+                this._scrollHandlerRef = this._scrollHandler.bind(this);
+                Events.on(this.parent.scrollbar.getViewElement(), 'scroll', this._scrollHandlerRef);
+            } else {
+                this._activePillars = true;
+                addClass(this.pillarsSVGContainer, 'active');
+            }
+
+            this._resizeHandlerRef = this._resizeHandler.bind(this);
+            Events.on(window, 'resize', this._resizeHandlerRef);
+            this._globals();
+
             return this;
         },
 
@@ -164,7 +190,51 @@ Class(EM.Views, 'AboutUs').inherits(Widget).includes(BubblingSupport)({
             this.dispatch('showProjectPlanner');
         },
 
+        _globals : function _globals() {
+            this.w = ~~(window.innerWidth);
+            this.h = ~~(window.innerHeight);
+            this.cx = ~~(this.w/2) - 10;
+        },
+
+        _resizeHandler : function _renderHandler() {
+            this._globals();
+        },
+
+        _scrollHandler : function _scrollHandler() {
+            if (this.w <= 768) {
+                return;
+            }
+
+            var A = document.elementFromPoint(this.cx, this.h-1);
+
+            if (A === this.pillarsText) {
+                if (this._activePillars === true) {
+                    this._activePillars = false;
+                    addClass(this.pillarsSVGContainer, 'reset');
+                    removeClass(this.pillarsSVGContainer, 'active');
+                }
+                return;
+            }
+
+            if (A === this.pillarsContainer) {
+                if (this._activePillars === false) {
+                    this._activePillars = true;
+                    removeClass(this.pillarsSVGContainer, 'reset');
+                    addClass(this.pillarsSVGContainer, 'active');
+                }
+                return;
+            }
+        },
+
         destroy : function destroy() {
+            if (!hasTouchSupport) {
+                Events.off(this.parent.scrollbar.getViewElement(), 'scroll', this._scrollHandlerRef);
+                this._scrollHandlerRef = null;
+            }
+
+            Events.off(window, 'resize', this._resizeHandlerRef);
+            this._resizeHandlerRef = null;
+
             this.textGradient = this.textGradient.destroy();
             Events.off(this.element.querySelector('[data-project-planner-btn]'), 'click', this._projectPlannerBtnClickHandlerRef);
             this._projectPlannerBtnClickHandlerRef = null;
