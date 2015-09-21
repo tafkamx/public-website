@@ -11,7 +11,7 @@ Class(EM.UI, 'WhatWeDoOfferings').inherits(Widget)({
                 name : 'applications-and-platforms',
                 data : {
                     title : 'Applications & Platforms',
-                    description : 'Systems that provide utility. They can live on the web, desktops or stationed digital devices like touch-screen kiosks. Check out what we did for Mideast Youth on CrowdVoice.by.',
+                    description : 'Systems that provide utility. On the web, desktops or any stationed digital device like touch-screen kiosks.',
                     svgId : 'svg-cloud-stroke',
                     svgGrad : 'gradient-1',
                     viewBox : '0 0 301 198',
@@ -23,7 +23,7 @@ Class(EM.UI, 'WhatWeDoOfferings').inherits(Widget)({
                 name : 'e-commerce',
                 data : {
                     title : 'E-Commerce',
-                    description : 'Shopping experiences online that increase sales for our partners and feel good for the consumers. Check out what we did for PC México.',
+                    description : 'Shopping experiences online that increase sales for our partners and feel good for the consumers.',
                     svgId : 'svg-commerce-stroke',
                     svgGrad : 'gradient-2',
                     viewBox : '0 0 268 214',
@@ -35,7 +35,7 @@ Class(EM.UI, 'WhatWeDoOfferings').inherits(Widget)({
                 name : 'brand-development',
                 data : {
                     title : 'Brand Development',
-                    description : 'Brand systems and narratives to give our partners a unique, cohesive and congruent identity in highly competitive markets. Check out what we did for Taxa.',
+                    description : 'Brand systems and narratives to give our partners a unique, cohesive and congruent identity in highly competitive markets.',
                     svgId : 'svg-brand-stroke',
                     svgGrad : 'gradient-3',
                     viewBox : '0 0 219 300',
