@@ -18,6 +18,7 @@ require('./views/Journal');
 require('./views/LetsTalk');
 require('./views/Home');
 require('./views/ProjectPlanner');
+require('./views/GenericJobApplication');
 
 require('./ui/Button');
 require('./ui/Input');

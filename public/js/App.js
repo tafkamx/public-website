@@ -14,7 +14,7 @@ var classify = require("underscore.string/classify");
 
 Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
     ALTERNATE_ROUTES_WHITELIST : [
-        'project-planner'
+        'project-planner','general-application'
     ],
 
     prototype : {
@@ -66,6 +66,12 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
             this.bind('updateRoute', this._updateRoute.bind(this));
 
+            this._showGeneralApplicationRef = this._showGeneralApplication.bind(this);
+            this.bind('showGeneralApplication', this._showGeneralApplicationRef);
+
+            this.bind('generalApplication:closed', this._generalApplicationClosedHandler.bind(this));
+            this.bind('updateRoute', this._updateRoute.bind(this));
+
             this._toggleGridHandlerRef = this._toggleGridHandler.bind(this);
             this.menu.bind('toggleGrid', this._toggleGridHandlerRef);
             this.grid.bind('toggleGrid', this._toggleGridHandlerRef);
@@ -101,6 +107,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             Router.on('/journal', function() {});
             Router.on('/lets-talk', function() {});
             Router.on('/project-planner', function() {});
+            Router.on('/general-application', function() {});
 
             Router.configure({
                 run_handler_in_init : true,
@@ -144,8 +151,17 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                     name : 'projectPlanner'
                 })).render(document.body);
 
+
                 window.setTimeout(function() {
                     this.projectPlanner.activate().setup();
+                }.bind(this), 0);
+
+                this.appendChild(new EM.Views.generalApplication({
+                    name : 'generalApplication'
+                })).render(document.body);
+
+                window.setTimeout(function() {
+                    this.generalApplication.activate().setup();
                 }.bind(this), 0);
 
                 return;
@@ -218,6 +234,24 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          * @method _projectPlannerClosedHandler <private>
          */
         _projectPlannerClosedHandler : function _projectPlannerClosedHandler() {
+            if (this.pages.getCurrent().constructor.PATH) {
+                Router.setRoute(this.pages.getCurrent().constructor.PATH);
+            }
+        },
+        /* Shows the General Application view.
+         * (Bubbled event handler) (App <- Grid)
+         * @method _showGeneralApplication <private>
+         */
+        _showGeneralApplication : function _showGeneralApllication(ev) {
+            ev.stopPropagation();
+            Router.setRoute(EM.Views.generalApplication.PATH);
+        },
+
+        /* After closing the generalApplicaiton, it restores the url to the latest
+         * current view.
+         * @method _generalApplicationClosedHandler <private>
+         */
+        _generalApplicationClosedHandler : function _generalApplicationClosedHandler() {
             if (this.pages.getCurrent().constructor.PATH) {
                 Router.setRoute(this.pages.getCurrent().constructor.PATH);
             }
