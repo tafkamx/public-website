@@ -9,11 +9,12 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
                 <div class="project-planner__step-counter -grad-02">2/5</div>\
                 <p class="project-planner__title -font-semi-bold">What do you have in mind?</p>\
                 <p class="project-planner__desc">Describe your idea with as much detail possible. Don’t be shy as it’ll help us determine how we can help you. You can also upload any material you think will support your description. Wireframes, documents or even your napkin doodles.</p>\
-                <div class="project-description-wrapper -rel -mb5 -mt2">\
-                    <textarea class="project-planner__project-description ui-input -font-light -full-width" placeholder="What’s your vision?"></textarea>\
-                    <div class="project-upload-files-bar">\
+                <div class="project-description-wrapper -rel -mt5">\
+                    <textarea class="project-planner__project-description -font-light -full-width" placeholder="What’s your vision?"></textarea>\
+                    <div class="project-upload-files-bar -row">\
                         <input type="file" name="upload" class="-hide" />\
-                        <button class="ui-btn -mini"><span class="-rel">Upload Files</span></button>\
+                        <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
+                        <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
                     </div>\
                 </div>\
             </div>\
@@ -33,19 +34,20 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
             this.inputMessage = this.element.querySelector('.project-planner__project-description');
             this.uploadButton = this.element.querySelector('.ui-btn.-mini');
             this.uploadFile = this.element.querySelector('[name="upload"]');
+            this.uploadedFilesFeedback = this.element.querySelector('.pp-upload-files-feedback');
             this._setup()._bindEvents();
         },
 
         _setup : function _setup() {
             this.appendChild(new EM.UI.Button({
                 name : 'backButton',
-                className : '-md -neutral-dark -pl5 -pr5',
+                className : '-mini -gray -pl2 -pr2 -mt1',
                 html : '‹&nbsp;Back'
             })).render(this.element.querySelector('[data-back-btn-container]'));
 
             this.appendChild(new EM.UI.Button({
                 name : 'sendButton',
-                className : '-md -neutral-dark -pl5 -pr5',
+                className : '-md -neutral-dark -pl4 -pr4',
                 html : 'Next&nbsp;&nbsp;›'
             })).render(this.element.querySelector('[data-next-btn-container]')).disable();
             return this;
@@ -63,10 +65,27 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
 
             this._nextButtonClickHandlerRef = this._nextButtonClickHandler.bind(this);
             Events.on(this.sendButton.element, 'click', this._nextButtonClickHandlerRef);
+
+            this._updateFilesFeedbackRef = this._updateFilesFeedback.bind(this);
+            Events.on(this.uploadFile, 'change', this._updateFilesFeedbackRef);
         },
 
         _triggerFileUpload : function _triggerFileUpload(ev) {
             this.uploadFile.click(ev);
+        },
+
+        _updateFilesFeedback : function _updateFilesFeedback(ev) {
+            var text = '<b class="-font-semi-bold">{total} files attached</b> ({files})';
+            var files = [].slice.call(ev.target.files,0);
+            var fileNames = files.map(function(file) {
+                return file.name;
+            }).join(', ');
+
+            text = text.replace(/{total}/, files.length);
+            text = text.replace(/{files}/, fileNames);
+
+            this.uploadedFilesFeedback.innerHTML = '';
+            this.uploadedFilesFeedback.insertAdjacentHTML('beforeend', text);
         },
 
         _updateButtonState : function _updateButtonState() {

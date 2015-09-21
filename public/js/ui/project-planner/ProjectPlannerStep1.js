@@ -86,7 +86,7 @@ Class(EM.UI, 'ProjectPlannerStep1').inherits(Widget).includes(BubblingSupport)({
         _setup : function _setup() {
             this.appendChild(new EM.UI.Button({
                 name : 'button',
-                className : '-md -neutral-dark -pl5 -pr5',
+                className : '-md -neutral-dark -pl4 -pr4',
                 html : 'Next&nbsp;&nbsp;›'
             })).render(this.element.querySelector('[data-next-btn-container]')).disable();
             return this;

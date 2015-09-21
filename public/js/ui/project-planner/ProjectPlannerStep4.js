@@ -8,13 +8,15 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
             <div class="page__container -rel">\
                 <div class="project-planner__step-counter -grad-04">4/5</div>\
                 <p class="project-planner__title -font-semi-bold">What about a budget?</p>\
-                <p class="project-planner__desc">If you do, please give us a rough idea. Our work is based on coming up with solutions within constraints. A budget is one of these constraints. Knowing it willl help us to maximize the available resources to achieve the best solution possible.</p>\
+                <p class="project-planner__desc">If you do, please give us a rough idea. Our work is based on coming up with solutions within constraints. A budget is one of these constraints. Knowing it will help us to maximize the available resources to achieve the best solution possible.</p>\
                 <div class="project-planner__budget-radios -pt3 -pb5">\
                     <label class="-clickable">\
-                        <input type="radio" name="has-budget" value="1" checked/> Of course my horse\
+                        <input type="radio" name="has-budget" value="1" checked/>\
+                        <span>Of course my horse</span>\
                     </label>\
                     <label class="-clickable">\
-                        <input type="radio" name="has-budget" value="0"/> No! I need help planning\
+                        <input type="radio" name="has-budget" value="0"/>\
+                        <span>No! I need help planning</span>\
                     </label>\
                 </div>\
                 <div class="project-planner__budget-selector-range -rel"></div>\
@@ -45,13 +47,13 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
 
             this.appendChild(new EM.UI.Button({
                 name : 'backButton',
-                className : '-md -neutral-dark -pl5 -pr5',
+                className : '-mini -gray -pl2 -pr2 -mt1',
                 html : '‹&nbsp;Back'
             })).render(this.element.querySelector('[data-back-btn-container]'));
 
             this.appendChild(new EM.UI.Button({
                 name : 'nextButton',
-                className : '-md -neutral-dark -pl5 -pr5',
+                className : '-md -neutral-dark -pl4 -pr4',
                 html : 'Next&nbsp;&nbsp;›'
             })).render(this.element.querySelector('[data-next-btn-container]'));
             return this;

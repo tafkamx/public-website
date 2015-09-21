@@ -60,8 +60,8 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
             this._keyPressHandlerRef = this._keyPressHandler.bind(this);
             Events.on(this._document, 'keyup', this._keyPressHandlerRef);
 
-            this._deactivateRef = this._deactivate.bind(this);
-            Events.on(this.element.querySelector('.project-planner__close'), 'click', this._deactivateRef);
+            this._closeButtonClickHandlerRef = this._closeButtonClickHandler.bind(this);
+            Events.on(this.element.querySelector('.project-planner__close'), 'click', this._closeButtonClickHandlerRef);
 
             this._showStepRef = this._showStep.bind(this);
             this.bind('showPage', this._showStepRef);
@@ -139,13 +139,17 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
         _keyPressHandler : function _keyPressHandler(ev) {
             if (ev.keyCode === CONSTANTS.KEYCODES.ESC) {
                 this.deactivate();
+                this.dispatch('projectPlanner:closed');
             }
+        },
+
+        _closeButtonClickHandler : function _closeButtonClickHandler() {
+            this.dispatch('projectPlanner:closed');
+            this.deactivate();
         },
 
         _deactivate : function _deactivate() {
             Widget.prototype._deactivate.call(this);
-
-            this.dispatch('projectPlanner:closed');
 
             onTransitionEnd(this.element, function() {
                 this.destroy();
@@ -156,8 +160,8 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
             Events.off(this._document, 'keyup', this._keyPressHandlerRef);
             this._keyPressHandlerRef = null;
 
-            Events.off(this.element.querySelector('.project-planner__close'), 'click', this._deactivateRef);
-            this._deactivateRef = null;
+            Events.off(this.element.querySelector('.project-planner__close'), 'click', this._closeButtonClickHandlerRef);
+            this._closeButtonClickHandlerRef = null;
 
             Widget.prototype.destroy.call(this);
             return null;

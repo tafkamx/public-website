@@ -8,9 +8,9 @@ Class(EM.UI, 'ProjectPlannerStep3').inherits(Widget).includes(BubblingSupport)({
             <div class="page__container -rel">\
                 <div class="project-planner__step-counter -grad-03">3/5</div>\
                 <p class="project-planner__title -font-semi-bold">Do you have a deadline?</p>\
-                <p class="project-planner__desc">Doesn’t have to be a specific date. You can just type in an estimated date or even range of time. If you do not have a deadline you can leave this field blank and skip to the next step.</p>\
-                <div class="-row -mt2 -mb5">\
-                    <div class="input-wrapper -col-7"></div>\
+                <p class="project-planner__desc">It doesn’t have to be a specific date. You can just type in an estimated date or even range of time, like <span class="-fsi">“In about 3 months”</span>.<br/>If you do not have a deadline you can leave this field empty and go on to the next step.</p>\
+                <div class="-row -mt5">\
+                    <div class="input-wrapper"></div>\
                 </div>\
             </div>\
             <div class="project-planner__footer">\
@@ -33,18 +33,18 @@ Class(EM.UI, 'ProjectPlannerStep3').inherits(Widget).includes(BubblingSupport)({
             this.appendChild(new EM.UI.Input({
                 name : 'inputDeadline',
                 className : '-md -block',
-                data : {attr : {placeholder: 'When would you like the project to be done?'}}
+                data : {attr : {placeholder: 'When would you like the project to be launched?'}}
             })).render(this.element.querySelector('.input-wrapper'));
 
             this.appendChild(new EM.UI.Button({
                 name : 'backButton',
-                className : '-md -neutral-dark -pl5 -pr5',
+                className : '-mini -gray -pl2 -pr2 -mt1',
                 html : '‹&nbsp;Back'
             })).render(this.element.querySelector('[data-back-btn-container]'));
 
             this.appendChild(new EM.UI.Button({
                 name : 'nextButton',
-                className : '-md -neutral-dark -pl5 -pr5',
+                className : '-md -neutral-dark -pl4 -pr4',
                 html : 'Next&nbsp;&nbsp;›'
             })).render(this.element.querySelector('[data-next-btn-container]'));
             return this;

@@ -235,9 +235,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
         /* Toggles the Grid Overlay.
          * @method _toggleGridHandler <private>
          */
-        _toggleGridHandler : function _toggleGridHandler(ev) {
-            ev.stopPropagation();
-
+        _toggleGridHandler : function _toggleGridHandler() {
             if (!this.pages._current.coverElement && !this.pages._current.headerWidget) {
                 return this._noTransition();
             }

@@ -1,13 +1,14 @@
 var Events = require('./../../lib/events');
 
-Class(EM.UI, 'ProjectPlannerStep6').inherits(Widget)({
+Class(EM.UI, 'ProjectPlannerStep6').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step6',
     ELEMENT_CLASS : 'project-planner__step',
     HTML : '\
         <div>\
-            <div class="project-planner__step-counter">&nbsp;</div>\
-            <p class="project-planner__title -font-light">Thank you taking the time to submit this!</p>\
-            <p class="project-planner__desc -pb5">We will get back to as soon as possible. In the mean time you can read our Journal to get to know us a bit better.</p>\
+            <div class="page__container -rel -tac">\
+                <p class="project-planner__title -font-semi-bold">Thanks you taking the time to submit this!</p>\
+                <p class="project-planner__desc -pb5">We will get back to as soon as possible. In the mean time you can read our Journal to get to know us a bit better.</p>\
+            </div>\
         </div>',
 
     prototype : {
@@ -19,16 +20,30 @@ Class(EM.UI, 'ProjectPlannerStep6').inherits(Widget)({
         _setup : function _setup() {
             this.appendChild(new EM.UI.Button({
                 name : 'button',
-                className : '-md -pink -pl5 -pr5 -mb1',
-                text : 'Over and out'
-            })).render(this.element);
+                className : '-md -pink -pl3 -pr3',
+                text : 'Get In Our Minds'
+            })).render(this.element.querySelector('.page__container'));
             return this;
         },
 
         _bindEvents : function _bindEvents() {
-            Events.on(this.button.element, 'click', function() {
-                this.parent.deactivate();
-            }.bind(this));
+            this._clickHandlerRef = this._clickHandler.bind(this);
+            Events.on(this.button.element, 'click', this._clickHandlerRef);
+        },
+
+        _clickHandler : function _clickHandler() {
+            this.dispatch('updateRoute', {
+                route: '/journal'
+            });
+
+            this.parent.destroy();
+        },
+
+        destroy : function destroy() {
+            Events.off(this.button.element, 'click', this._clickHandlerRef);
+            this._clickHandlerRef = null;
+            Widget.prototype.destroy.call(this);
+            return null;
         }
     }
 });

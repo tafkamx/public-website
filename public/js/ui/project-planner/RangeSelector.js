@@ -8,11 +8,11 @@ Class(EM.UI, 'RangeSelector').inherits(Widget)({
     HTML : '\
         <div class="range-selector">\
             <div class="range-selector__amounts -pb3 -row -tac -rel">\
-                <div class="range-selector__amount -font-light -fl" data-percent="0">$ 16,000 <sub>USD</sub></div>\
-                <div class="range-selector__amount -font-light -fl" data-percent="25">$ 30,000 <sub>USD</sub></div>\
-                <div class="range-selector__amount -font-light -fl" data-percent="50">$ 50,000 <sub>USD</sub></div>\
-                <div class="range-selector__amount -font-light -fl" data-percent="75">$ 100,000 <sub>USD</sub></div>\
-                <div class="range-selector__amount -font-light -fl" data-percent="100">$ 150,000+</div>\
+                <div class="range-selector__amount -font-light -fl" data-percent="0">16,000 <sub>USD</sub></div>\
+                <div class="range-selector__amount -font-light -fl" data-percent="25">30,000 <sub>USD</sub></div>\
+                <div class="range-selector__amount -font-light -fl" data-percent="50">50,000 <sub>USD</sub></div>\
+                <div class="range-selector__amount -font-light -fl" data-percent="75">100,000 <sub>USD</sub></div>\
+                <div class="range-selector__amount -font-light -fl" data-percent="100">+ 150,000 <sub>USD</sub></div>\
                 <div class="range-selector__amount-range-indicator"></div>\
             </div>\
             <div class="range-selector__input-wrapper -pb3 -rel">\

@@ -8,10 +8,10 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
     HTML : '\
         <div>\
             <div class="page__container -rel">\
-                <div class="project-planner__step-counter -grad-01">5/5</div>\
+                <div class="project-planner__step-counter -grad-05">5/5</div>\
                 <p class="project-planner__title -font-semi-bold">Finally, how can we reach you?</p>\
                 <p class="project-planner__desc">To get this moving, tell us how can we get in touch and we will get back to you as soon as possible once we have reviewed and understood the information you entered here.</p>\
-                <div class="-row -pt4 -pb5">\
+                <div class="-row -pt4">\
                     <div data-row-a class="-col-6 -pr1"></div>\
                     <div data-row-b class="-col-6 -pl1"></div>\
                 </div>\
@@ -80,13 +80,13 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
 
             this.appendChild(new EM.UI.Button({
                 name : 'backButton',
-                className : '-md -neutral-dark -pl5 -pr5',
+                className : '-mini -gray -pl2 -pr2 -mt1',
                 html : '‹&nbsp;Back'
             })).render(this.element.querySelector('[data-back-btn-container]'));
 
             this.appendChild(new EM.UI.Button({
                 name : 'nextButton',
-                className : '-md -pink -pl5 -pr5',
+                className : '-md -neutral-dark -pl4 -pr4',
                 text : 'Let’s Do This!'
             })).render(this.element.querySelector('[data-next-btn-container]'));
             return this;
