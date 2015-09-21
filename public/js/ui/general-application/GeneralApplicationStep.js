@@ -2,7 +2,7 @@ var Events = require('./../../lib/events');
 
 Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step',
-    ELEMENT_CLASS : 'project-planner__step',
+    ELEMENT_CLASS : 'general-application__step',
     HTML : '\
         <div>\
             <div class="page__container -rel">\
@@ -73,7 +73,6 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
 
         _setup : function _setup() {
 
-
             this.appendChild(new EM.UI.Button({
                 name : 'sendButton',
                 className : '-md -neutral-dark -pl4 -pr4',
@@ -108,10 +107,6 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             this._updateButtonStateRef = this._updateButtonState.bind(this);
             Events.on(this.inputMessage, 'keyup', this._updateButtonStateRef);
 
-
-            this._nextButtonClickHandlerRef = this._nextButtonClickHandler.bind(this);
-            Events.on(this.sendButton.element, 'click', this._nextButtonClickHandlerRef);
-
             this._updateFilesFeedbackRef = this._updateFilesFeedback.bind(this);
             Events.on(this.uploadFile, 'change', this._updateFilesFeedbackRef);
         },
@@ -140,22 +135,6 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             }
 
             this.sendButton.disable();
-        },
-
-        _backButtonClickHandler : function _backButtonClickHandler() {
-            this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep1.NAME});
-        },
-
-        _nextButtonClickHandler : function _nextButtonClickHandler() {
-            var data = [{
-                prop : 'description',
-                value : this.inputMessage.value
-            }, {
-                prop : 'supportingFiles',
-                value : this.uploadFile.files
-            }];
-            this.dispatch('setData', {data : data});
-            this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep3.NAME});
         },
 
         destroy : function destroy() {

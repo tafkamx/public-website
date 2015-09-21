@@ -14,3 +14,73 @@ p.general-application__commas{
 	margin-bottom:10px;
 	color: #A0ACB3;
 }
+
+.general-application {
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(100%);
+  transition: transform 400ms @ease;
+
+  &.active {transform: translateX(0)}
+}
+
+.general-application__close {
+  z-index: 1;
+  top: 6rem;
+  right: 6rem;
+  fill: #7E888C;
+  transition: opacity 200ms linear;
+
+  &:hover {opacity: .6}
+}
+
+.general-application__inner {
+  height: 100%;
+}
+
+.general-application__step {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 6rem 6rem 12rem 6rem;
+  overflow: auto;
+  visibility:hidden;
+  opacity: 0;
+  // transform: translatex(2em);
+  transition: opacity .3s, transform .3s;
+
+  > .page__container {
+    padding: 0 7rem;
+  }
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    // transform: translatex(0);
+  }
+}
+
+.project-upload-files-bar {
+  margin: 0 1.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid #DAE2E6;
+}
+
+.pp-upload-files-feedback {
+  font-size: 1.083rem;
+  margin-top: .5em;
+  overflow: hidden;
+  color: #525F66;
+}
+
+@media all and (max-width: 768px) {
+  .general-application__step {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
