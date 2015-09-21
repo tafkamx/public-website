@@ -8,7 +8,10 @@ Class(EM.UI, 'PageCover').inherits(Widget)({
                 <p class="page__header-subheading -font-light -ttu"></p>\
                 <h1 class="page__header-heading -font-bold"></h1>\
                 <div class="page__header-help">\
-                    <svg class="page__header-help-svg -s22 -color-white"><use xlink:href="#svg-scroll-mouse"></use></svg>\
+                    <div class="mouse-wheel -inline-block -vat">\
+                        <div class="mouse-wheel-a"></div>\
+                        <div class="mouse-wheel-b"></div>\
+                    </div>\
                     <p class="page__header-help-text -inline-block">Scroll down to show you how we do it.</p>\
                 </div>\
             </div>\
