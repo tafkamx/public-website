@@ -145,11 +145,6 @@ Class(EM.UI, 'RangeSelector').inherits(Widget)({
 
             this.rangeSliderEl.style.width = (100 - this.getValue()) + '%';
             this._updateAmountLabels(this.getValue());
-
-            // executing parent onChange callback
-            if (this.parentChangeCallback) {
-                this.parentChangeCallback({value: this.getValue()});
-            }
         },
 
         destroy : function destroy() {

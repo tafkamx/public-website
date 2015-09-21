@@ -41,8 +41,7 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
         _setup : function _setup() {
             this.appendChild(new EM.UI.RangeSelector({
                 name : 'rangeSelector',
-                initialValue: 50,
-                onChange: this._changeProjectData.bind(this),
+                initialValue: 50
             }).render(this.element.querySelector('.project-planner__budget-selector-range')));
 
             this.appendChild(new EM.UI.Button({
@@ -92,10 +91,6 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
             ];
             this.dispatch('setData', {data : data});
             this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep5.NAME});
-        },
-
-        _changeProjectData: function(element) {
-            console.log(element.value);
         },
 
         destroy : function destroy() {
