@@ -49,7 +49,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                         <br><p>Upload your Resumé (optional)</p><br>\
                         <input type="file" name="upload" class="-hide" />\
                         <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
-                        <p class="pp-upload-files-feedback -pl1 -fsi">No file chosen.</p>\
+                        <p class="pp-upload-files-feedback -pl1 -fsi">No file<br>chosen.</p>\
                 </div>\
             </div>\
             <div class="project-planner__footer">\
