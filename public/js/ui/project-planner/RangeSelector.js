@@ -97,7 +97,27 @@ Class(EM.UI, 'RangeSelector').inherits(Widget)({
             mouseSliderPercentPosition = Math.max(0, mouseSliderPercentPosition);
             mouseSliderPercentPosition = Math.min(mouseSliderPercentPosition, 1);
 
-            this._onChangeValue(mouseSliderPercentPosition * 100);
+            var rounded = Math.round(mouseSliderPercentPosition * 100);
+            var closest = this.closest(rounded, [0, 25, 50, 75, 100]);
+
+            if (Math.abs(rounded - closest) < 5) {
+                return this._onChangeValue(closest);
+            }
+
+            this._onChangeValue(rounded);
+        },
+
+        closest : function closest (num, arr) {
+            var curr = arr[0];
+            var diff = Math.abs (num - curr);
+            for (var val = 0; val < arr.length; val++) {
+                var newdiff = Math.abs (num - arr[val]);
+                if (newdiff < diff) {
+                    diff = newdiff;
+                    curr = arr[val];
+                }
+            }
+            return curr;
         },
 
         _handleMouseUp : function _handleMouseUp() {
