@@ -1,9 +1,8 @@
 var CONSTANTS = require('./../lib/const');
 var Events = require('./../lib/events');
 var onTransitionEnd = require('./../lib/onTransitionEnd');
-var ProjectPlannerData = require('./../data/project-planner/registry');
 
-Class(EM.Views, 'generalApplication').inherits(Widget).includes(BubblingSupport)({
+Class(EM.Overlays, 'generalApplication').inherits(Widget).includes(BubblingSupport)({
     // NAME : 'general-application',
     PATH : '/general-application',
     MENU_COLOR : CONSTANTS.COLORS.purple,

@@ -14,8 +14,7 @@ var classify = require("underscore.string/classify");
 
 Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
     ALTERNATE_ROUTES_WHITELIST : [
-        'project-planner',
-        'general-application',
+        'project-planner'
     ],
 
     prototype : {
@@ -65,12 +64,6 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this.bind('showProjectPlanner', this._showProjectPlannerRef);
 
             this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
-            this.bind('updateRoute', this._updateRoute.bind(this));
-
-            this._showGeneralApplicationRef = this._showGeneralApplication.bind(this);
-            this.bind('showGeneralApplication', this._showGeneralApplicationRef);
-
-            this.bind('generalApplication:closed', this._generalApplicationClosedHandler.bind(this));
             this.bind('updateRoute', this._updateRoute.bind(this));
 
             this._toggleGridHandlerRef = this._toggleGridHandler.bind(this);
@@ -138,36 +131,41 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          * @method showPage <public>
          */
         showPage : function showPage(routeName) {
-            if (EM.App.ALTERNATE_ROUTES_WHITELIST.indexOf(routeName) >= 0) {
+            if (routeName) {
                 if (!this.pages.getCurrent()) {
                     this.pages.appendChild(new EM.Views.Home({name: 'home'}));
                     this.pages.renderView(this.pages.home);
                 }
 
-                if (this.projectPlanner) {
-                    this.projectPlanner = this.projectPlanner.destroy();
+                var overlayClass = classify(routeName);
+                console.log(overlayClass);
+                if(overlayClass == 'ProjectPlanner'){
+                    if (this.projectPlanner) {
+                        this.projectPlanner = this.projectPlanner.destroy();
+                    }
+
+                    this.appendChild(new EM.Overlays.ProjectPlanner({
+                        name : 'projectPlanner'
+                    })).render(document.body);
+
+                    window.setTimeout(function() {
+                        this.projectPlanner.activate().setup();
+                    }.bind(this), 0);
+                }else {
+
+                    if (this.generalApplication) {
+                        this.generalApplication = this.generalApplication.destroy();
+                    }
+
+                    this.appendChild(new EM.Overlays.generalApplication({
+                        name : 'generalApplication'
+                    })).render(document.body);
+
+                    window.setTimeout(function() {
+                        this.generalApplication.activate().setup();
+                    }.bind(this), 0);
                 }
-
-                this.appendChild(new EM.Views.ProjectPlanner({
-                    name : 'projectPlanner'
-                })).render(document.body);
-
-
-                window.setTimeout(function() {
-                    this.projectPlanner.activate().setup();
-                }.bind(this), 0);
-
-                if (this.generalApplication) {
-                    this.generalApplication = this.generalApplication.destroy();
-                }
-
-                this.appendChild(new EM.Views.generalApplication({
-                    name : 'generalApplication'
-                })).render(document.body);
-
-                window.setTimeout(function() {
-                    this.generalApplication.activate().setup();
-                }.bind(this), 0);
+                
 
                 return;
             }
@@ -231,7 +229,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          */
         _showProjectPlanner : function _showProjectPlanner(ev) {
             ev.stopPropagation();
-            Router.setRoute(EM.Views.ProjectPlanner.PATH);
+            Router.setRoute(EM.Overlays.ProjectPlanner.PATH);
         },
 
         /* After closing the projectPlanner, it restores the url to the latest
@@ -243,25 +241,24 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                 Router.setRoute(this.pages.getCurrent().constructor.PATH);
             }
         },
-        /* Shows the General Application view.
+        /* Shows the Project Planner view.
          * (Bubbled event handler) (App <- Grid)
-         * @method _showGeneralApplication <private>
+         * @method _showProjectPlanner <private>
          */
-        _showGeneralApplication : function _showGeneralApllication(ev) {
+        _showGeneralApplication : function _showGeneralApplication(ev) {
             ev.stopPropagation();
-            Router.setRoute(EM.Views.generalApplication.PATH);
+            Router.setRoute(EM.Overlays.generalApplication.PATH);
         },
 
-        /* After closing the generalApplicaiton, it restores the url to the latest
+        /* After closing the projectPlanner, it restores the url to the latest
          * current view.
-         * @method _generalApplicationClosedHandler <private>
+         * @method _projectPlannerClosedHandler <private>
          */
         _generalApplicationClosedHandler : function _generalApplicationClosedHandler() {
             if (this.pages.getCurrent().constructor.PATH) {
                 Router.setRoute(this.pages.getCurrent().constructor.PATH);
             }
         },
-
         /* Changes the color of the menu.
          * (Bubbled event handler) (App <- Pages <- Any)
          * @method _changeMenuColorHandler <private>

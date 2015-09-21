@@ -3,7 +3,7 @@ var Events = require('./../lib/events');
 var onTransitionEnd = require('./../lib/onTransitionEnd');
 var ProjectPlannerData = require('./../data/project-planner/registry');
 
-Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
+Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
     // NAME : 'project-planner',
     PATH : '/project-planner',
     MENU_COLOR : CONSTANTS.COLORS.purple,
