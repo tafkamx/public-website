@@ -130,7 +130,28 @@ Class(EM.UI, 'RangeSelector').inherits(Widget)({
                 el.classList.remove('active');
             });
 
-            if (value >= 75) {
+            if ([0, 25, 50, 75, 100].indexOf(value) >= 0) {
+                this.amountRangeIndicator.style.visibility = 'hidden';
+
+                switch(value) {
+                    case 0: this.amountElement0.classList.add('active');
+                        break;
+                    case 25: this.amountElement25.classList.add('active');
+                        break;
+                    case 50: this.amountElement50.classList.add('active');
+                        break;
+                    case 75: this.amountElement75.classList.add('active');
+                        break;
+                    case 100: this.amountElement100.classList.add('active');
+                        break;
+                }
+
+                return;
+            }
+
+            this.amountRangeIndicator.style.visibility = 'visible';
+
+            if (value > 75) {
                 //75,100
                 this.amountElement75.classList.add('active');
                 this.amountElement100.classList.add('active');
@@ -138,7 +159,7 @@ Class(EM.UI, 'RangeSelector').inherits(Widget)({
                 return;
             }
 
-            if (value >= 50) {
+            if (value > 50) {
                 // 50-75
                 this.amountElement50.classList.add('active');
                 this.amountElement75.classList.add('active');
@@ -146,7 +167,7 @@ Class(EM.UI, 'RangeSelector').inherits(Widget)({
                 return;
             }
 
-            if (value >= 25) {
+            if (value > 25) {
                 // 25,50
                 this.amountElement25.classList.add('active');
                 this.amountElement50.classList.add('active');
