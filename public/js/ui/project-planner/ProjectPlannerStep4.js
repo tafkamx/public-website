@@ -4,22 +4,28 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step4',
     ELEMENT_CLASS : 'project-planner__step',
     HTML : '\
-        <div data-step="budget-selector">\
-            <div class="project-planner__step-counter">4<span class="dim">/5</span></div>\
-            <p class="project-planner__title -font-light">What about a budget?</p>\
-            <p class="project-planner__desc">If you do, please give us a rough idea. Our work is based on coming up with solutions within constraints. A budget is one of these constraints. Knowing it willl help us to maximize the available resources to achieve the best solution possible.</p>\
-            <div class="project-planner__budget-radios -pt3 -pb5">\
-                <label class="-clickable">\
-                    <input type="radio" name="has-budget" value="1" checked/> Of course my horse\
-                </label>\
-                <label class="-clickable">\
-                    <input type="radio" name="has-budget" value="0"/> No! I need help planning\
-                </label>\
+        <div>\
+            <div class="page__container -rel">\
+                <div class="project-planner__step-counter -grad-04">4/5</div>\
+                <p class="project-planner__title -font-semi-bold">What about a budget?</p>\
+                <p class="project-planner__desc">If you do, please give us a rough idea. Our work is based on coming up with solutions within constraints. A budget is one of these constraints. Knowing it willl help us to maximize the available resources to achieve the best solution possible.</p>\
+                <div class="project-planner__budget-radios -pt3 -pb5">\
+                    <label class="-clickable">\
+                        <input type="radio" name="has-budget" value="1" checked/> Of course my horse\
+                    </label>\
+                    <label class="-clickable">\
+                        <input type="radio" name="has-budget" value="0"/> No! I need help planning\
+                    </label>\
+                </div>\
+                <div class="project-planner__budget-selector-range -rel"></div>\
             </div>\
-            <div class="project-planner__budget-selector-range -rel"></div>\
-            <div class="-row -mb5">\
-                <div data-back-btn-container class="-col-6"></div>\
-                <div data-next-btn-container class="-col-6 -tar"></div>\
+            <div class="project-planner__footer">\
+                <div class="page__container -rel">\
+                    <div class="-row">\
+                        <div data-back-btn-container class="-col-6"></div>\
+                        <div data-next-btn-container class="-col-6 -tar"></div>\
+                    </div>\
+                </div>\
             </div>\
         </div>',
 
@@ -45,7 +51,7 @@ Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
 
             this.appendChild(new EM.UI.Button({
                 name : 'nextButton',
-                className : '-md -neutral-dark -pl5 -pr5 -mb1',
+                className : '-md -neutral-dark -pl5 -pr5',
                 html : 'Next&nbsp;&nbsp;›'
             })).render(this.element.querySelector('[data-next-btn-container]'));
             return this;

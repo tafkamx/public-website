@@ -4,20 +4,26 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step2',
     ELEMENT_CLASS : 'project-planner__step',
     HTML : '\
-        <div data-step="brief">\
-            <div class="project-planner__step-counter">2<span class="dim">/5</span></div>\
-            <p class="project-planner__title -font-light">What do you have in mind?</p>\
-            <p class="project-planner__desc">Describe your idea with as much detail possible. Don’t be shy as it’ll help us determine how we can help you. You can also upload any material you think will support your description. Wireframes, documents or even your napkin doodles.</p>\
-            <div class="project-description-wrapper -rel -mb5 -mt2">\
-                <textarea class="project-planner__project-description ui-input -font-light -full-width" placeholder="Don\'t be shy :)"></textarea>\
-                <div class="project-upload-files-bar">\
-                    <input type="file" name="upload" class="-hide" />\
-                    <button class="ui-btn -mini"><span class="-rel">Upload Files</span></button>\
+        <div>\
+            <div class="page__container -rel">\
+                <div class="project-planner__step-counter -grad-02">2/5</div>\
+                <p class="project-planner__title -font-semi-bold">What do you have in mind?</p>\
+                <p class="project-planner__desc">Describe your idea with as much detail possible. Don’t be shy as it’ll help us determine how we can help you. You can also upload any material you think will support your description. Wireframes, documents or even your napkin doodles.</p>\
+                <div class="project-description-wrapper -rel -mb5 -mt2">\
+                    <textarea class="project-planner__project-description ui-input -font-light -full-width" placeholder="What’s your vision?"></textarea>\
+                    <div class="project-upload-files-bar">\
+                        <input type="file" name="upload" class="-hide" />\
+                        <button class="ui-btn -mini"><span class="-rel">Upload Files</span></button>\
+                    </div>\
                 </div>\
             </div>\
-            <div class="-row -mb5">\
-                <div data-back-btn-container class="-col-6"></div>\
-                <div data-next-btn-container class="-col-6 -tar"></div>\
+            <div class="project-planner__footer">\
+                <div class="page__container -rel">\
+                    <div class="-row">\
+                        <div data-back-btn-container class="-col-6"></div>\
+                        <div data-next-btn-container class="-col-6 -tar"></div>\
+                    </div>\
+                </div>\
             </div>\
         </div>',
 

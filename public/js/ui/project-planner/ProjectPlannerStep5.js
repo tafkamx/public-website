@@ -7,16 +7,22 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'project-planner__step',
     HTML : '\
         <div>\
-            <div class="project-planner__step-counter">5<span class="dim">/5</span></div>\
-            <p class="project-planner__title -font-light">Finally, how can we reach you?</p>\
-            <p class="project-planner__desc">To get this moving, tell us how can we get in touch and we will get back to you as soon as possible once we have reviewed and understood the information you entered here.</p>\
-            <div class="-row -pt4 -pb5">\
-                <div data-row-a class="-col-6 -pr1"></div>\
-                <div data-row-b class="-col-6 -pl1"></div>\
+            <div class="page__container -rel">\
+                <div class="project-planner__step-counter -grad-01">5/5</div>\
+                <p class="project-planner__title -font-semi-bold">Finally, how can we reach you?</p>\
+                <p class="project-planner__desc">To get this moving, tell us how can we get in touch and we will get back to you as soon as possible once we have reviewed and understood the information you entered here.</p>\
+                <div class="-row -pt4 -pb5">\
+                    <div data-row-a class="-col-6 -pr1"></div>\
+                    <div data-row-b class="-col-6 -pl1"></div>\
+                </div>\
             </div>\
-            <div class="-row -mb5">\
-                <div data-back-btn-container class="-col-6"></div>\
-                <div data-next-btn-container class="-col-6 -tar"></div>\
+            <div class="project-planner__footer">\
+                <div class="page__container -rel">\
+                    <div class="-row">\
+                        <div data-back-btn-container class="-col-6"></div>\
+                        <div data-next-btn-container class="-col-6 -tar"></div>\
+                    </div>\
+                </div>\
             </div>\
         </div>',
 
@@ -80,7 +86,7 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
 
             this.appendChild(new EM.UI.Button({
                 name : 'nextButton',
-                className : '-md -pink -pl5 -pr5 -mb1',
+                className : '-md -pink -pl5 -pr5',
                 text : 'Let’s Do This!'
             })).render(this.element.querySelector('[data-next-btn-container]'));
             return this;
