@@ -147,9 +147,10 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                 {prop: 'inputEmail',value: this.inputEmail.getValue()},
                 {prop: 'inputWebsite', value: this.inputWebsite.getValue()},
                 {prop: 'inputMessage', value: this.inputMessage.value},
-                {prop: 'canRelocate', value: this.radioElements[position].value}
+                {prop: 'canRelocate', value: this.radioElements[position].value},
+                {prop: 'supportingFiles',value : this.uploadFile.files}
             ];
-
+            this.dispatch('setData', {data : data});
         },
 
         _displayErrors : function _displayErrors(errors){
