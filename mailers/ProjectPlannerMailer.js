@@ -4,7 +4,7 @@ var client = new mandrill.Mandrill(CONFIG.mandrill.key || false)
 var message = {
   "html" : "",
   "subject" : "New entry form Project Planner",
-  "from_email" : "project-planner@empathia.agency",
+  "from_email" : params.infoEmail,
   "from_name"  : "Empathia Project Planner",
   "to" : [],
   "important" : true,
