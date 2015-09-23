@@ -1,4 +1,6 @@
 var Events = require('./../../lib/events');
+var Capitalize = require('./../../lib/utils/capitalize');
+var Checkit = require('checkit');
 
 Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step',
@@ -28,19 +30,19 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                     <p>Are you willing to relocate to Guadalajara?</p><br>\
                     <div class="-col-1 -pr1">\
                         <label class="-clickable">\
-                            <input type="radio" name="" value="1" checked/>\
+                            <input type="radio" name="can-relocate" value="Yes" checked/>\
                             <span>&nbsp;Yes</span>\
                         </label>\
                     </div>\
                     <div class="-col-1 -pr1">\
                         <label class="-clickable">\
-                            <input type="radio" name="" value="0"/>\
+                            <input  type="radio" name="can-relocate" value="No"/>\
                             <span>&nbsp;No</span>\
                         </label>\
                     </div>\
                     <div class="-col-3 -pr1">\
                         <label class="-clickable">\
-                            <input type="radio" name="" value="0"/>\
+                            <input  type="radio" name="can-relocate" value="LivesInGDL"/>\
                             <span>&nbsp;I already live in GDL</span>\
                         </label>\
                     </div>\
@@ -55,7 +57,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             <div class="project-planner__footer">\
                 <div class="page__container -rel">\
                     <div class="-row">\
-                        <div data-next-btn-container class="-col-12 -tar"></div>\
+                        <div data-submit-btn-container class="-col-12 -tar"></div>\
                     </div>\
                 </div>\
             </div>\
@@ -65,10 +67,17 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
         init : function init(config) {
             Widget.prototype.init.call(this, config);
             this.inputMessage = this.element.querySelector('.project-planner__project-description');
+            this.radioElements = [].slice.call(this.element.querySelectorAll('[name="can-relocate"]'),0);
             this.uploadButton = this.element.querySelector('.ui-btn.-mini');
             this.uploadFile = this.element.querySelector('[name="upload"]');
             this.uploadedFilesFeedback = this.element.querySelector('.pp-upload-files-feedback');
             this._setup()._bindEvents();
+
+            this._checkitProps = new Checkit({
+                name: ['required'],
+                email: ['required','email'],
+                website: ['required','url'],
+            });
         },
 
         _setup : function _setup() {
@@ -77,7 +86,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                 name : 'sendButton',
                 className : '-md -neutral-dark -pl4 -pr4',
                 html : 'Submit Application'
-            })).render(this.element.querySelector('[data-next-btn-container]')).disable();
+            })).render(this.element.querySelector('[data-submit-btn-container]'));
 
             this.appendChild(new EM.UI.Input({
                 name : 'inputName',
@@ -101,14 +110,53 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
         },
 
         _bindEvents : function _bindEvents() {
+            this.radioElements.forEach(function(radio){
+                Events.on(radio, 'change');
+            },this);
+
             this._triggerFileUploadRef = this._triggerFileUpload.bind(this);
             Events.on(this.uploadButton, 'click', this._triggerFileUploadRef);
 
-            this._updateButtonStateRef = this._updateButtonState.bind(this);
-            Events.on(this.inputMessage, 'keyup', this._updateButtonStateRef);
-
             this._updateFilesFeedbackRef = this._updateFilesFeedback.bind(this);
             Events.on(this.uploadFile, 'change', this._updateFilesFeedbackRef);
+
+            this._buttonClickHandlerRef = this._buttonClickHandler.bind(this);
+            Events.on(this.sendButton.element, 'click', this._buttonClickHandlerRef);
+        },
+
+        _buttonClickHandler : function _buttonClickHandler(){
+            var validate = this._checkitProps.validateSync({
+                name: this.inputName.getValue(),
+                email: this.inputEmail.getValue(),
+                website: this.inputWebsite.getValue(),
+            });
+            if (validate[0]){
+                return this._displayErrors(validate[0].errors);
+            }
+
+            var position = 0;
+            for (var i=0; i<this.radioElements.length; i++){ 
+                if (this.radioElements[i].checked) {
+                    position = i;
+                    i = this.radioElements.length;
+                }
+            }
+
+            var data = [
+                {prop: 'inputName', value : this.inputName.getValue()},
+                {prop: 'inputEmail',value: this.inputEmail.getValue()},
+                {prop: 'inputWebsite', value: this.inputWebsite.getValue()},
+                {prop: 'inputMessage', value: this.inputMessage.value},
+                {prop: 'canRelocate', value: this.radioElements[position].value}
+            ];
+
+        },
+
+        _displayErrors : function _displayErrors(errors){
+            Object.keys(errors).forEach(function(propertyName) {
+                    var widget = 'input' + Capitalize(propertyName);
+                    this[widget].error();
+            }, this);
         },
 
         _triggerFileUpload : function _triggerFileUpload(ev) {
@@ -129,21 +177,8 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             this.uploadedFilesFeedback.insertAdjacentHTML('beforeend', text);
         },
 
-        _updateButtonState : function _updateButtonState() {
-            if (this.inputMessage.value.trim().length >= 3) {
-                return this.sendButton.enable();
-            }
-
-            this.sendButton.disable();
-        },
-
         destroy : function destroy() {
-            Events.off(this.inputMessage, 'keyup', this._updateButtonStateRef);
-            this._updateButtonStateRef = null;
-
-
-            Events.off(this.sendButton.element, 'click', this._nextButtonClickHandlerRef);
-            this._nextButtonClickHandlerRef = null;
+            this._checkitProps = null;
 
             Widget.prototype.destroy.call(this);
 
