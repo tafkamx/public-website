@@ -1,6 +1,7 @@
 var CONSTANTS = require('./../lib/const');
 var Events = require('./../lib/events');
 var onTransitionEnd = require('./../lib/onTransitionEnd');
+var generalApplicationData = require ('./../data/general-application/registry');
 
 Class(EM.Overlays, 'generalApplication').inherits(Widget).includes(BubblingSupport)({
     // NAME : 'general-application',
@@ -46,6 +47,9 @@ Class(EM.Overlays, 'generalApplication').inherits(Widget).includes(BubblingSuppo
             this._showStepRef = this._showStep.bind(this);
             this.bind('showPage', this._showStepRef);
 
+            this._setDataRef = this._setData.bind(this);
+            this.bind('setData', this._setDataRef);
+
             this.bind('sendForm', this._sendForm);
         },
 
@@ -65,6 +69,45 @@ Class(EM.Overlays, 'generalApplication').inherits(Widget).includes(BubblingSuppo
             this[stepName].activate();
         },
 
+        _setData : function _setData(ev){
+            ev.stopPropagation();
+
+            ev.data.forEach(function(data){
+                generalApplicationData.set(data.prop, data.value);
+            });
+
+
+        },
+
+        _sendForm : function _sendForm (){
+            var formData = new FormData();
+
+            var data = generalApplicationData._data;
+            for (var property in data){
+                if (data.hasOwnProperty(property)){
+                    if (data[property] !== 'supportingFiles'){
+                        formData.append(property, data[property]);
+                    }
+                }
+            }
+
+            if (data['supportingFiles']){
+                $.each($('input[name="upload"]')[0].files, function(i, file){
+                    formData.append('file',file);
+                });
+            }
+
+            $.ajax({
+                url : '/sendApplication',
+                data : formData,
+                processData : false,
+                type : 'POST',
+                contentType : false,
+                success : function(data){
+                    generalApplicationData.reset();
+                }
+            });
+        },
 
         /* Handles the keypress event on document.
          * Basically interested on listening when the `ESC` key is pressed to auto-close this modal.

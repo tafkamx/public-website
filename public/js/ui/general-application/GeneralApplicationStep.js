@@ -150,7 +150,11 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                 {prop: 'canRelocate', value: this.radioElements[position].value},
                 {prop: 'supportingFiles',value : this.uploadFile.files}
             ];
+
             this.dispatch('setData', {data : data});
+
+            this.dispatch('sendForm');
+
         },
 
         _displayErrors : function _displayErrors(errors){

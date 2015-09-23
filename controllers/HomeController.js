@@ -14,6 +14,7 @@ function microtime(get_as_float) {
 }
 
 var ProjectPlannerMailer = require('./../mailers/ProjectPlannerMailer');
+var generalApplicationMailer = require ('./../mailers/generalApplicationMailer');
 
 
 var HomeController = Class('HomeController')({
@@ -26,6 +27,9 @@ var HomeController = Class('HomeController')({
     _initRouter : function() {
       application.router.route('/sendProject')
         .post(this.sendProject);
+
+      application.router.route('/sendApplication')
+        .post(this.sendApplication);
 
       application.router.route('/*')
         .get(this.index);
@@ -60,6 +64,34 @@ var HomeController = Class('HomeController')({
           }
 
           res.json({data : response });
+        });
+      });
+    },
+    sendApplication : function (req, res, next){
+      var file = fs.readFileSync(req.files.file.path);
+
+      var params = {
+        Bucket: 'empathia-ppn-uploads',
+        Key: microtime(true)*10000+'_'+req.files.file.name,
+        Body:file
+      };
+
+      amazonS3.upload(params, function(err, data){
+        if(err){
+          return next(err);
+        }
+
+        var fileURL = data.Location;
+
+        var body =req.body;
+        body.fileURL = fileURL;
+
+        generalApplicationMailer.new(body, function(err, response){
+          if (err){
+            return next(err);
+          }
+
+          res.json({data : response});
         });
       });
     }
