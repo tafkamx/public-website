@@ -123,6 +123,12 @@ Class(EM.UI, 'ImageStrip').inherits(Widget)({
             inlineStyle(this.imageContainerClone, {
                 opacity: 0
             });
+        },
+
+        destroy : function destroy() {
+            Widget.prototype.destroy.call(this);
+            this._body.removeChild(this.imageContainerClone);
+            return null;
         }
     }
 });
