@@ -30,7 +30,7 @@ var generalApplicationMailer = Module ('generalApplicationMailer')({
     message.to = [];
 
     message.to.push({
-      "email" : 'ren.suga@gmail.com',
+      "email" : 'sergio@delagarza.io',
       "name"  : 'Empathia',
       "type"  :  "to"
     });
@@ -43,7 +43,7 @@ var generalApplicationMailer = Module ('generalApplicationMailer')({
     }, function(result){
       logger.log('generalApplicationMailer.new()');
       logger.log(result);
-      
+
       callback(null, result);
     }, function(err){
       logger.error('A mandrill error ocurred: ');

@@ -63,7 +63,7 @@ var HomeController = Class('HomeController')({
             res.json({data : response });
           });
         });
-      });
+      }
     },
     sendApplication : function (req, res, next){
       if(!req.files.file){
