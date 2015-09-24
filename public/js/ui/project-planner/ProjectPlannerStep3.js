@@ -2,7 +2,7 @@ var Events = require('./../../lib/events');
 
 Class(EM.UI, 'ProjectPlannerStep3').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step3',
-    ELEMENT_CLASS : 'project-planner__step deadline',
+    ELEMENT_CLASS : 'forms__step deadline',
     HTML : '\
         <div>\
             <div class="page__container -rel">\

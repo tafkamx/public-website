@@ -14,7 +14,7 @@ var classify = require("underscore.string/classify");
 
 Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
     ALTERNATE_ROUTES_WHITELIST : [
-        'project-planner'
+        'project-planner','general-application'
     ],
 
     prototype : {
@@ -66,6 +66,13 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
             this.bind('updateRoute', this._updateRoute.bind(this));
 
+
+            this._showGeneralApplicationRef = this._showGeneralApplication.bind(this);
+            this.bind('showGeneralApplication', this._showGeneralApplicationRef);
+
+            this.bind('generalApplication:closed', this._generalApplicationClosedHandler.bind(this));
+            this.bind('updateRoute', this._updateRoute.bind(this));
+
             this._toggleGridHandlerRef = this._toggleGridHandler.bind(this);
             this.menu.bind('toggleGrid', this._toggleGridHandlerRef);
             this.grid.bind('toggleGrid', this._toggleGridHandlerRef);
@@ -101,6 +108,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             Router.on('/journal', function() {});
             Router.on('/lets-talk', function() {});
             Router.on('/project-planner', function() {});
+            Router.on('/general-application', function() {});
 
             Router.configure({
                 run_handler_in_init : true,
@@ -136,17 +144,33 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                     this.pages.renderView(this.pages.home);
                 }
 
-                if (this.projectPlanner) {
-                    this.projectPlanner = this.projectPlanner.destroy();
+                var overlayClass = classify(routeName);
+                console.log(overlayClass);
+                if(overlayClass == 'ProjectPlanner'){
+                    if (this.projectPlanner) {
+                        this.projectPlanner = this.projectPlanner.destroy();
+                    }
+
+                    this.appendChild(new EM.Overlays.ProjectPlanner({
+                        name : 'projectPlanner'
+                    })).render(document.body);
+
+                    window.setTimeout(function() {
+                        this.projectPlanner.activate().setup();
+                    }.bind(this), 0);
+                }else if (overlayClass == "GeneralApplication"){
+                    if (this.generalApplication) {
+                        this.generalApplication = this.generalApplication.destroy();
+                    }
+
+                    this.appendChild(new EM.Overlays.generalApplication({
+                        name : 'generalApplication'
+                    })).render(document.body);
+
+                    window.setTimeout(function() {
+                        this.generalApplication.activate().setup();
+                    }.bind(this), 0);
                 }
-
-                this.appendChild(new EM.Views.ProjectPlanner({
-                    name : 'projectPlanner'
-                })).render(document.body);
-
-                window.setTimeout(function() {
-                    this.projectPlanner.activate().setup();
-                }.bind(this), 0);
 
                 return;
             }
@@ -210,7 +234,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          */
         _showProjectPlanner : function _showProjectPlanner(ev) {
             ev.stopPropagation();
-            Router.setRoute(EM.Views.ProjectPlanner.PATH);
+            Router.setRoute(EM.Overlays.ProjectPlanner.PATH);
         },
 
         /* After closing the projectPlanner, it restores the url to the latest
@@ -222,7 +246,24 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                 Router.setRoute(this.pages.getCurrent().constructor.PATH);
             }
         },
+        /* Shows the General Application view.
+         * (Bubbled event handler) (App <- Grid)
+         * @method _showGeneralApplication <private>
+         */
+        _showGeneralApplication : function _showGeneralApplication(ev) {
+            ev.stopPropagation();
+            Router.setRoute(EM.Overlays.generalApplication.PATH);
+        },
 
+        /* After closing the generalApplication, it restores the url to the latest
+         * current view.
+         * @method _generalApplicationClosedHandler <private>
+         */
+        _generalApplicationClosedHandler : function _generalApplicationClosedHandler() {
+            if (this.pages.getCurrent().constructor.PATH) {
+                Router.setRoute(this.pages.getCurrent().constructor.PATH);
+            }
+        },
         /* Changes the color of the menu.
          * (Bubbled event handler) (App <- Pages <- Any)
          * @method _changeMenuColorHandler <private>

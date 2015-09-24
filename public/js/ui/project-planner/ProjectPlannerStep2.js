@@ -4,7 +4,7 @@ var removeClass = require('./../../lib/utils/class-remove');
 
 Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step2',
-    ELEMENT_CLASS : 'project-planner__step',
+    ELEMENT_CLASS : 'forms__step',
     HTML : '\
         <div>\
             <div class="page__container -rel">\

@@ -1,11 +1,11 @@
 var CONSTANTS = require('./../lib/const');
 var Events = require('./../lib/events');
 var onTransitionEnd = require('./../lib/onTransitionEnd');
-var ProjectPlannerData = require('./../data/project-planner/registry');
+var generalApplicationData = require ('./../data/general-application/registry');
 
-Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
-    // NAME : 'project-planner',
-    PATH : '/project-planner',
+Class(EM.Overlays, 'generalApplication').inherits(Widget).includes(BubblingSupport)({
+    // NAME : 'general-application',
+    PATH : '/general-application',
     MENU_COLOR : CONSTANTS.COLORS.purple,
     ELEMENT_CLASS : 'forms -color-bg-white -fix',
     HTML : '\
@@ -25,28 +25,13 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
         },
 
         setup : function setup() {
-            this.showStep(EM.UI.ProjectPlannerStep1.NAME);
+            this.showStep(EM.UI.GeneralApplicationStep.NAME);
         },
 
         _setup : function _setup() {
-            this.appendChild(new EM.UI.ProjectPlannerStep1({
-                name: EM.UI.ProjectPlannerStep1.NAME
-            })).render(this.inner);
 
-            this.appendChild(new EM.UI.ProjectPlannerStep2({
-                name: EM.UI.ProjectPlannerStep2.NAME
-            })).render(this.inner);
-
-            this.appendChild(new EM.UI.ProjectPlannerStep3({
-                name: EM.UI.ProjectPlannerStep3.NAME
-            })).render(this.inner);
-
-            this.appendChild(new EM.UI.ProjectPlannerStep4({
-                name: EM.UI.ProjectPlannerStep4.NAME
-            })).render(this.inner);
-
-            this.appendChild(new EM.UI.ProjectPlannerStep5({
-                name: EM.UI.ProjectPlannerStep5.NAME
+            this.appendChild(new EM.UI.GeneralApplicationStep({
+                name: EM.UI.GeneralApplicationStep.NAME
             })).render(this.inner);
 
             this.appendChild(new EM.UI.ProjectPlannerStep6({
@@ -88,64 +73,43 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
             this[stepName].activate();
         },
 
-        _setData : function _setData(ev) {
+        _setData : function _setData(ev){
             ev.stopPropagation();
 
-            console.log(ev.data);
-
-            ev.data.forEach(function(data) {
-                ProjectPlannerData.set(data.prop, data.value);
+            ev.data.forEach(function(data){
+                generalApplicationData.set(data.prop, data.value);
             });
 
-            console.log(ProjectPlannerData);
+
         },
 
-        _sendForm : function _sendForm(ev) {
+        _sendForm : function _sendForm (){
             var formData = new FormData();
-            var data = ProjectPlannerData._data;
 
-            Events.off(this._document, 'keyup', this._keyPressHandlerRef);
-
-            for (var property in data) {
-                if (data.hasOwnProperty(property)) {
-                    if (data[property] !== 'supportingFiles') {
+            var data = generalApplicationData._data;
+            for (var property in data){
+                if (data.hasOwnProperty(property)){
+                    if (data[property] !== 'supportingFiles'){
                         formData.append(property, data[property]);
                     }
                 }
             }
 
-            if (data.supportingFiles) {
-                data.supportingFiles.forEach(function(file) {
-                    formData.append('file', file);
+            if (data['supportingFiles']){
+                $.each($('input[name="upload"]')[0].files, function(i, file){
+                    formData.append('file',file);
                 });
             }
 
             $.ajax({
-                url : '/sendProject',
+                url : '/sendApplication',
                 data : formData,
                 processData : false,
                 type : 'POST',
                 contentType : false,
-                success : function(data) {
-                    console.log(data);
-
-                    ProjectPlannerData.reset();
-                    Events.on(this._document, 'keyup', this._keyPressHandlerRef);
-
-                    if (ev.callback && typeof ev.callback === 'function') {
-                        ev.callback(null, data);
-                    }
-                }.bind(this),
-
-                error : function(data) {
-                    console.log(data);
-
-                    Events.on(this._document, 'keyup', this._keyPressHandlerRef);
-
-                    if (ev.callback && typeof ev.callback === 'function') {
-                        ev.callback(true, data);
-                    }
-                }.bind(this)
+                success : function(data){
+                    generalApplicationData.reset();
+                }
             });
         },
 
@@ -156,12 +120,12 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
         _keyPressHandler : function _keyPressHandler(ev) {
             if (ev.keyCode === CONSTANTS.KEYCODES.ESC) {
                 this.deactivate();
-                this.dispatch('projectPlanner:closed');
+                this.dispatch('generalApplication:closed');
             }
         },
 
         _closeButtonClickHandler : function _closeButtonClickHandler() {
-            this.dispatch('projectPlanner:closed');
+            this.dispatch('generalApplication:closed');
             this.deactivate();
         },
 
