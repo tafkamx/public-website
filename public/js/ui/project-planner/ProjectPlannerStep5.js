@@ -15,6 +15,9 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
                     <div data-row-a class="-col-6 -pr1"></div>\
                     <div data-row-b class="-col-6 -pl1"></div>\
                 </div>\
+                <div class="error-sending-form -pt1 -tac" style="display: none;">\
+                    <span style="background-color: rgba(255, 0, 0, .05); padding: 1rem 2rem; display: inline-block;" class="-color-red">An error ocurred while submitting the form. Please try again.</span>\
+                </div>\
             </div>\
             <div class="project-planner__footer">\
                 <div class="page__container -rel">\
@@ -31,6 +34,7 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
             Widget.prototype.init.call(this, config);
             this.rowA = this.element.querySelector('[data-row-a]');
             this.rowB = this.element.querySelector('[data-row-b]');
+            this.formError = this.element.querySelector('.error-sending-form');
 
             this._checkitProps = new Checkit({
                 name : ['required'],
@@ -105,6 +109,8 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
         },
 
         _buttonClickHandler : function _buttonClickHandler() {
+            this.formError.style.display = 'none';
+
             var validate = this._checkitProps.validateSync({
                 name : this.inputName.getValue(),
                 email : this.inputEmail.getValue(),
@@ -125,8 +131,24 @@ Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
             ];
             this.dispatch('setData', {data : data});
 
-            this.dispatch('sendForm');
-            this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep6.NAME});
+            if (!this.spinnerWidget) {
+                this.appendChild(new EM.UI.SpinnerBlocker({
+                    name : 'spinnerWidget'
+                })).render(this.element);
+            }
+
+            this.dispatch('sendForm', {
+                callback: function(err) {
+                    this.spinnerWidget = this.spinnerWidget.destroy();
+
+                    if (err) {
+                        this.formError.style.display = 'block';
+                        return;
+                    }
+
+                    this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep6.NAME});
+                }.bind(this)
+            });
         },
 
         _displayErrors : function _displayErrors(errors) {
