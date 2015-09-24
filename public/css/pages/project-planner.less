@@ -111,11 +111,12 @@
 
   &:active {top: 1px}
 
+  &:hover,
   &.active {
     color: @color-neutral-dark;
   }
 
-  &:not(.active) {
+  &:not(.active):not(:hover) {
     .project-type-rect,
     .project-type-icon {stroke: #DAE2E6}
   }
