@@ -1,6 +1,6 @@
 /* globals application, amazonS3 */
 var ProjectPlannerMailer = require('./../mailers/ProjectPlannerMailer');
-var generalApplicationMailer = require ('./../mailers/generalApplicationMailer');
+var generalApplicationMailer = require ('./../mailers/GeneralApplicationMailer');
 var zip = require("node-native-zip");
 
 var HomeController = Class('HomeController')({
