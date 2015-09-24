@@ -30,10 +30,12 @@ var generalApplicationMailer = Module ('generalApplicationMailer')({
     message.to = [];
 
     message.to.push({
-      "email" : 'hr@empathia.agency',
+      "email" : 'ren.suga@gmail.com',
       "name"  : 'Empathia',
       "type"  :  "to"
     });
+
+    message.from_email = params.inputEmail;
 
     client.messages.send({
       "message" : message,

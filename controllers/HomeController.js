@@ -68,32 +68,43 @@ var HomeController = Class('HomeController')({
       });
     },
     sendApplication : function (req, res, next){
-      var file = fs.readFileSync(req.files.file.path);
+      if(!req.files.file){
+        req.body.fileURL = '';
 
-      var params = {
-        Bucket: 'empathia-ppn-uploads',
-        Key: microtime(true)*10000+'_'+req.files.file.name,
-        Body:file
-      };
-
-      amazonS3.upload(params, function(err, data){
-        if(err){
-          return next(err);
-        }
-
-        var fileURL = data.Location;
-
-        var body =req.body;
-        body.fileURL = fileURL;
-
-        generalApplicationMailer.new(body, function(err, response){
+        generalApplicationMailer.new(req.body, function(err, response){
           if (err){
             return next(err);
           }
 
-          res.json({data : response});
+          return res.json({data : response});
         });
-      });
+      } else {
+        var file = fs.readFileSync(req.files.file.path);
+
+        var params = {
+          Bucket: 'empathia-ppn-uploads',
+          Key: req.files.file.name,
+          Body:file
+        };
+              amazonS3.upload(params, function(err, data){
+                if(err){
+                  return next(err);
+                }
+
+                var fileURL = data.Location;
+
+                var body =req.body;
+                body.fileURL = fileURL;
+
+                generalApplicationMailer.new(body, function(err, response){
+                  if (err){
+                    return next(err);
+                  }
+
+                  res.json({data : response});
+                });
+              });
+      }
     }
   }
 });
