@@ -1,19 +1,8 @@
 .wwd__circle {
-  position: fixed;
+  z-index: -1;
   width: 520px;
   height: 520px;
-  top: 50%;
-  transform: translate(0,-50%) scale(.5);
-  transform: translate3d(0,-50%,0) scale(.5);
-  opacity: 0;
-  transition: opacity 100ms linear, transform 200ms ease;
-  will-change: opacity, transform;
-
-  &.active {
-    opacity: 1;
-    transform: translate(0,-50%) scale(1);
-    transform: translate3d(0,-50%,0) scale(1);
-  }
+  // transition: opacity 100ms linear, transform 200ms ease;
 }
 
 .wwd__inner-circle-label {
@@ -43,6 +32,7 @@
   padding-left: 2.083rem;
   padding-bottom: 6px;
   color: #C3D2D9;
+  transform: translateZ(0);
   transition: color 200ms linear;
 
   &.active {

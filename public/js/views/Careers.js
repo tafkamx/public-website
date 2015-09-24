@@ -18,7 +18,7 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'page page-careers',
     HTML : '\
         <section>\
-            <div class="hit-normal -rel">\
+            <div class="hit-nor -rel">\
                 <div data-hitnor></div>\
                 <div class="page__intro-wrapper -color-bg-neutral-xx-light">\
                     <div class="page__intro page__container -pl5 -pr5 -tac">\
@@ -162,7 +162,7 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
                     backgroundClassName : this.constructor.GRADIENT,
                     scrollInfo : 'Scroll down to find out what it takes.'
                 }
-            })).render(null, this.element.querySelector('.hit-normal').firstElementChild);
+            })).render(null, this.element.querySelector('.hit-nor').firstElementChild);
 
             this.appendChild(new EM.UI.ImageStrip({
                 name : 'imageStrip'

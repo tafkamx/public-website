@@ -18,14 +18,21 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'page page-what-we-do',
     HTML : '\
         <section>\
-            <div class="page__body">\
+            <div class="hit-nor -rel">\
+                <div data-hitnor></div>\
                 <div class="page__container">\
                     <div class="page__intro -tac -p5">\
                         <h2 class="page__body-title -font-bold">The user’s experience is wrapped around everything we do.</h2>\
                         <p class="page__intro-text -font-light">As engineers, designers and managers, we master strategic disciplines that are applied every day – individually and as a team – across the offerings we provide. Through these we turn meaningful ideas into innovative digital solutions with a permanent perspective of achieving the most positive experience possible for the people that use them. Yes, all of us have UX in our heads all the time.</p>\
                     </div>\
-                    <section class="what-we-do__disciplines-wrapper"></section>\
                 </div>\
+            </div>\
+            <div class="hit-fix -rel">\
+                <div data-hitfix></div>\
+                <section class="what-we-do__disciplines-wrapper -rel"></section>\
+            </div>\
+            <div class="hit-abs -rel">\
+                <div data-hitabs></div>\
                 <div class="-color-bg-neutral-xx-dark">\
                     <section class="what-we-do__offerings-wrapper page__container">\
                         <div class="page__intro -pb5 -pt5">\
@@ -52,8 +59,17 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
         </section>',
 
     prototype : {
+        _state: {
+            nor: false,
+            fix: false,
+            abs: false
+        },
+
         init : function init(config) {
             Widget.prototype.init.call(this, config);
+            this.hitNor = this.element.querySelector('[data-hitnor]');
+            this.hitFix = this.element.querySelector('[data-hitfix]');
+            this.hitAbs = this.element.querySelector('[data-hitabs]');
             this._setup();
         },
 
@@ -93,6 +109,8 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
         },
 
         _setup : function _setup() {
+            var disciplinesWrapper = this.element.querySelector('.what-we-do__disciplines-wrapper');
+
             this.appendChild(new EM.UI.PageCover({
                 name : 'headerWidget',
                 data : {
@@ -102,11 +120,11 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                     backgroundClassName : this.constructor.GRADIENT,
                     scrollInfo : 'Scroll down to learn how we do it.'
                 }
-            })).render(this.element, this.element.firstElementChild);
+            })).render(null, this.element.querySelector('.hit-nor').firstElementChild);
 
             this.appendChild(new EM.UI.WhatWeDoDisciplines({
                 name : 'disciplines'
-            })).render(this.element.querySelector('.what-we-do__disciplines-wrapper'));
+            })).render(disciplinesWrapper);
 
             this.appendChild(new EM.UI.WhatWeDoOfferings({
                 name : 'offerings'
@@ -115,12 +133,12 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             this.appendChild(new EM.UI.WhatWeDoCircle({
                 name : 'circleWidget',
                 referenceElement : this.element.querySelector('.what-we-do__disciplines-row').firstElementChild
-            })).render(document.body);
+            })).render(disciplinesWrapper);
 
             this.appendChild(new EM.UI.BottomPageLinks({
                 name : 'linksWidget',
                 views : [EM.Views.AboutUs, EM.Views.Careers]
-            })).render(this.element);
+            })).render(this.element.querySelector('.hit-abs'));
 
             return this;
         },
@@ -159,43 +177,60 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                 return;
             }
 
-            var A = document.elementFromPoint(this.cx, this.cy14);
-            var Z = document.elementFromPoint(this.cx, this.cy34);
+            var T = document.elementFromPoint(0, 1);
+            var B = document.elementFromPoint(0, this.h-1);
             var M = document.elementFromPoint(this.cx, this.cy);
-            var B = document.elementFromPoint(this.cx, this.h-1);
+            var BCX = document.elementFromPoint(this.cx, this.h-1);
 
-            if (typeof A.dataset.discipline !== 'undefined' && typeof Z.dataset.discipline !== 'undefined') {
-                if (this.circleWidget.active === false) {
-                    this.circleWidget.activate();
+            if (T === this.hitNor) {
+                if (this._state.nor === false) {
+                    this._state.nor = true;
+                    this._state.fix = false;
+                    this._state.abs = false;
+
+                    this.circleWidget.nor();
+                }
+            } else if (B === this.hitAbs) {
+                if (this._state.abs === false) {
+                    this._state.abs = true;
+                    this._state.nor = false;
+                    this._state.fix = false;
+
+                    this.circleWidget.abs();
+                }
+            } else if (T === this.hitFix) {
+                if (this._state.fix === false) {
+                    this._state.fix = true;
+                    this._state.nor = false;
+                    this._state.abs = false;
+
+                    this.circleWidget.fix();
 
                     this.vivusApps.reset();
                     this.vivusCommerce.reset();
                     this.vivusBrand.reset();
                     this.vivusMobile.reset();
                 }
-
-                this.circleWidget.showDiscipline(M.dataset.name);
-            } else {
-                if (this.circleWidget.active) {
-                    this.circleWidget.deactivate();
-                }
             }
 
+            if (typeof M.dataset.discipline !== 'undefined') {
+                this.circleWidget.showDiscipline(M.dataset.name);
+            }
 
-            if (typeof B.dataset.offering !== 'undefined') {
-                if (B.dataset.name === 'applications-and-platforms') {
+            if (typeof BCX.dataset.offering !== 'undefined') {
+                if (BCX.dataset.name === 'applications-and-platforms') {
                     return this.vivusApps.play();
                 }
 
-                if (B.dataset.name === 'e-commerce') {
+                if (BCX.dataset.name === 'e-commerce') {
                     return this.vivusCommerce.play();
                 }
 
-                if (B.dataset.name === 'brand-development') {
+                if (BCX.dataset.name === 'brand-development') {
                     return this.vivusBrand.play();
                 }
 
-                if (B.dataset.name === 'mobile') {
+                if (BCX.dataset.name === 'mobile') {
                     return this.vivusMobile.play();
                 }
             }
