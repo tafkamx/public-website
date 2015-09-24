@@ -35,6 +35,11 @@ var HomeController = Class('HomeController')({
       } else {
         var archive = new zip();
         var files = [];
+
+        if (req.files.file instanceof Array === false) {
+          req.files.file = [req.files.file];
+        }
+
         var zipName = (Date.now() + '-' + req.files.file.map(function(file) {
           return file.name[0];
         }).join(''));
