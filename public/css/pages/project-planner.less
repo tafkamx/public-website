@@ -189,10 +189,16 @@
 
 .pp-upload-files-feedback {
   font-size: 1.083rem;
-  margin-top: .5em;
   overflow: hidden;
   color: #525F66;
 }
+
+.pp-upload-files-error {
+  display: none;
+  margin-top: .5em;
+  &.active {display: block}
+}
+.pp-upload-files-list {}
 
 // 04
 .project-planner__budget-radios {

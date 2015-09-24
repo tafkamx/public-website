@@ -113,8 +113,8 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
                 }
             }
 
-            if (data['supportingFiles']) {
-                $.each($('input[name="upload"]')[0].files, function(i, file) {
+            if (data.supportingFiles) {
+                data.supportingFiles.forEach(function(file) {
                     formData.append('file', file);
                 });
             }
@@ -128,6 +128,9 @@ Class(EM.Views, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
                 success : function(data) {
                     console.log(data);
                     ProjectPlannerData.reset();
+                },
+                error : function(data) {
+                    console.log(data);
                 }
             });
         },
