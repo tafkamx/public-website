@@ -111,11 +111,12 @@
 
   &:active {top: 1px}
 
+  &:hover,
   &.active {
     color: @color-neutral-dark;
   }
 
-  &:not(.active) {
+  &:not(.active):not(:hover) {
     .project-type-rect,
     .project-type-icon {stroke: #DAE2E6}
   }
@@ -166,6 +167,10 @@
 .project-description-wrapper {
   border: 1px solid #A1ADB3;
   border-radius: 5px;
+}
+
+.pp-upload-files-limit-message {
+  color: #7E888C;
 }
 
 .project-planner__project-description {

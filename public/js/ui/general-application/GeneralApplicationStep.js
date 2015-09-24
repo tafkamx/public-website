@@ -78,7 +78,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             this.uploadFile = this.element.querySelector('[name="upload"]');
             this.uploadedFilesFeedback = this.element.querySelector('.pp-upload-files-feedback');
             this._setup()._bindEvents();
-
+ 
             this._checkitProps = new Checkit({
                 name: ['required'],
                 email: ['required','email'],

@@ -1,10 +1,11 @@
+var inlineStyle = require('./../../lib/inline-style');
 var addClass = require('./../../lib/utils/class-add');
 var removeClass = require('./../../lib/utils/class-remove');
 var hasClass = require('./../../lib/utils/class-has');
 
 Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
     HTML : '\
-        <div class="wwd__circle -rel">\
+        <div class="wwd__circle -abs">\
             <svg viewBox="0 0 100 100">\
                 <circle cx="50" cy="50" r="49" stroke-width="1" stroke="url(#gradient-3)" fill="none" vector-effect="non-scaling-stroke"></circle>\
             </svg>\
@@ -45,6 +46,12 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
          */
         referenceElement : null,
 
+        _state: {
+            nor: false,
+            fix: false,
+            abs: false
+        },
+
         init : function init(config) {
             Widget.prototype.init.call(this, config);
             this.disciplines = [].slice.call(this.element.querySelectorAll('.wwd__list-item'), 0);
@@ -61,9 +68,14 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
             var width = ~~rects.width - 60;
             var height = width;
 
-            this.element.style.width = width + 'px';
-            this.element.style.height = height + 'px';
-            this.element.style.left = left + 'px';
+            this._availableHeight = window.innerHeight;
+
+            inlineStyle(this.element, {
+                width: width + 'px',
+                height : height + 'px',
+                left : left + 'px',
+                top: (this._availableHeight - height) / 2 + 'px'
+            });
 
             return this;
         },
@@ -89,6 +101,64 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
             });
 
             return this;
+        },
+
+        /* Sets the widget in absolute position relative to the top (original state)
+         * @method nor <public> [Function]
+         * @return undefined
+         */
+        nor : function nor() {
+            if (this._state.nor) {return;}
+
+            this._state.nor = true;
+            this._state.fix = false;
+            this._state.abs = false;
+
+            inlineStyle(this.element, {
+                position: 'absolute',
+                top: (this._availableHeight - this.element.offsetHeight) / 2 + 'px',
+                left: 'initial',
+                bottom: 'initial'
+            });
+        },
+
+        /* Sets the widget to fixed position.
+         * @method fix <public> [Function]
+         * @return undefined
+         */
+        fix : function fix() {
+            if (this._state.fix) {return;}
+
+            this._state.fix = true;
+            this._state.nor = false;
+            this._state.abs = false;
+
+            var rects = this.element.getBoundingClientRect();
+
+            inlineStyle(this.element, {
+                position: 'fixed',
+                top: rects.top + 'px',
+                left: rects.left + 'px'
+            });
+        },
+
+        /* Sets the widget in absolute position relative to the bottom.
+         * @method abs <public> [Function]
+         * @return undefined
+         */
+        abs : function abs() {
+            if (this._state.abs) {return;}
+
+            this._state.abs = true;
+            this._state.nor = false;
+            this._state.fix = false;
+
+            inlineStyle(this.element, {
+                position: 'absolute',
+                top: 'initial',
+                left: 'initial',
+                bottom: (this._availableHeight - this.element.offsetHeight) / 2 + 'px'
+            });
         }
     }
 });

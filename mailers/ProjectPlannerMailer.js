@@ -38,6 +38,8 @@ var ProjectPlannerMailer = Module('ProjectPlannerMailer')({
       "type" : "to"
     });
 
+    message.from_email = params.infoEmail;
+
     client.messages.send({
       "message" : message,
       "async" : true

@@ -45,6 +45,7 @@ require('./ui/what-we-do/WhatWeDoDisciplines');
 require('./ui/what-we-do/WhatWeDoDiscipline');
 require('./ui/what-we-do/WhatWeDoOfferings');
 require('./ui/what-we-do/WhatWeDoOffering');
+require('./ui/careers/ImageStrip');
 require('./ui/careers/WeAreAll');
 require('./ui/careers/JoinUsMessage');
 require('./ui/careers/JobList');

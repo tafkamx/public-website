@@ -1,24 +1,109 @@
-.about-us__pillars-text,
+.about-us__pillars-text {
+  padding-bottom: 15rem;
+}
 .about-us__pillars {
+  padding-top: 0;
   padding-bottom: 10rem;
 }
 
 .pillars__platform {
   padding-top: 100%;
 }
+.pillars__platform.active {
+  .pp__pillar-svg {
+    transform: scale(1);
+  }
 
+  .pp__line-svg {
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
+
+  .pp__line-x-svg {
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
+
+  .pillars__platform-svg-text {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.pillars__platform.reset {
+  .pp__pillar-svg {transition-duration: 0s; transition-delay: 0s;}
+  .pp__line-svg {transition-duration: 0s; transition-delay: 0s;}
+  .pp__line-x-svg {transition-duration: 0s; transition-delay: 0s;}
+  .pp__pillar-svg {transition-duration: 0s; transition-delay: 0s;}
+  .pillars__platform-svg-text {transition-duration: 0s; transition-delay: 0s;}
+}
+
+// svg element
 .pillars__platform-svg {
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 3rem;
+  overflow: hidden;
 }
 
+// svg pillar circles
+.pp__pillar-svg {
+  transform: scale(0);
+  transform-origin: 50% 50%;
+  transition: transform 400ms ease-out;
+
+  &.a {transition-delay: 0s;}
+  &.b {transition-delay: 150ms;}
+  &.d {transition-delay: 300ms;}
+  &.c {transition-delay: 450ms;}
+}
+
+// svg pillar lines
+.pp__line-svg {
+  opacity: 0;
+  transition: transform 400ms @ease-in-back, opacity 400ms linear;
+  &.a {
+    transform: translate(-100%,0);
+    transition-delay: 0s;
+  }
+  &.b {
+    transform: translate(0,-100%);
+    transition-delay: 150ms;
+  }
+  &.c {
+    transform: translate(100%,0);
+    transition-delay: 300ms;
+  }
+  &.d {
+    transform: translate(0,100%);
+    transition-delay: 450ms;
+  }
+}
+
+// svg pillars cross lines
+.pp__line-x-svg {
+  opacity: 0;
+  transition: transform 400ms @ease-in-back, opacity 400ms linear;
+
+  &.a {
+    transform: translate(-100%, -100%);
+    transition-delay: 700ms;
+  }
+  &.b {
+    transform: translate(100%, -100%);
+    transition-delay: 850ms;
+  }
+}
+
+// svg pillars centered text
 .pillars__platform-svg-text {
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   letter-spacing: 0.250em;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 400ms @ease-in-out-back;
+  transition-delay: 1000ms;
 }
 
 .principle__a {
@@ -51,7 +136,6 @@
   height: 43.333em;
   padding-top: 0;
   padding-bottom: 0;
-  transform: translate3d(0, 0, 0);
 }
 
 .about-us__gallery-item {
@@ -59,14 +143,12 @@
   left: 0;
   right: 0;
   visibility: hidden;
-  transform: translateX(6rem);
-  transform: translate3d(6rem,0,0);
-  transition: transform 400ms @ease;
-  will-change: transform;
+  opacity: 0;
+  transition: opacity 150ms linear;
+  will-change: opacity;
 
   &.active {
-    transform: translateX(0);
-    transform: translate3d(0,0,0);
+    opacity: 1;
     visibility: visible;
   }
 }
@@ -151,6 +233,14 @@
   }
 
   .principle {
+    padding-bottom: 5rem;
+  }
+
+  .about-us__pillars-text {
+    padding-bottom: 10rem;
+  }
+
+  .about-us__pillars {
     padding-bottom: 5rem;
   }
 

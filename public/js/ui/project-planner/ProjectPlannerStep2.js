@@ -17,6 +17,7 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
                         <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
                     </div>\
                 </div>\
+                <p class="pp-upload-files-limit-message -mt2 -fsi">The sum of all your files cannot exceed 15MB. If you have files larger than that, please link them in your message using other services like Droplr, Dropbox, etc.</p>\
             </div>\
             <div class="project-planner__footer">\
                 <div class="page__container -rel">\
@@ -27,6 +28,12 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
                 </div>\
             </div>\
         </div>',
+
+    /* Max bytes allowed to upload. => 15 MB.
+     */
+    MAX_BYTE_SIZE: (1024 * 1024) * 15,
+
+    MAX_SIZE_ERROR_MESSAGE : '<p class="-color-red">Sorry, what you have selected exceeds 15MB. Please keep it under this size.</p>',
 
     prototype : {
         init : function init(config) {
@@ -75,8 +82,21 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
         },
 
         _updateFilesFeedback : function _updateFilesFeedback(ev) {
-            var text = '<b class="-font-semi-bold">{total} files attached</b> ({files})';
             var files = [].slice.call(ev.target.files,0);
+            var totalBytes = 0;
+
+            files.forEach(function(file) {
+                totalBytes += file.size;
+            });
+
+            console.log(totalBytes + ' of ' + this.constructor.MAX_BYTE_SIZE);
+
+            if (totalBytes >= this.constructor.MAX_BYTE_SIZE) {
+                this.uploadedFilesFeedback.insertAdjacentHTML('afterbegin', this.constructor.MAX_SIZE_ERROR_MESSAGE);
+                return;
+            }
+
+            var text = '<p><b class="-font-semi-bold">{total} files attached</b> ({files})</p>';
             var fileNames = files.map(function(file) {
                 return file.name;
             }).join(', ');

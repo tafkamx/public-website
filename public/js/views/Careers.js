@@ -18,7 +18,8 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'page page-careers',
     HTML : '\
         <section>\
-            <div class="page__body">\
+            <div class="hit-nor -rel">\
+                <div data-hitnor></div>\
                 <div class="page__intro-wrapper -color-bg-neutral-xx-light">\
                     <div class="page__intro page__container -pl5 -pr5 -tac">\
                         <h2 class="page__body-title -font-extra-light">\
@@ -28,67 +29,66 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
                         <p class="page__intro-text -font-light">We really take out time hiring. It’s very hard to find talented people but it’s much harder to come by people with talent and also a genuine care for what they do and for others. At Empathia we cultivate a culture and environment that makes it easy for people with these qualities to thrive, and honestly, it’s the only kind of people we want in our staff. We all believe in the same thing and we want to keep it that way.</p>\
                     </div>\
                 </div>\
-                <article class="careers__image-strip -row">\
-                    <div class="image-strip"></div>\
-                    <div class="image-strip"></div>\
-                    <div class="image-strip"></div>\
-                    <div class="image-strip"></div>\
-                    <div class="image-strip"></div>\
-                </article>\
-                <section class="careers__were-all page__container -pl5 -pr5">\
-                    <article data-snap data-name="designers" class="were-all-item -row -vh">\
-                        <div class="were-all-phrase -col-6 -table -vh">\
+            </div>\
+            <div class="hit-fix -rel">\
+                <div data-hitfix></div>\
+                <section class="careers__were-all page__container -pl5 -pr5 -rel">\
+                    <article class="were-all-item -row">\
+                        <div class="were-all-phrase -col-6 -table -full-height">\
                             <div class="-table-cell -vam on-touch">\
                                 <div class="waa__main-text -font-light">We’re all</div>\
                                 <div data-name="designers" class="waa__keyword -font-bold">designers</div>\
                             </div>\
                         </div>\
-                        <div class="were-all-text -col-6 -table -vh">\
+                        <div class="were-all-text -col-6 -table -full-height">\
                             <div class="-table-cell -vam">\
-                                <p>We all actively contribute to carefully plan every project we work on. Using our wide range of knowledge, whether it’s in the field of engineering, creative, management or business, we prepare to execute. That plan is called Design. So ultimately, <span class="-color-green">we’re all designers</span>.</p>\
+                                <p data-snap data-name="designers">We all actively contribute to carefully plan every project we work on. Using our wide range of knowledge, whether it’s in the field of engineering, creative, management or business, we prepare to execute. That plan is called Design. So ultimately, we’re all designers.</p>\
                             </div>\
                         </div>\
                     </article>\
-                    <article data-snap data-name="friends" class="were-all-item -row -vh">\
-                        <div class="were-all-phrase -col-6 -table -vh">\
+                    <article class="were-all-item -row">\
+                        <div class="were-all-phrase -col-6 -table -full-height">\
                             <div class="-table-cell -vam on-touch">\
                                 <div class="waa__main-text -font-light">We’re all</div>\
                                 <div data-name="designers" class="waa__keyword -font-bold">friends.</div>\
                             </div>\
                         </div>\
-                        <div class="were-all-text -col-6 -table -vh">\
+                        <div class="were-all-text -col-6 -table -full-height">\
                             <div class="-table-cell -vam">\
-                                <p>The greatest strength we have as an organization is our camaraderie. We share and nurture diverse passions in our lives, but most importantly, we know our worth is as much as what we value others.</p>\
+                                <p data-snap data-name="friends">The greatest strength we have as an organization is our camaraderie. We share and nurture diverse passions in our lives, but most importantly, we know our worth is as much as what we value others.</p>\
                             </div>\
                         </div>\
                     </article>\
-                    <article data-snap data-name="purpose driven" class="were-all-item -row -vh">\
-                        <div class="were-all-phrase -col-6 -table -vh">\
+                    <article class="were-all-item -row">\
+                        <div class="were-all-phrase -col-6 -table -full-height">\
                             <div class="-table-cell -vam on-touch">\
                                 <div class="waa__main-text -font-light">We’re all</div>\
                                 <div data-name="designers" class="waa__keyword -font-bold">purpose driven.</div>\
                             </div>\
                         </div>\
-                        <div class="were-all-text -col-6 -table -vh">\
+                        <div class="were-all-text -col-6 -table -full-height">\
                             <div class="-table-cell -vam">\
-                                <p>We have learned tons from our past experiences and we’ve seen the ugly and the beautiful. We want to make a difference so we are after the awesome game-changing things and experiences that happen when you give a shit.</p>\
+                                <p data-snap data-name="purpose driven">We have learned tons from our past experiences and we’ve seen the ugly and the beautiful. We want to make a difference so we are after the awesome game-changing things and experiences that happen when you give a shit.</p>\
                             </div>\
                         </div>\
                     </article>\
-                    <article data-snap data-name="among the best" class="were-all-item -row -vh">\
-                        <div class="were-all-phrase -col-6 -table -vh">\
+                    <article class="were-all-item -row">\
+                        <div class="were-all-phrase -col-6 -table -full-height">\
                             <div class="-table-cell -vam on-touch">\
                                 <div class="waa__main-text -font-light">We’re all</div>\
                                 <div data-name="designers" class="waa__keyword -font-bold">among the best.</div>\
                             </div>\
                         </div>\
-                        <div class="were-all-text -col-6 -table -vh">\
+                        <div class="were-all-text -col-6 -table -full-height">\
                             <div class="-table-cell -vam">\
-                                <p>An average of 15 years experience of creating innovative products, platforms and tools that millions of people around the world use everyday puts us high up on the “best of the best” list. And we love to help others climb their way up together with us.</p>\
+                                <p data-snap data-name="among the best">An average of 15 years experience of creating innovative products, platforms and tools that millions of people around the world use everyday puts us high up on the “best of the best” list. And we love to help others climb their way up together with us.</p>\
                             </div>\
                         </div>\
                     </article>\
                 </section>\
+            </div>\
+            <div class="hit-abs -rel">\
+                <div data-hitabs></div>\
                 <div class="-color-bg-neutral-xx-light">\
                     <section class="perks page__container -tac">\
                         <h2 data-perks-text class="perks-title -font-light">Perks You’ll Like</h2>\
@@ -131,8 +131,14 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
         </section>',
 
     prototype : {
+        _availableHeight : 0,
+
         init : function init(config) {
             Widget.prototype.init.call(this, config);
+            this.weAreAllItems = [].slice.call(this.element.querySelectorAll('.were-all-item'), 0);
+            this.hitNor = this.element.querySelector('[data-hitnor]');
+            this.hitFix = this.element.querySelector('[data-hitfix]');
+            this.hitAbs = this.element.querySelector('[data-hitabs]');
             this._setup();
         },
 
@@ -142,8 +148,8 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
             });
 
             this.__bindEvents();
-            this.weAreAllWidget.center();
             this.headerWidget.activate();
+            this._resizeHandler();
         },
 
         _setup : function _setup() {
@@ -156,12 +162,16 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
                     backgroundClassName : this.constructor.GRADIENT,
                     scrollInfo : 'Scroll down to find out what it takes.'
                 }
-            })).render(this.element, this.element.firstElementChild);
+            })).render(null, this.element.querySelector('.hit-nor').firstElementChild);
+
+            this.appendChild(new EM.UI.ImageStrip({
+                name : 'imageStrip'
+            })).render(null, this.element.querySelector('.hit-fix').firstElementChild);
 
             this.appendChild(new EM.UI.WeAreAll({
                 name : 'weAreAllWidget',
                 referenceElement : this.element.querySelector('.were-all-item').firstElementChild
-            })).render(document.body);
+            })).render(this.element.querySelector('.careers__were-all'));
 
             this.perksText = new TextGradient(this.element.querySelector('[data-perks-text]'), {
                 from : CONSTANTS.COLORS.blue,
@@ -183,50 +193,75 @@ Class(EM.Views, 'Careers').inherits(Widget).includes(BubblingSupport)({
             this.appendChild(new EM.UI.BottomPageLinks({
                 name : 'links',
                 views : [EM.Views.Community, EM.Views.Journal]
-            })).render(this.element);
+            })).render(this.element.querySelector('.hit-abs'));
         },
 
+        /* Subscribe to events after the widget had been rendered.
+         * @method __bindEvents <private>
+         */
         __bindEvents : function __bindEvents() {
             if (!hasTouchSupport) {
                 this._scrollHandlerRef = this._scrollHandler.bind(this);
                 Events.on(this.parent.scrollbar.getViewElement(), 'scroll', this._scrollHandlerRef);
+
+                this.weAreAllWidget.activate();
             }
 
             this._resizeHandlerRef = this._resizeHandler.bind(this);
             Events.on(window, 'resize', this._resizeHandlerRef);
-            this._globals();
         },
 
+        /* Updates global variables based on window size.
+         * @method _globals <private>
+         */
         _globals : function _globals() {
             this.w = ~~(window.innerWidth);
             this.h = ~~(window.innerHeight);
-            this.cx = ~~(this.w/2) - 10;
+            this.cx = ~~(this.w/2);
             this.cy = ~~(this.h/2);
-            this.cyHalf = ~~(this.cy/2);
-            this.cy14 = this.cy - this.cyHalf;
-            this.cy34 = this.cy + this.cyHalf;
+            this.availableCY = this.h - (this._availableHeight / 2);
         },
 
+        /* Handles the window resize event.
+         * @method _resizeHandler <private>
+         */
         _resizeHandler : function _renderHandler() {
+            this.imageStrip.updateHeight();
+            this._availableHeight = this.imageStrip.getRemainingHeight();
+
             this._globals();
-            this.weAreAllWidget.center();
+            this.weAreAllWidget.center(this._availableHeight);
+            this.weAreAllItems.forEach(function(item) {
+                item.style.height = this._availableHeight + 'px';
+            }, this);
         },
 
+        /* Handles the scroll event.
+         * @method _scrollHandler <private>
+         */
         _scrollHandler : function _scrollHandler() {
             if (this.w <= 768) {
                 return;
             }
 
-            var A = document.elementFromPoint(this.cx, this.cy14);
-            var Z = document.elementFromPoint(this.cx, this.cy34);
-            var M = document.elementFromPoint(this.cx, this.cy);
+            var M = document.elementFromPoint(this.cx + 10, this.availableCY);
+            var T = document.elementFromPoint(0, 1);
+            var B = document.elementFromPoint(0, this.h-1);
 
-            if (typeof A.dataset.snap !== 'undefined' && typeof Z.dataset.snap !== 'undefined') {
-                this.weAreAllWidget.showKeyword(M.dataset.name);
-                return this.weAreAllWidget.activate();
+            if (T === this.hitNor) {
+                this.imageStrip.nor();
+                this.weAreAllWidget.nor();
+            } else if (B === this.hitAbs) {
+                this.imageStrip.abs();
+                this.weAreAllWidget.abs();
+            } else if (T === this.hitFix) {
+                this.imageStrip.fix();
+                this.weAreAllWidget.fix();
             }
 
-            this.weAreAllWidget.deactivate();
+            if (typeof M.dataset.snap !== 'undefined') {
+                this.weAreAllWidget.showKeyword(M.dataset.name);
+            }
         },
 
         destroy : function destroy() {
