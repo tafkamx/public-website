@@ -1,4 +1,6 @@
 var Events = require('./../../lib/events');
+var addClass = require('./../../lib/utils/class-add');
+var removeClass = require('./../../lib/utils/class-remove');
 
 Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step2',
@@ -12,9 +14,12 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
                 <div class="project-description-wrapper -rel -mt5">\
                     <textarea class="project-planner__project-description -font-light -full-width" placeholder="What’s your vision?"></textarea>\
                     <div class="project-upload-files-bar -row">\
-                        <input type="file" name="upload" class="-hide" />\
+                        <input type="file" name="upload" class="-hide" multiple/>\
                         <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
-                        <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
+                        <div class="pp-upload-files-feedback -pl1 -fsi">\
+                            <p class="pp-upload-files-error -color-red -mb1">Sorry, what you have selected exceeds 15MB. Please keep it under this size.</p>\
+                            <div class="pp-upload-files-list"></div>\
+                        </div>\
                     </div>\
                 </div>\
                 <p class="pp-upload-files-limit-message -mt2 -fsi">The sum of all your files cannot exceed 15MB. If you have files larger than that, please link them in your message using other services like Droplr, Dropbox, etc.</p>\
@@ -33,19 +38,26 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
      */
     MAX_BYTE_SIZE: (1024 * 1024) * 15,
 
-    MAX_SIZE_ERROR_MESSAGE : '<p class="-color-red">Sorry, what you have selected exceeds 15MB. Please keep it under this size.</p>',
-
     prototype : {
+        _files : null,
+
         init : function init(config) {
             Widget.prototype.init.call(this, config);
+            this._files = [];
+
             this.inputMessage = this.element.querySelector('.project-planner__project-description');
             this.uploadButton = this.element.querySelector('.ui-btn.-mini');
             this.uploadFile = this.element.querySelector('[name="upload"]');
-            this.uploadedFilesFeedback = this.element.querySelector('.pp-upload-files-feedback');
+            this.uploadFilesError = this.element.querySelector('.pp-upload-files-error');
+
             this._setup()._bindEvents();
         },
 
         _setup : function _setup() {
+            this.appendChild(new EM.UI.AttachFilesList({
+                name : 'attachFilesList'
+            })).render(this.element.querySelector('.pp-upload-files-list'));
+
             this.appendChild(new EM.UI.Button({
                 name : 'backButton',
                 className : '-mini -gray -pl2 -pr2 -mt1',
@@ -75,37 +87,45 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
 
             this._updateFilesFeedbackRef = this._updateFilesFeedback.bind(this);
             Events.on(this.uploadFile, 'change', this._updateFilesFeedbackRef);
+
+            this._removeAttachmentRef = this._removeAttachment.bind(this);
+            this.attachFilesList.bind('removeAttachment', this._removeAttachmentRef);
         },
 
         _triggerFileUpload : function _triggerFileUpload(ev) {
             this.uploadFile.click(ev);
         },
 
+        _removeAttachment : function _removeAttachment(ev) {
+            this._files.splice(ev.index, 1);
+        },
+
         _updateFilesFeedback : function _updateFilesFeedback(ev) {
             var files = [].slice.call(ev.target.files,0);
             var totalBytes = 0;
+
+            removeClass(this.uploadFilesError, 'active');
 
             files.forEach(function(file) {
                 totalBytes += file.size;
             });
 
-            console.log(totalBytes + ' of ' + this.constructor.MAX_BYTE_SIZE);
+            if (this._files.length) {
+                this._files.forEach(function(file) {
+                    totalBytes += file.size;
+                });
+            }
 
             if (totalBytes >= this.constructor.MAX_BYTE_SIZE) {
-                this.uploadedFilesFeedback.insertAdjacentHTML('afterbegin', this.constructor.MAX_SIZE_ERROR_MESSAGE);
+                addClass(this.uploadFilesError, 'active');
                 return;
             }
 
-            var text = '<p><b class="-font-semi-bold">{total} files attached</b> ({files})</p>';
-            var fileNames = files.map(function(file) {
-                return file.name;
-            }).join(', ');
+            files.forEach(function(file) {
+                this._files.push(file);
+            }, this);
 
-            text = text.replace(/{total}/, files.length);
-            text = text.replace(/{files}/, fileNames);
-
-            this.uploadedFilesFeedback.innerHTML = '';
-            this.uploadedFilesFeedback.insertAdjacentHTML('beforeend', text);
+            this.attachFilesList.flush().add(this._files);
         },
 
         _updateButtonState : function _updateButtonState() {
@@ -126,7 +146,7 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
                 value : this.inputMessage.value
             }, {
                 prop : 'supportingFiles',
-                value : this.uploadFile.files
+                value : this._files
             }];
             this.dispatch('setData', {data : data});
             this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep3.NAME});

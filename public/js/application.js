@@ -22,6 +22,9 @@ require('./views/GeneralApplication');
 
 require('./ui/Button');
 require('./ui/Input');
+require('./ui/AttachFilesList');
+require('./ui/AttachFile');
+require('./ui/SpinnerBlocker');
 require('./ui/Grid');
 require('./ui/GridItem');
 require('./ui/Menu');

@@ -47,6 +47,7 @@
     "mysql": "^2.6.2",
     "neon": "^2.0.0",
     "neonode-core": "^2.3.6",
+    "node-native-zip": "^1.1.0",
     "path": "^0.11.14",
     "pg": "^4.3.0",
     "redis": "^0.12.1",
@@ -81,6 +82,7 @@
     "moment-timezone": "^0.4.0",
     "sanitize.css": "^1.1.0",
     "scrollto": "file:public/js/lib/scrollto",
+    "spinkit": "^1.2.2",
     "text-gradient": "^0.2.0",
     "underscore.string": "^3.2.2",
     "vivus": "^0.2.2"

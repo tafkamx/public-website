@@ -100,10 +100,11 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
             console.log(ProjectPlannerData);
         },
 
-        _sendForm : function _sendForm() {
+        _sendForm : function _sendForm(ev) {
             var formData = new FormData();
-
             var data = ProjectPlannerData._data;
+
+            Events.off(this._document, 'keyup', this._keyPressHandlerRef);
 
             for (var property in data) {
                 if (data.hasOwnProperty(property)) {
@@ -113,8 +114,8 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
                 }
             }
 
-            if (data['supportingFiles']) {
-                $.each($('input[name="upload"]')[0].files, function(i, file) {
+            if (data.supportingFiles) {
+                data.supportingFiles.forEach(function(file) {
                     formData.append('file', file);
                 });
             }
@@ -127,8 +128,24 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
                 contentType : false,
                 success : function(data) {
                     console.log(data);
+
                     ProjectPlannerData.reset();
-                }
+                    Events.on(this._document, 'keyup', this._keyPressHandlerRef);
+
+                    if (ev.callback && typeof ev.callback === 'function') {
+                        ev.callback(null, data);
+                    }
+                }.bind(this),
+
+                error : function(data) {
+                    console.log(data);
+
+                    Events.on(this._document, 'keyup', this._keyPressHandlerRef);
+
+                    if (ev.callback && typeof ev.callback === 'function') {
+                        ev.callback(true, data);
+                    }
+                }.bind(this)
             });
         },
 
