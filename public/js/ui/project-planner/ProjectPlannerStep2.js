@@ -17,6 +17,7 @@ Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
                         <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
                     </div>\
                 </div>\
+                <p class="pp-upload-files-limit-message -mt2 -fsi">The sum of all your files cannot exceed 15MB. If you have files larger than that, please link them in your message using other services like Droplr, Dropbox, etc.</p>\
             </div>\
             <div class="project-planner__footer">\
                 <div class="page__container -rel">\
