@@ -278,7 +278,9 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
                 beforeElement : beforeElement
             });
             if (beforeElement) {
-                element.insertBefore(this.element, beforeElement);
+                beforeElement.parentNode.insertBefore(this.element, beforeElement);
+                // this.element.insertBefore(element, beforeElement);
+                // element.insertBefore(this.element, beforeElement);
             } else {
                 element.appendChild(this.element);
             }
