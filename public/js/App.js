@@ -14,7 +14,7 @@ var classify = require("underscore.string/classify");
 
 Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
     ALTERNATE_ROUTES_WHITELIST : [
-        'project-planner'
+        'project-planner','general-application'
     ],
 
     prototype : {
@@ -64,6 +64,13 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this.bind('showProjectPlanner', this._showProjectPlannerRef);
 
             this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
+            this.bind('updateRoute', this._updateRoute.bind(this));
+
+
+            this._showGeneralApplicationRef = this._showGeneralApplication.bind(this);
+            this.bind('showGeneralApplication', this._showGeneralApplicationRef);
+
+            this.bind('generalApplication:closed', this._generalApplicationClosedHandler.bind(this));
             this.bind('updateRoute', this._updateRoute.bind(this));
 
             this._toggleGridHandlerRef = this._toggleGridHandler.bind(this);
@@ -131,7 +138,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          * @method showPage <public>
          */
         showPage : function showPage(routeName) {
-            if (routeName) {
+            if (EM.App.ALTERNATE_ROUTES_WHITELIST.indexOf(routeName) >= 0) {
                 if (!this.pages.getCurrent()) {
                     this.pages.appendChild(new EM.Views.Home({name: 'home'}));
                     this.pages.renderView(this.pages.home);
@@ -151,8 +158,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                     window.setTimeout(function() {
                         this.projectPlanner.activate().setup();
                     }.bind(this), 0);
-                }else {
-
+                }else if (overlayClass == "GeneralApplication"){
                     if (this.generalApplication) {
                         this.generalApplication = this.generalApplication.destroy();
                     }
@@ -165,7 +171,6 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                         this.generalApplication.activate().setup();
                     }.bind(this), 0);
                 }
-                
 
                 return;
             }
@@ -241,18 +246,18 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                 Router.setRoute(this.pages.getCurrent().constructor.PATH);
             }
         },
-        /* Shows the Project Planner view.
+        /* Shows the General Application view.
          * (Bubbled event handler) (App <- Grid)
-         * @method _showProjectPlanner <private>
+         * @method _showGeneralApplication <private>
          */
         _showGeneralApplication : function _showGeneralApplication(ev) {
             ev.stopPropagation();
             Router.setRoute(EM.Overlays.generalApplication.PATH);
         },
 
-        /* After closing the projectPlanner, it restores the url to the latest
+        /* After closing the generalApplication, it restores the url to the latest
          * current view.
-         * @method _projectPlannerClosedHandler <private>
+         * @method _generalApplicationClosedHandler <private>
          */
         _generalApplicationClosedHandler : function _generalApplicationClosedHandler() {
             if (this.pages.getCurrent().constructor.PATH) {

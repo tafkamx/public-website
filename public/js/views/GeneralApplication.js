@@ -34,6 +34,10 @@ Class(EM.Overlays, 'generalApplication').inherits(Widget).includes(BubblingSuppo
                 name: EM.UI.GeneralApplicationStep.NAME
             })).render(this.inner);
 
+            this.appendChild(new EM.UI.ProjectPlannerStep6({
+                name: EM.UI.ProjectPlannerStep6.NAME
+            })).render(this.inner);
+
             return this;
         },
 

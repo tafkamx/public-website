@@ -84,24 +84,24 @@ var HomeController = Class('HomeController')({
           Key: req.files.file.name,
           Body:file
         };
-              amazonS3.upload(params, function(err, data){
-                if(err){
-                  return next(err);
-                }
+        amazonS3.upload(params, function(err, data){
+          if(err){
+            return next(err);
+          }
 
-                var fileURL = data.Location;
+          var fileURL = data.Location;
 
-                var body =req.body;
-                body.fileURL = fileURL;
+          var body =req.body;
+          body.fileURL = fileURL;
 
-                generalApplicationMailer.new(body, function(err, response){
-                  if (err){
-                    return next(err);
-                  }
+          generalApplicationMailer.new(body, function(err, response){
+            if (err){
+              return next(err);
+            }
 
-                  res.json({data : response});
-                });
-              });
+            res.json({data : response});
+          });
+        });
       }
     }
   }

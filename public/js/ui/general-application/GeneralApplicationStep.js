@@ -78,7 +78,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             this.uploadFile = this.element.querySelector('[name="upload"]');
             this.uploadedFilesFeedback = this.element.querySelector('.pp-upload-files-feedback');
             this._setup()._bindEvents();
- 
+
             this._checkitProps = new Checkit({
                 name: ['required'],
                 email: ['required','email'],
@@ -160,6 +160,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             this.dispatch('setData', {data : data});
 
             this.dispatch('sendForm');
+            this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep6.NAME});
 
         },
 
@@ -201,6 +202,9 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
 
         destroy : function destroy() {
             this._checkitProps = null;
+
+            Events.off(this.sendButton.element, 'click', this._buttonClickHandlerRef);
+            this._buttonClickHandlerRef = null;
 
             Widget.prototype.destroy.call(this);
 

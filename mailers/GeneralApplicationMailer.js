@@ -43,6 +43,8 @@ var generalApplicationMailer = Module ('generalApplicationMailer')({
     }, function(result){
       logger.log('generalApplicationMailer.new()');
       logger.log(result);
+      
+      callback(null, result);
     }, function(err){
       logger.error('A mandrill error ocurred: ');
       logger.error(err.name + ' -  ' + err.message);
