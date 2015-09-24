@@ -7,20 +7,20 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
     // NAME : 'project-planner',
     PATH : '/project-planner',
     MENU_COLOR : CONSTANTS.COLORS.purple,
-    ELEMENT_CLASS : 'project-planner -color-bg-white -fix',
+    ELEMENT_CLASS : 'forms -color-bg-white -fix',
     HTML : '\
         <div>\
-            <svg class="project-planner__close -s22r -abs -clickable">\
+            <svg class="forms__close -s22r -abs -clickable">\
                 <use xlink:href="#svg-close"></use>\
             </svg>\
-            <div class="project-planner__inner"></div>\
+            <div class="forms__inner"></div>\
         </div>',
 
     prototype : {
         init : function init(config) {
             Widget.prototype.init.call(this, config);
             this._document = document;
-            this.inner = this.element.querySelector('.project-planner__inner');
+            this.inner = this.element.querySelector('.forms__inner');
             this._setup()._bindEvents();
         },
 
@@ -61,7 +61,7 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
             Events.on(this._document, 'keyup', this._keyPressHandlerRef);
 
             this._closeButtonClickHandlerRef = this._closeButtonClickHandler.bind(this);
-            Events.on(this.element.querySelector('.project-planner__close'), 'click', this._closeButtonClickHandlerRef);
+            Events.on(this.element.querySelector('.forms__close'), 'click', this._closeButtonClickHandlerRef);
 
             this._showStepRef = this._showStep.bind(this);
             this.bind('showPage', this._showStepRef);
@@ -160,7 +160,7 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
             Events.off(this._document, 'keyup', this._keyPressHandlerRef);
             this._keyPressHandlerRef = null;
 
-            Events.off(this.element.querySelector('.project-planner__close'), 'click', this._closeButtonClickHandlerRef);
+            Events.off(this.element.querySelector('.forms__close'), 'click', this._closeButtonClickHandlerRef);
             this._closeButtonClickHandlerRef = null;
 
             Widget.prototype.destroy.call(this);

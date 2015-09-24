@@ -4,7 +4,7 @@ var Checkit = require('checkit');
 
 Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step',
-    ELEMENT_CLASS : 'general-application__step',
+    ELEMENT_CLASS : 'forms__step',
     HTML : '\
         <div>\
             <div class="page__container -rel">\
