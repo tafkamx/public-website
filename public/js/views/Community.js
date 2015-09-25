@@ -52,7 +52,7 @@ Class(EM.Views, 'Community').inherits(Widget).includes(BubblingSupport)({
             </section>\
             <section class="hop-on page__container -tac">\
                 <h2 class="hop-on__title -font-bold -mt0">Hop on!</h2>\
-                <p class="hop-on__desc -font-light">If you want to help out or learn more about these efforts don’t hesitate and email us at <a class="-link -orange" href="mailto:community@empathia.agency" target="blank_">community@empathia.agency</a> or go to either of the communities’ sites! All help is greatly appreciated.</p>\
+                <p class="hop-on__desc -font-light">If you want to help out or learn more about these efforts don’t hesitate and email us at <a class="-link -orange" href="mailto:community@empathia.agency">community@empathia.agency</a> or go to either of the communities’ sites! All help is greatly appreciated.</p>\
             </section>\
         </section>',
 

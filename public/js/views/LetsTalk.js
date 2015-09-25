@@ -25,14 +25,14 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     <span class="-rel">Project Planner</span>\
                 </button>\
                 <p class="work-with-us__small -font-light">Don’t feel like filling the form?</p>\
-                <p class="work-with-us__small -font-light">Drop us a line at <a class="-link -purple" href="mailto:partners@empathia.agency" target="_blank">partners@empathia.agency</a>.</p>\
+                <p class="work-with-us__small -font-light">Drop us a line at <a class="-link -purple" href="mailto:partners@empathia.agency">partners@empathia.agency</a>.</p>\
             </section>\
             <section class="other-things page__container -row">\
                 <div class="ot__col -col-4">\
                     <div class="ot__image -img-cover" style="background-image: url(/img/views/lets-talk/thumbs/empathia-book-speaker.jpg)"></div>\
                     <div class="ot__content -mt3">\
                         <h2 class="ot__title -mt0 -font-semi-bold">Book Speaker / Community</h2>\
-                        <p class="ot__desc -color-neutral-dark">Thanks! We’re honored to share what we know with your audience. We’ve spoken at universities and conferences and we love it! Tell us how you’d like us to participate at <a class="-link -purple" href="mailto:community@empathia.agency" target="_blank">community@empathia.agency</a>.</p>\
+                        <p class="ot__desc -color-neutral-dark">Thanks! We’re honored to share what we know with your audience. We’ve spoken at universities and conferences and we love it! Tell us how you’d like us to participate at <a class="-link -purple" href="mailto:community@empathia.agency">community@empathia.agency</a>.</p>\
                     </div>\
                 </div>\
                 <div class="ot__col -col-4">\
@@ -46,7 +46,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     <div class="ot__image -img-cover" style="background-image: url(/img/views/lets-talk/thumbs/empathia-say-hi.jpg)"></div>\
                     <div class="ot__content -mt3">\
                         <h2 class="ot__title -mt0 -font-semi-bold">General Inquires / Say Hi</h2>\
-                        <p class="ot__desc -color-neutral-dark">We’re a very friendly group of people so if you just want to say hello, ask a question or arrange to stop by to have a chat over beer or coffee then feel free to email us at <a class="-link -purple" href="mailto:hello@empathia.agency" target="_blank">hello@empathia.agency</a>.</p>\
+                        <p class="ot__desc -color-neutral-dark">We’re a very friendly group of people so if you just want to say hello, ask a question or arrange to stop by to have a chat over beer or coffee then feel free to email us at <a class="-link -purple" href="mailto:hello@empathia.agency">hello@empathia.agency</a>.</p>\
                     </div>\
                 </div>\
             </section>\
@@ -79,7 +79,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     Colonia Americana, 44160<br/>\
                     Guadalajara, Mexico.</p>\
                     <p class="location-text">\
-                        <a class="-link -white" href="mailto:hello@empathia.agency" target="blank_">hello@empathia.agency</a><br/>\
+                        <a class="-link -white" href="mailto:hello@empathia.agency">hello@empathia.agency</a><br/>\
                         <span class="-font-semi-bold">52 (33) 1600.2769</span>\
                     </p>\
                     <div class="location-time -fsi">\
