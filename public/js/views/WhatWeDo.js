@@ -80,6 +80,11 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
 
             this.circleWidget.center();
             this.headerWidget.activate();
+            this.__bindEvents();
+
+            if (hasTouchSupport) {
+                return this;
+            }
 
             this.vivusApps = new Vivus('xx-svg-cloud-stroke', {
                 start: 'manual',
@@ -105,7 +110,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                 duration: 70
             });
 
-            this.__bindEvents();
+            return this;
         },
 
         _setup : function _setup() {
