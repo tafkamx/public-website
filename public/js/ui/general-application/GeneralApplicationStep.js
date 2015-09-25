@@ -22,7 +22,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                     <div data-row-b class="-col-6 -pl1"></div>\
                 </div>\
                 <div data-full-row></div>\
-                <p class="general-application__commas">Separate by commas. Your online portofolio, Dribbble, Behance, Github, Linkedin<br>etc.</p>\
+                <p class="general-application__commas">Separate by commas. Your online portofolio, Dribbble, Behance, Github, Linkedin, etc.</p>\
                 <div class="project-description-wrapper -rel">\
                     <textarea class="project-planner__project-description -font-light -full-width" placeholder="Why should we join forces?"></textarea>\
                 </div>\
@@ -51,7 +51,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                         <br><p>Upload your Resumé (optional)</p><br>\
                         <input type="file" name="upload" class="-hide" />\
                         <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
-                        <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
+                        <p class="general-application__uploadFilesFeedback -pl1 -fsi"></p>\
                 </div>\
             </div>\
             <div class="project-planner__footer">\
@@ -76,7 +76,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             this.radioElements = [].slice.call(this.element.querySelectorAll('[name="can-relocate"]'),0);
             this.uploadButton = this.element.querySelector('.ui-btn.-mini');
             this.uploadFile = this.element.querySelector('[name="upload"]');
-            this.uploadedFilesFeedback = this.element.querySelector('.pp-upload-files-feedback');
+            this.uploadedFilesFeedback = this.element.querySelector('.general-application__uploadFilesFeedback');
             this._setup()._bindEvents();
 
             this._checkitProps = new Checkit({
