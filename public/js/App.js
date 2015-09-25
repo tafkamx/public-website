@@ -63,14 +63,12 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
             this._showProjectPlannerRef = this._showProjectPlanner.bind(this);
             this.bind('showProjectPlanner', this._showProjectPlannerRef);
 
-            this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
-            this.bind('updateRoute', this._updateRoute.bind(this));
-
-
             this._showGeneralApplicationRef = this._showGeneralApplication.bind(this);
             this.bind('showGeneralApplication', this._showGeneralApplicationRef);
 
+            this.bind('projectPlanner:closed', this._projectPlannerClosedHandler.bind(this));
             this.bind('generalApplication:closed', this._generalApplicationClosedHandler.bind(this));
+
             this.bind('updateRoute', this._updateRoute.bind(this));
 
             this._toggleGridHandlerRef = this._toggleGridHandler.bind(this);
@@ -145,8 +143,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                 }
 
                 var overlayClass = classify(routeName);
-                console.log(overlayClass);
-                if(overlayClass == 'ProjectPlanner'){
+                if (overlayClass === 'ProjectPlanner'){
                     if (this.projectPlanner) {
                         this.projectPlanner = this.projectPlanner.destroy();
                     }
@@ -158,7 +155,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                     window.setTimeout(function() {
                         this.projectPlanner.activate().setup();
                     }.bind(this), 0);
-                }else if (overlayClass == "GeneralApplication"){
+                } else if (overlayClass === "GeneralApplication") {
                     if (this.generalApplication) {
                         this.generalApplication = this.generalApplication.destroy();
                     }
@@ -218,7 +215,6 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                 onTransitionEnd(app.pageLoader.element, function() {
                     app.pages.scrollbar.getViewElement().scrollTop = 0;
                     Router.setRoute(ev.route);
-
                     app.pageLoader.gone();
 
                     onTransitionEnd(app.pageLoader.element, function() {
