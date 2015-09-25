@@ -50,10 +50,10 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                             </div>\
                         </div>\
                         <div class="project-planner__budget-radios -row">\
-                                <br><p>Upload your Resumé (optional)</p><br>\
-                                <input type="file" name="upload" class="-hide" />\
-                                <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
-                                <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
+                            <br><p>Upload your Resumé (optional)</p><br>\
+                            <input type="file" name="upload" class="-hide" />\
+                            <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
+                            <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
                         </div>\
                     </div>\
                 </div>\
@@ -86,12 +86,11 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             this._checkitProps = new Checkit({
                 name: ['required'],
                 email: ['required','email'],
-                website: ['required','url'],
+                website: ['required'],
             });
         },
 
         _setup : function _setup() {
-
             this.appendChild(new EM.UI.Button({
                 name : 'sendButton',
                 className : '-md -neutral-dark -pl4 -pr4',
@@ -170,8 +169,8 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
 
         _displayErrors : function _displayErrors(errors){
             Object.keys(errors).forEach(function(propertyName) {
-                    var widget = 'input' + Capitalize(propertyName);
-                    this[widget].error();
+                var widget = 'input' + Capitalize(propertyName);
+                this[widget].error();
             }, this);
         },
 
