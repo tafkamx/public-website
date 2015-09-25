@@ -86,6 +86,10 @@
   color: #7E888C;
 }
 
+
+/******************************************************************************
+ * Step 1
+ *****************************************************************************/
 .project-type-container {}
 
 .project-type-col {
@@ -163,7 +167,25 @@
   }
 }
 
-// 02
+@media all and (max-width: 768px) {
+  .project-type-col {
+    width: 50%;
+    padding: 0 1em;
+
+    &.last {
+      width: 100%;
+      padding: 0 1em;
+    }
+  }
+
+  .project-type__divider {
+    display: none;
+  }
+}
+
+/******************************************************************************
+ * Step 2
+ *****************************************************************************/
 .project-description-wrapper {
   border: 1px solid #A1ADB3;
   border-radius: 5px;
