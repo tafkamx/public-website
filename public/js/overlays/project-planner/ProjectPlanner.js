@@ -11,7 +11,7 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(EM.UI.Overlay).includes(BubblingSu
         },
 
         setup : function setup() {
-            this.showStep(EM.UI.ProjectPlannerStep4.NAME);
+            this.showStep(EM.UI.ProjectPlannerStep1.NAME);
         },
 
         _setup : function _setup() {
