@@ -12,7 +12,7 @@ var schema = {
     budgetRangeSliderValue : 50,
     budgetValue : '',
     // Contact Info [Object] (5/5)
-    infoNname : '',
+    infoName : '',
     infoEmail : '',
     infoCompany : '',
     infoPhoneNumber : '',

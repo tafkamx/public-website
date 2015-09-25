@@ -102,13 +102,13 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
 
         _sendForm : function _sendForm(ev) {
             var formData = new FormData();
-            var data = ProjectPlannerData._data;
+            var data = ProjectPlannerData.get();
 
             Events.off(this._document, 'keyup', this._keyPressHandlerRef);
 
             for (var property in data) {
                 if (data.hasOwnProperty(property)) {
-                    if (data[property] !== 'supportingFiles') {
+                    if (property !== 'supportingFiles') {
                         formData.append(property, data[property]);
                     }
                 }
