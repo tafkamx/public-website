@@ -10,12 +10,10 @@ var message = {
   "important" : true,
   "auto_text" : true,
   "inline_css": true
-}
+};
 
-var generalApplicationMailer = Module ('generalApplicationMailer')({
+var generalApplicationMailer = Module ('GeneralApplicationMailer')({
   new : function(params, callback){
-    var mailer = this;
-
     var viewFile = fs.readFileSync('./views/mailers/generalApplication.html','utf-8');
 
     var template = new Thulium ({
