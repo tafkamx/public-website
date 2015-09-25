@@ -31,7 +31,7 @@ var ProjectPlannerMailer = Module('ProjectPlannerMailer')({
     message.to = [];
 
     message.to.push({
-      "email" : 'partners@empathya.agency',
+      "email" : 'partners@empathia.agency',
       "name" : 'Empathya',
       "type" : "to"
     });
