@@ -2,12 +2,16 @@ var Events = require('./../../lib/events');
 
 Class(EM.UI, 'ProjectPlannerStep6').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step6',
-    ELEMENT_CLASS : 'forms__step',
+    ELEMENT_CLASS : 'overlay-form__container',
     HTML : '\
         <div>\
-            <div class="page__container -rel -tac">\
-                <p class="project-planner__title -font-semi-bold">Thanks for taking the time to submit this!</p>\
-                <p class="project-planner__desc -pb5">We will get back to you as soon as possible. In the meantime you can read our Journal to get to know us a bit better.</p>\
+            <div class="-oa -full-height">\
+                <div class="overlay-form-info-wrapper">\
+                    <div class="page__container overlay-form-info-inner -rel">\
+                        <p class="overlay__title -font-semi-bold">Thanks for taking the time to submit this!</p>\
+                        <p class="overlay__desc -pb5">We will get back to you as soon as possible. In the meantime you can read our Journal to get to know us a bit better.</p>\
+                    </div>\
+                </div>\
             </div>\
         </div>',
 

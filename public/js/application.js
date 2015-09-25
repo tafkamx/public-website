@@ -17,8 +17,6 @@ require('./views/Careers');
 require('./views/Journal');
 require('./views/LetsTalk');
 require('./views/Home');
-require('./views/ProjectPlanner');
-require('./views/GeneralApplication');
 
 require('./ui/Button');
 require('./ui/Input');
@@ -58,14 +56,18 @@ require('./ui/community/Collage');
 require('./ui/community/CollageQuote');
 require('./ui/community/CollageImage');
 require('./ui/journal/JournalPost');
-require('./ui/project-planner/RangeSelector');
-require('./ui/project-planner/ProjectPlannerStep1');
-require('./ui/project-planner/ProjectPlannerStep2');
-require('./ui/project-planner/ProjectPlannerStep3');
-require('./ui/project-planner/ProjectPlannerStep4');
-require('./ui/project-planner/ProjectPlannerStep5');
-require('./ui/project-planner/ProjectPlannerStep6');
-require('./ui/general-application/GeneralApplicationStep');
+
+require('./overlays/Overlay');
+require('./overlays/project-planner/ProjectPlanner');
+require('./overlays/project-planner/RangeSelector');
+require('./overlays/project-planner/ProjectPlannerStep1');
+require('./overlays/project-planner/ProjectPlannerStep2');
+require('./overlays/project-planner/ProjectPlannerStep3');
+require('./overlays/project-planner/ProjectPlannerStep4');
+require('./overlays/project-planner/ProjectPlannerStep5');
+require('./overlays/project-planner/ProjectPlannerStep6');
+require('./overlays/general-application/GeneralApplication');
+require('./overlays/general-application/GeneralApplicationStep');
 
 window.app = new window.EM.App();
 window.app.initRouter();

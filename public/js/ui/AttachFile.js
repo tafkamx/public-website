@@ -5,7 +5,7 @@ Class(EM.UI, 'AttachFile').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'ui-attach-file -rel',
     HTML : '\
         <div>\
-            <div>\
+            <div class="ui-attach-file-text -ellipsis">\
                 <span class="attach-file-name"></span>\
                 <span class="attach-file-size"></span>\
             </div>\

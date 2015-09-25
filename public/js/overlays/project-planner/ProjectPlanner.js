@@ -1,67 +1,49 @@
-var CONSTANTS = require('./../lib/const');
-var Events = require('./../lib/events');
-var onTransitionEnd = require('./../lib/onTransitionEnd');
-var ProjectPlannerData = require('./../data/project-planner/registry');
+var onTransitionEnd = require('./../../lib/onTransitionEnd');
+var ProjectPlannerData = require('./../../data/project-planner/registry');
 
-Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)({
-    // NAME : 'project-planner',
+Class(EM.Overlays, 'ProjectPlanner').inherits(EM.UI.Overlay).includes(BubblingSupport)({
     PATH : '/project-planner',
-    MENU_COLOR : CONSTANTS.COLORS.purple,
-    ELEMENT_CLASS : 'forms -color-bg-white -fix',
-    HTML : '\
-        <div>\
-            <svg class="forms__close -s22r -abs -clickable">\
-                <use xlink:href="#svg-close"></use>\
-            </svg>\
-            <div class="forms__inner"></div>\
-        </div>',
 
     prototype : {
         init : function init(config) {
-            Widget.prototype.init.call(this, config);
-            this._document = document;
-            this.inner = this.element.querySelector('.forms__inner');
+            EM.UI.Overlay.prototype.init.call(this, config);
             this._setup()._bindEvents();
         },
 
         setup : function setup() {
-            this.showStep(EM.UI.ProjectPlannerStep1.NAME);
+            this.showStep(EM.UI.ProjectPlannerStep4.NAME);
         },
 
         _setup : function _setup() {
             this.appendChild(new EM.UI.ProjectPlannerStep1({
                 name: EM.UI.ProjectPlannerStep1.NAME
-            })).render(this.inner);
+            })).render(this.overlayBody);
 
             this.appendChild(new EM.UI.ProjectPlannerStep2({
                 name: EM.UI.ProjectPlannerStep2.NAME
-            })).render(this.inner);
+            })).render(this.overlayBody);
 
             this.appendChild(new EM.UI.ProjectPlannerStep3({
                 name: EM.UI.ProjectPlannerStep3.NAME
-            })).render(this.inner);
+            })).render(this.overlayBody);
 
             this.appendChild(new EM.UI.ProjectPlannerStep4({
                 name: EM.UI.ProjectPlannerStep4.NAME
-            })).render(this.inner);
+            })).render(this.overlayBody);
 
             this.appendChild(new EM.UI.ProjectPlannerStep5({
                 name: EM.UI.ProjectPlannerStep5.NAME
-            })).render(this.inner);
+            })).render(this.overlayBody);
 
             this.appendChild(new EM.UI.ProjectPlannerStep6({
                 name: EM.UI.ProjectPlannerStep6.NAME
-            })).render(this.inner);
+            })).render(this.overlayBody);
 
             return this;
         },
 
         _bindEvents : function _bindEvents() {
-            this._keyPressHandlerRef = this._keyPressHandler.bind(this);
-            Events.on(this._document, 'keyup', this._keyPressHandlerRef);
-
-            this._closeButtonClickHandlerRef = this._closeButtonClickHandler.bind(this);
-            Events.on(this.element.querySelector('.forms__close'), 'click', this._closeButtonClickHandlerRef);
+            EM.UI.Overlay.prototype.bindEvents.call(this);
 
             this._showStepRef = this._showStep.bind(this);
             this.bind('showPage', this._showStepRef);
@@ -104,7 +86,7 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
             var formData = new FormData();
             var data = ProjectPlannerData.get();
 
-            Events.off(this._document, 'keyup', this._keyPressHandlerRef);
+            this.unbindESCKey();
 
             for (var property in data) {
                 if (data.hasOwnProperty(property)) {
@@ -130,7 +112,7 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
                     console.log(data);
 
                     ProjectPlannerData.reset();
-                    Events.on(this._document, 'keyup', this._keyPressHandlerRef);
+                    this.bindESCKey();
 
                     if (ev.callback && typeof ev.callback === 'function') {
                         ev.callback(null, data);
@@ -140,7 +122,7 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
                 error : function(data) {
                     console.log(data);
 
-                    Events.on(this._document, 'keyup', this._keyPressHandlerRef);
+                    this.bindESCKey();
 
                     if (ev.callback && typeof ev.callback === 'function') {
                         ev.callback(true, data);
@@ -149,39 +131,13 @@ Class(EM.Overlays, 'ProjectPlanner').inherits(Widget).includes(BubblingSupport)(
             });
         },
 
-        /* Handles the keypress event on document.
-         * Basically interested on listening when the `ESC` key is pressed to auto-close this modal.
-         * @method _keyPressHandler <private> [Function]
-         */
-        _keyPressHandler : function _keyPressHandler(ev) {
-            if (ev.keyCode === CONSTANTS.KEYCODES.ESC) {
-                this.deactivate();
-                this.dispatch('projectPlanner:closed');
-            }
-        },
-
-        _closeButtonClickHandler : function _closeButtonClickHandler() {
-            this.dispatch('projectPlanner:closed');
-            this.deactivate();
-        },
-
         _deactivate : function _deactivate() {
-            Widget.prototype._deactivate.call(this);
+            EM.UI.Overlay.prototype._deactivate.call(this);
 
             onTransitionEnd(this.element, function() {
+                this.dispatch('projectPlanner:closed');
                 this.destroy();
             }.bind(this));
-        },
-
-        destroy : function destroy() {
-            Events.off(this._document, 'keyup', this._keyPressHandlerRef);
-            this._keyPressHandlerRef = null;
-
-            Events.off(this.element.querySelector('.forms__close'), 'click', this._closeButtonClickHandlerRef);
-            this._closeButtonClickHandlerRef = null;
-
-            Widget.prototype.destroy.call(this);
-            return null;
         }
     }
 });

@@ -160,7 +160,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
                         this.generalApplication = this.generalApplication.destroy();
                     }
 
-                    this.appendChild(new EM.Overlays.generalApplication({
+                    this.appendChild(new EM.Overlays.GeneralApplication({
                         name : 'generalApplication'
                     })).render(document.body);
 
@@ -248,7 +248,7 @@ Class(EM, 'App').includes(CustomEventSupport, NodeSupport)({
          */
         _showGeneralApplication : function _showGeneralApplication(ev) {
             ev.stopPropagation();
-            Router.setRoute(EM.Overlays.generalApplication.PATH);
+            Router.setRoute(EM.Overlays.GeneralApplication.PATH);
         },
 
         /* After closing the generalApplication, it restores the url to the latest

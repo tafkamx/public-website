@@ -2,19 +2,23 @@ var Events = require('./../../lib/events');
 
 Class(EM.UI, 'ProjectPlannerStep3').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step3',
-    ELEMENT_CLASS : 'forms__step deadline',
+    ELEMENT_CLASS : 'overlay-form__container',
     HTML : '\
         <div>\
-            <div class="page__container -rel">\
-                <div class="project-planner__step-counter -grad-03">3/5</div>\
-                <p class="project-planner__title -font-semi-bold">Do you have a deadline?</p>\
-                <p class="project-planner__desc">It doesn’t have to be a specific date. You can just type in an estimated date or even range of time, like <span class="-fsi">“In about 3 months”</span>.<br/>If you do not have a deadline you can leave this field empty and go on to the next step.</p>\
-                <div class="-row -mt5">\
-                    <div class="input-wrapper"></div>\
+            <div class="-oa -full-height">\
+                <div class="overlay-form-info-wrapper">\
+                    <div class="page__container overlay-form-info-inner -rel">\
+                        <div class="project-planner__step-counter -grad-03">3/5</div>\
+                        <p class="overlay__title -font-semi-bold">Do you have a deadline?</p>\
+                        <p class="overlay__desc">It doesn’t have to be a specific date. You can just type in an estimated date or even range of time, like <span class="-fsi">“In about 3 months”</span>.<br/>If you do not have a deadline you can leave this field empty and go on to the next step.</p>\
+                        <div class="-row -mt5">\
+                            <div class="input-wrapper"></div>\
+                        </div>\
+                    </div>\
                 </div>\
             </div>\
-            <div class="project-planner__footer">\
-                <div class="page__container -rel">\
+            <div class="overlay-form__footer">\
+                <div class="overlay-form-inner -rel">\
                     <div class="-row">\
                         <div data-back-btn-container class="-col-6"></div>\
                         <div data-next-btn-container class="-col-6 -tar"></div>\

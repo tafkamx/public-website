@@ -4,28 +4,32 @@ var removeClass = require('./../../lib/utils/class-remove');
 
 Class(EM.UI, 'ProjectPlannerStep2').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step2',
-    ELEMENT_CLASS : 'forms__step',
+    ELEMENT_CLASS : 'overlay-form__container',
     HTML : '\
         <div>\
-            <div class="page__container -rel">\
-                <div class="project-planner__step-counter -grad-02">2/5</div>\
-                <p class="project-planner__title -font-semi-bold">What do you have in mind?</p>\
-                <p class="project-planner__desc">Describe your idea with as much detail possible. Don’t be shy as it’ll help us determine how we can help you. You can also upload any material you think will support your description. Wireframes, documents or even your napkin doodles.</p>\
-                <div class="project-description-wrapper -rel -mt5">\
-                    <textarea class="project-planner__project-description -font-light -full-width" placeholder="What’s your vision?"></textarea>\
-                    <div class="project-upload-files-bar -row">\
-                        <input type="file" name="upload" class="-hide" multiple/>\
-                        <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
-                        <div class="pp-upload-files-feedback -pl1 -fsi">\
-                            <p class="pp-upload-files-error -color-red -mb1">Sorry, what you have selected exceeds 15MB. Please keep it under this size.</p>\
-                            <div class="pp-upload-files-list"></div>\
+            <div class="-oa -full-height">\
+                <div class="overlay-form-info-wrapper">\
+                    <div class="page__container overlay-form-info-inner -rel">\
+                        <div class="project-planner__step-counter -grad-02">2/5</div>\
+                        <p class="overlay__title -font-semi-bold">What do you have in mind?</p>\
+                        <p class="overlay__desc">Describe your idea with as much detail possible. Don’t be shy as it’ll help us determine how we can help you. You can also upload any material you think will support your description. Wireframes, documents or even your napkin doodles.</p>\
+                        <div class="project-description-wrapper -rel -mt5">\
+                            <textarea class="project-planner__project-description -font-light -full-width" placeholder="What’s your vision?"></textarea>\
+                            <div class="project-upload-files-bar -row">\
+                                <input type="file" name="upload" class="-hide" multiple/>\
+                                <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
+                                <div class="pp-upload-files-feedback -pl1 -fsi">\
+                                    <p class="pp-upload-files-error -color-red -mb1">Sorry, what you have selected exceeds 15MB. Please keep it under this size.</p>\
+                                    <div class="pp-upload-files-list"></div>\
+                                </div>\
+                            </div>\
                         </div>\
+                        <p class="pp-upload-files-limit-message -mt2 -fsi">The sum of all your files cannot exceed 15MB. If you have files larger than that, please link them in your message using other services like Droplr, Dropbox, etc.</p>\
                     </div>\
                 </div>\
-                <p class="pp-upload-files-limit-message -mt2 -fsi">The sum of all your files cannot exceed 15MB. If you have files larger than that, please link them in your message using other services like Droplr, Dropbox, etc.</p>\
             </div>\
-            <div class="project-planner__footer">\
-                <div class="page__container -rel">\
+            <div class="overlay-form__footer">\
+                <div class="overlay-form-inner -rel">\
                     <div class="-row">\
                         <div data-back-btn-container class="-col-6"></div>\
                         <div data-next-btn-container class="-col-6 -tar"></div>\

@@ -4,58 +4,62 @@ var Checkit = require('checkit');
 
 Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step',
-    ELEMENT_CLASS : 'forms__step',
+    ELEMENT_CLASS : 'overlay-form__container',
     HTML : '\
         <div>\
-            <div class="page__container -rel">\
-                <p class="project-planner__title -font-semi-bold">Hi! Tell us why we should join forces.</p>\
-                <p class="project-planner__desc">We’re really careful when hiring. It can be a really fast process or a slow one. It all depends on the clarity of what you’ll submit in this first contact. We’re looking for people who really understand and live by our same principles. FYI, we don’t look for extensive years in experience or college titles. If you know you can bring value to people’s lives through your skills and talent, please go ahead and apply.</p><br>\
-                <p class="project-planner__desc general-application__listHeader">A few tips that will help you:</p>\
-                <ul class="project-planner__desc general-application__list">\
-                    <li>Be specific and honest on why you are a good fit for us and our clients. No form letters please.</li>\
-                    <li>Your resume should emphasize any pertinent experience you have.</li>\
-                    <li>Bonus points for live links to current examples of your design in use.</li>\
-                    <li>When showing examples of your work, explain your role, participation level and if possible a description of the process of building these projects. We appreciate technical skills but we’re most interested in the way you deal with problems and come up with solutions.</li>\
-                </ul>\
-                 <div class="-row -pt4">\
-                    <div data-row-a class="-col-6 -pr1"></div>\
-                    <div data-row-b class="-col-6 -pl1"></div>\
-                </div>\
-                <div data-full-row></div>\
-                <p class="general-application__commas">Separate by commas. Your online portofolio, Dribbble, Behance, Github, Linkedin<br>etc.</p>\
-                <div class="project-description-wrapper -rel">\
-                    <textarea class="project-planner__project-description -font-light -full-width" placeholder="Why should we join forces?"></textarea>\
-                </div>\
-                <div class="project-planner__budget-radios -pt3 -row">\
-                    <p>Are you willing to relocate to Guadalajara?</p><br>\
-                    <div class="-col-1 -pr1">\
-                        <label class="-clickable">\
-                            <input type="radio" name="can-relocate" value="Yes" checked/>\
-                            <span>&nbsp;Yes</span>\
-                        </label>\
+            <div class="-oa -full-height">\
+                <div class="overlay-form-info-wrapper">\
+                    <div class="page__container overlay-form-info-inner -rel">\
+                        <p class="overlay__title -font-semi-bold">Hi! Tell us why we should join forces.</p>\
+                        <p class="overlay__desc">We’re really careful when hiring. It can be a really fast process or a slow one. It all depends on the clarity of what you’ll submit in this first contact. We’re looking for people who really understand and live by our same principles. FYI, we don’t look for extensive years in experience or college titles. If you know you can bring value to people’s lives through your skills and talent, please go ahead and apply.</p><br>\
+                        <p class="overlay__desc general-application__listHeader">A few tips that will help you:</p>\
+                        <ul class="overlay__desc general-application__list">\
+                            <li>Be specific and honest on why you are a good fit for us and our clients. No form letters please.</li>\
+                            <li>Your resume should emphasize any pertinent experience you have.</li>\
+                            <li>Bonus points for live links to current examples of your design in use.</li>\
+                            <li>When showing examples of your work, explain your role, participation level and if possible a description of the process of building these projects. We appreciate technical skills but we’re most interested in the way you deal with problems and come up with solutions.</li>\
+                        </ul>\
+                        <div class="-row -pt4">\
+                            <div data-row-a class="-col-6 -pr1"></div>\
+                            <div data-row-b class="-col-6 -pl1"></div>\
+                        </div>\
+                        <div data-full-row></div>\
+                        <p class="general-application__commas">Separate by commas. Your online portofolio, Dribbble, Behance, Github, Linkedin etc.</p>\
+                        <div class="project-description-wrapper -rel">\
+                            <textarea class="project-planner__project-description -font-light -full-width" placeholder="Why should we join forces?"></textarea>\
+                        </div>\
+                        <div class="project-planner__budget-radios -pt3 -row">\
+                            <p>Are you willing to relocate to Guadalajara?</p><br>\
+                            <div class="-fl -pr1">\
+                                <label class="-clickable">\
+                                    <input type="radio" name="can-relocate" value="Yes" checked/>\
+                                    <span>&nbsp;Yes</span>\
+                                </label>\
+                            </div>\
+                            <div class="-fl -pr1">\
+                                <label class="-clickable">\
+                                    <input  type="radio" name="can-relocate" value="No"/>\
+                                    <span>&nbsp;No</span>\
+                                </label>\
+                            </div>\
+                            <div class="-fl -pr1">\
+                                <label class="-clickable">\
+                                    <input  type="radio" name="can-relocate" value="LivesInGDL"/>\
+                                    <span>&nbsp;I already live in GDL</span>\
+                                </label>\
+                            </div>\
+                        </div>\
+                        <div class="project-planner__budget-radios -row">\
+                                <br><p>Upload your Resumé (optional)</p><br>\
+                                <input type="file" name="upload" class="-hide" />\
+                                <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
+                                <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
+                        </div>\
                     </div>\
-                    <div class="-col-1 -pr1">\
-                        <label class="-clickable">\
-                            <input  type="radio" name="can-relocate" value="No"/>\
-                            <span>&nbsp;No</span>\
-                        </label>\
-                    </div>\
-                    <div class="-col-3 -pr1">\
-                        <label class="-clickable">\
-                            <input  type="radio" name="can-relocate" value="LivesInGDL"/>\
-                            <span>&nbsp;I already live in GDL</span>\
-                        </label>\
-                    </div>\
-                </div>\
-                <div class="project-planner__budget-radios -row">\
-                        <br><p>Upload your Resumé (optional)</p><br>\
-                        <input type="file" name="upload" class="-hide" />\
-                        <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
-                        <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
                 </div>\
             </div>\
-            <div class="project-planner__footer">\
-                <div class="page__container -rel">\
+            <div class="overlay-form__footer">\
+                <div class="overlay-form-inner -rel">\
                     <div class="-row">\
                         <div data-submit-btn-container class="-col-12 -tar"></div>\
                     </div>\
@@ -141,7 +145,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             }
 
             var position = 0;
-            for (var i=0; i<this.radioElements.length; i++){ 
+            for (var i=0; i<this.radioElements.length; i++){
                 if (this.radioElements[i].checked) {
                     position = i;
                     i = this.radioElements.length;

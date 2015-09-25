@@ -2,27 +2,31 @@ var Events = require('./../../lib/events');
 
 Class(EM.UI, 'ProjectPlannerStep4').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step4',
-    ELEMENT_CLASS : 'forms__step',
+    ELEMENT_CLASS : 'overlay-form__container',
     HTML : '\
         <div>\
-            <div class="page__container -rel">\
-                <div class="project-planner__step-counter -grad-04">4/5</div>\
-                <p class="project-planner__title -font-semi-bold">What about a budget?</p>\
-                <p class="project-planner__desc">If you do, please give us a rough idea. Our work is based on coming up with solutions within constraints. A budget is one of these constraints. Knowing it will help us to maximize the available resources to achieve the best solution possible.</p>\
-                <div class="project-planner__budget-radios -pt3 -pb5">\
-                    <label class="-clickable">\
-                        <input type="radio" name="has-budget" value="1" checked/>\
-                        <span>Of course my horse</span>\
-                    </label>\
-                    <label class="-clickable">\
-                        <input type="radio" name="has-budget" value="0"/>\
-                        <span>No! I need help planning</span>\
-                    </label>\
+            <div class="-oa -full-height">\
+                <div class="overlay-form-info-wrapper">\
+                    <div class="page__container overlay-form-info-inner -rel">\
+                        <div class="project-planner__step-counter -grad-04">4/5</div>\
+                        <p class="overlay__title -font-semi-bold">What about a budget?</p>\
+                        <p class="overlay__desc">If you do, please give us a rough idea. Our work is based on coming up with solutions within constraints. A budget is one of these constraints. Knowing it will help us to maximize the available resources to achieve the best solution possible.</p>\
+                        <div class="project-planner__budget-radios -pt3 -pb5">\
+                            <label class="-clickable">\
+                                <input type="radio" name="has-budget" value="1" checked/>\
+                                <span>Of course my horse</span>\
+                            </label>\
+                            <label class="-clickable">\
+                                <input type="radio" name="has-budget" value="0"/>\
+                                <span>No! I need help planning</span>\
+                            </label>\
+                        </div>\
+                        <div class="project-planner__budget-selector-range -rel"></div>\
+                    </div>\
                 </div>\
-                <div class="project-planner__budget-selector-range -rel"></div>\
             </div>\
-            <div class="project-planner__footer">\
-                <div class="page__container -rel">\
+            <div class="overlay-form__footer">\
+                <div class="overlay-form-inner -rel">\
                     <div class="-row">\
                         <div data-back-btn-container class="-col-6"></div>\
                         <div data-next-btn-container class="-col-6 -tar"></div>\

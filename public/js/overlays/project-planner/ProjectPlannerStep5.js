@@ -4,23 +4,27 @@ var Checkit = require('checkit');
 
 Class(EM.UI, 'ProjectPlannerStep5').inherits(Widget).includes(BubblingSupport)({
     NAME : 'step5',
-    ELEMENT_CLASS : 'forms__step',
+    ELEMENT_CLASS : 'overlay-form__container',
     HTML : '\
         <div>\
-            <div class="page__container -rel">\
-                <div class="project-planner__step-counter -grad-05">5/5</div>\
-                <p class="project-planner__title -font-semi-bold">Finally, how can we reach you?</p>\
-                <p class="project-planner__desc">To get this moving, tell us how can we get in touch and we will get back to you as soon as possible once we have reviewed and understood the information you entered here.</p>\
-                <div class="-row -pt4">\
-                    <div data-row-a class="-col-6 -pr1"></div>\
-                    <div data-row-b class="-col-6 -pl1"></div>\
-                </div>\
-                <div class="error-sending-form -pt1 -tac" style="display: none;">\
-                    <span style="background-color: rgba(255, 0, 0, .05); padding: 1rem 2rem; display: inline-block;" class="-color-red">An error ocurred while submitting the form. Please try again.</span>\
+            <div class="-oa -full-height">\
+                <div class="overlay-form-info-wrapper">\
+                    <div class="page__container overlay-form-info-inner -rel">\
+                        <div class="project-planner__step-counter -grad-05">5/5</div>\
+                        <p class="overlay__title -font-semi-bold">Finally, how can we reach you?</p>\
+                        <p class="overlay__desc">To get this moving, tell us how can we get in touch and we will get back to you as soon as possible once we have reviewed and understood the information you entered here.</p>\
+                        <div class="-row -pt4">\
+                            <div data-row-a class="-col-6 -pr1"></div>\
+                            <div data-row-b class="-col-6 -pl1"></div>\
+                        </div>\
+                        <div class="error-sending-form -pt1 -tac" style="display: none;">\
+                            <span style="background-color: rgba(255, 0, 0, .05); padding: 1rem 2rem; display: inline-block;" class="-color-red">An error ocurred while submitting the form. Please try again.</span>\
+                        </div>\
+                    </div>\
                 </div>\
             </div>\
-            <div class="project-planner__footer">\
-                <div class="page__container -rel">\
+            <div class="overlay-form__footer">\
+                <div class="overlay-form-inner -rel">\
                     <div class="-row">\
                         <div data-back-btn-container class="-col-6"></div>\
                         <div data-next-btn-container class="-col-6 -tar"></div>\

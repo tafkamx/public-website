@@ -1,0 +1,86 @@
+.ui-overlay {
+  z-index: 4;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(100%);
+  transition: transform 400ms @ease;
+
+  &.active {transform: translateX(0)}
+}
+
+.overlay__close {
+  z-index: 1;
+  top: 6rem;
+  right: 6rem;
+  fill: #7E888C;
+  transition: opacity 200ms linear;
+
+  &:hover {opacity: .6}
+}
+
+.overlay__inner {
+  width: 100%;
+}
+
+.overlay__title {
+  font-size: 4rem;
+  line-height: 1.208em;
+  margin-bottom: 2rem;
+}
+
+.overlay__desc {
+  font-size: 1.25rem;
+  color: #7E888C;
+}
+
+/* forms */
+.overlay-form__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility:hidden;
+  opacity: 0;
+  transition: opacity .3s, transform .3s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.overlay-form-info-wrapper {
+  padding: 6rem 6rem 12rem 6rem;
+}
+
+.overlay-form-info-inner {
+  padding: 0 7rem;
+}
+
+.overlay-form__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.3334rem 6rem;
+  background-color: #F5F8FA;
+}
+
+
+@media all and (max-width: 768px) {
+  .overlay__close {
+    top: 3rem;
+    right: 3rem;
+  }
+
+  .overlay-form-info-wrapper {
+    padding: 6rem 0 12rem 0;
+  }
+
+  .overlay-form-info-inner {
+    padding: 0 3rem;
+  }
+}
