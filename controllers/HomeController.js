@@ -86,42 +86,65 @@ var HomeController = Class('HomeController')({
         });
       }
     },
+
     sendApplication : function (req, res, next){
-      if(!req.files.file){
+      if (!req.files.file) {
         req.body.fileURL = '';
 
         generalApplicationMailer.new(req.body, function(err, response){
-          if (err){
+          if (err) {
             return next(err);
           }
 
           return res.json({data : response});
         });
       } else {
-        var file = fs.readFileSync(req.files.file.path);
+        var archive = new zip();
+        var files = [];
 
-        var params = {
-          Bucket: 'empathia-ppn-uploads',
-          Key: req.files.file.name,
-          Body:file
-        };
-        amazonS3.upload(params, function(err, data){
-          if(err){
-            return next(err);
-          }
+        if (req.files.file instanceof Array === false) {
+          req.files.file = [req.files.file];
+        }
 
-          var fileURL = data.Location;
+        var zipName = (Date.now() + '-' + req.files.file.map(function(file) {
+          return file.name[0];
+        }).join(''));
 
-          var body =req.body;
-          body.fileURL = fileURL;
+        req.files.file.forEach(function (file) {
+          files.push({name: file.name, path: file.path});
+        });
 
-          generalApplicationMailer.new(body, function(err, response){
-            if (err){
+        archive.addFiles(files, function() {
+          var buffer = archive.toBuffer();
+
+          var params = {
+            Bucket: 'empathia-ppn-uploads',
+            Key: zipName + '.zip',
+            Body: buffer
+          };
+
+          amazonS3.upload(params, function(err, data) {
+            if(err) {
               return next(err);
             }
 
-            res.json({data : response});
+            var fileURL = data.Location;
+            var body =req.body;
+
+            body.fileURL = fileURL;
+
+            generalApplicationMailer.new(body, function(err, response) {
+              if (err){
+                return next(err);
+              }
+
+              res.json({data : response});
+            });
           });
+        }, function(err) {
+          if (err) {
+            next(err);
+          }
         });
       }
     }

@@ -1,4 +1,6 @@
 var Events = require('./../../lib/events');
+var addClass = require('./../../lib/utils/class-add');
+var removeClass = require('./../../lib/utils/class-remove');
 var Capitalize = require('./../../lib/utils/capitalize');
 var Checkit = require('checkit');
 
@@ -11,8 +13,8 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                 <div class="overlay-form-info-wrapper">\
                     <div class="page__container overlay-form-info-inner -rel">\
                         <p class="overlay__title -font-semi-bold">Hi! Tell us why we should join forces.</p>\
-                        <p class="overlay__desc">We’re really careful when hiring. It can be a really fast process or a slow one. It all depends on the clarity of what you’ll submit in this first contact. We’re looking for people who really understand and live by our same principles. FYI, we don’t look for extensive years in experience or college titles. If you know you can bring value to people’s lives through your skills and talent, please go ahead and apply.</p><br>\
-                        <p class="overlay__desc general-application__listHeader">A few tips that will help you:</p>\
+                        <p class="overlay__desc -mb2">We’re really careful when hiring. It can be a really fast process or a slow one. It all depends on the clarity of what you’ll submit in this first contact. We’re looking for people who really understand and live by our same principles. FYI, we don’t look for extensive years in experience or college titles. If you know you can bring value to people’s lives through your skills and talent, please go ahead and apply.</p>\
+                        <p class="overlay-form-subtitle -font-semi-bold -mb1">A few tips that will help you:</p>\
                         <ul class="overlay__desc general-application__list">\
                             <li>Be specific and honest on why you are a good fit for us and our clients. No form letters please.</li>\
                             <li>Your resume should emphasize any pertinent experience you have.</li>\
@@ -29,7 +31,7 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                             <textarea class="project-planner__project-description -font-light -full-width" placeholder="Why should we join forces?"></textarea>\
                         </div>\
                         <div class="project-planner__budget-radios -pt3 -row">\
-                            <p>Are you willing to relocate to Guadalajara?</p><br>\
+                            <p class="overlay-form-subtitle -font-semi-bold -mb1">Are you willing to relocate to Guadalajara?</p>\
                             <div class="-fl -pr1">\
                                 <label class="-clickable">\
                                     <input type="radio" name="can-relocate" value="Yes" checked/>\
@@ -49,11 +51,17 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                                 </label>\
                             </div>\
                         </div>\
-                        <div class="project-planner__budget-radios -row">\
-                            <br><p>Upload your Resumé (optional)</p><br>\
-                            <input type="file" name="upload" class="-hide" />\
+                        <div class="-row -pt3">\
+                            <p class="overlay-form-subtitle -font-semi-bold -mb1">Upload your Resumé (optional)</p>\
+                            <input type="file" name="upload" class="-hide" multiple/>\
                             <button class="ui-btn -mini -gray -fl"><span class="-rel">Attach files</span></button>\
-                            <p class="pp-upload-files-feedback -pl1 -fsi"></p>\
+                            <div class="pp-upload-files-feedback -pl1 -fsi">\
+                                <p class="pp-upload-files-error -color-red -mb1">Sorry, what you have selected exceeds 15MB. Please keep it under this size.</p>\
+                                <div class="pp-upload-files-list"></div>\
+                            </div>\
+                        </div>\
+                        <div class="error-sending-form -pt1 -tac" style="display: none;">\
+                            <span style="background-color: rgba(255, 0, 0, .05); padding: 1rem 2rem; display: inline-block;" class="-color-red">An error ocurred while submitting the form. Please try again.</span>\
                         </div>\
                     </div>\
                 </div>\
@@ -74,13 +82,18 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
     MAX_SIZE_ERROR_MESSAGE : '<p class="-color-red">Sorry, what you have selected exceeds 15MB. Please keep it under this size.</p>',
 
     prototype : {
+        _files : null,
+
         init : function init(config) {
             Widget.prototype.init.call(this, config);
+            this._files = [];
+
             this.inputMessage = this.element.querySelector('.project-planner__project-description');
             this.radioElements = [].slice.call(this.element.querySelectorAll('[name="can-relocate"]'),0);
             this.uploadButton = this.element.querySelector('.ui-btn.-mini');
             this.uploadFile = this.element.querySelector('[name="upload"]');
-            this.uploadedFilesFeedback = this.element.querySelector('.pp-upload-files-feedback');
+            this.uploadFilesError = this.element.querySelector('.pp-upload-files-error');
+            this.formError = this.element.querySelector('.error-sending-form');
             this._setup()._bindEvents();
 
             this._checkitProps = new Checkit({
@@ -91,11 +104,9 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
         },
 
         _setup : function _setup() {
-            this.appendChild(new EM.UI.Button({
-                name : 'sendButton',
-                className : '-md -neutral-dark -pl4 -pr4',
-                html : 'Submit Application'
-            })).render(this.element.querySelector('[data-submit-btn-container]'));
+            this.appendChild(new EM.UI.AttachFilesList({
+                name : 'attachFilesList'
+            })).render(this.element.querySelector('.pp-upload-files-list'));
 
             this.appendChild(new EM.UI.Input({
                 name : 'inputName',
@@ -114,6 +125,12 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                 className : '-md -block',
                 data : {attr : {placeholder: 'Websites or Profile URLs'}}
             })).render(this.element.querySelector('[data-full-row]'));
+
+            this.appendChild(new EM.UI.Button({
+                name : 'sendButton',
+                className : '-md -neutral-dark -pl4 -pr4',
+                html : 'Submit Application'
+            })).render(this.element.querySelector('[data-submit-btn-container]'));
 
             return this;
         },
@@ -134,11 +151,14 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
         },
 
         _buttonClickHandler : function _buttonClickHandler(){
+            this.formError.style.display = 'none';
+
             var validate = this._checkitProps.validateSync({
                 name: this.inputName.getValue(),
                 email: this.inputEmail.getValue(),
                 website: this.inputWebsite.getValue(),
             });
+
             if (validate[0]){
                 return this._displayErrors(validate[0].errors);
             }
@@ -157,14 +177,28 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
                 {prop: 'inputWebsite', value: this.inputWebsite.getValue()},
                 {prop: 'inputMessage', value: this.inputMessage.value},
                 {prop: 'canRelocate', value: this.radioElements[position].value},
-                {prop: 'supportingFiles',value : this.uploadFile.files}
+                {prop: 'supportingFiles', value : this._files}
             ];
-
             this.dispatch('setData', {data : data});
 
-            this.dispatch('sendForm');
-            this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep6.NAME});
+            if (!this.spinnerWidget) {
+                this.appendChild(new EM.UI.SpinnerBlocker({
+                    name : 'spinnerWidget'
+                })).render(this.element);
+            }
 
+            this.dispatch('sendForm', {
+                callback: function(err) {
+                    this.spinnerWidget = this.spinnerWidget.destroy();
+
+                    if (err) {
+                        this.formError.style.display = 'block';
+                        return;
+                    }
+
+                    this.dispatch('showPage', {name: EM.UI.ProjectPlannerStep6.NAME});
+                }.bind(this)
+            });
         },
 
         _displayErrors : function _displayErrors(errors){
@@ -182,25 +216,29 @@ Class(EM.UI, 'GeneralApplicationStep').inherits(Widget).includes(BubblingSupport
             var files = [].slice.call(ev.target.files,0);
             var totalBytes = 0;
 
+            removeClass(this.uploadFilesError, 'active');
+
             files.forEach(function(file){
                 totalBytes += file.size;
             });
 
+            if (this._files.length) {
+                this._files.forEach(function(file) {
+                    totalBytes += file.size;
+                });
+            }
+
             if(totalBytes >= this.constructor.MAX_BYTE_SIZE){
-                this.uploadedFilesFeedback.insertAdjacentHTML('afterbegin', this.constructor.MAX_SIZE_ERROR_MESSAGE);
+                addClass(this.uploadFilesError, 'active');
                 return;
             }
 
-            var text = '<b class="-font-semi-bold">{total} files attached</b> ({files})';
-            var fileNames = files.map(function(file) {
-                return file.name;
-            }).join(', ');
 
-            text = text.replace(/{total}/, files.length);
-            text = text.replace(/{files}/, fileNames);
+            files.forEach(function(file) {
+                this._files.push(file);
+            }, this);
 
-            this.uploadedFilesFeedback.innerHTML = '';
-            this.uploadedFilesFeedback.insertAdjacentHTML('beforeend', text);
+            this.attachFilesList.flush().add(this._files);
         },
 
         destroy : function destroy() {

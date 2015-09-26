@@ -62,7 +62,7 @@ Class(EM.Overlays, 'GeneralApplication').inherits(EM.UI.Overlay).includes(Bubbli
             });
         },
 
-        _sendForm : function _sendForm (){
+        _sendForm : function _sendForm (ev) {
             var formData = new FormData();
             var data = generalApplicationData.get();
 
@@ -88,7 +88,22 @@ Class(EM.Overlays, 'GeneralApplication').inherits(EM.UI.Overlay).includes(Bubbli
                 contentType : false,
                 success : function(){
                     generalApplicationData.reset();
-                }
+                    this.bindESCKey();
+
+                    if (ev.callback && typeof ev.callback === 'function') {
+                        ev.callback(null, data);
+                    }
+                }.bind(this),
+
+                error : function(data) {
+                    console.log(data);
+
+                    this.bindESCKey();
+
+                    if (ev.callback && typeof ev.callback === 'function') {
+                        ev.callback(true, data);
+                    }
+                }.bind(this)
             });
         },
 
