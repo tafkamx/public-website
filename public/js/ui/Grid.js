@@ -17,8 +17,12 @@ Class(EM.UI, 'Grid').inherits(Widget).includes(BubblingSupport)({
                             <span class="-rel">Get Started!</span>\
                         </button>\
                         <ul class="grid__footer-list">\
-                            <li class="grid__footer-list-item -inline-block -font-light"><a class="-link -gray" href="mailto:hello@empathia.agency">hello@empathia.agency</a></li>\
-                            <li class="grid__footer-list-item -inline-block -font-light last">52 (33) 1600.2769</li>\
+                            <li class="grid__footer-list-item -inline-block -font-light">\
+                                <a class="-link -gray" href="mailto:hello@empathia.agency">hello@empathia.agency</a>\
+                            </li>\
+                            <li class="grid__footer-list-item -inline-block -font-light last">\
+                                <a href="tel:+523316002769" class="-link -gray">52 (33) 1600.2769</a>\
+                            </li>\
                         </ul>\
                     </footer>\
                 </div>\

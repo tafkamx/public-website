@@ -80,7 +80,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                     Guadalajara, Mexico.</p>\
                     <p class="location-text">\
                         <a class="-link -white" href="mailto:hello@empathia.agency">hello@empathia.agency</a><br/>\
-                        <span class="-font-semi-bold">52 (33) 1600.2769</span>\
+                        <a href="tel:+523316002769" class="-link -white -font-semi-bold">52 (33) 1600.2769</a>\
                     </p>\
                     <div class="location-time -fsi">\
                         <svg class="location-time-svg -abs -s16r -color-white">\
