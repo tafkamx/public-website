@@ -29,7 +29,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             </div>\
             <div class="hit-fix -rel">\
                 <div data-hitfix></div>\
-                <section class="what-we-do__disciplines-wrapper -rel"></section>\
+                <section class="what-we-do__disciplines-wrapper page__container -rel"></section>\
             </div>\
             <div class="hit-abs -rel">\
                 <div data-hitabs></div>\
