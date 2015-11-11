@@ -39,18 +39,6 @@ module.exports = [
     },
 
     {
-        image : 'chupau@2x.png',
-        thumb : 'chupau@2x.png',
-        name : 'Oscar Salazar',
-        title : 'Project & QA Manager',
-        networks : [
-            {type : 'twitter', url : 'https://twitter.com/ofsalazar'},
-            {type : 'steam', url : 'http://steamcommunity.com/id/nineinchtool'}
-        ],
-        bio : 'I started in this business as a programmer. I like programming. But I find the problems of software quality analysis and improvement more interesting than those of software production. For me, there’s something very compelling about the question "How do I know my work is good?" Indeed, how do I know anything is good? What does good mean? That’s why I got into SQA.'
-    },
-
-    {
         image : 'ericku@2x.png',
         thumb : 'ericku@2x.png',
         name : 'Ericku',
