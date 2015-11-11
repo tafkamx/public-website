@@ -35,7 +35,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                 <div data-hitabs></div>\
                 <div class="-color-bg-neutral-xx-dark">\
                     <section class="what-we-do__offerings-wrapper page__container">\
-                        <div class="page__intro -pb5 -pt5">\
+                        <div class="page__intro -pb5">\
                             <div data-section="offerings" class="-tac">\
                                 <h2 class="page__body-title -font-bold">Offerings</h2>\
                                 <p class="page__intro-text -font-light">All these disciplines go into the things we create with our partners. The innovative mediums that help them grow and accomplish their goals. They can be operational, educational, social-focused or just to have fun.</p>\

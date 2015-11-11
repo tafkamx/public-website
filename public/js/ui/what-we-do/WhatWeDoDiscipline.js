@@ -6,7 +6,6 @@ Class(EM.UI, 'WhatWeDoDiscipline').inherits(Widget)({
             <div class="what-we-do__discipline -col-6">\
                 <div class="what-we-do__discipline-inner">\
                     <div class="what-we-do__discipline-inner-center -pl5 -pr5">\
-                        <p class="what-we-do__discipline-label -ttu -mb1">Strategic Disciplines</p>\
                         <h3 class="what-we-do__discipline-title -mt0 -mb1"></h3>\
                         <p class="what-we-do__discipline-desc -font-light"></p>\
                     </div>\

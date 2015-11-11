@@ -11,6 +11,7 @@ Class(EM.UI, 'WhatWeDoCircle').inherits(Widget)({
             </svg>\
             <span class="wwd__inner-circle-label -abs -font-light">UX</span>\
             <div class="wwd__circle-content-wrapper">\
+                <p class="wwd__discipline-label -ttu -mb1">Strategic Disciplines</p>\
                 <ul class="wwd__list">\
                     <li class="wwd__list-item -font-light" data-name="insights">\
                         <svg class="-s16r"><use xlink:href="#svg-checkmark"></use></svg>\
