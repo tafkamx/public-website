@@ -75,8 +75,6 @@ Class(EM.UI, 'GalleryThumbs').inherits(Widget).includes(BubblingSupport)({
             }
 
             var left = ~~this._currentActive.getOffsetLeft();
-            if (left === 0){ left = 88; } // Temporal offset adjusment when one member is missing. 
-
             inlineStyle(this.indicator, {
                 msTransform: 'translateX(' + left + 'px)',
                 webkitTransform: 'translateX(' + left + 'px)',
