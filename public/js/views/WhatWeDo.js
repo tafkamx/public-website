@@ -186,10 +186,7 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             var B = document.elementFromPoint(0, this.h-1);
             var M = document.elementFromPoint(this.cx, this.cy);
             //var BCX = document.elementFromPoint(this.cx, this.h-1);
-
-            console.log('Width:' + this.cx);
-            console.log('Height:' + (this.h-1));
-
+            
             if (T === this.hitNor) {
                 if (this._state.nor === false) {
                     this._state.nor = true;
