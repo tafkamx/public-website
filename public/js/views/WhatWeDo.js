@@ -185,7 +185,10 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
             var T = document.elementFromPoint(0, 1);
             var B = document.elementFromPoint(0, this.h-1);
             var M = document.elementFromPoint(this.cx, this.cy);
-            var BCX = document.elementFromPoint(this.cx, this.h-1);
+            //var BCX = document.elementFromPoint(this.cx, this.h-1);
+
+            console.log('Width:' + this.cx);
+            console.log('Height:' + (this.h-1));
 
             if (T === this.hitNor) {
                 if (this._state.nor === false) {
@@ -222,20 +225,20 @@ Class(EM.Views, 'WhatWeDo').inherits(Widget).includes(BubblingSupport)({
                 this.circleWidget.showDiscipline(M.dataset.name);
             }
 
-            if (typeof BCX.dataset.offering !== 'undefined') {
-                if (BCX.dataset.name === 'applications-and-platforms') {
+            if (typeof M.dataset.offering !== 'undefined') {
+                if (M.dataset.name === 'applications-and-platforms') {
                     return this.vivusApps.play();
                 }
 
-                if (BCX.dataset.name === 'e-commerce') {
+                if (M.dataset.name === 'e-commerce') {
                     return this.vivusCommerce.play();
                 }
 
-                if (BCX.dataset.name === 'brand-development') {
+                if (M.dataset.name === 'brand-development') {
                     return this.vivusBrand.play();
                 }
 
-                if (BCX.dataset.name === 'mobile') {
+                if (M.dataset.name === 'mobile') {
                     return this.vivusMobile.play();
                 }
             }
