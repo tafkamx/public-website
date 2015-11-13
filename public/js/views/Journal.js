@@ -16,7 +16,7 @@ Class(EM.Views, 'Journal').inherits(Widget).includes(BubblingSupport)({
         <section>\
             <article class="journal__menu"></article>\
             <section class="journal__posts page__container -pl5 -pr5 -tac">\
-                <a class="-mt4 -inline-block -color-neutral-dark -social-hover-medium" href="https://medium.com/@EmpathiaAgency" target="_blank">\
+                <a class="-inline-block -color-neutral-dark -social-hover-medium" href="https://medium.com/@EmpathiaAgency" target="_blank">\
                     <svg class="-s32">\
                         <use xlink:href="#svg-medium-icon"></use>\
                     </svg>\
