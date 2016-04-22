@@ -17,9 +17,14 @@ var config = {
     development : 'http://localhost:3000'
   },
 
-  mandrill : {
-    key : 'mb_vfGOnZHk6j8rhEx3oLA',
-    sendEmails :  true
+  mailer : {
+    sendEmails : true,
+    mailgun: {
+      auth: {
+        api_key: 'key-91f243248028b811b5893fc1bfea1042',
+        domain: 'empathia.agency',
+      },
+    }
   },
 
   s3 : {

@@ -1,6 +1,6 @@
 /* globals application, amazonS3 */
 var ProjectPlannerMailer = require('./../mailers/ProjectPlannerMailer');
-var generalApplicationMailer = require ('./../mailers/GeneralApplicationMailer');
+var GeneralApplicationMailer = require ('./../mailers/GeneralApplicationMailer');
 var zip = require("node-native-zip");
 
 var HomeController = Class('HomeController')({
@@ -29,13 +29,10 @@ var HomeController = Class('HomeController')({
       if (!req.files.file) {
         req.body.fileURL = '';
 
-        ProjectPlannerMailer.new(req.body, function(err, response) {
-          if (err) {
-            return next(err);
-          }
-
+        ProjectPlannerMailer.new(req.body).then(function(response) {
           return res.json({data : response });
-        });
+        }).catch(next);
+
       } else {
         var archive = new zip();
         var files = [];
@@ -71,13 +68,10 @@ var HomeController = Class('HomeController')({
 
             body.fileURL = fileURL;
 
-            ProjectPlannerMailer.new(body, function(err, response) {
-              if (err) {
-                return next(err);
-              }
-
+            ProjectPlannerMailer.new(body).then(function(response) {
               res.json({data: response});
-            });
+            }).catch(next);
+
           });
         }, function(err) {
           if (err) {
@@ -91,13 +85,10 @@ var HomeController = Class('HomeController')({
       if (!req.files.file) {
         req.body.fileURL = '';
 
-        generalApplicationMailer.new(req.body, function(err, response){
-          if (err) {
-            return next(err);
-          }
-
+        GeneralApplicationMailer.new(req.body).then(function(response) {
           return res.json({data : response});
-        });
+        }).catch(next);
+
       } else {
         var archive = new zip();
         var files = [];
@@ -133,13 +124,10 @@ var HomeController = Class('HomeController')({
 
             body.fileURL = fileURL;
 
-            generalApplicationMailer.new(body, function(err, response) {
-              if (err){
-                return next(err);
-              }
-
+            GeneralApplicationMailer.new(body).then(function(response) {
               res.json({data : response});
-            });
+            }).catch(next);
+
           });
         }, function(err) {
           if (err) {
