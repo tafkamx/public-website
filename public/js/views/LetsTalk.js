@@ -282,6 +282,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
             var mapOptions = {
                 center: {lat: LAT, lng: LNG},
                 zoom: 18,
+                scrollwheel: false,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
             };
             this._map = new google.maps.Map(mapCanvas, mapOptions);
