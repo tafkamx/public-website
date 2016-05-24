@@ -33,7 +33,7 @@
       user : "deploy",
       host : "empathya.agency",
       ref  : "origin/master",
-      repo : "git@github.com:Empathya/empathya.agency.git",
+      repo : "git@github.com:Empathia/empathya.agency.git",
       path : "/home/deploy/apps/empathya",
       "post-deploy" : "npm install && webpack -p && cp ../shared/config.js ./config/config.js && pm2 startOrRestart ecosystem.json --env production",
       env  : {
