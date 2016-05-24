@@ -277,8 +277,10 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
 
         _createMap : function _createMap() {
             var mapCanvas = this.element.querySelector('.contact-map');
+            var LAT = 20.6754407;
+            var LNG = -103.375287;
             var mapOptions = {
-                center: {lat: 20.6697775, lng: -103.3635804},
+                center: {lat: LAT, lng: LNG},
                 zoom: 18,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
             };
@@ -286,7 +288,7 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
 
             var image = '/img/views/lets-talk/location/pin.png';
             this._beachMarker = new google.maps.Marker({
-                position: {lat: 20.6697775, lng: -103.3635804},
+                position: {lat: LAT, lng: LNG},
                 map: this._map,
                 icon: image
             });
