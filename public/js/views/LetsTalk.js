@@ -75,8 +75,8 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                             </a>\
                         </div>\
                     </div>\
-                    <p class="location-text -mb1">José Guadalupe Zuno 1745<br/>\
-                    Colonia Americana, 44160<br/>\
+                    <p class="location-text -mb1">Morelos 1975<br/>\
+                    Colonia Ladrón de Guevara, 44600<br/>\
                     Guadalajara, Mexico.</p>\
                     <p class="location-text">\
                         <a class="-link -white" href="mailto:hello@empathia.agency">hello@empathia.agency</a><br/>\
