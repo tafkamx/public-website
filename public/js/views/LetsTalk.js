@@ -166,8 +166,8 @@ Class(EM.Views, 'LetsTalk').inherits(Widget).includes(BubblingSupport)({
                 return this.__updateLocaleTimeWeekend(m);
             }
 
-            var a = m.format('YYYY-MM-DD') + ' 09:00:00';
-            var b = m.format('YYYY-MM-DD') + ' 18:00:00';
+            var a = m.format('YYYY-MM-DD') + ' 10:00:00';
+            var b = m.format('YYYY-MM-DD') + ' 19:00:00';
             // available
             if (m.isBetween(a,b)) {
                 return this.__updateLocaleTimeAvailable(m, b);
