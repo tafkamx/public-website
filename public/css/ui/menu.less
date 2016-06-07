@@ -3,12 +3,17 @@
   height: 40px;
   top: 40px;
   left: 0;
-  fill: @color-neutral-xx-dark;
+  width: 100%;
+  // fill: @color-neutral-xx-dark;
 }
 
 .menu__svg {
+  float: right;
   width: 40px;
-  background-color: @color-white;
+  height: 40px;
+  margin-right: 20px;
+  border-radius: 50%;
+  background-color: @color-black;
   transition: fill 200ms linear;
 
   > g {transition: opacity 200ms linear}
@@ -20,18 +25,6 @@
   }
 }
 
-.menu__logo {
-  font-size: 18px;
-  padding: 6px 19px 0;
-  height: 40px;
-  color: @color-white;
-  background-color: @color-black;
-  transition: background-color 200ms linear;
-
-  &:hover {
-    background-color: @color-neutral-xx-dark;
-  }
-}
 
 // active
 .menu.active {

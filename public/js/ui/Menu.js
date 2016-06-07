@@ -21,7 +21,9 @@ Class(EM.UI, 'Menu').inherits(Widget).includes(BubblingSupport)({
                     <rect x="-7" y="8" width="16" height="2" transform="rotate(-43,0,0)"></rect>\
                 </g>\
             </svg>\
-            <div class="menu__logo -clickable -inline-block -font-semi-bold">Empathia</div>\
+            <div class="menu__logo -clickable -inline-block -font-semi-bold">\
+            <img src="/img/logo-empathia.png">\
+            </div>\
         </div>',
 
     prototype : {
