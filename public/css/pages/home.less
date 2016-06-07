@@ -1,28 +1,58 @@
 .page-home {
   position: relative;
   color: @color-black;
-  padding: 120px 20px 0 20px;
+  padding: 120px 40px 0 40px;
 
   p {
     margin-top: 1.5em;
     font-size: 1.87em;
   }
 
-  ul {
+  .featured__list, .journal__list {
     list-style-type: none;
     padding: 0;
 
     li {
       width: 100%;
-      padding: 4em 2em;
       margin-bottom: 2%;
-      background: #F8F8F8;
       display: inline-block;
+    }
+  }
+
+  .featured__list {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      padding: 4em 2em;
+      background: #F8F8F8;
     }
 
     a { display: inline-block; border-bottom: 2px solid @color-black; margin: 1em 0; text-transform: uppercase; }
     h5 { margin: .5em 0; font-size: 1.3em; text-transform: uppercase; }
     h3 { margin: .5em 0; font-size: 2.4em; }
+  }
+
+  .journal__list {
+    li {
+      position: relative;
+      height: 220px;
+      color: @color-white;
+      background: @color-black;
+      background-repeat: no-repeat;
+      background-position: left top;
+      background-size: 100% auto;
+
+      .bottom__aligned {
+        position: absolute;
+        bottom: 2em;
+        right: 2em;
+        left: 2em;
+      }
+    }
+
+    a { font-size: 1.1em; border-bottom: 1px solid @color-white; opacity: .8; }
+    h3 { font-size: 1.9em; }
   }
 
   h1 {
@@ -73,13 +103,17 @@
 
 @media screen and (min-width: 680px) {
   .page-home {
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 80px;
+    padding-right: 80px;
 
-    ul li {
+    .featured__list li {
       width: 46%;
       margin-left: 2%;
-      margin-bottom: 2%;
+    }
+
+    .journal__list li {
+      width: 30%;
+      margin-left: 2%;
     }
   }
 }
