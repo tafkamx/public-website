@@ -6,8 +6,8 @@ module.exports = [
         LIGHTER: true,
         className : 'slides__intro',
         title : {
-            text : 'Hello! We are Empathia',
-            className : '-font-extra-light'
+            text : 'Hello! We\'re Empathia Agency',
+            className : '-font-semi-bold'
         },
         message : {
             text : 'Believe in a world where things work better.'
