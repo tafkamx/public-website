@@ -11,6 +11,10 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
                 <h1 class="em-slide__heading -font-bold"></h1>\
             </div>\
         </div>',
+    P_HTML: '<p>{text}</p>',
+    UL_HTML: '<ul>{items}</ul>',
+    UL_LI_HTML: '<li><h5>{title}</h5><h3>{desc}</h3><a href="{url}">view case study</a></li>',
+
     CTA_HTML : '<button data-link="{link}" class="ui-btn -md -pl3 -pr3 -mt2 -white -clickable"><span class="-rel">{text}</span></button>',
     CTA_EXTERNAL_HTML : '<a href="{link}" class="ui-btn -md -pl3 -pr3 -mt2 -white -clickable" target="_blank"><span class="-rel">{text}</span></a>',
 
@@ -60,6 +64,10 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
             this.titleElement.insertAdjacentHTML('afterbegin', this.data.title.text);
             this.messageElement.insertAdjacentHTML('afterbegin', this.data.message.text);
 
+            if (this.data.LIGHTER) {
+              this.messageElement.classList.remove('-font-bold');
+            }
+
             if (this.data.className) {
                 addClass(this.element, this.data.className);
             }
@@ -70,6 +78,28 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
 
             if (this.data.title.className) {
                 addClass(this.titleElement, this.data.title.className);
+            }
+
+            if (this.data.p) {
+              var p = this.constructor.P_HTML;
+
+              p = p.replace(/{text}/, this.data.p.text);
+
+              this.element.querySelector('.em-slide__text').insertAdjacentHTML('beforeend', p);
+            }
+
+            if (this.data.featured) {
+              var markup = this.constructor.UL_LI_HTML;
+              var items = this.data.featured.map(function(item) {
+                return markup
+                  .replace(/{title}/, item.title)
+                  .replace(/{desc}/, item.desc)
+                  .replace(/{url}/, item.url);
+              });
+
+              var list = this.constructor.UL_HTML.replace(/{items}/, items.join(''));
+
+              this.element.querySelector('.em-slide__text').insertAdjacentHTML('beforeend', list);
             }
 
             if (this.data.cta) {
@@ -83,6 +113,11 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
 
                 cta = cta.replace(/{text}/, this.data.cta.text);
                 cta = cta.replace(/{link}/, this.data.cta.link);
+
+
+                if (this.data.cta.dark) {
+                  cta = cta.replace(/ -white/, '');
+                }
 
                 this.element.querySelector('.em-slide__text').insertAdjacentHTML('beforeend', cta);
                 this.ctaElement = this.element.querySelector('.ui-btn');

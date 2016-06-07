@@ -3,6 +3,7 @@ var CONSTANTS = require('./../../lib/const');
 module.exports = [
     {
         MENU_COLOR : CONSTANTS.COLORS.green,
+        LIGHTER: true,
         className : 'slides__intro',
         title : {
             text : 'Hello! We are Empathia',
@@ -12,9 +13,17 @@ module.exports = [
             text : 'Believe in a world where things work better.'
         },
         cta : {
+            dark: true,
             text : 'Learn What We Do',
             link : EM.Views.WhatWeDo.PATH
-        }
+        },
+        p: {
+          text: 'An ideas and innovation firm that provides solutions rooted in technology, for the problems that affect the world.'
+        },
+        featured: [
+          { title: 'crowdvoice.com', desc: 'Amplifying social justice movements worldwide.', link: '#' },
+          { title: 'crowdvoice.by', desc: 'Organize information about the causes that matter to you.', link: '#' }
+        ]
     }
 
     /*
