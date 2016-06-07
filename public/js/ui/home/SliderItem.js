@@ -12,7 +12,7 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
             </div>\
         </div>',
     P_HTML: '<p>{text}</p>',
-    UL_HTML: '<ul>{items}</ul>',
+    UL_HTML: '<h2 class="-featured">Featured work</h2><ul>{items}</ul>',
     UL_LI_HTML: '<li><h5>{title}</h5><h3>{desc}</h3><a href="{url}">view case study</a></li>',
 
     CTA_HTML : '<button data-link="{link}" class="ui-btn -md -pl3 -pr3 -mt2 -white -clickable"><span class="-rel">{text}</span></button>',
