@@ -1,45 +1,48 @@
 .page-home {
-  .em-slide__text {
-    position: relative;
-    color: @color-black;
+  position: relative;
+  color: @color-black;
 
-    padding-top: 25em;
-    padding-left: 6.667em;
-    padding-right: 15em;
+  padding-top: 25em;
+  padding-left: 6.667em;
+  padding-right: 15em;
 
-    p {
-      margin-top: 1.5em;
-      font-size: 1.87em;
+  p {
+    margin-top: 1.5em;
+    font-size: 1.87em;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      width: 46%;
+      padding: 4em 2em;
+      margin-right: 2%;
+      margin-bottom: 2%;
+      background: #F8F8F8;
+      display: inline-block;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
+    a { display: inline-block; border-bottom: 2px solid @color-black; margin: 1em 0; text-transform: uppercase; }
+    h5 { margin: .5em 0; font-size: 1.3em; text-transform: uppercase; }
+    h3 { margin: .5em 0; font-size: 2.4em; }
+  }
 
-      li {
-        width: 46%;
-        padding: 4em 2em;
-        margin-right: 2%;
-        background: #F8F8F8;
-        display: inline-block;
-      }
+  h1 {
+    font-size: 4.5em;
+  }
 
-      a { display: inline-block; border-bottom: 2px solid @color-black; margin: 1em 0; text-transform: uppercase; }
-      h5 { margin: .5em 0; font-size: 1.3em; text-transform: uppercase; }
-      h3 { margin: .5em 0; font-size: 2.4em; }
-    }
+  .featured {
+    text-transform: uppercase;
+    margin-top: 5em;
+    margin-bottom: 2.5em;
+  }
 
-    .-featured {
-      text-transform: uppercase;
-      margin-top: 5em;
-      margin-bottom: 2.5em;
-    }
-
-    .em-slide__subheading.-font-semi-bold {
-      font-size: 1.5em;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
+  .subheading {
+    font-size: 1.5em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
   }
 }
 
