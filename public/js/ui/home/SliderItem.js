@@ -46,9 +46,17 @@ Class(EM.UI, 'SlideItem').inherits(Widget).includes(BubblingSupport)({
 
         _setup : function _setup() {
             this.element.style.zIndex = this.zindex;
-            this.element.classList.add(this.data.gradient);
 
-            this.slideBgElement.style.backgroundImage = 'url(' + this.data.bg.image + ')';
+            if (this.data.gradient) {
+              this.element.classList.add(this.data.gradient);
+            }
+
+            this.data.bg = this.data.bg || {};
+
+            if (this.data.bg.image) {
+              this.slideBgElement.style.backgroundImage = 'url(' + this.data.bg.image + ')';
+            }
+
             this.titleElement.insertAdjacentHTML('afterbegin', this.data.title.text);
             this.messageElement.insertAdjacentHTML('afterbegin', this.data.message.text);
 

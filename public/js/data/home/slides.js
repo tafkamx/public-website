@@ -4,10 +4,6 @@ module.exports = [
     {
         MENU_COLOR : CONSTANTS.COLORS.green,
         className : 'slides__intro',
-        gradient : '-gradient-01',
-        bg : {
-            image: '/img/views/home/slides/01.jpg'
-        },
         title : {
             text : 'Hello! We are Empathia',
             className : '-font-extra-light'
@@ -19,8 +15,9 @@ module.exports = [
             text : 'Learn What We Do',
             link : EM.Views.WhatWeDo.PATH
         }
-    },
+    }
 
+    /*
     {
         MENU_COLOR : CONSTANTS.COLORS.red,
         className : 'slides__cv-org',
@@ -40,7 +37,7 @@ module.exports = [
             link : 'http://crowdvoice.org/',
             external : true
         }
-    }
+    }*/
 
     /*
     {
