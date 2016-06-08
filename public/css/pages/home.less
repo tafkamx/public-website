@@ -1,7 +1,13 @@
 .page-home {
   position: relative;
   color: @color-black;
-  padding: 120px 40px 0 40px;
+  padding: 200px 40px 0 40px;
+
+  h1 {
+    font-size: 5.0em;
+    line-height: 1.3em;
+    font-family: 'Graphik-Bold';
+  }
 
   p {
     margin-top: 1.5em;
@@ -123,4 +129,49 @@
     max-width: 1440px;
     margin: 0 auto;
   }
+}
+
+
+// Fixes
+
+@media screen and (min-width: 680px) {
+  .page-home .featured__list li {
+      width: 46%;
+      margin-right: 2%;
+  }
+  .page-home .featured__list li {
+      padding: 10em 2em 4em;
+      background: #F8F8F8;
+  }
+  .page-home .featured {
+      text-transform: uppercase;
+      margin-top: 5em;
+      margin-bottom: 1.5em;
+  }
+  .page-home .featured__list a {
+      display: inline-block;
+      border-bottom: 2px solid #000;
+      margin: 1em 0;
+      text-transform: uppercase;
+      font-family: 'Graphik-Bold';
+      padding-bottom: 5px;
+  }
+}
+/* Journal */
+@media screen and (min-width: 680px) {
+  .page-home .journal__list li {
+      width: 29%;
+      margin-right: 2%;
+  }
+
+  .page-home .journal__list li {
+      position: relative;
+      height: 330px;
+      color: #fff;
+      background: #000;
+      background-repeat: no-repeat;
+      background-position: left top;
+      background-size: 100% auto;
+  }
+
 }
