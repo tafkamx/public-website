@@ -4,16 +4,41 @@ var isEventSupported = require('./../lib/utils/isEventSupported');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
 
 var featured = [
-  { title: 'crowdvoice.com', desc: 'Amplifying social justice movements worldwide.', url: '#' },
-  { title: 'crowdvoice.by', desc: 'Organize information about the causes that matter to you.', url: '#' }
+  { title: 'crowdvoice.com', desc: 'Amplifying social justice movements worldwide.', url: 'http://www.crowdvoice.org' },
+  { title: 'crowdvoice.by', desc: 'Organize information about the causes that matter to you.', url: 'http://www.crowdvoice.by' }
 ];
 
 var journal = [
-  { desc: 'Thoughts and lessons about breakups.', action: 'By <a href="#">Dario</a> in <a href="#">Misc</a>' },
-  { desc: 'Working on a Sunday, making things better for people around the world! :) @ Empathia', action: '<a href="#">@EmpathiaAgency</a>' },
-  { desc: 'Just a quick thought... abour our biggest challengue.', action: 'By <a href="#">Dario</a> in <a href="#">Misc</a>' },
-  { desc: 'Instagram', action: '<a href="#">@EmpathiaAgency</a>', image: 'https://placeimg.com/260/260/tech' },
-  { desc: 'Let\'s start with the why.', action: '<a href="#">@EmpathiaAgency</a>' }
+  {
+    desc: 'Thoughts and lessons about breakups.',
+    action: 'By <a href="https://medium.empathia.agency/@cuiki">Dario Muñoz</a>',
+    url: 'https://medium.empathia.agency/thoughts-and-lessons-about-breakups-d920ff3e0071',
+    image: 'https://cdn-images-1.medium.com/max/1200/1*cYPGQsJBY-kWyXtlcB2dvg.jpeg'
+  },
+  {
+    desc: 'Working on a Sunday, making things better for people around the world! :) @ Empathia',
+    action: '<a href="https://twitter.com/EmpathiaAgency">@EmpathiaAgency</a>',
+    url: 'https://twitter.com/EmpathiaAgency',
+    image: 'background-image: https://scontent-ord1-1.cdninstagram.com/t51.2885-15/e35/12912421_852125868247545_1196979567_n.jpg'
+  },
+  {
+    desc: 'Just a quick thought... abour our biggest challengue.',
+    action: 'By <a href="https://medium.empathia.agency/@cuiki">Dario Muñoz</a>',
+    url: 'https://medium.empathia.agency/thoughts-and-lessons-about-breakups-d920ff3e0071',
+    image: 'https://cdn-images-1.medium.com/max/800/1*ExtPkqHqKR1S7yyBRYZWeA.jpeg'
+  },
+  {
+    desc: 'Instagram',
+    action: '<a href="https://www.instagram.com/empathia_agency">@EmpathiaAgency</a>',
+    url: 'https://www.instagram.com/empathia_agency',
+    image: 'https://scontent-ord1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/13328963_945485648883979_892423652_n.jpg'
+  },
+  {
+    desc: 'Let\'s start with the why.',
+    action: 'By <a href="https://medium.empathia.agency/@cuiki">Dario Muñoz</a>',
+    url: 'https://medium.empathia.agency/let-s-start-with-the-why-b3a2b444cbd5',
+    image: 'https://cdn-images-1.medium.com/max/800/1*ww2Ha7rzHWBBNDlGW_WMMw.jpeg'
+  }
 ];
 
 Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
@@ -43,7 +68,7 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
       '<li>',
         '<h5 class="-font-semi-bold">{title}</h5>',
         '<h3>{desc}</h3>',
-        '<a href="{url}">view case study</a>',
+        '<a href="{url}">visit project</a>',
       '</li>',
     ].join(''),
 
@@ -54,7 +79,7 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
 
     JOURNAL_ITEM_HTML: [
       '<li{background}><div class="bottom__aligned">',
-        '<h3>{desc}</h3>',
+        '<h3><a href="{url}">{desc}</a></h3>',
         '{action}</div>',
       '</li>',
     ].join(''),
@@ -82,6 +107,7 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
 
           this.element.innerHTML += $journal.replace(/{items}/, journal.map(function(data) {
             return $journal_item
+              .replace(/{url}/, data.url)
               .replace(/{desc}/, data.desc)
               .replace(/{action}/, data.action)
               .replace(/{background}/, function() {
