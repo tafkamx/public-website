@@ -94,7 +94,7 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
                 data : {
                     subheading : 'Hello! We\'re Empathia Agency',
                     heading : 'Believe in a world where things work better.',
-                    legend: 'An ideas and innovation firm that provides solutions rooted in technology, for the problems that affect the world.',
+                    scrollInfo : 'An ideas and innovation firm that provides solutions rooted in technology, for the problems that affect the world.',
                     background : this.constructor.BG,
                     backgroundClassName : this.constructor.GRADIENT
                 }
@@ -132,6 +132,8 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
                 return '';
               });
           }).join(''));
+
+          this.headerWidget.activate();
 
           return this;
         },
