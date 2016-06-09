@@ -1,8 +1,4 @@
 .page-home {
-  position: relative;
-  color: @color-black;
-  padding: 200px 40px 0 40px;
-
   h1 {
     font-size: 5.0em;
     line-height: 1.3em;
@@ -78,7 +74,7 @@
 
   .featured {
     text-transform: uppercase;
-    margin-top: 5em;
+    margin-top: 2em;
     margin-bottom: 1.5em;
   }
 
@@ -89,31 +85,8 @@
   }
 }
 
-.slides__intro {
-  > .em-slide__text > .em-slide__subheading {
-    font-size: 3.333rem;
-    line-height: 1.100em;
-    letter-spacing: 0;
-  }
-
-  > .em-slide__text > .ui-btn:hover {
-    color: @accent-blue;
-  }
-}
-
-.slides__cv-org {
-  > .em-slide__bg {opacity: .08}
-
-  > .em-slide__text > .ui-btn:hover {
-    color: #444;
-  }
-}
-
 @media screen and (min-width: 680px) {
   .page-home {
-    padding-left: 80px;
-    padding-right: 80px;
-
     .featured__list li {
       width: 49%;
       margin-right: 1%;
@@ -139,12 +112,5 @@
         margin-right: 0;
       }
     }
-  }
-}
-
-@media all and (min-width: 1440px) {
-  .page-home {
-    max-width: 1440px;
-    margin: 0 auto;
   }
 }

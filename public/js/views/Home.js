@@ -54,9 +54,9 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
     ELEMENT_CLASS : 'page page-home',
     HTML : [
       '<section>',
-        '<h3 class="subheading -font-semi-bold">Hello! We\'re Empathia Agency</h3>',
-        '<h1>Believe in a world where things work better.</h1>',
-        '<p>An ideas and innovation firm that provides solutions rooted in technology, for the problems that affect the world.</p>',
+        '<div class="page__body">',
+          '<div class="page__container -p5"></div>',
+        '</div>',
       '</section>'
     ].join(''),
 
@@ -89,10 +89,23 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
         init: function init(config) {
           Widget.prototype.init.call(this, config);
 
+          this.appendChild(new EM.UI.PageCover({
+                name : 'headerWidget',
+                data : {
+                    subheading : 'Hello! We\'re Empathia Agency',
+                    heading : 'Believe in a world where things work better.',
+                    legend: 'An ideas and innovation firm that provides solutions rooted in technology, for the problems that affect the world.',
+                    background : this.constructor.BG,
+                    backgroundClassName : this.constructor.GRADIENT
+                }
+            })).render(null, this.element.firstElementChild);
+
+          var $page = this.element.querySelector('.page__container');
+
           var $featured = this.constructor.FEATURED_LIST_HTML,
               $featured_item = this.constructor.FEATURED_ITEM_HTML;
 
-          this.element.innerHTML += $featured.replace(/{items}/, featured.map(function(data) {
+          $page.innerHTML += $featured.replace(/{items}/, featured.map(function(data) {
             return $featured_item
               .replace(/{title}/, data.title)
               .replace(/{desc}/, data.desc)
@@ -106,7 +119,7 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
           var $journal = this.constructor.JOURNAL_LIST_HTML,
               $journal_item = this.constructor.JOURNAL_ITEM_HTML;
 
-          this.element.innerHTML += $journal.replace(/{items}/, journal.map(function(data) {
+          $page.innerHTML += $journal.replace(/{items}/, journal.map(function(data) {
             return $journal_item
               .replace(/{url}/, data.url)
               .replace(/{desc}/, data.desc)
@@ -119,6 +132,8 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
                 return '';
               });
           }).join(''));
+
+          return this;
         },
 
         setup : function setup() {
