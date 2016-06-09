@@ -46,13 +46,8 @@ Class(EM.UI, 'Menu').inherits(Widget).includes(BubblingSupport)({
          * @return Menu
          */
         setFillColor : function setFillColor(color) {
-            if (!color) {
-                this.element.style.fill = '';
-                return this;
-            }
-
-            this.element.style.fill = color;
-            return this;
+            // always white
+            this.element.style.fill = 'white';
         },
 
         _gridClickHandler : function _gridClickHandler() {

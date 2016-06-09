@@ -45,7 +45,8 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
     NAME : 'home',
     PATH : '/',
     THUMB : '/img/views/home/thumb.jpg',
-    BKG: 'white',
+    GRADIENT: '-gradient-01',
+    BG: '/img/views/home/slides/01.jpg',
     MENU_COLOR : CONSTANTS.COLORS.white,
     TITLE : 'Home',
     SUBTITLE : 'Home Subtitle',
@@ -60,7 +61,7 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
     ].join(''),
 
     FEATURED_LIST_HTML: [
-      '<h3 class="featured -font-bold">Featured work</h3>',
+      '<h2 class="featured -font-bold">Featured work</h2>',
       '<ul class="featured__list">{items}</ul>'
     ].join(''),
 
@@ -68,7 +69,7 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
       '<li>',
         '<h5 class="-font-semi-bold">{title}</h5>',
         '<h3>{desc}</h3>',
-        '<a href="{url}">visit project</a>',
+        '<a href="{url}" class="-font-bold">visit project</a>',
       '</li>',
     ].join(''),
 
