@@ -95,6 +95,7 @@ Class(EM.Views, 'Home').inherits(Widget).includes(BubblingSupport)({
                     subheading : 'Hello! We\'re Empathia Agency',
                     heading : 'Believe in a world where things work better.',
                     copy : 'An ideas and innovation firm that provides solutions rooted in technology, for the problems that affect the world.',
+                    scrollInfo: 'Scroll down to view our journal and featured work',
                     background : this.constructor.BG,
                     backgroundClassName : this.constructor.GRADIENT
                 }
