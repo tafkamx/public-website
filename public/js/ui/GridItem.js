@@ -26,8 +26,18 @@ Class(EM.UI, 'GridItem').inherits(Widget)({
         _setup : function _setup() {
             this.element.querySelector('.grid__item-index').textContent = this.index;
             this.element.querySelector('.grid__item-title').textContent = this.title;
-            this.imageElement.style.backgroundImage = 'url(' + this.view.BG + ')';
-            this.element.querySelector('.grid__item-cover').classList.add(this.view.GRADIENT);
+
+            if (this.view.BG) {
+              this.imageElement.style.backgroundImage = 'url(' + this.view.BG + ')';
+            }
+
+            if (this.view.BKG) {
+              this.imageElement.style.backgroundColor = this.view.BKG;
+            }
+
+            if (this.view.GRADIENT) {
+              this.element.querySelector('.grid__item-cover').classList.add(this.view.GRADIENT);
+            }
             return this;
         },
 

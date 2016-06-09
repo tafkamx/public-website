@@ -1,14 +1,19 @@
 .menu {
   z-index: 3;
   height: 40px;
-  top: 40px;
+  top: 20px;
   left: 0;
-  fill: @color-neutral-xx-dark;
+  width: 100%;
+  // fill: @color-neutral-xx-dark;
 }
 
 .menu__svg {
+  float: right;
   width: 40px;
-  background-color: @color-white;
+  height: 40px;
+  margin-right: 20px;
+  border-radius: 50%;
+  background-color: @color-black;
   transition: fill 200ms linear;
 
   > g {transition: opacity 200ms linear}
@@ -16,32 +21,24 @@
   .b {display: none}
 
   &:hover {
-    > g {opacity: .4}
+    > g {opacity: .8}
   }
 }
 
 .menu__logo {
-  font-size: 18px;
-  padding: 6px 19px 0;
-  height: 40px;
-  color: @color-white;
-  background-color: @color-black;
-  transition: background-color 200ms linear;
-
-  &:hover {
-    background-color: @color-neutral-xx-dark;
-  }
+  margin-left: 20px;
 }
+
 
 // active
 .menu.active {
-  .menu__svg {fill: @color-neutral-xx-dark;}
+  // .menu__svg {fill: @color-neutral-xx-dark;}
   .menu__svg .a {display: none}
   .menu__svg .b {display: block}
 }
 
-@media all and(max-width: 730px) {
-  .menu {
-    top: 20px;
-  }
-}
+// @media all and(max-width: 730px) {
+//   .menu {
+//     top: 20px;
+//   }
+// }

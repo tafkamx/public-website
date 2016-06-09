@@ -41,6 +41,15 @@ Class(EM.UI, 'PageCover').inherits(Widget)({
             if (this.data.scrollInfo) {
                 this.element.querySelector('.page__header-help-text').textContent = this.data.scrollInfo;
             }
+
+            if (this.data.copy) {
+              this.copyElement = document.createElement('h2');
+
+              this.copyElement.innerHTML = this.data.copy;
+              this.copyElement.className = 'page__header-copy';
+
+              this.headingElement.parentNode.insertBefore(this.copyElement, this.headingElement.nextSibling);
+            }
         },
 
         _activate : function _activate() {
@@ -49,6 +58,10 @@ Class(EM.UI, 'PageCover').inherits(Widget)({
                 addClass(this.subheadingElement, 'active');
                 addClass(this.headingElement, 'active');
                 addClass(this.helpElement, 'active');
+
+                if (this.copyElement) {
+                  addClass(this.copyElement, 'active');
+                }
             }.bind(this));
         }
     }

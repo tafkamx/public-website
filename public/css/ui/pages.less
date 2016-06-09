@@ -61,6 +61,17 @@
   color: @color-white;
 }
 
+.page__header-copy {
+  opacity: 0;
+  transition: opacity 200ms linear;
+  transition-delay: 600ms;
+  will-change: opacity;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
 .page__header-subheading {
   font-size: 2rem;
   line-height: 1.1em;

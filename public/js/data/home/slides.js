@@ -3,24 +3,30 @@ var CONSTANTS = require('./../../lib/const');
 module.exports = [
     {
         MENU_COLOR : CONSTANTS.COLORS.green,
+        LIGHTER: true,
         className : 'slides__intro',
-        gradient : '-gradient-01',
-        bg : {
-            image: '/img/views/home/slides/01.jpg'
-        },
         title : {
-            text : 'Hello! We are Empathia',
-            className : '-font-extra-light'
+            text : 'Hello! We\'re Empathia Agency',
+            className : '-font-semi-bold'
         },
         message : {
             text : 'Believe in a world where things work better.'
         },
         cta : {
+            dark: true,
             text : 'Learn What We Do',
             link : EM.Views.WhatWeDo.PATH
-        }
-    },
+        },
+        p: {
+          text: 'An ideas and innovation firm that provides solutions rooted in technology, for the problems that affect the world.'
+        },
+        featured: [
+          { title: 'crowdvoice.com', desc: 'Amplifying social justice movements worldwide.', link: '#' },
+          { title: 'crowdvoice.by', desc: 'Organize information about the causes that matter to you.', link: '#' }
+        ]
+    }
 
+    /*
     {
         MENU_COLOR : CONSTANTS.COLORS.red,
         className : 'slides__cv-org',
@@ -40,7 +46,7 @@ module.exports = [
             link : 'http://crowdvoice.org/',
             external : true
         }
-    }
+    }*/
 
     /*
     {
