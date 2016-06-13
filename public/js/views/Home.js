@@ -10,6 +10,18 @@ var featured = [
 
 var journal = [
   {
+    desc: 'Why we built our own backend framework.',
+    action: 'By <a href="https://medium.empathia.agency/@sgarza">Sergio De La Garza</a>',
+    url: 'https://medium.empathia.agency/why-we-built-our-own-backend-framework-c91e11f854c4',
+    image: 'https://cdn-images-1.medium.com/max/2000/1*j2xfJ-T-AodnefLBG4o9UA.jpeg'
+  },
+  {
+    desc: 'Just a quick thought... about our biggest challenge.',
+    action: 'By <a href="https://medium.empathia.agency/@cuiki">Dario Muñoz</a>',
+    url: 'https://medium.empathia.agency/just-a-quick-thought-about-our-biggest-challenge-e70ec9c65b82',
+    image: 'https://cdn-images-1.medium.com/max/800/1*ExtPkqHqKR1S7yyBRYZWeA.jpeg'
+  },
+  {
     desc: 'Thoughts and lessons about breakups.',
     action: 'By <a href="https://medium.empathia.agency/@cuiki">Dario Muñoz</a>',
     url: 'https://medium.empathia.agency/thoughts-and-lessons-about-breakups-d920ff3e0071',
@@ -22,22 +34,16 @@ var journal = [
     image: 'background-image: https://scontent-ord1-1.cdninstagram.com/t51.2885-15/e35/12912421_852125868247545_1196979567_n.jpg'
   },
   {
-    desc: 'Just a quick thought... abour our biggest challengue.',
+    desc: 'Let\'s start with the why.',
     action: 'By <a href="https://medium.empathia.agency/@cuiki">Dario Muñoz</a>',
-    url: 'https://medium.empathia.agency/thoughts-and-lessons-about-breakups-d920ff3e0071',
-    image: 'https://cdn-images-1.medium.com/max/800/1*ExtPkqHqKR1S7yyBRYZWeA.jpeg'
+    url: 'https://medium.empathia.agency/let-s-start-with-the-why-b3a2b444cbd5',
+    image: 'https://cdn-images-1.medium.com/max/800/1*ww2Ha7rzHWBBNDlGW_WMMw.jpeg'
   },
   {
     desc: 'Instagram',
     action: '<a href="https://www.instagram.com/empathia_agency">@EmpathiaAgency</a>',
     url: 'https://www.instagram.com/empathia_agency',
     image: 'https://scontent-ord1-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/13328963_945485648883979_892423652_n.jpg'
-  },
-  {
-    desc: 'Let\'s start with the why.',
-    action: 'By <a href="https://medium.empathia.agency/@cuiki">Dario Muñoz</a>',
-    url: 'https://medium.empathia.agency/let-s-start-with-the-why-b3a2b444cbd5',
-    image: 'https://cdn-images-1.medium.com/max/800/1*ww2Ha7rzHWBBNDlGW_WMMw.jpeg'
   }
 ];
 
