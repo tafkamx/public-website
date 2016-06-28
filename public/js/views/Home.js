@@ -4,7 +4,7 @@ var isEventSupported = require('./../lib/utils/isEventSupported');
 var hasTouchSupport = require('./../lib/utils/hasTouchSupport');
 
 var featured = [
-  { title: 'crowdvoice.com', desc: 'Amplifying social justice movements worldwide.', url: 'http://www.crowdvoice.org' },
+  { title: 'crowdvoice.org', desc: 'Amplifying social justice movements worldwide.', url: 'http://www.crowdvoice.org' },
   { title: 'crowdvoice.by', desc: 'Organize information about the causes that matter to you.', url: 'http://www.crowdvoice.by' }
 ];
 
