@@ -28,8 +28,8 @@ var config = {
   },
 
   s3 : {
-    accessKeyId: 'AKIAJA3ESFVLE34BSCVQ',
-    secretAccessKey: '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'
+    accessKeyId: 'AKIAJGCOQED4N2MM2AIA',
+    secretAccessKey: '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'
   }
 };
 
